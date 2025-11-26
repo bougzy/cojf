@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Redeemed Christian Church Of God-City Of Joy</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1e3a8a">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #1e293b;
+            --accent: #059669;
+            --light: #ffffff;
+            --dark: #0f172a;
+            --gray-light: #f8fafc;
+            --gray: #64748b;
+            --gray-dark: #334155;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --whatsapp: #059669;
+            --whatsapp-dark: #047857;
+        }
+
+        [data-bs-theme="dark"] {
+            --light: #0f172a;
+            --gray-light: #1e293b;
+            --dark: #f1f5f9;
+            --gray: #94a3b8;
+            --gray-dark: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            transition: all 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        /* Fix overlapping issues with proper spacing */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-compact {
+            padding: 3rem 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        [data-bs-theme="dark"] h1,
+        [data-bs-theme="dark"] h2,
+        [data-bs-theme="dark"] h3,
+        [data-bs-theme="dark"] h4,
+        [data-bs-theme="dark"] h5,
+        [data-bs-theme="dark"] h6 {
+            color: var(--dark);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            padding: 1rem 0;
+            z-index: 1030;
+        }
+
+        [data-bs-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Fixed Hero Section - No Overlap */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 76px; /* Account for fixed navbar */
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                padding: 120px 0 80px;
+                margin-top: 70px;
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin: 0.5rem;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            background: transparent;
+            margin: 0.5rem;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            padding-top: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        /* Fixed Card Layouts */
+        .card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            background: var(--light);
+            margin-bottom: 2rem;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            width: 100%;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .product-card .card-img-top {
+            height: 220px;
+        }
+
+        .sermon-card .card-img-top {
+            height: 180px;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .live-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--danger);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+            z-index: 2;
+        }
+
+        @keyframes pulse {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 6px 15px rgba(220, 38, 38, 0.5);
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+            }
+        }
+
+        /* Fixed Radio Player Layout */
+        .radio-player {
+            background: var(--gray-light);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        [data-bs-theme="dark"] .radio-player {
+            background: var(--secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-light);
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Fixed Testimony Carousel */
+        .testimony-carousel {
+            padding: 2rem 0;
+        }
+
+        .testimony-carousel .carousel-item {
+            padding: 1rem;
+        }
+
+        .testimony-card {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border-left: 5px solid var(--primary);
+            position: relative;
+            transition: all 0.4s ease;
+            margin: 1rem;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .testimony-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimony-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimony-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
+        }
+
+        /* Fixed Activity Timeline */
+        .activity-timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .activity-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        .activity-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .activity-item::before {
+            content: '';
+            position: absolute;
+            left: -2.25rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--light);
+            box-shadow: 0 0 0 3px var(--primary-light);
+            z-index: 2;
+        }
+
+        [data-bs-theme="dark"] .activity-item::before {
+            border: 3px solid var(--light);
+        }
+
+        /* Fixed Ministry Cards */
+        .ministry-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            background: var(--light);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ministry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+
+        .ministry-card:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.2);
+        }
+
+        .ministry-card:hover .ministry-icon {
+            background: white;
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .ministry-card:hover h4,
+        .ministry-card:hover p {
+            color: white;
+        }
+
+        .ministry-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .marketplace-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0 60px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0.5rem 0;
+        }
+
+        .store-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(30, 58, 138, 0.2);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, var(--whatsapp) 0%, var(--whatsapp-dark) 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .whatsapp-btn:hover::before {
+            left: 100%;
+        }
+
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, var(--whatsapp-dark) 0%, var(--whatsapp) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+            color: white;
+        }
+
+        /* Fixed Floating Shapes */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+            background: white;
+            animation: float 15s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Fixed Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .footer-links h5 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: white;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+            padding-left: 5px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+        }
+
+        /* Enhanced responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .ministry-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .activity-timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .activity-item::before {
+                left: -1.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .testimony-card {
+                padding: 2rem 1.5rem;
+                min-height: 300px;
+            }
+            
+            .radio-player {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn-primary,
+            .btn-outline-light {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            
+            .testimony-card {
+                min-height: 280px;
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        /* Enhanced focus states for accessibility */
+        .btn:focus,
+        .form-control:focus,
+        .nav-link:focus {
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.3);
+        }
+
+        /* Improved text selection */
+        ::selection {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        /* Grid layout fixes */
+        .row {
+            margin-right: -0.75rem;
+            margin-left: -0.75rem;
+        }
+
+        .row > * {
+            padding-right: 0.75rem;
+            padding-left: 0.75rem;
+        }
+
+        /* Ensure proper spacing between sections */
+        .bg-light {
+            background-color: var(--gray-light) !important;
+        }
+
+        [data-bs-theme="dark"] .bg-light {
+            background-color: var(--secondary) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">City Of Joy</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ministries.html">Ministries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sermons.html">Sermons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="giving.html">Giving</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="bi bi-sun-fill"></i>
+                    </button>
+                    
+                    <div class="dropdown ms-3">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-2"></i> Account
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="admin.html">Admin Panel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="hero-title">City Of Joy(Rivers Province 10)</h1>
+                    <p class="lead mb-4">A vibrant community of faith, hope, and love. Join us as we grow together in Christ and serve our community with purpose and passion.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="giving.html" class="btn btn-primary">
+                            <i class="bi bi-play-circle me-2"></i> Join Service Live
+                        </a>
+                        <a href="about.html" class="btn btn-outline-light">
+                            <i class="bi bi-info-circle me-2"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="radio-player">
+                        <h4 class="mb-3"><i class="bi bi-broadcast me-2"></i> Online Radio</h4>
+                        <div class="d-flex align-items-center mb-3">
+                            <button class="btn btn-light me-3 rounded-circle" style="width: 50px; height: 50px;">
+                                <i class="bi bi-play-fill"></i>
+                            </button>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between">
+                                    <span>Now Playing:</span>
+                                    <span id="currentSong">Worship & Praise Mix</span>
+                                </div>
+                                <div class="progress mt-2" style="height: 6px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 65%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between text-small">
+                            <span>Volume</span>
+                            <div>
+                                <i class="bi bi-volume-down me-2"></i>
+                                <i class="bi bi-volume-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Live Service">
+                            <div class="live-indicator">
+                                <i class="bi bi-circle-fill me-1"></i> LIVE
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sunday Service Live</h5>
+                            <p class="card-text">Join our live Sunday service streaming now with Pastor Michael</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Started 25 min ago</small>
+                                <a href="live.html" class="btn btn-sm btn-danger">Watch Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonies Section -->
+    <section class="section-compact bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Testimonies</h2>
+            
+            <div class="testimony-carousel">
+                <div id="testimonyCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="testimony-card" data-aos="zoom-in">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimony-avatar" alt="Testifier">
+                                <h5>Sarah Johnson</h5>
+                                <p class="text-muted mb-3">Member since 2019</p>
+                                <p class="mb-0">"This church has transformed my life. The community support and inspiring sermons have helped me through difficult times. I'm forever grateful for this spiritual home."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimony-card" data-aos="zoom-in">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimony-avatar" alt="Testifier">
+                                <h5>Michael Brown</h5>
+                                <p class="text-muted mb-3">Member since 2020</p>
+                                <p class="mb-0">"The youth ministry helped me find my purpose. Now I'm serving in the media team and using my talents for God's glory. This church truly empowers young people."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimony-card" data-aos="zoom-in">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimony-avatar" alt="Testifier">
+                                <h5>Jennifer Williams</h5>
+                                <p class="text-muted mb-3">Member since 2018</p>
+                                <p class="mb-0">"After joining the prayer group, I've experienced miraculous healing in my family. The power of prayer in this community is truly amazing."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonyCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonyCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="section-compact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Weekly & Monthly Activities</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <h4 class="mb-4">This Week's Schedule</h4>
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <h5>Sunday Service</h5>
+                            <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 8:00 AM & 10:30 AM</p>
+                            <p class="mb-0">Join us for worship, prayer, and an inspiring message from our pastor.</p>
+                        </div>
+                        <div class="activity-item">
+                            <h5>Youth Bible Study</h5>
+                            <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> Wednesday, 6:00 PM</p>
+                            <p class="mb-0">Young adults gathering for fellowship and Bible study.</p>
+                        </div>
+                        <div class="activity-item">
+                            <h5>Prayer Meeting</h5>
+                            <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> Friday, 7:00 PM</p>
+                            <p class="mb-0">Corporate prayer session for all church members.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h4 class="mb-4">Upcoming Events</h4>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">Community Outreach</h5>
+                                <span class="badge bg-primary">New</span>
+                            </div>
+                            <p class="card-text text-muted mb-2">June 15, 2023 | 9:00 AM</p>
+                            <p class="card-text mb-3">Join us as we serve our local community through various outreach programs.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">Marriage Conference</h5>
+                                <span class="badge bg-warning">Limited Seats</span>
+                            </div>
+                            <p class="card-text text-muted mb-2">July 22-23, 2023</p>
+                            <p class="card-text mb-3">A special conference for couples to strengthen their relationships.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Register</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">Children's Camp</h5>
+                                <span class="badge bg-success">Early Bird</span>
+                            </div>
+                            <p class="card-text text-muted mb-2">August 5-7, 2023</p>
+                            <p class="card-text mb-3">Summer camp for children ages 6-12 with fun activities and Bible lessons.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministries Section -->
+    <section class="section-compact bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Ministries</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h4>Youth Ministry</h4>
+                        <p class="mb-3">Engaging programs for teenagers and young adults to grow in faith and fellowship.</p>
+                        <a href="youth.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-music-note-beamed"></i>
+                        </div>
+                        <h4>Worship & Arts</h4>
+                        <p class="mb-3">Expressing praise to God through music, dance, and creative arts.</p>
+                        <a href="worship.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h4>Outreach</h4>
+                        <p class="mb-3">Serving our community through various outreach and mission programs.</p>
+                        <a href="outreach.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4 mt-2">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-book-half"></i>
+                        </div>
+                        <h4>Bible Studies</h4>
+                        <p class="mb-3">Deep dive into God's word through various study groups and classes.</p>
+                        <a href="bible-studies.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-camera-video-fill"></i>
+                        </div>
+                        <h4>Media Ministry</h4>
+                        <p class="mb-3">Spreading the gospel through technology and creative media production.</p>
+                        <a href="media.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-house-heart-fill"></i>
+                        </div>
+                        <h4>Family Ministry</h4>
+                        <p class="mb-3">Strengthening families through counseling, workshops, and support groups.</p>
+                        <a href="family.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Sermons -->
+    <section class="section-compact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Recent Sermons</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card sermon-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
+                        <div class="card-body">
+                            <h5 class="card-title">The Power of Faith</h5>
+                            <p class="card-text text-muted mb-2">Pastor John Smith | June 4, 2023</p>
+                            <p class="card-text mb-3">Exploring how faith can move mountains in our daily lives and challenges.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
+                                <div class="text-muted">
+                                    <i class="bi bi-eye me-1"></i> 245
+                                    <i class="bi bi-download ms-3 me-1"></i> 89
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card sermon-card">
+                        <img src="https://images.unsplash.com/photo-1542403810-8910637cc2b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
+                        <div class="card-body">
+                            <h5 class="card-title">Finding Hope in Hard Times</h5>
+                            <p class="card-text text-muted mb-2">Pastor Sarah Johnson | May 28, 2023</p>
+                            <p class="card-text mb-3">Biblical principles for maintaining hope and peace during difficult seasons.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
+                                <div class="text-muted">
+                                    <i class="bi bi-eye me-1"></i> 189
+                                    <i class="bi bi-download ms-3 me-1"></i> 67
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card sermon-card">
+                        <img src="https://images.unsplash.com/photo-1548705083-06842646fc1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
+                        <div class="card-body">
+                            <h5 class="card-title">The Joy of Giving</h5>
+                            <p class="card-text text-muted mb-2">Pastor Michael Brown | May 21, 2023</p>
+                            <p class="card-text mb-3">Understanding God's principles of generosity and its impact on our lives.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
+                                <div class="text-muted">
+                                    <i class="bi bi-eye me-1"></i> 312
+                                    <i class="bi bi-download ms-3 me-1"></i> 124
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4" data-aos="fade-up">
+                <a href="sermons.html" class="btn btn-outline-primary">View All Sermons</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Preview -->
+    <section class="section-compact bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <h2 class="section-title text-start">Church Marketplace</h2>
+                    <p class="lead mb-4">Support our community members by shopping from their businesses. From handmade crafts to professional services, discover quality products from fellow believers.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="marketplace.html" class="btn btn-primary">Explore Marketplace</a>
+                        <a href="marketplace-seller.html" class="btn btn-outline-primary">Become a Seller</a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card product-card">
+                                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product">
+                                <div class="card-body">
+                                    <span class="store-badge">Faith Crafts</span>
+                                    <h6 class="card-title">Handmade Wooden Cross</h6>
+                                    <p class="product-price">NGN50000.00</p>
+                                    <button class="btn whatsapp-btn">
+                                        <i class="bi bi-whatsapp"></i> Buy on WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card product-card">
+                                <img src="https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product">
+                                <div class="card-body">
+                                    <span class="store-badge">Kingdom Bakes</span>
+                                    <h6 class="card-title">Custom Celebration Cake</h6>
+                                    <p class="product-price">NGN45000.00</p>
+                                    <button class="btn whatsapp-btn">
+                                        <i class="bi bi-whatsapp"></i> Buy on WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="mb-3">City Of Joy</h3>
+                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="ministries.html">Ministries</a></li>
+                            <li><a href="sermons.html">Sermons</a></li>
+                            <li><a href="events.html">Events</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Resources</h5>
+                        <ul>
+                            <li><a href="giving.html">Online Giving</a></li>
+                            <li><a href="prayer.html">Prayer Requests</a></li>
+                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt me-2"></i> 5 Holiness Close, Rumuagholu, Port Harcourt</li>
+                        <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
+                        <li><i class="bi bi-envelope me-2"></i> info@rv1o.com</li>
+                        <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 Rivers Province 10. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
+                    <a href="terms.html" class="text-light">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS with enhanced settings
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false,
+            offset: 100
+        });
+
+        // Loading bar animation
+        window.addEventListener('load', function() {
+            const loadingBar = document.getElementById('loadingBar');
+            loadingBar.style.width = '100%';
+            setTimeout(() => {
+                loadingBar.style.opacity = '0';
+                setTimeout(() => {
+                    loadingBar.style.display = 'none';
+                }, 300);
+            }, 500);
+        });
+
+        // Enhanced Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            
+            // Save preference to localStorage
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+
+        // Enhanced Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Enhanced WhatsApp Buy Now functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('whatsapp-btn') || e.target.closest('.whatsapp-btn')) {
+                const productCard = e.target.closest('.card');
+                const productName = productCard.querySelector('.card-title').textContent;
+                const storeName = productCard.querySelector('.store-badge').textContent;
+                
+                // Add click animation
+                const button = e.target.classList.contains('whatsapp-btn') ? e.target : e.target.closest('.whatsapp-btn');
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 150);
+                
+                // In a real implementation, you would fetch store WhatsApp number from backend
+                const whatsappNumber = "1234567890";
+                const message = `Hi, I'm interested in ${productName} from ${storeName} on GraceChurch marketplace.`;
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                window.open(whatsappUrl, '_blank');
+            }
+        });
+
+        // Fix for navbar overlapping content on mobile
+        function adjustNavbarHeight() {
+            const navbar = document.querySelector('.navbar');
+            const heroSection = document.querySelector('.hero-section');
+            if (navbar && heroSection) {
+                const navbarHeight = navbar.offsetHeight;
+                heroSection.style.marginTop = navbarHeight + 'px';
+            }
+        }
+
+        // Adjust on load and resize
+        window.addEventListener('load', adjustNavbarHeight);
+        window.addEventListener('resize', adjustNavbarHeight);
+    </script>
+</body>
+</html>

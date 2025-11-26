@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GraceChurch</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #1e293b;
+            --accent: #059669;
+            --light: #ffffff;
+            --dark: #0f172a;
+            --gray-light: #f8fafc;
+            --gray: #64748b;
+            --whatsapp: #059669;
+        }
+
+        [data-bs-theme="dark"] {
+            --light: #0f172a;
+            --gray-light: #1e293b;
+            --dark: #f1f5f9;
+            --gray: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        [data-bs-theme="dark"] h1,
+        [data-bs-theme="dark"] h2,
+        [data-bs-theme="dark"] h3 {
+            color: var(--dark);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 1rem 0;
+        }
+
+        [data-bs-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: white;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            background: var(--light);
+            margin-bottom: 2rem;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .team-img {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--light);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.25rem;
+            top: 2.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--light);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .belief-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            background: var(--light);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            height: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .belief-card:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-10px);
+        }
+
+        .belief-card:hover h4,
+        .belief-card:hover p {
+            color: white;
+        }
+
+        .belief-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .belief-card:hover .belief-icon {
+            background: white;
+            color: var(--primary);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 120px 0 60px;
+                margin-top: 70px;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GraceChurch</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ministries.html">Ministries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sermons.html">Sermons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="giving.html">Giving</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="bi bi-sun-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">About Us</li>
+                </ol>
+            </nav>
+            <h1 class="page-title" data-aos="fade-up">About GraceChurch</h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200">Discover our story, mission, and the faith that unites us as a community dedicated to serving Christ.</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title text-start">Our Story</h2>
+                    <p class="lead mb-4">Founded in 1985, GraceChurch began as a small gathering of believers in a local community center. What started as a humble beginning has grown into a vibrant community of faith, hope, and love.</p>
+                    <p>Through decades of faithful service, we've witnessed God's transformative power in countless lives. Our journey has been marked by both challenges and triumphs, each strengthening our commitment to spreading the Gospel and serving our community.</p>
+                    <p>Today, we continue to build on the foundation laid by our founders, embracing new opportunities to share God's love while staying true to the biblical principles that have guided us from the beginning.</p>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Our Church Building" 
+                         class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Mission & Vision</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <div class="card-body text-center p-4">
+                            <div class="belief-icon">
+                                <i class="bi bi-compass"></i>
+                            </div>
+                            <h3>Our Mission</h3>
+                            <p class="mb-0">To make disciples of Jesus Christ who love God passionately, serve others selflessly, and share the Gospel courageously in our community and beyond.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <div class="card-body text-center p-4">
+                            <div class="belief-icon">
+                                <i class="bi bi-eye"></i>
+                            </div>
+                            <h3>Our Vision</h3>
+                            <p class="mb-0">To be a thriving, multi-generational church that transforms lives through authentic worship, biblical teaching, and compassionate outreach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Beliefs -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What We Believe</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="belief-card">
+                        <div class="belief-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <h4>The Bible</h4>
+                        <p>We believe the Bible is the inspired, infallible Word of God and the final authority for faith and practice.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="belief-card">
+                        <div class="belief-icon">
+                            <i class="bi bi-person-heart"></i>
+                        </div>
+                        <h4>The Trinity</h4>
+                        <p>We believe in one God eternally existing in three persons: Father, Son, and Holy Spirit.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="belief-card">
+                        <div class="belief-icon">
+                            <i class="bi bi-cross"></i>
+                        </div>
+                        <h4>Salvation</h4>
+                        <p>We believe in salvation by grace through faith in Jesus Christ alone, who died for our sins and rose again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Church History Timeline -->
+    <section>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Journey Through Time</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <h4>1985 - Humble Beginnings</h4>
+                    <p class="text-muted mb-2">Founded by Pastor John and Mary Smith</p>
+                    <p>Started with 12 members meeting in a community center, focused on neighborhood outreach and Bible study.</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <h4>1992 - First Building</h4>
+                    <p class="text-muted mb-2">Purchased our first church building</p>
+                    <p>Acquired a small building that allowed us to expand our ministries and serve more people in the community.</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <h4>2005 - Growth & Expansion</h4>
+                    <p class="text-muted mb-2">Built current sanctuary and facilities</p>
+                    <p>Constructed our current worship center and added educational wings to accommodate growing membership.</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <h4>2018 - Digital Ministry Launch</h4>
+                    <p class="text-muted mb-2">Started online streaming and outreach</p>
+                    <p>Embracing technology to reach people globally through online services and digital discipleship programs.</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <h4>2023 - Present Day</h4>
+                    <p class="text-muted mb-2">Serving 1500+ members weekly</p>
+                    <p>Continuing to grow as a multi-generational church with diverse ministries serving all age groups and needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Meet Our Leadership</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             class="team-img" 
+                             alt="Senior Pastor">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Dr. Michael Johnson</h5>
+                            <p class="text-muted mb-2">Senior Pastor</p>
+                            <p class="card-text">Serving since 2010, Pastor Michael brings visionary leadership and deep biblical teaching.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             class="team-img" 
+                             alt="Associate Pastor">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Sarah Williams</h5>
+                            <p class="text-muted mb-2">Associate Pastor</p>
+                            <p class="card-text">Leading our outreach and discipleship programs with passion and dedication.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             class="team-img" 
+                             alt="Youth Pastor">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">David Chen</h5>
+                            <p class="text-muted mb-2">Youth Pastor</p>
+                            <p class="card-text">Empowering the next generation through dynamic youth programs and mentorship.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Church Stats -->
+    <section>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">GraceChurch By The Numbers</h2>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card">
+                        <div class="stat-number">38</div>
+                        <p class="mb-0">Years Serving</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card">
+                        <div class="stat-number">1,500+</div>
+                        <p class="mb-0">Active Members</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <p class="mb-0">Ministries</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <p class="mb-0">Community Partners</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="mb-3">GraceChurch</h3>
+                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-light text-decoration-none">About</a></li>
+                        <li><a href="ministries.html" class="text-light text-decoration-none">Ministries</a></li>
+                        <li><a href="sermons.html" class="text-light text-decoration-none">Sermons</a></li>
+                        <li><a href="events.html" class="text-light text-decoration-none">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="giving.html" class="text-light text-decoration-none">Online Giving</a></li>
+                        <li><a href="prayer.html" class="text-light text-decoration-none">Prayer Requests</a></li>
+                        <li><a href="marketplace.html" class="text-light text-decoration-none">Marketplace</a></li>
+                        <li><a href="blog.html" class="text-light text-decoration-none">Blog</a></li>
+                        <li><a href="contact.html" class="text-light text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt me-2"></i> 123 Church Street, City, State 12345</li>
+                        <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
+                        <li><i class="bi bi-envelope me-2"></i> info@gracechurch.com</li>
+                        <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 GraceChurch. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
+                    <a href="terms.html" class="text-light">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+    </script>
+</body>
+</html>

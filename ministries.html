@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministries - GraceChurch</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #1e293b;
+            --accent: #059669;
+            --light: #ffffff;
+            --dark: #0f172a;
+            --gray-light: #f8fafc;
+            --gray: #64748b;
+            --gray-dark: #334155;
+            --whatsapp: #059669;
+            --text-light: #1e293b;
+            --text-dark: #f1f5f9;
+        }
+
+        [data-bs-theme="dark"] {
+            --light: #0f172a;
+            --gray-light: #1e293b;
+            --dark: #f1f5f9;
+            --gray: #94a3b8;
+            --gray-dark: #cbd5e1;
+            --text-light: #f1f5f9;
+            --text-dark: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--text-light);
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        [data-bs-theme="dark"] h1,
+        [data-bs-theme="dark"] h2,
+        [data-bs-theme="dark"] h3,
+        [data-bs-theme="dark"] h4,
+        [data-bs-theme="dark"] h5,
+        [data-bs-theme="dark"] h6 {
+            color: var(--text-light);
+        }
+
+        p, .lead, .text-muted {
+            color: var(--text-light) !important;
+        }
+
+        [data-bs-theme="dark"] p,
+        [data-bs-theme="dark"] .lead,
+        [data-bs-theme="dark"] .text-muted {
+            color: var(--text-light) !important;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        [data-bs-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        [data-bs-theme="dark"] .nav-link {
+            color: var(--text-light) !important;
+        }
+
+        .nav-link.active {
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 76px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: white;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        .bg-light {
+            background-color: var(--gray-light) !important;
+        }
+
+        [data-bs-theme="dark"] .bg-light {
+            background-color: var(--secondary) !important;
+        }
+
+        /* Ministry Cards */
+        .ministry-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            background: var(--light);
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+
+        .ministry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+
+        .ministry-card:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.2);
+        }
+
+        .ministry-card:hover .ministry-icon {
+            background: white;
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .ministry-card:hover h4,
+        .ministry-card:hover p {
+            color: white;
+        }
+
+        .ministry-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .ministry-detail-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            background: var(--light);
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        .ministry-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .ministry-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .schedule-item {
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+            background: var(--gray-light);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .schedule-item strong {
+            color: var(--text-light);
+        }
+
+        /* Navigation Pills */
+        .nav-pills .nav-link {
+            color: var(--text-light);
+            padding: 1rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: var(--gray-light);
+            border: 1px solid var(--gray-light);
+        }
+
+        .nav-pills .nav-link.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .nav-pills .nav-link:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--gray-light);
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(30deg);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: var(--text-light);
+            padding: 4rem 0 2rem;
+        }
+
+        footer h3,
+        footer h5 {
+            color: white;
+        }
+
+        footer a {
+            color: var(--gray) !important;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary-light) !important;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 120px 0 60px;
+                margin-top: 70px;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .nav-pills .nav-link {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Ensure text visibility in all sections */
+        .container h1,
+        .container h2,
+        .container h3,
+        .container h4,
+        .container h5,
+        .container h6,
+        .container p,
+        .container .lead,
+        .container .text-muted {
+            color: var(--text-light) !important;
+        }
+
+        /* Fix for dark mode text in light sections */
+        [data-bs-theme="dark"] .bg-light h1,
+        [data-bs-theme="dark"] .bg-light h2,
+        [data-bs-theme="dark"] .bg-light h3,
+        [data-bs-theme="dark"] .bg-light h4,
+        [data-bs-theme="dark"] .bg-light h5,
+        [data-bs-theme="dark"] .bg-light h6,
+        [data-bs-theme="dark"] .bg-light p,
+        [data-bs-theme="dark"] .bg-light .lead,
+        [data-bs-theme="dark"] .bg-light .text-muted {
+            color: var(--text-light) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GraceChurch</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="ministries.html">Ministries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sermons.html">Sermons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="giving.html">Giving</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="bi bi-sun-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Ministries</li>
+                </ol>
+            </nav>
+            <h1 class="page-title" data-aos="fade-up">Our Ministries</h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200" style="color: white !important;">Discover how you can get involved and grow through our diverse ministry opportunities for all ages and stages of life.</p>
+        </div>
+    </section>
+
+    <!-- Ministry Categories Navigation -->
+    <section class="bg-light">
+        <div class="container">
+            <ul class="nav nav-pills justify-content-center" id="ministryTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">
+                        All Ministries
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="children-tab" data-bs-toggle="tab" data-bs-target="#children" type="button" role="tab">
+                        Children & Youth
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="adults-tab" data-bs-toggle="tab" data-bs-target="#adults" type="button" role="tab">
+                        Adults
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="outreach-tab" data-bs-toggle="tab" data-bs-target="#outreach" type="button" role="tab">
+                        Outreach
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- All Ministries Tab -->
+    <section>
+        <div class="container">
+            <div class="tab-content" id="ministryTabsContent">
+                <div class="tab-pane fade show active" id="all" role="tabpanel">
+                    <h2 class="section-title" data-aos="fade-up">Explore All Ministries</h2>
+                    <div class="row g-4">
+                        <!-- Children's Ministry -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <h4>Children's Ministry</h4>
+                                <p class="mb-3">Nurturing young hearts through engaging Bible lessons, fun activities, and age-appropriate discipleship.</p>
+                                <a href="children-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Youth Ministry -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-emoji-smile"></i>
+                                </div>
+                                <h4>Youth Ministry</h4>
+                                <p class="mb-3">Empowering teenagers to grow in faith through dynamic worship, relevant teaching, and authentic community.</p>
+                                <a href="youth-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Young Adults -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-person-badge"></i>
+                                </div>
+                                <h4>Young Adults</h4>
+                                <p class="mb-3">Building community for college students and young professionals navigating life and faith transitions.</p>
+                                <a href="young-adults.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Men's Ministry -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-person-standing"></i>
+                                </div>
+                                <h4>Men's Ministry</h4>
+                                <p class="mb-3">Equipping men to live out their God-given purpose through fellowship, accountability, and service.</p>
+                                <a href="mens-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Women's Ministry -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-person-hearts"></i>
+                                </div>
+                                <h4>Women's Ministry</h4>
+                                <p class="mb-3">Creating spaces for women to connect, grow spiritually, and support one another through life's journey.</p>
+                                <a href="womens-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Worship & Arts -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-music-note-beamed"></i>
+                                </div>
+                                <h4>Worship & Arts</h4>
+                                <p class="mb-3">Leading the church in passionate worship through music, creative arts, and technical production.</p>
+                                <a href="worship-arts.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Outreach -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-heart-fill"></i>
+                                </div>
+                                <h4>Outreach</h4>
+                                <p class="mb-3">Serving our local community through practical help, evangelism, and partnership with local organizations.</p>
+                                <a href="outreach.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Prayer Ministry -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-chat-heart"></i>
+                                </div>
+                                <h4>Prayer Ministry</h4>
+                                <p class="mb-3">Covering our church and community in prayer through intercession groups and prayer chains.</p>
+                                <a href="prayer-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Media Ministry -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="ministry-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-camera-video"></i>
+                                </div>
+                                <h4>Media Ministry</h4>
+                                <p class="mb-3">Spreading the Gospel through technology, video production, and digital content creation.</p>
+                                <a href="media-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other tabs would go here with similar structure -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Ministries -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Ministries</h2>
+            
+            <!-- Children's Ministry Detail -->
+            <div class="row align-items-center mb-5" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Children's Ministry" 
+                         class="img-fluid rounded-3 shadow ministry-img">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Children's Ministry</h3>
+                    <p class="lead">Building strong foundations of faith for the next generation.</p>
+                    <p>Our Children's Ministry provides a safe, engaging environment where kids can learn about Jesus in age-appropriate ways. Through interactive Bible lessons, worship, and fun activities, we help children develop a personal relationship with Christ.</p>
+                    
+                    <h5 class="mt-4">Weekly Schedule</h5>
+                    <div class="schedule-item">
+                        <strong>Sunday School</strong><br>
+                        Sundays, 9:00 AM - 10:15 AM<br>
+                        Ages 3-12
+                    </div>
+                    <div class="schedule-item">
+                        <strong>Kids Worship</strong><br>
+                        Sundays, 10:30 AM Service<br>
+                        Children's Church Program
+                    </div>
+                    
+                    <a href="children-ministry.html" class="btn btn-primary mt-3">Get Involved</a>
+                </div>
+            </div>
+
+            <!-- Youth Ministry Detail -->
+            <div class="row align-items-center mb-5" data-aos="fade-up">
+                <div class="col-lg-6 order-lg-2">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Youth Ministry" 
+                         class="img-fluid rounded-3 shadow ministry-img">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h3>Youth Ministry</h3>
+                    <p class="lead">Empowering teenagers to live out their faith boldly.</p>
+                    <p>Our Youth Ministry creates a space where teenagers can explore their faith, build authentic relationships, and discover their purpose in Christ. Through relevant teaching, small groups, and fun events, we equip young people to navigate life's challenges with biblical wisdom.</p>
+                    
+                    <h5 class="mt-4">Weekly Activities</h5>
+                    <div class="schedule-item">
+                        <strong>Youth Group</strong><br>
+                        Wednesdays, 6:30 PM - 8:00 PM<br>
+                        Grades 6-12
+                    </div>
+                    <div class="schedule-item">
+                        <strong>Sunday Bible Study</strong><br>
+                        Sundays, 9:00 AM - 10:15 AM<br>
+                        Age-specific small groups
+                    </div>
+                    
+                    <a href="youth-ministry.html" class="btn btn-primary mt-3">Join Youth Group</a>
+                </div>
+            </div>
+
+            <!-- Outreach Ministry Detail -->
+            <div class="row align-items-center" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Outreach Ministry" 
+                         class="img-fluid rounded-3 shadow ministry-img">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Outreach Ministry</h3>
+                    <p class="lead">Serving our community with the love of Christ.</p>
+                    <p>Our Outreach Ministry extends God's love beyond our church walls through practical service, evangelism, and partnership with local organizations. We believe in being the hands and feet of Jesus in our community, meeting both physical and spiritual needs.</p>
+                    
+                    <h5 class="mt-4">Current Projects</h5>
+                    <div class="schedule-item">
+                        <strong>Food Pantry</strong><br>
+                        Every Saturday, 9:00 AM - 12:00 PM<br>
+                        Serving 200+ families weekly
+                    </div>
+                    <div class="schedule-item">
+                        <strong>Community Cleanup</strong><br>
+                        First Saturday of each month<br>
+                        Neighborhood beautification
+                    </div>
+                    
+                    <a href="outreach.html" class="btn btn-primary mt-3">Volunteer Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved CTA -->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <h2>Ready to Get Involved?</h2>
+                    <p class="lead mb-4">Whether you're looking to serve or be served, there's a place for you in our ministries.</p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center">
+                        <a href="contact.html" class="btn btn-primary btn-lg">Contact Ministry Leader</a>
+                        <a href="events.html" class="btn btn-outline-primary btn-lg">View Upcoming Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="mb-3">GraceChurch</h3>
+                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-light text-decoration-none">About</a></li>
+                        <li><a href="ministries.html" class="text-light text-decoration-none">Ministries</a></li>
+                        <li><a href="sermons.html" class="text-light text-decoration-none">Sermons</a></li>
+                        <li><a href="events.html" class="text-light text-decoration-none">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="giving.html" class="text-light text-decoration-none">Online Giving</a></li>
+                        <li><a href="prayer.html" class="text-light text-decoration-none">Prayer Requests</a></li>
+                        <li><a href="marketplace.html" class="text-light text-decoration-none">Marketplace</a></li>
+                        <li><a href="blog.html" class="text-light text-decoration-none">Blog</a></li>
+                        <li><a href="contact.html" class="text-light text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt me-2"></i> 123 Church Street, City, State 12345</li>
+                        <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
+                        <li><i class="bi bi-envelope me-2"></i> info@gracechurch.com</li>
+                        <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 GraceChurch. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
+                    <a href="terms.html" class="text-light">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+
+        // Ministry tabs functionality
+        const ministryTabs = document.querySelectorAll('#ministryTabs button');
+        ministryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                ministryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
