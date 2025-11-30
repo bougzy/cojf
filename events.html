@@ -47,19 +47,10 @@
             --text-dark: #1e293b;
         }
 
-        /* ===== CRITICAL OVERFLOW PREVENTION ===== */
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-            position: relative;
-            width: 100%;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            max-width: 100%;
         }
 
         body {
@@ -70,18 +61,8 @@
             transition: all 0.3s ease;
         }
 
-        /* Container fixes */
-        .container, .container-fluid {
-            max-width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            overflow: hidden;
-        }
-
         section {
             padding: 5rem 0;
-            max-width: 100%;
-            overflow: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -89,9 +70,6 @@
             font-weight: 600;
             color: var(--text-light);
             margin-bottom: 1.5rem;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
         }
 
         [data-bs-theme="dark"] h1,
@@ -105,9 +83,6 @@
 
         p, .lead, .text-muted {
             color: var(--text-light) !important;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
         }
 
         [data-bs-theme="dark"] p,
@@ -116,15 +91,12 @@
             color: var(--text-light) !important;
         }
 
-        /* Navbar fixes */
         .navbar {
             background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
             padding: 1rem 0;
             transition: all 0.3s ease;
-            z-index: 1030;
-            max-width: 100%;
         }
 
         [data-bs-theme="dark"] .navbar {
@@ -138,14 +110,12 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            max-width: 100%;
         }
 
         .nav-link {
             color: var(--text-light) !important;
             font-weight: 500;
             transition: all 0.3s ease;
-            white-space: nowrap;
         }
 
         [data-bs-theme="dark"] .nav-link {
@@ -157,7 +127,6 @@
             font-weight: 600;
         }
 
-        /* Page Hero fixes */
         .page-hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
@@ -165,7 +134,6 @@
             position: relative;
             overflow: hidden;
             margin-top: 76px;
-            width: 100%;
         }
 
         .page-hero::before {
@@ -184,9 +152,6 @@
             font-weight: 700;
             margin-bottom: 1rem;
             color: white;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
         }
 
         .breadcrumb {
@@ -209,7 +174,6 @@
             margin-bottom: 3rem;
             text-align: center;
             color: var(--text-light);
-            max-width: 100%;
         }
 
         .section-title::after {
@@ -243,7 +207,6 @@
             background: var(--light);
             margin-bottom: 2rem;
             color: var(--text-light);
-            max-width: 100%;
         }
 
         .event-card:hover {
@@ -256,7 +219,6 @@
             object-fit: cover;
             width: 100%;
             transition: all 0.4s ease;
-            max-width: 100%;
         }
 
         .event-card:hover .event-img {
@@ -312,8 +274,6 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             color: white;
-            max-width: 100%;
-            white-space: nowrap;
         }
 
         .btn-primary:hover {
@@ -330,8 +290,6 @@
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
-            max-width: 100%;
-            white-space: nowrap;
         }
 
         .btn-outline-primary:hover {
@@ -347,28 +305,21 @@
             padding: 2rem;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             margin-bottom: 3rem;
-            max-width: 100%;
-            overflow: hidden;
         }
 
         #calendar {
             background: var(--light);
             border-radius: 12px;
             padding: 1rem;
-            max-width: 100%;
-            overflow: hidden;
         }
 
         .fc {
             color: var(--text-light);
-            max-width: 100%;
         }
 
         .fc-toolbar-title {
             font-family: 'Playfair Display', serif;
             color: var(--text-light) !important;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
         }
 
         .fc-button {
@@ -394,7 +345,6 @@
             border-radius: 20px;
             overflow: hidden;
             margin-bottom: 3rem;
-            max-width: 100%;
         }
 
         .featured-content {
@@ -405,17 +355,12 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: white;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
         }
 
         .countdown {
             display: flex;
             gap: 1rem;
             margin: 2rem 0;
-            max-width: 100%;
-            flex-wrap: wrap;
         }
 
         .countdown-item {
@@ -424,7 +369,6 @@
             padding: 1rem;
             border-radius: 12px;
             backdrop-filter: blur(10px);
-            min-width: 80px;
         }
 
         .countdown-number {
@@ -445,7 +389,6 @@
             padding: 2rem;
             border-radius: 16px;
             margin-bottom: 3rem;
-            max-width: 100%;
         }
 
         .form-control, .form-select {
@@ -455,7 +398,6 @@
             background: var(--light);
             color: var(--text-light);
             transition: all 0.3s ease;
-            max-width: 100%;
         }
 
         .form-control:focus, .form-select:focus {
@@ -473,7 +415,6 @@
             border: 1px solid var(--gray-light);
             color: var(--text-light);
             margin-bottom: 2rem;
-            max-width: 100%;
         }
 
         .category-card:hover {
@@ -532,8 +473,6 @@
             background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
             color: var(--text-light);
             padding: 4rem 0 2rem;
-            max-width: 100%;
-            overflow: hidden;
         }
 
         footer h3,
@@ -550,102 +489,6 @@
             color: var(--primary-light) !important;
         }
 
-        .footer-links h5 {
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-            color: white;
-        }
-
-        .footer-links h5::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary-light);
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-light);
-            padding-left: 5px;
-        }
-
-        /* Row and column fixes */
-        .row {
-            margin-right: 0;
-            margin-left: 0;
-            max-width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .row > * {
-            padding-right: 0.75rem;
-            padding-left: 0.75rem;
-            max-width: 100%;
-            flex-shrink: 0;
-        }
-
-        /* Image fixes */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ===== ENHANCED RESPONSIVE FIXES ===== */
-        @media (max-width: 1200px) {
-            .page-title {
-                font-size: 3rem;
-            }
-            
-            .featured-title {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .page-title {
-                font-size: 2.5rem;
-            }
-            
-            .featured-title {
-                font-size: 2rem;
-            }
-            
-            .navbar-nav {
-                text-align: center;
-            }
-            
-            .featured-content {
-                padding: 2rem;
-            }
-            
-            /* Fix for navbar dropdown on mobile */
-            .navbar-collapse {
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-        }
-
         @media (max-width: 768px) {
             .page-hero {
                 padding: 120px 0 60px;
@@ -653,24 +496,19 @@
             }
             
             .page-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             section {
                 padding: 3rem 0;
             }
             
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2.5rem;
-            }
-            
             .featured-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .featured-content {
-                padding: 1.5rem;
+                padding: 2rem;
             }
             
             .countdown {
@@ -679,147 +517,37 @@
             
             .countdown-item {
                 padding: 0.75rem;
-                min-width: 70px;
             }
             
             .countdown-number {
                 font-size: 1.5rem;
             }
-            
-            .calendar-section {
-                padding: 1.5rem;
-            }
-            
-            .event-card {
-                margin-bottom: 1.5rem;
-            }
-            
-            .filter-section {
-                padding: 1.5rem;
-            }
-            
-            .btn-primary, .btn-outline-primary {
-                width: 100%;
-                margin: 0.5rem 0;
-                white-space: normal;
-                word-wrap: break-word;
-            }
-            
-            .event-actions {
-                flex-direction: column;
-            }
         }
 
-        @media (max-width: 576px) {
-            .container {
-                padding-right: 10px;
-                padding-left: 10px;
-            }
-            
-            .page-title {
-                font-size: 1.8rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .featured-title {
-                font-size: 1.6rem;
-            }
-            
-            .countdown {
-                justify-content: center;
-            }
-            
-            .countdown-item {
-                min-width: 60px;
-                padding: 0.5rem;
-            }
-            
-            .countdown-number {
-                font-size: 1.25rem;
-            }
-            
-            .calendar-section {
-                padding: 1rem;
-            }
-            
-            .category-card {
-                padding: 1.5rem 1rem;
-            }
-            
-            .filter-section .row {
-                flex-direction: column;
-            }
-            
-            /* Fix for dropdown on very small screens */
-            .dropdown-menu {
-                position: static !important;
-                transform: none !important;
-                width: 100%;
-            }
+        /* Ensure text visibility in all sections */
+        .container h1,
+        .container h2,
+        .container h3,
+        .container h4,
+        .container h5,
+        .container h6,
+        .container p,
+        .container .lead,
+        .container .text-muted {
+            color: var(--text-light) !important;
         }
 
-        /* Extra small devices */
-        @media (max-width: 400px) {
-            .page-title {
-                font-size: 1.6rem;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-            }
-            
-            .featured-title {
-                font-size: 1.4rem;
-            }
-            
-            .card-body {
-                padding: 1rem;
-            }
-            
-            .countdown-item {
-                min-width: 50px;
-                padding: 0.4rem;
-            }
-            
-            .countdown-number {
-                font-size: 1.1rem;
-            }
-            
-            /* Fix for navbar on very small screens */
-            .navbar-nav .nav-item {
-                margin-bottom: 0.5rem;
-            }
-        }
-
-        /* ===== ADDITIONAL OVERFLOW PREVENTION ===== */
-        /* Prevent horizontal scroll caused by animations */
-        [data-aos] {
-            overflow: hidden;
-        }
-
-        /* Ensure all images don't cause overflow */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Fix for any potential overflow in text elements */
-        p, span, a, li {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        /* Fix for calendar causing overflow */
-        .fc-view-harness {
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .fc-scrollgrid {
-            max-width: 100%;
+        /* Fix for dark mode text in light sections */
+        [data-bs-theme="dark"] .bg-light h1,
+        [data-bs-theme="dark"] .bg-light h2,
+        [data-bs-theme="dark"] .bg-light h3,
+        [data-bs-theme="dark"] .bg-light h4,
+        [data-bs-theme="dark"] .bg-light h5,
+        [data-bs-theme="dark"] .bg-light h6,
+        [data-bs-theme="dark"] .bg-light p,
+        [data-bs-theme="dark"] .bg-light .lead,
+        [data-bs-theme="dark"] .bg-light .text-muted {
+            color: var(--text-light) !important;
         }
     </style>
 </head>
@@ -827,7 +555,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-             <img src="img/Rccg_logo.png" alt="" style="width: 70px;">
+            <img src="img/Rccg_logo.png" alt="" style="width: 70px;">
             <a class="navbar-brand ms-2" href="index.html">City Of Joy</a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -926,7 +654,7 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex gap-3 flex-wrap">
+                            <div class="d-flex gap-3">
                                 <a href="#" class="btn btn-light btn-lg">
                                     <i class="bi bi-ticket-perforated me-2"></i> Register Now
                                 </a>
@@ -1228,7 +956,7 @@
             <div class="row justify-content-center text-center">
                 <div class="col-lg-8" data-aos="fade-up">
                     <h2>Stay Updated</h2>
-                    <p class="lead mb-4">Subscribe to our events newsletter and never miss an important church event or activity.</p>
+                    <p class="lead mb-4">Subscribe to our events newsletter and never miss an important church event or announcement.</p>
                     <div class="row g-3 justify-content-center">
                         <div class="col-md-8">
                             <div class="input-group">
@@ -1239,6 +967,7 @@
                             </div>
                         </div>
                     </div>
+                    <p class="text-muted mt-3 small">We respect your privacy. You can unsubscribe at any time.</p>
                 </div>
             </div>
         </div>
@@ -1247,72 +976,81 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h3 class="mb-3">GraceChurch</h3>
-                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="mb-4">GraceChurch</h3>
+                    <p class="mb-4">A community of faith, hope, and love dedicated to serving God and transforming lives through the power of the Gospel.</p>
                     <div class="d-flex gap-3">
-                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-decoration-none">
+                            <i class="bi bi-facebook fs-5"></i>
+                        </a>
+                        <a href="#" class="text-decoration-none">
+                            <i class="bi bi-instagram fs-5"></i>
+                        </a>
+                        <a href="#" class="text-decoration-none">
+                            <i class="bi bi-youtube fs-5"></i>
+                        </a>
+                        <a href="#" class="text-decoration-none">
+                            <i class="bi bi-whatsapp fs-5"></i>
+                        </a>
                     </div>
                 </div>
-                
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Quick Links</h5>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="ministries.html">Ministries</a></li>
-                            <li><a href="sermons.html">Sermons</a></li>
-                            <li><a href="events.html">Events</a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="ministries.html" class="text-decoration-none">Ministries</a></li>
+                        <li class="mb-2"><a href="sermons.html" class="text-decoration-none">Sermons</a></li>
+                        <li class="mb-2"><a href="events.html" class="text-decoration-none">Events</a></li>
+                    </ul>
                 </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Resources</h5>
-                        <ul>
-                            <li><a href="giving.html">Online Giving</a></li>
-                            <li><a href="prayer.html">Prayer Requests</a></li>
-                            <li><a href="marketplace.html">Marketplace</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="bi bi-geo-alt me-2"></i>
+                            123 Church Street, City, State 12345
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-telephone me-2"></i>
+                            (555) 123-4567
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-envelope me-2"></i>
+                            info@gracechurch.org
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-clock me-2"></i>
+                            Sunday Service: 9:00 AM & 11:00 AM
+                        </li>
+                    </ul>
                 </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <div class="footer-links">
-                        <h5>Contact Info</h5>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-geo-alt me-2"></i> 123 Church Street, City, State 12345</li>
-                            <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
-                            <li><i class="bi bi-envelope me-2"></i> info@gracechurch.com</li>
-                            <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
-                        </ul>
-                    </div>
+                <div class="col-lg-3">
+                    <h5 class="mb-4">Service Times</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">Sunday Worship: 9:00 AM & 11:00 AM</li>
+                        <li class="mb-2">Wednesday Bible Study: 7:00 PM</li>
+                        <li class="mb-2">Youth Group: Friday 7:00 PM</li>
+                        <li class="mb-2">Prayer Meeting: Tuesday 6:30 PM</li>
+                    </ul>
                 </div>
             </div>
-            
-            <hr class="my-4">
-            
+            <hr class="my-5">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <p class="mb-0">&copy; 2023 GraceChurch. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
-                    <a href="terms.html" class="text-light">Terms of Service</a>
+                    <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Scripts -->
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- AOS Animation Library -->
@@ -1325,9 +1063,7 @@
         // Initialize AOS
         AOS.init({
             duration: 1000,
-            easing: 'ease-in-out',
             once: true,
-            mirror: false,
             offset: 100
         });
 
@@ -1342,32 +1078,26 @@
             document.documentElement.setAttribute('data-bs-theme', newTheme);
             themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
             
+            // Save theme preference
             localStorage.setItem('theme', newTheme);
-            
-            // Refresh calendar to apply theme changes
-            if (window.calendar) {
-                window.calendar.render();
-            }
         });
 
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme') || 
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
         themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
 
         // Countdown Timer
         function updateCountdown() {
-            const targetDate = new Date('2023-11-15T09:00:00').getTime();
+            const eventDate = new Date('November 15, 2023 09:00:00').getTime();
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const distance = eventDate - now;
 
             if (distance < 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
+                document.getElementById('days').innerHTML = '00';
+                document.getElementById('hours').innerHTML = '00';
+                document.getElementById('minutes').innerHTML = '00';
+                document.getElementById('seconds').innerHTML = '00';
                 return;
             }
 
@@ -1376,108 +1106,96 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
         }
 
         // Initialize countdown
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Initialize Calendar
+        // Initialize FullCalendar
         document.addEventListener('DOMContentLoaded', function() {
             const calendarEl = document.getElementById('calendar');
-            if (calendarEl) {
-                window.calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    headerToolbar: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Youth Winter Camp',
+                        start: '2023-11-15',
+                        end: '2023-11-17',
+                        color: '#059669'
                     },
-                    events: [
-                        {
-                            title: 'Youth Winter Camp',
-                            start: '2023-11-15',
-                            end: '2023-11-17',
-                            backgroundColor: '#059669'
-                        },
-                        {
-                            title: 'Marriage Conference',
-                            start: '2023-11-22',
-                            backgroundColor: '#3b82f6'
-                        },
-                        {
-                            title: 'Community Outreach',
-                            start: '2023-12-05',
-                            backgroundColor: '#dc2626'
-                        },
-                        {
-                            title: 'Christmas Worship Night',
-                            start: '2023-12-16',
-                            backgroundColor: '#7c3aed'
-                        },
-                        {
-                            title: 'New Year Service',
-                            start: '2023-12-31',
-                            backgroundColor: '#d97706'
-                        },
-                        {
-                            title: 'Financial Workshop',
-                            start: '2024-01-14',
-                            backgroundColor: '#0891b2'
-                        }
-                    ],
-                    eventClick: function(info) {
-                        info.jsEvent.preventDefault();
-                        // Add your custom event click logic here
+                    {
+                        title: 'Marriage Conference',
+                        start: '2023-11-22',
+                        color: '#3b82f6'
+                    },
+                    {
+                        title: 'Christmas Outreach',
+                        start: '2023-12-05',
+                        color: '#ef4444'
+                    },
+                    {
+                        title: 'Christmas Worship Night',
+                        start: '2023-12-16',
+                        color: '#8b5cf6'
+                    },
+                    {
+                        title: 'New Year Service',
+                        start: '2023-12-31',
+                        color: '#f59e0b'
+                    },
+                    {
+                        title: 'Financial Workshop',
+                        start: '2024-01-14',
+                        end: '2024-01-16',
+                        color: '#06b6d4'
+                    },
+                    {
+                        title: 'Sunday Service',
+                        start: '2023-11-05',
+                        color: '#1e3a8a'
+                    },
+                    {
+                        title: 'Sunday Service',
+                        start: '2023-11-12',
+                        color: '#1e3a8a'
+                    },
+                    {
+                        title: 'Sunday Service',
+                        start: '2023-11-19',
+                        color: '#1e3a8a'
+                    },
+                    {
+                        title: 'Sunday Service',
+                        start: '2023-11-26',
+                        color: '#1e3a8a'
                     }
-                });
-                window.calendar.render();
-            }
+                ],
+                eventClick: function(info) {
+                    info.jsEvent.preventDefault();
+                    alert('Event: ' + info.event.title);
+                }
+            });
+            calendar.render();
         });
 
-        // Fix for navbar overlapping content on mobile
-        function adjustNavbarHeight() {
-            const navbar = document.querySelector('.navbar');
-            const pageHero = document.querySelector('.page-hero');
-            if (navbar && pageHero) {
-                const navbarHeight = navbar.offsetHeight;
-                pageHero.style.marginTop = navbarHeight + 'px';
-            }
-        }
-
-        // Adjust on load and resize
-        window.addEventListener('load', adjustNavbarHeight);
-        window.addEventListener('resize', adjustNavbarHeight);
-
-        // Additional overflow prevention
-        function checkForOverflow() {
-            const bodyWidth = document.body.clientWidth;
-            const windowWidth = window.innerWidth;
+        // Filter functionality
+        document.querySelector('.filter-section button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.filter-section input').value.toLowerCase();
+            const category = document.querySelector('.filter-section .form-select').value;
             
-            if (bodyWidth > windowWidth) {
-                console.warn('Horizontal overflow detected. Body width:', bodyWidth, 'Window width:', windowWidth);
-                
-                // Force recalculation and containment
-                document.body.style.overflowX = 'hidden';
-                document.documentElement.style.overflowX = 'hidden';
-            }
-        }
-
-        window.addEventListener('load', checkForOverflow);
-        window.addEventListener('resize', checkForOverflow);
-        
-        // Fix for calendar on mobile
-        function adjustCalendarView() {
-            if (window.calendar && window.innerWidth < 768) {
-                window.calendar.changeView('dayGridMonth');
-            }
-        }
-
-        window.addEventListener('resize', adjustCalendarView);
+            // Simple filter demonstration
+            alert(`Filtering events: Search="${searchTerm}", Category="${category}"`);
+        });
     </script>
 </body>
 </html>

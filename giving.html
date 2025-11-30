@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giving - GraceChurch</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #1e293b;
+            --accent: #059669;
+            --light: #ffffff;
+            --dark: #0f172a;
+            --gray-light: #f8fafc;
+            --gray: #64748b;
+            --gray-dark: #334155;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --whatsapp: #059669;
+            --text-primary: #1e293b;
+            --text-secondary: #374151;
+            --text-muted: #6b7280;
+        }
+
+        [data-bs-theme="dark"] {
+            --light: #0f172a;
+            --gray-light: #1e293b;
+            --dark: #f1f5f9;
+            --gray: #94a3b8;
+            --gray-dark: #cbd5e1;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+        }
+
+        /* ===== CRITICAL OVERFLOW PREVENTION ===== */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: all 0.4s ease;
+        }
+
+        [data-bs-theme="dark"] body {
+            color: var(--text-primary);
+            background-color: var(--light);
+        }
+
+        /* Container fixes */
+        .container, .container-fluid {
+            max-width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            overflow: hidden;
+        }
+
+        section {
+            padding: 5rem 0;
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .section-compact {
+            padding: 3rem 0;
+        }
+
+        /* Row and column fixes */
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .row > * {
+            padding-right: 0.75rem;
+            padding-left: 0.75rem;
+            max-width: 100%;
+            flex-shrink: 0;
+        }
+
+        /* Typography fixes */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        [data-bs-theme="dark"] h1,
+        [data-bs-theme="dark"] h2,
+        [data-bs-theme="dark"] h3,
+        [data-bs-theme="dark"] h4,
+        [data-bs-theme="dark"] h5,
+        [data-bs-theme="dark"] h6 {
+            color: var(--text-primary);
+        }
+
+        p, .lead, .card-text {
+            color: var(--text-secondary);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        [data-bs-theme="dark"] p,
+        [data-bs-theme="dark"] .lead,
+        [data-bs-theme="dark"] .card-text {
+            color: var(--text-secondary);
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        [data-bs-theme="dark"] .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        /* Navbar fixes */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            padding: 1rem 0;
+            z-index: 1030;
+            max-width: 100%;
+        }
+
+        [data-bs-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem !important;
+            white-space: nowrap;
+            color: var(--text-primary) !important;
+        }
+
+        [data-bs-theme="dark"] .nav-link {
+            color: var(--text-primary) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Page Hero fixes */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 76px;
+            width: 100%;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: white;
+        }
+
+        /* Hero section text remains white in dark mode */
+        [data-bs-theme="dark"] .page-hero,
+        [data-bs-theme="dark"] .page-hero .page-title,
+        [data-bs-theme="dark"] .page-hero .lead,
+        [data-bs-theme="dark"] .page-hero .breadcrumb-item.active {
+            color: white !important;
+        }
+
+        [data-bs-theme="dark"] .page-hero .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            padding-top: 1rem;
+            max-width: 100%;
+            color: var(--text-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        .bg-light {
+            background-color: var(--gray-light) !important;
+        }
+
+        [data-bs-theme="dark"] .bg-light {
+            background-color: var(--gray-light) !important;
+        }
+
+        /* Giving Cards */
+        .giving-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            background: var(--light);
+            margin-bottom: 2rem;
+            max-width: 100%;
+        }
+
+        [data-bs-theme="dark"] .giving-card {
+            background-color: var(--gray-light);
+            border: 1px solid #374151;
+        }
+
+        .giving-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .giving-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: all 0.4s ease;
+            max-width: 100%;
+        }
+
+        .giving-card:hover .giving-img {
+            transform: scale(1.05);
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+            background-color: var(--gray-light);
+            overflow: hidden;
+        }
+
+        [data-bs-theme="dark"] .progress {
+            background-color: #374151;
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            transition: width 0.6s ease;
+        }
+
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-bs-theme="dark"] .stats-number {
+            color: var(--primary-light);
+        }
+
+        .stats-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--light);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 2rem;
+            max-width: 100%;
+        }
+
+        [data-bs-theme="dark"] .stats-card {
+            background-color: var(--gray-light);
+            border: 1px solid #374151;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Button fixes */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin: 0.5rem;
+            white-space: nowrap;
+            display: inline-block;
+            max-width: 100%;
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #10b981 100%);
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            max-width: 100%;
+            white-space: nowrap;
+        }
+
+        [data-bs-theme="dark"] .btn-outline-primary {
+            color: var(--primary-light);
+            border-color: var(--primary-light);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        [data-bs-theme="dark"] .btn-outline-primary:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        /* Donation Modal */
+        .donation-modal .modal-content {
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme="dark"] .modal-content {
+            background-color: var(--gray-light);
+            border: 1px solid #4b5563;
+        }
+
+        [data-bs-theme="dark"] .modal-header,
+        [data-bs-theme="dark"] .modal-footer {
+            border-color: #4b5563;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .amount-option {
+            padding: 1rem;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--light);
+            color: var(--text-primary);
+        }
+
+        [data-bs-theme="dark"] .amount-option {
+            background-color: var(--light);
+            border-color: #4b5563;
+            color: var(--text-primary);
+        }
+
+        .amount-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        [data-bs-theme="dark"] .amount-option:hover {
+            border-color: var(--primary);
+            background-color: var(--light);
+        }
+
+        .amount-option.selected {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .custom-amount {
+            margin-top: 1rem;
+        }
+
+        .bank-details {
+            background: var(--gray-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        [data-bs-theme="dark"] .bank-details {
+            background-color: var(--light);
+            border: 1px solid #4b5563;
+        }
+
+        .bank-detail-item {
+            display: flex;
+            justify-content: between;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        [data-bs-theme="dark"] .bank-detail-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .bank-detail-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            min-width: 120px;
+        }
+
+        [data-bs-theme="dark"] .bank-detail-label {
+            color: var(--text-primary);
+        }
+
+        .bank-detail-value {
+            color: var(--text-secondary);
+            word-break: break-all;
+        }
+
+        [data-bs-theme="dark"] .bank-detail-value {
+            color: var(--text-secondary);
+        }
+
+        /* Form elements */
+        .form-control, .form-select {
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            padding: 12px 16px;
+            background: var(--light);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            max-width: 100%;
+        }
+
+        [data-bs-theme="dark"] .form-control,
+        [data-bs-theme="dark"] .form-select {
+            background-color: var(--gray-light);
+            border-color: #4b5563;
+            color: var(--text-primary);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        [data-bs-theme="dark"] .form-control:focus,
+        [data-bs-theme="dark"] .form-select:focus {
+            background-color: var(--gray-light);
+            border-color: var(--primary);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+        }
+
+        [data-bs-theme="dark"] .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        .input-group-text {
+            background-color: var(--gray-light);
+            border-color: var(--gray-light);
+            color: var(--text-primary);
+        }
+
+        [data-bs-theme="dark"] .input-group-text {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: var(--text-primary);
+        }
+
+        .form-check-label {
+            color: var(--text-primary);
+        }
+
+        [data-bs-theme="dark"] .form-check-label {
+            color: var(--text-primary);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            background: var(--gray-light);
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer fixes */
+        footer {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+            position: relative;
+            margin-top: 2rem;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .footer-links h5 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: white;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+            padding-left: 5px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--light);
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-bs-theme="dark"] .card {
+            background-color: var(--gray-light);
+            border: 1px solid #374151;
+        }
+
+        .card-title {
+            color: var(--text-primary);
+        }
+
+        [data-bs-theme="dark"] .card-title {
+            color: var(--text-primary);
+        }
+
+        /* Badges */
+        .badge {
+            color: white;
+        }
+
+        [data-bs-theme="dark"] .badge {
+            color: white;
+        }
+
+        /* Alert boxes */
+        .alert {
+            background-color: var(--light);
+            border: 1px solid transparent;
+            color: var(--text-primary);
+        }
+
+        [data-bs-theme="dark"] .alert {
+            background-color: var(--light);
+            border-color: #4b5563;
+            color: var(--text-primary);
+        }
+
+        .alert-warning {
+            background-color: #fffbeb;
+            border-color: #fcd34d;
+            color: #92400e;
+        }
+
+        [data-bs-theme="dark"] .alert-warning {
+            background-color: #451a03;
+            border-color: #92400e;
+            color: #fed7aa;
+        }
+
+        .alert-info {
+            background-color: #eff6ff;
+            border-color: #93c5fd;
+            color: #1e40af;
+        }
+
+        [data-bs-theme="dark"] .alert-info {
+            background-color: #082f49;
+            border-color: #0c4a6e;
+            color: #bae6fd;
+        }
+
+        /* Dropdown menus */
+        .dropdown-menu {
+            background-color: var(--light);
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-bs-theme="dark"] .dropdown-menu {
+            background-color: var(--gray-light);
+            border-color: #4b5563;
+        }
+
+        .dropdown-item {
+            color: var(--text-primary);
+        }
+
+        [data-bs-theme="dark"] .dropdown-item {
+            color: var(--text-primary);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .spinner-border-sm {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        [data-bs-theme="dark"] .spinner-border {
+            color: var(--primary-light);
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        /* Small text elements */
+        small {
+            color: var(--text-muted);
+        }
+
+        [data-bs-theme="dark"] small {
+            color: var(--text-muted);
+        }
+
+        /* Icons */
+        .bi {
+            color: inherit;
+        }
+
+        /* ===== ENHANCED RESPONSIVE FIXES ===== */
+        @media (max-width: 1200px) {
+            .page-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .donation-amounts {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            /* Fix for navbar dropdown on mobile */
+            .navbar-collapse {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .page-hero {
+                padding: 120px 0 60px;
+                margin-top: 70px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .stats-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .giving-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .btn-primary, .btn-success {
+                width: 100%;
+                margin: 0.5rem 0;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .bank-detail-item {
+                flex-direction: column;
+            }
+            
+            .bank-detail-label {
+                min-width: auto;
+                margin-bottom: 0.25rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .stats-number {
+                font-size: 1.5rem;
+            }
+            
+            .btn-primary,
+            .btn-success {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .amount-option {
+                padding: 0.75rem;
+            }
+            
+            /* Fix for dropdown on very small screens */
+            .dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                width: 100%;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 400px) {
+            .page-title {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .card-body {
+                padding: 1rem;
+            }
+            
+            .stats-card {
+                padding: 1.5rem;
+            }
+            
+            /* Fix for navbar on very small screens */
+            .navbar-nav .nav-item {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* ===== ADDITIONAL OVERFLOW PREVENTION ===== */
+        /* Prevent horizontal scroll caused by animations */
+        [data-aos] {
+            overflow: hidden;
+        }
+
+        /* Ensure all images don't cause overflow */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Fix for any potential overflow in text elements */
+        p, span, a, li {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+           <img src="img/Rccg_logo.png" alt="" style="width: 70px;">
+            <a class="navbar-brand ms-2" href="index.html">City Of Joy</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ministries.html">Ministries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sermons.html">Sermons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="giving.html">Giving</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketplace.html">Marketplace</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="bi bi-sun-fill"></i>
+                    </button>
+                    
+                    <div class="dropdown ms-3">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-2"></i> Account
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="admin.html">Admin Panel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Giving</li>
+                </ol>
+            </nav>
+            <h1 class="page-title" data-aos="fade-up">Support Our Mission</h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200">Your generous giving enables us to spread the Gospel, support our community, and fulfill God's purpose for our church.</p>
+        </div>
+    </section>
+
+    <!-- Giving Stats -->
+    <section class="section-compact bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Impact of Your Giving</h2>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stats-card">
+                        <div class="stats-number">₦2.5M</div>
+                        <p class="mb-0">Total Given This Month</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stats-card">
+                        <div class="stats-number">1,247</div>
+                        <p class="mb-0">Families Supported</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stats-card">
+                        <div class="stats-number">15</div>
+                        <p class="mb-0">Community Projects</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stats-card">
+                        <div class="stats-number">89%</div>
+                        <p class="mb-0">Direct to Ministry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giving Programs -->
+    <section class="section-compact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Giving Programs</h2>
+            <div class="row g-4" id="programsContainer">
+                <!-- Programs will be loaded dynamically from API -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading programs...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Give Section -->
+    <section class="section-compact bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Why We Give</h2>
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-heart-fill text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4>Biblical Principle</h4>
+                        <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-people-fill text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4>Community Impact</h4>
+                        <p>Your contributions directly support outreach programs, community assistance, and spiritual growth initiatives that transform lives.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-building text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4>Sustainable Ministry</h4>
+                        <p>Regular giving ensures the continuity of our ministries, church operations, and ability to respond to community needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-compact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Stories of Impact</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-quote text-primary mb-3" style="font-size: 2rem;"></i>
+                            <p class="card-text">"Through the church's food bank program, my family received support during a difficult time. Now I'm blessed to give back and help others."</p>
+                            <h6 class="card-title mb-1">Sarah Johnson</h6>
+                            <p class="text-muted">Regular Giver</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-quote text-primary mb-3" style="font-size: 2rem;"></i>
+                            <p class="card-text">"Seeing the youth ministry grow through our giving has been incredible. Our donations are making a real difference in young lives."</p>
+                            <h6 class="card-title mb-1">Michael Brown</h6>
+                            <p class="text-muted">Youth Ministry Supporter</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-quote text-primary mb-3" style="font-size: 2rem;"></i>
+                            <p class="card-text">"Giving is an act of worship for our family. We've seen God's faithfulness as we've been faithful in our tithes and offerings."</p>
+                            <h6 class="card-title mb-1">The Williams Family</h6>
+                            <p class="text-muted">Tithers for 15+ Years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="mb-3">GraceChurch</h3>
+                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="ministries.html">Ministries</a></li>
+                            <li><a href="sermons.html">Sermons</a></li>
+                            <li><a href="events.html">Events</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Resources</h5>
+                        <ul>
+                            <li><a href="giving.html">Online Giving</a></li>
+                            <li><a href="prayer.html">Prayer Requests</a></li>
+                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-geo-alt me-2"></i> 123 Church Street, City, State 12345</li>
+                            <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
+                            <li><i class="bi bi-envelope me-2"></i> info@gracechurch.com</li>
+                            <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 GraceChurch. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
+                    <a href="terms.html" class="text-light">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Donation Modal -->
+    <div class="modal fade donation-modal" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="donationModalLabel">Make a Donation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="donationForm">
+                        <input type="hidden" id="selectedProgramId">
+                        <div class="mb-4">
+                            <h6>Select Amount (NGN)</h6>
+                            <div class="donation-amounts">
+                                <div class="amount-option" data-amount="1000">₦1,000</div>
+                                <div class="amount-option" data-amount="2500">₦2,500</div>
+                                <div class="amount-option" data-amount="5000">₦5,000</div>
+                                <div class="amount-option" data-amount="10000">₦10,000</div>
+                                <div class="amount-option" data-amount="25000">₦25,000</div>
+                                <div class="amount-option" data-amount="50000">₦50,000</div>
+                            </div>
+                            <div class="custom-amount">
+                                <label for="customAmount" class="form-label">Or enter custom amount:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₦</span>
+                                    <input type="number" class="form-control" id="customAmount" placeholder="Enter amount" min="100">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bank-details" id="bankDetailsSection">
+                            <h6>Bank Transfer Details</h6>
+                            <div class="bank-detail-item">
+                                <span class="bank-detail-label">Bank Name:</span>
+                                <span class="bank-detail-value" id="bankName">-</span>
+                            </div>
+                            <div class="bank-detail-item">
+                                <span class="bank-detail-label">Account Name:</span>
+                                <span class="bank-detail-value" id="accountName">-</span>
+                            </div>
+                            <div class="bank-detail-item">
+                                <span class="bank-detail-label">Account Number:</span>
+                                <span class="bank-detail-value" id="accountNumber">-</span>
+                            </div>
+                            <div class="bank-detail-item">
+                                <span class="bank-detail-label">Purpose:</span>
+                                <span class="bank-detail-value" id="purpose">-</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="confirmTransfer" required>
+                                <label class="form-check-label" for="confirmTransfer">
+                                    I confirm that I have made the transfer using the bank details above
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="confirmDonationBtn" disabled>
+                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                        Confirm Donation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false,
+            offset: 100
+        });
+
+        // API Configuration
+        const API_BASE_URL = 'http://localhost:5000/api'; // Update with your actual API URL
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+
+        // Toast Notification System
+        function showToast(message, type = 'success') {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast align-items-center text-bg-${type} border-0" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+            
+            // Remove toast from DOM after it's hidden
+            toastElement.addEventListener('hidden.bs.toast', () => {
+                toastElement.remove();
+            });
+        }
+
+        // Load Giving Programs from API
+        async function loadPrograms() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/programs`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    displayPrograms(result.programs);
+                } else {
+                    throw new Error(result.message || 'Failed to load programs');
+                }
+            } catch (error) {
+                console.error('Error loading programs:', error);
+                showToast('Failed to load giving programs. Please try again.', 'danger');
+                document.getElementById('programsContainer').innerHTML = `
+                    <div class="col-12 text-center">
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Unable to load giving programs at this time.
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Display Programs
+        function displayPrograms(programs) {
+            const container = document.getElementById('programsContainer');
+            
+            if (!programs || programs.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12 text-center">
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>
+                            No giving programs available at this time.
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const programsHtml = programs.map(program => `
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="giving-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title">${program.name}</h5>
+                                <span class="badge ${program.isActive ? 'bg-success' : 'bg-secondary'}">
+                                    ${program.isActive ? 'Active' : 'Inactive'}
+                                </span>
+                            </div>
+                            <p class="card-text text-muted mb-3">${program.description || 'Support this important ministry initiative.'}</p>
+                            
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Monthly Progress</small>
+                                    <small>₦${program.stats?.monthlyDonations?.toLocaleString() || '0'}</small>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: ${Math.min((program.stats?.monthlyDonations || 0) / 100000 * 100, 100)}%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <small class="text-muted">Total Impact: ₦${program.stats?.totalDonations?.toLocaleString() || '0'}</small>
+                                </div>
+                                <button class="btn btn-primary btn-sm donate-btn" data-program-id="${program._id}" data-program-name="${program.name}">
+                                    <i class="bi bi-heart-fill me-1"></i> Give Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = programsHtml;
+            
+            // Add event listeners to donate buttons
+            document.querySelectorAll('.donate-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const programId = e.target.getAttribute('data-program-id');
+                    const programName = e.target.getAttribute('data-program-name');
+                    openDonationModal(programId, programName);
+                });
+            });
+        }
+
+        // Donation Modal Functions
+        let selectedAmount = 0;
+        let selectedProgram = null;
+
+        function openDonationModal(programId, programName) {
+            selectedProgram = { id: programId, name: programName };
+            document.getElementById('selectedProgramId').value = programId;
+            document.getElementById('donationModalLabel').textContent = `Donate to ${programName}`;
+            
+            // Reset form
+            document.getElementById('donationForm').reset();
+            document.querySelectorAll('.amount-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            selectedAmount = 0;
+            updateConfirmButton();
+            
+            // Load program details for bank information
+            loadProgramDetails(programId);
+            
+            const modal = new bootstrap.Modal(document.getElementById('donationModal'));
+            modal.show();
+        }
+
+        async function loadProgramDetails(programId) {
+            try {
+                // Since we don't have a specific endpoint for single program,
+                // we'll use the programs list and find the matching program
+                const response = await fetch(`${API_BASE_URL}/programs`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    const program = result.programs.find(p => p._id === programId);
+                    if (program && program.bankDetails) {
+                        document.getElementById('bankName').textContent = program.bankDetails.bankName;
+                        document.getElementById('accountName').textContent = program.bankDetails.accountName;
+                        document.getElementById('accountNumber').textContent = program.bankDetails.accountNumber;
+                        document.getElementById('purpose').textContent = program.bankDetails.purpose;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading program details:', error);
+                showToast('Failed to load bank details. Please try again.', 'danger');
+            }
+        }
+
+        // Amount Selection
+        document.querySelectorAll('.amount-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedAmount = parseInt(option.getAttribute('data-amount'));
+                document.getElementById('customAmount').value = '';
+                updateConfirmButton();
+            });
+        });
+
+        // Custom Amount Input
+        document.getElementById('customAmount').addEventListener('input', (e) => {
+            document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
+            selectedAmount = parseInt(e.target.value) || 0;
+            updateConfirmButton();
+        });
+
+        // Confirm Transfer Checkbox
+        document.getElementById('confirmTransfer').addEventListener('change', updateConfirmButton);
+
+        function updateConfirmButton() {
+            const confirmBtn = document.getElementById('confirmDonationBtn');
+            const hasAmount = selectedAmount >= 100;
+            const hasConfirmation = document.getElementById('confirmTransfer').checked;
+            confirmBtn.disabled = !(hasAmount && hasConfirmation);
+        }
+
+        // Confirm Donation
+        document.getElementById('confirmDonationBtn').addEventListener('click', async () => {
+            const confirmBtn = document.getElementById('confirmDonationBtn');
+            const spinner = confirmBtn.querySelector('.spinner-border');
+            const buttonText = confirmBtn.querySelector('.button-text') || document.createElement('span');
+            
+            if (!buttonText.classList.contains('button-text')) {
+                buttonText.className = 'button-text';
+                buttonText.textContent = confirmBtn.textContent.trim();
+                confirmBtn.innerHTML = '';
+                confirmBtn.appendChild(buttonText);
+            }
+            
+            // Show loading state
+            confirmBtn.disabled = true;
+            spinner.classList.remove('d-none');
+            buttonText.textContent = ' Processing...';
+            
+            try {
+                const token = localStorage.getItem('token'); // Get JWT token if user is logged in
+                
+                const response = await fetch(`${API_BASE_URL}/programs/${selectedProgram.id}/donate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(token && { 'Authorization': `Bearer ${token}` })
+                    },
+                    body: JSON.stringify({
+                        amount: selectedAmount,
+                        currency: 'NGN',
+                        reference: `DONATION-${Date.now()}`
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('Thank you for your generous donation! Your support makes a difference.', 'success');
+                    
+                    // Close modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('donationModal'));
+                    modal.hide();
+                    
+                    // Refresh programs to update stats
+                    loadPrograms();
+                } else {
+                    throw new Error(result.message || 'Donation failed');
+                }
+            } catch (error) {
+                console.error('Donation error:', error);
+                showToast(error.message || 'Failed to process donation. Please try again.', 'danger');
+            } finally {
+                // Reset button state
+                confirmBtn.disabled = false;
+                spinner.classList.add('d-none');
+                buttonText.textContent = 'Confirm Donation';
+            }
+        });
+
+        // Fix for navbar overlapping content on mobile
+        function adjustNavbarHeight() {
+            const navbar = document.querySelector('.navbar');
+            const pageHero = document.querySelector('.page-hero');
+            if (navbar && pageHero) {
+                const navbarHeight = navbar.offsetHeight;
+                pageHero.style.marginTop = navbarHeight + 'px';
+            }
+        }
+
+        // Adjust on load and resize
+        window.addEventListener('load', adjustNavbarHeight);
+        window.addEventListener('resize', adjustNavbarHeight);
+
+        // Additional overflow prevention
+        function checkForOverflow() {
+            const bodyWidth = document.body.clientWidth;
+            const windowWidth = window.innerWidth;
+            
+            if (bodyWidth > windowWidth) {
+                console.warn('Horizontal overflow detected. Body width:', bodyWidth, 'Window width:', windowWidth);
+                
+                // Force recalculation and containment
+                document.body.style.overflowX = 'hidden';
+                document.documentElement.style.overflowX = 'hidden';
+            }
+        }
+
+        window.addEventListener('load', checkForOverflow);
+        window.addEventListener('resize', checkForOverflow);
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPrograms();
+            adjustNavbarHeight();
+        });
+    </script>
+</body>
+</html>
