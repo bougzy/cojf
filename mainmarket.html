@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Marketplace - COJ Platform</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --sidebar-width: 280px;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+        }
+
+        /* Header Styles */
+        .main-header {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            height: var(--header-height);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .church-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.8rem;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            bottom: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-collapsed {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .sidebar-title {
+            color: #64748b;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #475569;
+        }
+
+        .category-item:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .category-item.active {
+            background-color: #e0e7ff;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .category-icon {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+            transition: margin-left 0.3s ease;
+        }
+
+        .content-full-width {
+            margin-left: 0;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        /* Product Card Styles */
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f1f5f9;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--warning-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-store {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            color: white;
+        }
+
+        /* Ad Section Styles */
+        .ad-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+
+        .ad-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-description {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Dashboard Styles */
+        .dashboard-container {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .dashboard-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .stat-icon.sales { background: #dbeafe; color: var(--primary-color); }
+        .stat-icon.products { background: #f0f9ff; color: #0ea5e9; }
+        .stat-icon.revenue { background: #f0fdf4; color: #22c55e; }
+        .stat-icon.ads { background: #fef3c7; color: #f59e0b; }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Modal Styles */
+        .modal-xl-custom {
+            max-width: 1000px;
+        }
+
+        .product-modal-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+
+        /* Loading Spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .sidebar-toggle {
+                display: block !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Custom Utilities */
+        .cursor-pointer { cursor: pointer; }
+        .text-truncate-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .text-truncate-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tab Navigation */
+        .dashboard-tabs {
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-tab {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            color: #64748b;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .dashboard-tab:hover {
+            color: var(--primary-color);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container-fluid h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-md-3">
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-link text-white sidebar-toggle d-md-none me-2" onclick="toggleSidebar()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="church-logo">
+                            <i class="fas fa-church me-2"></i>COJ Marketplace
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="search-container position-relative">
+                        <input type="text" class="form-control rounded-pill ps-4" 
+                               placeholder="Search products, stores, or categories..." 
+                               id="globalSearch">
+                        <button class="btn btn-link position-absolute top-50 end-0 translate-middle-y text-white">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <div class="dropdown me-3">
+                            <button class="btn btn-link text-white position-relative" 
+                                    type="button" id="notificationsDropdown" 
+                                    data-bs-toggle="dropdown">
+                                <i class="fas fa-bell fa-lg"></i>
+                                <span class="notification-badge">3</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end p-0" style="min-width: 300px;">
+                                <div class="p-3 border-bottom">
+                                    <h6 class="mb-0">Notifications</h6>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <small class="text-muted">Just now</small>
+                                        <p class="mb-1">New order received for "Church Artwork"</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <small class="text-muted">2 hours ago</small>
+                                        <p class="mb-1">Your ad campaign has been approved</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <small class="text-muted">Yesterday</small>
+                                        <p class="mb-1">New message from a buyer</p>
+                                    </a>
+                                </div>
+                                <div class="p-2 border-top">
+                                    <a href="#" class="btn btn-sm btn-outline-primary w-100">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dropdown">
+                            <button class="btn btn-link text-white d-flex align-items-center" 
+                                    type="button" id="userDropdown" 
+                                    data-bs-toggle="dropdown">
+                                <div class="user-avatar me-2" id="userAvatar">
+                                    JD
+                                </div>
+                                <span id="userName">John Doe</span>
+                                <i class="fas fa-chevron-down ms-2"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="p-3 text-center border-bottom">
+                                    <div class="user-avatar mx-auto mb-2" style="width: 60px; height: 60px;">JD</div>
+                                    <h6 class="mb-1" id="dropdownUserName">John Doe</h6>
+                                    <small class="text-muted" id="dropdownUserRole">Buyer</small>
+                                </div>
+                                <a class="dropdown-item" href="#" onclick="showBuyerDashboard()">
+                                    <i class="fas fa-shopping-cart me-2"></i>Buyer Dashboard
+                                </a>
+                                <a class="dropdown-item" href="#" onclick="showSellerDashboard()">
+                                    <i class="fas fa-store me-2"></i>Seller Dashboard
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cog me-2"></i>Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="#" onclick="logout()">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <h6 class="sidebar-title">Categories</h6>
+            <div id="categoriesList">
+                <!-- Categories will be loaded here -->
+                <div class="category-item active" onclick="filterProducts('all')">
+                    <div class="category-icon"><i class="fas fa-th"></i></div>
+                    <span>All Products</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('fashion')">
+                    <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                    <span>Fashion & Apparel</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('food')">
+                    <div class="category-icon"><i class="fas fa-utensils"></i></div>
+                    <span>Food & Beverages</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('art')">
+                    <div class="category-icon"><i class="fas fa-palette"></i></div>
+                    <span>Art & Crafts</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('books')">
+                    <div class="category-icon"><i class="fas fa-book"></i></div>
+                    <span>Books & Media</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('technology')">
+                    <div class="category-icon"><i class="fas fa-laptop"></i></div>
+                    <span>Technology</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('services')">
+                    <div class="category-icon"><i class="fas fa-hands-helping"></i></div>
+                    <span>Services</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar-section">
+            <h6 class="sidebar-title">Quick Actions</h6>
+            <div class="category-item" onclick="showBuyerDashboard()">
+                <div class="category-icon"><i class="fas fa-shopping-cart"></i></div>
+                <span>My Cart</span>
+                <span class="badge bg-primary ms-auto" id="cartCount">0</span>
+            </div>
+            <div class="category-item" onclick="showSellerDashboard()">
+                <div class="category-icon"><i class="fas fa-store"></i></div>
+                <span>My Store</span>
+            </div>
+            <div class="category-item" onclick="showAdCampaigns()">
+                <div class="category-icon"><i class="fas fa-bullhorn"></i></div>
+                <span>Ad Campaigns</span>
+            </div>
+            <div class="category-item" onclick="showMyProducts()">
+                <div class="category-icon"><i class="fas fa-box"></i></div>
+                <span>My Products</span>
+            </div>
+        </div>
+        
+        <div class="sidebar-section">
+            <h6 class="sidebar-title">Ad Spaces</h6>
+            <div class="category-item" onclick="showAdSpaces()">
+                <div class="category-icon"><i class="fas fa-ad"></i></div>
+                <span>Available Ad Spaces</span>
+            </div>
+            <div class="category-item" onclick="requestAdSpace()">
+                <div class="category-icon"><i class="fas fa-handshake"></i></div>
+                <span>Request Ad Space</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Marketplace View (Default) -->
+        <div id="marketplaceView">
+            <!-- Ad Section -->
+            <div class="ad-section mb-4" id="adBanner">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h3 class="ad-title">Promote Your Products</h3>
+                        <p class="ad-description">
+                            Reach thousands of potential buyers with our targeted advertising system. 
+                            Boost your sales with featured listings and banner ads.
+                        </p>
+                        <button class="btn btn-light" onclick="showAdCampaigns()">
+                            <i class="fas fa-rocket me-2"></i>Start Advertising
+                        </button>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <i class="fas fa-bullhorn fa-4x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Section -->
+            <div class="section-header">
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-subtitle">Discover amazing products from our community of sellers</p>
+            </div>
+            
+            <!-- Filter Controls -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-primary active" onclick="setSort('newest')">
+                            <i class="fas fa-clock me-1"></i>Newest
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="setSort('price-low')">
+                            <i class="fas fa-sort-amount-down me-1"></i>Price: Low to High
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="setSort('price-high')">
+                            <i class="fas fa-sort-amount-up me-1"></i>Price: High to Low
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search products..." id="productSearch">
+                        <button class="btn btn-primary" onclick="searchProducts()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="row" id="productsGrid">
+                <!-- Products will be loaded here -->
+                <div class="col-md-4 mb-4">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://via.placeholder.com/400x300');">
+                            <span class="product-badge">Featured</span>
+                        </div>
+                        <div class="product-content">
+                            <h5 class="product-title">Beautiful Church Artwork</h5>
+                            <div class="product-store">
+                                <i class="fas fa-store me-1"></i>Sacred Arts Store
+                            </div>
+                            <div class="product-price">₦25,000</div>
+                            <div class="product-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-eye me-1"></i>View
+                                </button>
+                                <button class="btn btn-success btn-sm btn-whatsapp">
+                                    <i class="fab fa-whatsapp me-1"></i>Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- More products will be loaded dynamically -->
+            </div>
+            
+            <!-- Loading Spinner -->
+            <div class="spinner-container" id="productsLoading" style="display: none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <nav aria-label="Products pagination" class="mt-4">
+                <ul class="pagination justify-content-center" id="productsPagination">
+                    <!-- Pagination will be loaded here -->
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Buyer Dashboard -->
+        <div class="dashboard-container" id="buyerDashboard">
+            <div class="dashboard-header">
+                <div>
+                    <h2 class="dashboard-title">Buyer Dashboard</h2>
+                    <p class="text-muted mb-0">Manage your purchases and shopping cart</p>
+                </div>
+                <button class="btn btn-outline-primary" onclick="showMarketplace()">
+                    <i class="fas fa-store me-1"></i>Back to Marketplace
+                </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="stat-value" id="cartItemsCount">0</h3>
+                    <p class="stat-label">Items in Cart</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orders">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="stat-value" id="totalOrders">0</h3>
+                    <p class="stat-label">Total Orders</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon saved">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="stat-value" id="savedItems">0</h3>
+                    <p class="stat-label">Saved Items</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon messages">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="stat-value" id="unreadMessages">0</h3>
+                    <p class="stat-label">Unread Messages</p>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="dashboard-tabs">
+                <button class="dashboard-tab active" onclick="showTab('cartTab')">Shopping Cart</button>
+                <button class="dashboard-tab" onclick="showTab('ordersTab')">My Orders</button>
+                <button class="dashboard-tab" onclick="showTab('savedTab')">Saved Items</button>
+                <button class="dashboard-tab" onclick="showTab('messagesTab')">Messages</button>
+            </div>
+            
+            <!-- Cart Tab -->
+            <div class="tab-content" id="cartTab">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Your Shopping Cart</h5>
+                        <div id="cartItems">
+                            <p class="text-muted">Your cart is empty</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h5>Total: <span id="cartTotal">₦0</span></h5>
+                            <button class="btn btn-primary btn-lg" onclick="checkout()">
+                                <i class="fab fa-whatsapp me-2"></i>Checkout via WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Orders Tab -->
+            <div class="tab-content" id="ordersTab" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Order History</h5>
+                        <div id="orderHistory">
+                            <p class="text-muted">No orders yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Saved Items Tab -->
+            <div class="tab-content" id="savedTab" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Saved Products</h5>
+                        <div class="row" id="savedProductsGrid">
+                            <!-- Saved products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messages Tab -->
+            <div class="tab-content" id="messagesTab" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Messages</h5>
+                        <div id="messagesList">
+                            <p class="text-muted">No messages yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seller Dashboard -->
+        <div class="dashboard-container" id="sellerDashboard">
+            <div class="dashboard-header">
+                <div>
+                    <h2 class="dashboard-title">Seller Dashboard</h2>
+                    <p class="text-muted mb-0">Manage your store, products, and advertising</p>
+                </div>
+                <button class="btn btn-outline-primary" onclick="showMarketplace()">
+                    <i class="fas fa-store me-1"></i>Back to Marketplace
+                </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon sales">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="stat-value" id="totalSales">0</h3>
+                    <p class="stat-label">Total Sales</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon products">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="stat-value" id="totalProducts">0</h3>
+                    <p class="stat-label">Products Listed</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon revenue">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="stat-value" id="totalRevenue">₦0</h3>
+                    <p class="stat-label">Total Revenue</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon ads">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="stat-value" id="activeAds">0</h3>
+                    <p class="stat-label">Active Ads</p>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="dashboard-tabs">
+                <button class="dashboard-tab active" onclick="showSellerTab('productsTab')">Products</button>
+                <button class="dashboard-tab" onclick="showSellerTab('ordersTab')">Orders</button>
+                <button class="dashboard-tab" onclick="showSellerTab('adsTab')">Advertising</button>
+                <button class="dashboard-tab" onclick="showSellerTab('storeTab')">Store Settings</button>
+            </div>
+            
+            <!-- Products Tab -->
+            <div class="tab-content" id="productsTab">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5>My Products</h5>
+                    <button class="btn btn-primary" onclick="showAddProductModal()">
+                        <i class="fas fa-plus me-1"></i>Add Product
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Views</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sellerProductsTable">
+                            <!-- Seller products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Orders Tab -->
+            <div class="tab-content" id="sellerOrdersTab" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Customer Orders</h5>
+                        <div id="sellerOrdersList">
+                            <p class="text-muted">No orders yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ads Tab -->
+            <div class="tab-content" id="adsTab" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">Advertising Campaigns</h5>
+                            <button class="btn btn-primary" onclick="showCreateAdModal()">
+                                <i class="fas fa-plus me-1"></i>Create Campaign
+                            </button>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6>Ad Credits</h6>
+                                        <h3 class="text-primary" id="adCredits">₦0</h3>
+                                        <button class="btn btn-sm btn-outline-primary">Add Credits</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6>Active Campaigns</h6>
+                                        <h3 id="sellerActiveAds">0</h3>
+                                        <small class="text-muted">Currently running</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6>Total Ad Spend</h6>
+                                        <h3 id="totalAdSpend">₦0</h3>
+                                        <small class="text-muted">All time</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="adCampaignsList">
+                            <p class="text-muted">No ad campaigns yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Store Settings Tab -->
+            <div class="tab-content" id="storeTab" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Store Settings</h5>
+                        <form id="storeSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Store Name</label>
+                                        <input type="text" class="form-control" id="storeName">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Store Category</label>
+                                        <select class="form-select" id="storeCategory">
+                                            <option value="fashion">Fashion</option>
+                                            <option value="food">Food</option>
+                                            <option value="art">Art</option>
+                                            <option value="books">Books</option>
+                                            <option value="technology">Technology</option>
+                                            <option value="services">Services</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Store Description</label>
+                                <textarea class="form-control" id="storeDescription" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">WhatsApp Number</label>
+                                <input type="text" class="form-control" id="storeWhatsApp" placeholder="2348012345678">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ad Spaces View -->
+        <div class="dashboard-container" id="adSpacesView" style="display: none;">
+            <div class="dashboard-header">
+                <div>
+                    <h2 class="dashboard-title">Available Ad Spaces</h2>
+                    <p class="text-muted mb-0">Promote your products with targeted advertising</p>
+                </div>
+                <button class="btn btn-outline-primary" onclick="showMarketplace()">
+                    <i class="fas fa-store me-1"></i>Back to Marketplace
+                </button>
+            </div>
+            
+            <div class="row" id="adSpacesGrid">
+                <!-- Ad spaces will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    
+    <!-- Product View Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-xl-custom modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalTitle">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-modal-image" id="productModalImage"></div>
+                            <div class="d-flex gap-2 mt-3" id="productThumbnails"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modalProductTitle"></h3>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-store text-muted me-1"></i>
+                                    <span id="modalProductStore"></span>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="ms-1">(24)</span>
+                                </div>
+                            </div>
+                            
+                            <h2 class="text-primary mb-4" id="modalProductPrice"></h2>
+                            
+                            <div class="mb-4">
+                                <h6>Description</h6>
+                                <p id="modalProductDescription"></p>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6>Specifications</h6>
+                                <div id="modalProductSpecs"></div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6>Contact Seller</h6>
+                                <p id="modalProductWhatsApp"></p>
+                            </div>
+                            
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary btn-lg flex-fill" onclick="addToCartModal()">
+                                    <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                                </button>
+                                <button class="btn btn-success btn-lg flex-fill" id="modalWhatsAppBtn">
+                                    <i class="fab fa-whatsapp me-2"></i>Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Product Title*</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Category*</label>
+                                    <select class="form-select" required>
+                                        <option value="">Select category</option>
+                                        <option value="fashion">Fashion & Apparel</option>
+                                        <option value="food">Food & Beverages</option>
+                                        <option value="art">Art & Crafts</option>
+                                        <option value="books">Books & Media</option>
+                                        <option value="technology">Technology</option>
+                                        <option value="services">Services</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Description*</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Price*</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">₦</span>
+                                        <input type="number" class="form-control" min="0" step="0.01" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Stock Quantity*</label>
+                                    <input type="number" class="form-control" min="1" value="1" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Product Images*</label>
+                            <div class="border rounded p-3 text-center">
+                                <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
+                                <p>Drag & drop images or click to upload</p>
+                                <input type="file" class="form-control" multiple accept="image/*">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">WhatsApp Number for this product</label>
+                            <input type="text" class="form-control" placeholder="Leave empty to use store WhatsApp">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Tags (comma separated)</label>
+                            <input type="text" class="form-control" placeholder="e.g., handmade, organic, premium">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-plus me-2"></i>Add Product
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Ad Campaign Modal -->
+    <div class="modal fade" id="createAdModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Ad Campaign</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createAdForm">
+                        <div class="form-group">
+                            <label class="form-label">Campaign Name*</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Ad Type*</label>
+                            <select class="form-select" required>
+                                <option value="">Select ad type</option>
+                                <option value="featured_product">Featured Product</option>
+                                <option value="banner">Banner Ad</option>
+                                <option value="sidebar">Sidebar Ad</option>
+                                <option value="sponsored">Sponsored Listing</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Select Products to Promote</label>
+                            <select class="form-select" multiple>
+                                <!-- Products will be loaded here -->
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Budget*</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">₦</span>
+                                        <input type="number" class="form-control" min="100" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Duration (days)*</label>
+                                    <input type="number" class="form-control" min="1" max="30" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Target Audience</label>
+                            <select class="form-select" multiple>
+                                <option value="fashion">Fashion Buyers</option>
+                                <option value="food">Food Enthusiasts</option>
+                                <option value="art">Art Collectors</option>
+                                <option value="books">Book Readers</option>
+                                <option value="technology">Tech Enthusiasts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Ad Content/Image</label>
+                            <input type="file" class="form-control" accept="image/*">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-rocket me-2"></i>Launch Campaign
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Request Ad Space Modal -->
+    <div class="modal fade" id="requestAdModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Request Ad Space</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="requestAdForm">
+                        <div class="form-group">
+                            <label class="form-label">Preferred Ad Space*</label>
+                            <select class="form-select" required>
+                                <option value="">Select ad space</option>
+                                <option value="homepage_banner">Homepage Banner</option>
+                                <option value="sidebar_top">Sidebar Top</option>
+                                <option value="product_page_banner">Product Page Banner</option>
+                                <option value="featured_products">Featured Products</option>
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Budget*</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">₦</span>
+                                        <input type="number" class="form-control" min="50" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Duration (days)*</label>
+                                    <input type="number" class="form-control" min="1" max="30" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Products to Feature</label>
+                            <select class="form-select" multiple>
+                                <!-- Products will be loaded here -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Special Requirements</label>
+                            <textarea class="form-control" rows="3" placeholder="Any special requests or requirements for this ad placement"></textarea>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Your request will be reviewed by our admin team. You'll receive a response within 24-48 hours.
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'https://coj-agf0.onrender.com/api';
+        let currentUser = null;
+        let currentView = 'marketplace';
+        let currentCategory = 'all';
+        let currentSort = 'newest';
+        let currentPage = 1;
+        let cartItems = [];
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserData();
+            loadProducts();
+            setupEventListeners();
+            checkUserType();
+        });
+        
+        // Load User Data
+        function loadUserData() {
+            // In a real app, this would come from your auth system
+            currentUser = {
+                id: 'user123',
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'john@example.com',
+                role: 'buyer',
+                userType: 'both',
+                avatar: 'JD'
+            };
+            
+            document.getElementById('userAvatar').textContent = currentUser.avatar;
+            document.getElementById('userName').textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+            document.getElementById('dropdownUserName').textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+            document.getElementById('dropdownUserRole').textContent = currentUser.userType === 'both' ? 'Buyer & Seller' : currentUser.userType;
+            
+            if (currentUser.userType === 'buyer' || currentUser.userType === 'both') {
+                loadCart();
+            }
+        }
+        
+        // Check User Type and Adjust UI
+        function checkUserType() {
+            const sellerElements = document.querySelectorAll('[data-seller-only]');
+            const buyerElements = document.querySelectorAll('[data-buyer-only]');
+            
+            if (currentUser.userType === 'seller' || currentUser.userType === 'both') {
+                sellerElements.forEach(el => el.style.display = '');
+            } else {
+                sellerElements.forEach(el => el.style.display = 'none');
+            }
+            
+            if (currentUser.userType === 'buyer' || currentUser.userType === 'both') {
+                buyerElements.forEach(el => el.style.display = '');
+            } else {
+                buyerElements.forEach(el => el.style.display = 'none');
+            }
+        }
+        
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Global search
+            document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchGlobal();
+                }
+            });
+            
+            // Product search
+            document.getElementById('productSearch').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchProducts();
+                }
+            });
+        }
+        
+        // Toggle Sidebar
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+        
+        // View Management
+        function showMarketplace() {
+            hideAllViews();
+            document.getElementById('marketplaceView').style.display = 'block';
+            currentView = 'marketplace';
+            loadProducts();
+        }
+        
+        function showBuyerDashboard() {
+            if (currentUser.userType === 'seller') {
+                alert('Buyer dashboard is only available for buyers');
+                return;
+            }
+            hideAllViews();
+            document.getElementById('buyerDashboard').style.display = 'block';
+            currentView = 'buyerDashboard';
+            loadBuyerData();
+        }
+        
+        function showSellerDashboard() {
+            if (currentUser.userType === 'buyer') {
+                alert('Seller dashboard is only available for sellers');
+                return;
+            }
+            hideAllViews();
+            document.getElementById('sellerDashboard').style.display = 'block';
+            currentView = 'sellerDashboard';
+            loadSellerData();
+        }
+        
+        function showAdSpaces() {
+            hideAllViews();
+            document.getElementById('adSpacesView').style.display = 'block';
+            currentView = 'adSpacesView';
+            loadAdSpaces();
+        }
+        
+        function hideAllViews() {
+            const views = ['marketplaceView', 'buyerDashboard', 'sellerDashboard', 'adSpacesView'];
+            views.forEach(view => {
+                document.getElementById(view).style.display = 'none';
+            });
+        }
+        
+        // Tab Management
+        function showTab(tabId) {
+            // Hide all tabs
+            ['cartTab', 'ordersTab', 'savedTab', 'messagesTab'].forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('#buyerDashboard .dashboard-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabId).style.display = 'block';
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function showSellerTab(tabId) {
+            // Hide all tabs
+            ['productsTab', 'sellerOrdersTab', 'adsTab', 'storeTab'].forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('#sellerDashboard .dashboard-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabId).style.display = 'block';
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        // Load Products
+        async function loadProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            document.getElementById('productsLoading').style.display = 'flex';
+            
+            try {
+                // In a real app, fetch from API
+                // const response = await fetch(`${API_BASE_URL}/products?page=${currentPage}&category=${currentCategory}&sort=${currentSort}`);
+                // const data = await response.json();
+                
+                // Mock data for demonstration
+                const mockProducts = [
+                    {
+                        id: '1',
+                        title: 'Beautiful Church Artwork',
+                        description: 'Hand-painted religious artwork depicting biblical scenes. Perfect for home or church decoration.',
+                        price: 25000,
+                        currency: 'NGN',
+                        category: 'art',
+                        images: ['https://via.placeholder.com/400x300/667eea/ffffff?text=Church+Art'],
+                        store: {
+                            name: 'Sacred Arts Store',
+                            logo: '',
+                            rating: { average: 4.5 }
+                        },
+                        sellerWhatsapp: '2348012345678',
+                        isFeatured: true
+                    },
+                    {
+                        id: '2',
+                        title: 'Handmade Rosary Beads',
+                        description: 'Beautifully crafted rosary beads made with semi-precious stones and silver cross.',
+                        price: 8500,
+                        currency: 'NGN',
+                        category: 'fashion',
+                        images: ['https://via.placeholder.com/400x300/764ba2/ffffff?text=Rosary+Beads'],
+                        store: {
+                            name: 'Divine Crafts',
+                            logo: '',
+                            rating: { average: 4.8 }
+                        }
+                    },
+                    {
+                        id: '3',
+                        title: 'Organic Communion Wine',
+                        description: 'Premium quality organic wine for communion services. Made from organic grapes.',
+                        price: 15000,
+                        currency: 'NGN',
+                        category: 'food',
+                        images: ['https://via.placeholder.com/400x300/f56565/ffffff?text=Communion+Wine'],
+                        store: {
+                            name: 'Holy Provisions',
+                            logo: '',
+                            rating: { average: 4.7 }
+                        }
+                    },
+                    {
+                        id: '4',
+                        title: 'Christian Music Album',
+                        description: 'Inspirational worship music album by renowned gospel artist. Digital download available.',
+                        price: 5000,
+                        currency: 'NGN',
+                        category: 'books',
+                        images: ['https://via.placeholder.com/400x300/48bb78/ffffff?text=Gospel+Music'],
+                        store: {
+                            name: 'Heavenly Sounds',
+                            logo: '',
+                            rating: { average: 4.9 }
+                        }
+                    },
+                    {
+                        id: '5',
+                        title: 'Church Website Design',
+                        description: 'Professional website design and development services for churches and ministries.',
+                        price: 150000,
+                        currency: 'NGN',
+                        category: 'services',
+                        images: ['https://via.placeholder.com/400x300/ed8936/ffffff?text=Web+Design'],
+                        store: {
+                            name: 'Faith Tech Solutions',
+                            logo: '',
+                            rating: { average: 4.6 }
+                        }
+                    },
+                    {
+                        id: '6',
+                        title: 'Biblical Study Set',
+                        description: 'Complete Bible study set including study Bible, concordance, and commentary.',
+                        price: 35000,
+                        currency: 'NGN',
+                        category: 'books',
+                        images: ['https://via.placeholder.com/400x300/38b2ac/ffffff?text=Bible+Study'],
+                        store: {
+                            name: 'Word & Spirit Books',
+                            logo: '',
+                            rating: { average: 4.8 }
+                        }
+                    }
+                ];
+                
+                // Filter by category
+                let filteredProducts = mockProducts;
+                if (currentCategory !== 'all') {
+                    filteredProducts = mockProducts.filter(p => p.category === currentCategory);
+                }
+                
+                // Sort products
+                filteredProducts.sort((a, b) => {
+                    if (currentSort === 'price-low') return a.price - b.price;
+                    if (currentSort === 'price-high') return b.price - a.price;
+                    return 0; // newest (mock data already sorted)
+                });
+                
+                // Display products
+                filteredProducts.forEach(product => {
+                    const productCard = createProductCard(product);
+                    productsGrid.innerHTML += productCard;
+                });
+                
+                // Add event listeners to product cards
+                document.querySelectorAll('.view-product-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        viewProduct(productId);
+                    });
+                });
+                
+                document.querySelectorAll('.whatsapp-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-id');
+                        contactSeller(productId);
+                    });
+                });
+                
+            } catch (error) {
+                console.error('Error loading products:', error);
+                productsGrid.innerHTML = '<div class="col-12 text-center text-danger"><p>Failed to load products. Please try again.</p></div>';
+            } finally {
+                document.getElementById('productsLoading').style.display = 'none';
+            }
+        }
+        
+        // Create Product Card HTML
+        function createProductCard(product) {
+            return `
+                <div class="col-md-4 mb-4">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('${product.images[0]}');">
+                            ${product.isFeatured ? '<span class="product-badge">Featured</span>' : ''}
+                        </div>
+                        <div class="product-content">
+                            <h5 class="product-title">${product.title}</h5>
+                            <div class="product-store">
+                                <i class="fas fa-store me-1"></i>${product.store.name}
+                                <span class="ms-2">
+                                    <i class="fas fa-star text-warning"></i> ${product.store.rating.average}
+                                </span>
+                            </div>
+                            <div class="product-price">₦${product.price.toLocaleString()}</div>
+                            <div class="product-actions">
+                                <button class="btn btn-primary btn-sm view-product-btn" data-id="${product.id}">
+                                    <i class="fas fa-eye me-1"></i>View
+                                </button>
+                                <button class="btn btn-success btn-sm btn-whatsapp whatsapp-btn" data-id="${product.id}">
+                                    <i class="fab fa-whatsapp me-1"></i>Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Filter Products by Category
+        function filterProducts(category) {
+            currentCategory = category;
+            currentPage = 1;
+            
+            // Update active category in sidebar
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.category-item').classList.add('active');
+            
+            loadProducts();
+        }
+        
+        // Set Sort Option
+        function setSort(sortType) {
+            currentSort = sortType;
+            
+            // Update active sort button
+            document.querySelectorAll('#marketplaceView .btn-outline-primary').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadProducts();
+        }
+        
+        // Search Products
+        function searchProducts() {
+            const query = document.getElementById('productSearch').value;
+            // Implement search logic here
+            console.log('Searching for:', query);
+            // In a real app, you would call an API endpoint
+        }
+        
+        // Global Search
+        function searchGlobal() {
+            const query = document.getElementById('globalSearch').value;
+            // Implement global search logic
+            console.log('Global search:', query);
+        }
+        
+        // View Product Details
+        function viewProduct(productId) {
+            // In a real app, fetch product details from API
+            const mockProduct = {
+                id: '1',
+                title: 'Beautiful Church Artwork',
+                description: 'Hand-painted religious artwork depicting biblical scenes. Made with high-quality acrylic paints on canvas. Perfect for home or church decoration. Each piece is unique and signed by the artist.',
+                price: 25000,
+                currency: 'NGN',
+                category: 'art',
+                images: [
+                    'https://via.placeholder.com/800x600/667eea/ffffff?text=Artwork+Front',
+                    'https://via.placeholder.com/800x600/764ba2/ffffff?text=Artwork+Detail',
+                    'https://via.placeholder.com/800x600/48bb78/ffffff?text=Artwork+Side'
+                ],
+                store: {
+                    name: 'Sacred Arts Store',
+                    whatsappNumber: '2348012345678'
+                },
+                sellerWhatsapp: '2348012345678',
+                specs: {
+                    'Dimensions': '24" x 36"',
+                    'Material': 'Acrylic on Canvas',
+                    'Frame': 'Included',
+                    'Weight': '2.5kg'
+                }
+            };
+            
+            // Update modal content
+            document.getElementById('productModalTitle').textContent = mockProduct.title;
+            document.getElementById('modalProductTitle').textContent = mockProduct.title;
+            document.getElementById('modalProductStore').textContent = mockProduct.store.name;
+            document.getElementById('modalProductPrice').textContent = `₦${mockProduct.price.toLocaleString()}`;
+            document.getElementById('modalProductDescription').textContent = mockProduct.description;
+            document.getElementById('modalProductWhatsApp').textContent = `WhatsApp: ${mockProduct.sellerWhatsapp}`;
+            
+            // Set main image
+            document.getElementById('productModalImage').style.backgroundImage = `url('${mockProduct.images[0]}')`;
+            
+            // Create thumbnails
+            const thumbnailsContainer = document.getElementById('productThumbnails');
+            thumbnailsContainer.innerHTML = '';
+            mockProduct.images.forEach((img, index) => {
+                thumbnailsContainer.innerHTML += `
+                    <button class="btn btn-outline-secondary p-0" style="width: 80px; height: 60px; background-image: url('${img}'); background-size: cover;" onclick="changeProductImage('${img}')"></button>
+                `;
+            });
+            
+            // Create specifications
+            const specsContainer = document.getElementById('modalProductSpecs');
+            specsContainer.innerHTML = '';
+            for (const [key, value] of Object.entries(mockProduct.specs)) {
+                specsContainer.innerHTML += `
+                    <div class="row mb-2">
+                        <div class="col-4"><strong>${key}:</strong></div>
+                        <div class="col-8">${value}</div>
+                    </div>
+                `;
+            }
+            
+            // Set WhatsApp button
+            document.getElementById('modalWhatsAppBtn').onclick = function() {
+                contactSeller(mockProduct.id);
+            };
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('productModal'));
+            modal.show();
+        }
+        
+        function changeProductImage(imageUrl) {
+            document.getElementById('productModalImage').style.backgroundImage = `url('${imageUrl}')`;
+        }
+        
+        // Contact Seller via WhatsApp
+        function contactSeller(productId) {
+            // In a real app, track click and get WhatsApp number from API
+            // await fetch(`${API_BASE_URL}/products/${productId}/whatsapp-click`, { method: 'POST' });
+            
+            const product = {
+                title: 'Beautiful Church Artwork',
+                price: 25000,
+                sellerWhatsapp: '2348012345678'
+            };
+            
+            const message = `Hello! I'm interested in your product "${product.title}" for ₦${product.price.toLocaleString()}. Can you provide more details?`;
+            const whatsappUrl = `https://wa.me/${product.sellerWhatsapp}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Add to Cart
+        function addToCart(productId) {
+            // In a real app, add to cart via API
+            const product = {
+                id: productId,
+                title: 'Beautiful Church Artwork',
+                price: 25000,
+                quantity: 1
+            };
+            
+            const existingItem = cartItems.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cartItems.push(product);
+            }
+            
+            updateCartDisplay();
+            showNotification('Product added to cart!', 'success');
+        }
+        
+        function addToCartModal() {
+            // Add product from modal view
+            const productId = '1'; // Get from modal
+            addToCart(productId);
+            const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+            modal.hide();
+        }
+        
+        // Load Cart
+        function loadCart() {
+            // In a real app, fetch cart from API
+            // const response = await fetch(`${API_BASE_URL}/buyer/cart`);
+            // cartItems = await response.json();
+            
+            updateCartDisplay();
+        }
+        
+        // Update Cart Display
+        function updateCartDisplay() {
+            const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            const cartTotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            document.getElementById('cartCount').textContent = cartCount;
+            document.getElementById('cartItemsCount').textContent = cartCount;
+            document.getElementById('cartTotal').textContent = `₦${cartTotal.toLocaleString()}`;
+            
+            // Update cart items list
+            const cartItemsContainer = document.getElementById('cartItems');
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-muted">Your cart is empty</p>';
+            } else {
+                cartItemsContainer.innerHTML = cartItems.map(item => `
+                    <div class="d-flex justify-content-between align-items-center mb-3 p-3 border rounded">
+                        <div>
+                            <h6 class="mb-1">${item.title}</h6>
+                            <small class="text-muted">₦${item.price.toLocaleString()} each</small>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="updateCartQuantity('${item.id}', -1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="mx-3">${item.quantity}</span>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="updateCartQuantity('${item.id}', 1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger ms-3" onclick="removeFromCart('${item.id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        // Update Cart Quantity
+        function updateCartQuantity(productId, change) {
+            const item = cartItems.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cartItems = cartItems.filter(item => item.id !== productId);
+                }
+                updateCartDisplay();
+            }
+        }
+        
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cartItems = cartItems.filter(item => item.id !== productId);
+            updateCartDisplay();
+            showNotification('Product removed from cart', 'warning');
+        }
+        
+        // Checkout
+        function checkout() {
+            if (cartItems.length === 0) {
+                showNotification('Your cart is empty!', 'warning');
+                return;
+            }
+            
+            // In a real app, generate WhatsApp links for each seller
+            const message = `Hello! I would like to purchase:\n\n` +
+                cartItems.map(item => `${item.title} - ${item.quantity} x ₦${item.price.toLocaleString()}`).join('\n') +
+                `\n\nTotal: ₦${cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString()}`;
+            
+            const whatsappNumber = '2348012345678'; // Seller's WhatsApp
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Load Buyer Data
+        function loadBuyerData() {
+            // Load cart, orders, saved items, etc.
+            loadCart();
+            
+            // Mock data for demonstration
+            document.getElementById('totalOrders').textContent = '5';
+            document.getElementById('savedItems').textContent = '12';
+            document.getElementById('unreadMessages').textContent = '3';
+        }
+        
+        // Load Seller Data
+        function loadSellerData() {
+            // Mock data for demonstration
+            document.getElementById('totalSales').textContent = '24';
+            document.getElementById('totalProducts').textContent = '8';
+            document.getElementById('totalRevenue').textContent = '₦450,000';
+            document.getElementById('activeAds').textContent = '2';
+            document.getElementById('sellerActiveAds').textContent = '2';
+            document.getElementById('totalAdSpend').textContent = '₦25,000';
+            document.getElementById('adCredits').textContent = '₦15,000';
+            
+            // Load seller products
+            loadSellerProducts();
+        }
+        
+        // Load Seller Products
+        function loadSellerProducts() {
+            const mockProducts = [
+                { id: '1', title: 'Church Artwork', price: 25000, status: 'published', views: 245 },
+                { id: '2', title: 'Handmade Rosary', price: 8500, status: 'published', views: 189 },
+                { id: '3', title: 'Bible Cover', price: 5000, status: 'draft', views: 0 },
+                { id: '4', title: 'Worship CD', price: 3000, status: 'published', views: 156 }
+            ];
+            
+            const tableBody = document.getElementById('sellerProductsTable');
+            tableBody.innerHTML = mockProducts.map(product => `
+                <tr>
+                    <td>
+                        <strong>${product.title}</strong>
+                        <br>
+                        <small class="text-muted">${product.status === 'published' ? 'Published' : 'Draft'}</small>
+                    </td>
+                    <td>₦${product.price.toLocaleString()}</td>
+                    <td>
+                        <span class="badge ${product.status === 'published' ? 'bg-success' : 'bg-warning'}">
+                            ${product.status === 'published' ? 'Published' : 'Draft'}
+                        </span>
+                    </td>
+                    <td>${product.views}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // Load Ad Spaces
+        function loadAdSpaces() {
+            const mockAdSpaces = [
+                {
+                    name: 'Homepage Banner',
+                    description: 'Large banner at the top of the homepage. Highest visibility.',
+                    location: 'homepage_banner',
+                    dimensions: '728x90',
+                    minBudget: 50,
+                    maxBudget: 500,
+                    maxDuration: 30
+                },
+                {
+                    name: 'Sidebar Top',
+                    description: 'Top position in the sidebar. Great for brand awareness.',
+                    location: 'sidebar_top',
+                    dimensions: '300x250',
+                    minBudget: 25,
+                    maxBudget: 250,
+                    maxDuration: 30
+                },
+                {
+                    name: 'Featured Products',
+                    description: 'Featured products section on homepage. Direct product promotion.',
+                    location: 'featured_products',
+                    dimensions: '200x200',
+                    minBudget: 20,
+                    maxBudget: 200,
+                    maxDuration: 15
+                }
+            ];
+            
+            const grid = document.getElementById('adSpacesGrid');
+            grid.innerHTML = mockAdSpaces.map(space => `
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">${space.name}</h5>
+                            <p class="card-text text-muted">${space.description}</p>
+                            <div class="mb-3">
+                                <small class="text-muted">Dimensions:</small>
+                                <div class="fw-bold">${space.dimensions}</div>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">Budget Range:</small>
+                                <div class="fw-bold">₦${space.minBudget} - ₦${space.maxBudget}</div>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">Maximum Duration:</small>
+                                <div class="fw-bold">${space.maxDuration} days</div>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="requestAdSpace()">
+                                <i class="fas fa-handshake me-2"></i>Request This Space
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Show Ad Campaigns
+        function showAdCampaigns() {
+            showSellerDashboard();
+            showSellerTab('adsTab');
+        }
+        
+        // Show My Products
+        function showMyProducts() {
+            showSellerDashboard();
+            showSellerTab('productsTab');
+        }
+        
+        // Modal Functions
+        function showAddProductModal() {
+            const modal = new bootstrap.Modal(document.getElementById('addProductModal'));
+            modal.show();
+        }
+        
+        function showCreateAdModal() {
+            const modal = new bootstrap.Modal(document.getElementById('createAdModal'));
+            modal.show();
+        }
+        
+        function requestAdSpace() {
+            const modal = new bootstrap.Modal(document.getElementById('requestAdModal'));
+            modal.show();
+        }
+        
+        // Show Notification
+        function showNotification(message, type = 'info') {
+            const alertClass = {
+                'success': 'alert-success',
+                'error': 'alert-danger',
+                'warning': 'alert-warning',
+                'info': 'alert-info'
+            }[type];
+            
+            const notification = document.createElement('div');
+            notification.className = `alert ${alertClass} alert-dismissible fade show position-fixed`;
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
+            notification.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // Logout
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // In a real app, clear tokens and redirect
+                window.location.href = '/login.html';
+            }
+        }
+    </script>
+</body>
+</html>
