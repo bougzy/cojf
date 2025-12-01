@@ -398,4 +398,80 @@
                             <small class="text-muted">Qty: ${item.quantity}</small>
                         </div>
                         <div class="text-end">
-                            <p class="mb-1 text-success">₦${(
+                            <p class="mb-1 text-success">₦${(item.product?.price || 0) * item.quantity}</p>
+                            <small class="text-muted">₦${item.product?.price || 0} each</small>
+                        </div>
+                    </div>
+                `).join('');
+                
+                if (cart.items.length > 3) {
+                    cartPreview.innerHTML += `
+                        <div class="text-center mt-3">
+                            <small class="text-muted">+${cart.items.length - 3} more items</small>
+                        </div>
+                    `;
+                }
+                
+                document.getElementById('cartTotal').textContent = cart.totalAmount?.toFixed(2) || '0.00';
+                cartTotalSection.style.display = 'block';
+                document.getElementById('cartItems').textContent = cart.items.length;
+            } else {
+                cartPreview.innerHTML = `
+                    <div class="text-center text-muted py-4">
+                        <i class="bi bi-cart-x fs-1"></i>
+                        <p class="mt-2">Your cart is empty</p>
+                    </div>
+                `;
+                cartTotalSection.style.display = 'none';
+                document.getElementById('cartItems').textContent = '0';
+            }
+        }
+        
+        // Switch to seller mode (for users who are both)
+        function switchToSeller() {
+            if (auth.isBoth()) {
+                window.location.href = 'seller-dashboard.html';
+            } else {
+                alert('You are registered as a buyer only. To access seller features, please update your account type to "Both".');
+                // Optional: Show modal to update account type
+            }
+        }
+        
+        // Add to cart function
+        async function addToCart(productId) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/buyer/cart`, {
+                    method: 'POST',
+                    headers: auth.getAuthHeader(),
+                    body: JSON.stringify({ productId, quantity: 1 })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showToast('Product added to cart!', 'success');
+                    updateCartPreview(data.cart);
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                showToast('Failed to add to cart', 'error');
+            }
+        }
+        
+        // Toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+            toast.style.top = '20px';
+            toast.style.right = '20px';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
