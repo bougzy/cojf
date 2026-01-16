@@ -113,6 +113,7 @@
             color: var(--text-light) !important;
             font-weight: 500;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         [data-bs-theme="dark"] .nav-link {
@@ -122,6 +123,63 @@
         .nav-link.active {
             color: var(--primary) !important;
             font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-menu {
+            background: var(--light);
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            animation: dropdownFadeIn 0.3s ease;
+        }
+
+        [data-bs-theme="dark"] .dropdown-menu {
+            background: var(--secondary);
+            border-color: var(--gray-dark);
+        }
+
+        .dropdown-item {
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary);
+            color: white;
+            padding-left: 2rem;
+        }
+
+        .dropdown-divider {
+            border-color: var(--gray-light);
+        }
+
+        [data-bs-theme="dark"] .dropdown-divider {
+            border-color: var(--gray-dark);
+        }
+
+        @keyframes dropdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .page-hero {
@@ -232,7 +290,7 @@
         .ministry-card:hover .ministry-icon {
             background: white;
             color: var(--primary);
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .ministry-card:hover h4,
@@ -253,6 +311,45 @@
             margin: 0 auto 1.5rem;
             transition: all 0.4s ease;
             box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        /* Special YAYA Card */
+        .ministry-card.yaya-card {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .ministry-card.yaya-card::before {
+            background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+        }
+
+        .ministry-card.yaya-card .ministry-icon {
+            background: white;
+            color: #7c3aed;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .ministry-card.yaya-card:hover {
+            background: linear-gradient(135deg, #3730a3 0%, #5b21b6 100%);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .ministry-card.yaya-card:hover .ministry-icon {
+            background: #fef3c7;
+            color: #3730a3;
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* Animation for YAYA Section */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .yaya-highlight {
+            animation: pulse 2s infinite;
         }
 
         .ministry-detail-card {
@@ -327,6 +424,23 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+            color: white;
+        }
+
+        .btn-yaya {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-yaya:hover {
+            background: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
             color: white;
         }
 
@@ -454,21 +568,32 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="ministries.html">Ministries</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
+                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
+                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
+                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="sermons.html">Sermons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="events.html">Events</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="giving.html">Giving</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="marketplace.html">Marketplace</a>
-                    </li>
+                    </li> -->
                 </ul>
                 
                 <div class="d-flex align-items-center">
@@ -504,6 +629,11 @@
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="yaya-tab" data-bs-toggle="tab" data-bs-target="#yaya" type="button" role="tab">
+                        YAYA
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="children-tab" data-bs-toggle="tab" data-bs-target="#children" type="button" role="tab">
                         Children & Youth
                     </button>
@@ -529,6 +659,18 @@
                 <div class="tab-pane fade show active" id="all" role="tabpanel">
                     <h2 class="section-title" data-aos="fade-up">Explore All Ministries</h2>
                     <div class="row g-4">
+                        <!-- YAYA Ministry Card -->
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+                            <div class="ministry-card yaya-card yaya-highlight">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <h4>YAYA</h4>
+                                <p class="mb-3">Youth & Young Adults Affairs - Empowering the next generation through faith, fellowship, and purpose.</p>
+                                <a href="yaya.html" class="btn btn-yaya btn-sm">Explore YAYA</a>
+                            </div>
+                        </div>
+
                         <!-- Children's Ministry -->
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="ministry-card">
@@ -542,7 +684,7 @@
                         </div>
 
                         <!-- Youth Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-emoji-smile"></i>
@@ -554,7 +696,7 @@
                         </div>
 
                         <!-- Young Adults -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-person-badge"></i>
@@ -566,7 +708,7 @@
                         </div>
 
                         <!-- Men's Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-person-standing"></i>
@@ -578,7 +720,7 @@
                         </div>
 
                         <!-- Women's Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-person-hearts"></i>
@@ -590,7 +732,7 @@
                         </div>
 
                         <!-- Worship & Arts -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-music-note-beamed"></i>
@@ -602,7 +744,7 @@
                         </div>
 
                         <!-- Outreach -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-heart-fill"></i>
@@ -614,7 +756,7 @@
                         </div>
 
                         <!-- Prayer Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-chat-heart"></i>
@@ -626,7 +768,7 @@
                         </div>
 
                         <!-- Media Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="ministry-card">
                                 <div class="ministry-icon">
                                     <i class="bi bi-camera-video"></i>
@@ -639,13 +781,112 @@
                     </div>
                 </div>
 
+                <!-- YAYA Tab -->
+                <div class="tab-pane fade" id="yaya" role="tabpanel">
+                    <h2 class="section-title" data-aos="fade-up">Youth & Young Adults Affairs (YAYA)</h2>
+                    <div class="row mb-5">
+                        <div class="col-lg-8 mx-auto text-center">
+                            <p class="lead" data-aos="fade-up" data-aos-delay="100">YAYA is dedicated to empowering the next generation of believers to live out their faith passionately and purposefully in today's world.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-4 mb-5">
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                            <div class="ministry-card yaya-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-heartbreak"></i>
+                                </div>
+                                <h4>Spiritual Growth</h4>
+                                <p>Deepening faith through Bible study, prayer, and mentorship programs designed for young believers.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="ministry-card yaya-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <h4>Community Building</h4>
+                                <p>Creating authentic connections through small groups, fellowship events, and social activities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="250">
+                            <div class="ministry-card yaya-card">
+                                <div class="ministry-icon">
+                                    <i class="bi bi-bullseye"></i>
+                                </div>
+                                <h4>Leadership Development</h4>
+                                <p>Equipping young leaders with skills and opportunities to serve in church and community.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                        <a href="yaya.html" class="btn btn-yaya btn-lg">Visit YAYA Page</a>
+                    </div>
+                </div>
+
                 <!-- Other tabs would go here with similar structure -->
             </div>
         </div>
     </section>
 
-    <!-- Featured Ministries -->
+    <!-- YAYA Ministry Detail Section -->
     <section class="bg-light">
+        <div class="container">
+            <div class="row align-items-center mb-5" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="YAYA Ministry" 
+                         class="img-fluid rounded-3 shadow ministry-img">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-3">Youth & Young Adults Affairs (YAYA)</h2>
+                    <p class="lead">Empowering the next generation to live out their faith with passion and purpose.</p>
+                    <p>The YAYA ministry is dedicated to creating a vibrant community where youth and young adults can grow in their relationship with God, build meaningful connections, and discover their unique calling. We believe that this generation has a crucial role to play in advancing God's kingdom.</p>
+                    
+                    <h5 class="mt-4">What We Offer</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Weekly Bible Studies</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Monthly Fellowship Events</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Leadership Training</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mentorship Programs</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mission Trips</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Career & Life Guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mt-4">Weekly Schedule</h5>
+                    <div class="schedule-item">
+                        <strong>YAYA Bible Study</strong><br>
+                        Tuesdays, 6:30 PM - 8:00 PM<br>
+                        Ages 18-35
+                    </div>
+                    <div class="schedule-item">
+                        <strong>Youth Worship Night</strong><br>
+                        Fridays, 7:00 PM - 9:00 PM<br>
+                        Ages 13-18
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="yaya.html" class="btn btn-yaya me-3">Learn More</a>
+                        <a href="events.html" class="btn btn-outline-primary">View Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Ministries -->
+    <section>
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Featured Ministries</h2>
             
@@ -745,6 +986,7 @@
                     <div class="d-flex flex-wrap gap-3 justify-content-center">
                         <a href="contact.html" class="btn btn-primary btn-lg">Contact Ministry Leader</a>
                         <a href="events.html" class="btn btn-outline-primary btn-lg">View Upcoming Events</a>
+                        <a href="yaya.html" class="btn btn-yaya btn-lg">Join YAYA</a>
                     </div>
                 </div>
             </div>
@@ -756,7 +998,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h3 class="mb-3">GraceChurch</h3>
+                    <h3 class="mb-3">City Of Joy</h3>
                     <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
                     <div class="d-flex gap-3">
                         <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
@@ -773,28 +1015,28 @@
                         <li><a href="about.html" class="text-light text-decoration-none">About</a></li>
                         <li><a href="ministries.html" class="text-light text-decoration-none">Ministries</a></li>
                         <li><a href="sermons.html" class="text-light text-decoration-none">Sermons</a></li>
-                        <li><a href="events.html" class="text-light text-decoration-none">Events</a></li>
+                        <li><a href="yaya.html" class="text-light text-decoration-none">YAYA Ministry</a></li>
                     </ul>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>Resources</h5>
+                    <h5>Ministries</h5>
                     <ul class="list-unstyled">
-                        <li><a href="giving.html" class="text-light text-decoration-none">Online Giving</a></li>
-                        <li><a href="prayer.html" class="text-light text-decoration-none">Prayer Requests</a></li>
-                        <li><a href="marketplace.html" class="text-light text-decoration-none">Marketplace</a></li>
-                        <li><a href="blog.html" class="text-light text-decoration-none">Blog</a></li>
-                        <li><a href="contact.html" class="text-light text-decoration-none">Contact Us</a></li>
+                        <li><a href="yaya.html" class="text-light text-decoration-none">YAYA Ministry</a></li>
+                        <li><a href="children-ministry.html" class="text-light text-decoration-none">Children's Ministry</a></li>
+                        <li><a href="youth-ministry.html" class="text-light text-decoration-none">Youth Ministry</a></li>
+                        <li><a href="events.html" class="text-light text-decoration-none">Events</a></li>
+                        <li><a href="outreach.html" class="text-light text-decoration-none">Outreach</a></li>
                     </ul>
                 </div>
                 
                 <div class="col-lg-3 mb-4">
                     <h5>Contact Info</h5>
                     <ul class="list-unstyled">
-                        <li><i class="bi bi-geo-alt me-2"></i> 123 Church Street, City, State 12345</li>
+                        <li><i class="bi bi-geo-alt me-2"></i>RCCG. Rivers Province 10 Hqtrs. - <span class="fw-bold">City Of Joy Parish</span></li>
                         <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
-                        <li><i class="bi bi-envelope me-2"></i> info@gracechurch.com</li>
-                        <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+                        <li><i class="bi bi-envelope me-2"></i> info@cityofjoy.com</li>
+                        <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM </li>
                     </ul>
                 </div>
             </div>
@@ -803,7 +1045,7 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2023 GraceChurch. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2023 City Of Joy. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
@@ -854,6 +1096,24 @@
             tab.addEventListener('click', () => {
                 ministryTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
+            });
+        });
+        
+
+        // Smooth dropdown animation
+        document.querySelectorAll('.dropdown-toggle').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.nextElementSibling.style.display === 'block') {
+                    this.nextElementSibling.style.opacity = '0';
+                    setTimeout(() => {
+                        this.nextElementSibling.style.display = 'none';
+                    }, 300);
+                } else {
+                    this.nextElementSibling.style.display = 'block';
+                    setTimeout(() => {
+                        this.nextElementSibling.style.opacity = '1';
+                    }, 10);
+                }
             });
         });
     </script>

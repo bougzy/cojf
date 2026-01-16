@@ -842,21 +842,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ministries.html">Ministries</a>
+                     <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item active" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
+                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
+                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
+                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="sermons.html">Sermons</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="events.html">Events</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="giving.html">Giving</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="marketplace.html">Marketplace</a>
-                    </li>
+                    </li> -->
                 </ul>
                 
                 <div class="d-flex align-items-center">
@@ -952,275 +964,13 @@
     </section>
 
     <!-- Event Categories -->
-    <section>
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Event Categories</h2>
-            <div class="row g-4">
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="bi bi-heart-fill"></i>
-                        </div>
-                        <h4>Worship</h4>
-                        <p>Sunday services, prayer meetings, and special worship nights</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="bi bi-people-fill"></i>
-                        </div>
-                        <h4>Fellowship</h4>
-                        <p>Community gatherings, potlucks, and social events</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="bi bi-book-half"></i>
-                        </div>
-                        <h4>Teaching</h4>
-                        <p>Bible studies, workshops, and discipleship classes</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
-                    <div class="category-card">
-                        <div class="category-icon">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                        </div>
-                        <h4>Outreach</h4>
-                        <p>Mission trips, community service, and evangelism</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- Filter Section -->
-    <section class="bg-light">
-        <div class="container">
-            <div class="filter-section" data-aos="fade-up">
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Search events...">
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>All Categories</option>
-                            <option>Worship</option>
-                            <option>Fellowship</option>
-                            <option>Teaching</option>
-                            <option>Outreach</option>
-                            <option>Youth</option>
-                            <option>Children</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>All Months</option>
-                            <option>This Month</option>
-                            <option>Next Month</option>
-                            <option>Next 3 Months</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary w-100">
-                            <i class="bi bi-funnel me-2"></i> Filter
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+ 
 
     <!-- Upcoming Events -->
-    <section>
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Upcoming Events</h2>
-            <div class="row g-4">
-                <!-- Event 1 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="event-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="event-img" 
-                                 alt="Youth Camp">
-                            <div class="event-date">
-                                <span class="day">15</span>
-                                <span class="month">Nov</span>
-                            </div>
-                            <span class="event-badge">Youth</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Youth Winter Camp</h5>
-                            <p class="card-text text-muted mb-2"><i class="bi bi-geo-alt me-1"></i> Camp Wilderness</p>
-                            <p class="card-text">Annual winter retreat for teenagers with worship, teaching, and outdoor activities.</p>
-                            <div class="event-actions">
-                                <a href="#" class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-ticket-perforated me-2"></i> Register
-                                </a>
-                                <a href="#" class="btn btn-outline-primary">
-                                    <i class="bi bi-calendar-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="event-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1543365067-f488401f5c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="event-img" 
-                                 alt="Marriage Conference">
-                            <div class="event-date">
-                                <span class="day">22</span>
-                                <span class="month">Nov</span>
-                            </div>
-                            <span class="event-badge">Adults</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Marriage Enrichment Conference</h5>
-                            <p class="card-text text-muted mb-2"><i class="bi bi-geo-alt me-1"></i> Main Sanctuary</p>
-                            <p class="card-text">A special one-day conference for couples to strengthen their relationships.</p>
-                            <div class="event-actions">
-                                <a href="#" class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-ticket-perforated me-2"></i> Register
-                                </a>
-                                <a href="#" class="btn btn-outline-primary">
-                                    <i class="bi bi-calendar-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="event-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="event-img" 
-                                 alt="Community Outreach">
-                            <div class="event-date">
-                                <span class="day">05</span>
-                                <span class="month">Dec</span>
-                            </div>
-                            <span class="event-badge">Outreach</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Christmas Community Outreach</h5>
-                            <p class="card-text text-muted mb-2"><i class="bi bi-geo-alt me-1"></i> City Park</p>
-                            <p class="card-text">Annual Christmas event with food distribution, gifts, and celebration for the community.</p>
-                            <div class="event-actions">
-                                <a href="#" class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-hand-index-thumb me-2"></i> Volunteer
-                                </a>
-                                <a href="#" class="btn btn-outline-primary">
-                                    <i class="bi bi-calendar-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 4 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="event-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="event-img" 
-                                 alt="Christmas Concert">
-                            <div class="event-date">
-                                <span class="day">16</span>
-                                <span class="month">Dec</span>
-                            </div>
-                            <span class="event-badge">Worship</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Christmas Worship Night</h5>
-                            <p class="card-text text-muted mb-2"><i class="bi bi-geo-alt me-1"></i> Main Sanctuary</p>
-                            <p class="card-text">An evening of Christmas carols, worship, and celebration of the birth of Christ.</p>
-                            <div class="event-actions">
-                                <a href="#" class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-ticket-perforated me-2"></i> Get Tickets
-                                </a>
-                                <a href="#" class="btn btn-outline-primary">
-                                    <i class="bi bi-calendar-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 5 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="event-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="event-img" 
-                                 alt="New Year Service">
-                            <div class="event-date">
-                                <span class="day">31</span>
-                                <span class="month">Dec</span>
-                            </div>
-                            <span class="event-badge">Worship</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">New Year's Eve Service</h5>
-                            <p class="card-text text-muted mb-2"><i class="bi bi-geo-alt me-1"></i> Main Sanctuary</p>
-                            <p class="card-text">Watch night service with prayer, worship, and communion to welcome the new year.</p>
-                            <div class="event-actions">
-                                <a href="#" class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-info-circle me-2"></i> Details
-                                </a>
-                                <a href="#" class="btn btn-outline-primary">
-                                    <i class="bi bi-calendar-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 6 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="event-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="event-img" 
-                                 alt="Financial Workshop">
-                            <div class="event-date">
-                                <span class="day">14</span>
-                                <span class="month">Jan</span>
-                            </div>
-                            <span class="event-badge">Teaching</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Financial Peace Workshop</h5>
-                            <p class="card-text text-muted mb-2"><i class="bi bi-geo-alt me-1"></i> Fellowship Hall</p>
-                            <p class="card-text">Biblical principles for financial stewardship and practical money management.</p>
-                            <div class="event-actions">
-                                <a href="#" class="btn btn-primary flex-grow-1">
-                                    <i class="bi bi-ticket-perforated me-2"></i> Register
-                                </a>
-                                <a href="#" class="btn btn-outline-primary">
-                                    <i class="bi bi-calendar-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Load More Button -->
-            <div class="text-center mt-5" data-aos="fade-up">
-                <a href="#" class="btn btn-outline-primary btn-lg">
-                    <i class="bi bi-arrow-clockwise me-2"></i> Load More Events
-                </a>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- Newsletter Section -->
     <section class="bg-light">

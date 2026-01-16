@@ -524,21 +524,35 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ministries.html">Ministries</a>
+                     <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item active" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
+                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
+                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
+                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="sermons.html">Sermons</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="events.html">Events</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="giving.html">Giving</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="marketplace.html">Marketplace</a>
-                    </li>
+                    </li> -->
                 </ul>
                 
                 <div class="d-flex align-items-center">
@@ -628,7 +642,7 @@
     </section>
 
     <!-- Filter Section -->
-    <section class="bg-light">
+    <!-- <section class="bg-light">
         <div class="container">
             <div class="filter-section" data-aos="fade-up">
                 <div class="row g-3">
@@ -661,10 +675,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Sermon Series -->
-    <section>
+    <!-- <section>
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Sermon Series</h2>
             <div class="row g-4">
@@ -715,180 +729,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- All Sermons -->
-    <section class="bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">All Sermons</h2>
-            <div class="row g-4">
-                <!-- Sermon 1 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="sermon-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="sermon-img" 
-                                 alt="The Power of Faith">
-                            <span class="sermon-badge">Audio & Video</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">The Power of Faith in Difficult Times</h5>
-                            <p class="card-text text-muted mb-2">Dr. Michael Johnson | June 4, 2023</p>
-                            <p class="card-text">Exploring how faith can move mountains in our daily lives and challenges we face.</p>
-                            <div class="sermon-actions">
-                                <a href="#" class="sermon-action-btn btn-primary">
-                                    <i class="bi bi-play-circle"></i> Listen
-                                </a>
-                                <a href="#" class="sermon-action-btn btn-outline-primary">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sermon 2 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="sermon-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1542403810-8910637cc2b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="sermon-img" 
-                                 alt="Finding Hope">
-                            <span class="sermon-badge">Audio & Video</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Finding Hope in Hard Times</h5>
-                            <p class="card-text text-muted mb-2">Sarah Williams | May 28, 2023</p>
-                            <p class="card-text">Biblical principles for maintaining hope and peace during difficult seasons of life.</p>
-                            <div class="sermon-actions">
-                                <a href="#" class="sermon-action-btn btn-primary">
-                                    <i class="bi bi-play-circle"></i> Listen
-                                </a>
-                                <a href="#" class="sermon-action-btn btn-outline-primary">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sermon 3 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="sermon-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1548705083-06842646fc1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="sermon-img" 
-                                 alt="The Joy of Giving">
-                            <span class="sermon-badge">Audio Only</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">The Joy of Giving</h5>
-                            <p class="card-text text-muted mb-2">David Chen | May 21, 2023</p>
-                            <p class="card-text">Understanding God's principles of generosity and its impact on our spiritual lives.</p>
-                            <div class="sermon-actions">
-                                <a href="#" class="sermon-action-btn btn-primary">
-                                    <i class="bi bi-play-circle"></i> Listen
-                                </a>
-                                <a href="#" class="sermon-action-btn btn-outline-primary">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sermon 4 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="sermon-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="sermon-img" 
-                                 alt="Building Strong Families">
-                            <span class="sermon-badge">Video Only</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Building Strong Families</h5>
-                            <p class="card-text text-muted mb-2">Dr. Michael Johnson | May 14, 2023</p>
-                            <p class="card-text">Practical biblical wisdom for creating healthy, God-centered family relationships.</p>
-                            <div class="sermon-actions">
-                                <a href="#" class="sermon-action-btn btn-primary">
-                                    <i class="bi bi-play-circle"></i> Watch
-                                </a>
-                                <a href="#" class="sermon-action-btn btn-outline-primary">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sermon 5 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="sermon-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="sermon-img" 
-                                 alt="Overcoming Fear">
-                            <span class="sermon-badge">Audio & Video</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Overcoming Fear and Anxiety</h5>
-                            <p class="card-text text-muted mb-2">Sarah Williams | May 7, 2023</p>
-                            <p class="card-text">Biblical strategies for conquering fear and living in God's perfect peace.</p>
-                            <div class="sermon-actions">
-                                <a href="#" class="sermon-action-btn btn-primary">
-                                    <i class="bi bi-play-circle"></i> Listen
-                                </a>
-                                <a href="#" class="sermon-action-btn btn-outline-primary">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sermon 6 -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="sermon-card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 class="sermon-img" 
-                                 alt="The Holy Spirit">
-                            <span class="sermon-badge">Audio & Video</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Understanding the Holy Spirit</h5>
-                            <p class="card-text text-muted mb-2">David Chen | April 30, 2023</p>
-                            <p class="card-text">Exploring the role and work of the Holy Spirit in the life of a believer.</p>
-                            <div class="sermon-actions">
-                                <a href="#" class="sermon-action-btn btn-primary">
-                                    <i class="bi bi-play-circle"></i> Listen
-                                </a>
-                                <a href="#" class="sermon-action-btn btn-outline-primary">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pagination -->
-            <nav aria-label="Sermon pagination" class="mt-5">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </section>
+   
 
     <!-- Subscription CTA -->
     <section>
@@ -943,9 +787,9 @@
                     <h5>Resources</h5>
                     <ul class="list-unstyled">
                         <li><a href="giving.html" class="text-light text-decoration-none">Online Giving</a></li>
-                        <li><a href="prayer.html" class="text-light text-decoration-none">Prayer Requests</a></li>
+                        <!-- <li><a href="prayer.html" class="text-light text-decoration-none">Prayer Requests</a></li>
                         <li><a href="marketplace.html" class="text-light text-decoration-none">Marketplace</a></li>
-                        <li><a href="blog.html" class="text-light text-decoration-none">Blog</a></li>
+                        <li><a href="blog.html" class="text-light text-decoration-none">Blog</a></li> -->
                         <li><a href="contact.html" class="text-light text-decoration-none">Contact Us</a></li>
                     </ul>
                 </div>

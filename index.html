@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Redeemed Christian Church Of God-City Of Joy</title>
+    <title>The Redeemed Christian Church Of God - City Of Joy</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
             transition: all 0.4s ease;
         }
 
-        /* Container fixes - CRITICAL FOR MOBILE */
+        /* Container fixes */
         .container, .container-fluid {
             max-width: 100%;
             padding-right: 15px;
@@ -87,7 +87,7 @@
             padding: 3rem 0;
         }
 
-        /* Row and column fixes - CRITICAL FOR MOBILE */
+        /* Row and column fixes */
         .row {
             margin-right: 0;
             margin-left: 0;
@@ -123,7 +123,7 @@
             color: var(--dark);
         }
 
-        /* Navbar fixes - CRITICAL FOR MOBILE */
+        /* ===== NAVBAR ENHANCEMENTS ===== */
         .navbar {
             background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(10px);
@@ -176,11 +176,132 @@
             width: 80%;
         }
 
-        /* Hero Section fixes */
+        /* ===== DROPDOWN MENU ENHANCEMENTS ===== */
+        .dropdown-menu {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            animation: dropdownFadeIn 0.3s ease;
+            min-width: 250px;
+            z-index: 1050;
+        }
+
+        [data-bs-theme="dark"] .dropdown-menu {
+            background: rgba(15, 23, 42, 0.98);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-item {
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        [data-bs-theme="dark"] .dropdown-item {
+            color: var(--light);
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .dropdown-divider {
+            border-color: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+
+        [data-bs-theme="dark"] .dropdown-divider {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-toggle::after {
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-toggle.show::after {
+            transform: rotate(180deg);
+        }
+
+        @keyframes dropdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== IMPROVED DROPDOWN POSITIONING ===== */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none; /* Start hidden */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.125rem;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        /* Ensure dropdown doesn't cause horizontal overflow on mobile */
+        @media (max-width: 991.98px) {
+            .dropdown-menu {
+                position: static;
+                float: none;
+                width: 100%;
+                margin: 0.125rem 0 0;
+                border: none;
+                box-shadow: none;
+                background-color: rgba(255, 255, 255, 0.95);
+                max-width: 100%;
+            }
+            
+            [data-bs-theme="dark"] .dropdown-menu {
+                background-color: rgba(15, 23, 42, 0.95);
+            }
+            
+            .dropdown-item {
+                text-align: center;
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                margin: 0.25rem 0;
+            }
+            
+            .dropdown-divider {
+                margin: 0.5rem auto;
+                width: 80%;
+            }
+            
+            /* Fix for navbar dropdown on mobile */
+            .navbar-collapse {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
         .hero-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 140px 0 100px;
+            padding: 50px 0 100px;
             position: relative;
             overflow: hidden;
             margin-top: 76px;
@@ -212,13 +333,14 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
             max-width: 100%;
+            padding: 20px;
         }
 
-        /* Button fixes */
+        /* ===== BUTTON STYLES ===== */
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border: none;
-            padding: 14px 32px;
+            padding: 14px 30px;
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.4s ease;
@@ -272,6 +394,7 @@
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
+        /* ===== SECTION TITLE ===== */
         .section-title {
             position: relative;
             margin-bottom: 3.5rem;
@@ -292,7 +415,7 @@
             border-radius: 2px;
         }
 
-        /* Card fixes */
+        /* ===== CARD STYLES ===== */
         .card {
             border: none;
             border-radius: 16px;
@@ -322,10 +445,6 @@
             transform: scale(1.05);
         }
 
-        .product-card .card-img-top {
-            height: 220px;
-        }
-
         .sermon-card .card-img-top {
             height: 180px;
         }
@@ -335,14 +454,14 @@
             max-width: 100%;
         }
 
-        /* Image fixes */
+        /* ===== IMAGE FIXES ===== */
         img {
             max-width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Radio player fixes */
+        /* ===== RADIO PLAYER ===== */
         .radio-player {
             background: var(--gray-light);
             border-radius: 16px;
@@ -357,7 +476,7 @@
             background: var(--secondary);
         }
 
-        /* Testimony carousel fixes */
+        /* ===== TESTIMONY CAROUSEL ===== */
         .testimony-carousel {
             padding: 2rem 0;
             max-width: 100%;
@@ -411,7 +530,7 @@
             box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
         }
 
-        /* Activity timeline fixes */
+        /* ===== ACTIVITY TIMELINE ===== */
         .activity-timeline {
             position: relative;
             padding-left: 2rem;
@@ -465,7 +584,7 @@
             border: 3px solid var(--light);
         }
 
-        /* Ministry card fixes */
+        /* ===== MINISTRY CARDS ===== */
         .ministry-card {
             text-align: center;
             padding: 2.5rem 1.5rem;
@@ -527,7 +646,7 @@
             box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
         }
 
-        /* Floating shapes fixes */
+        /* ===== FLOATING SHAPES ===== */
         .floating-shapes {
             position: absolute;
             width: 100%;
@@ -591,7 +710,7 @@
             }
         }
 
-        /* Footer fixes */
+        /* ===== FOOTER ===== */
         footer {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
             color: var(--light);
@@ -640,7 +759,7 @@
             padding-left: 5px;
         }
 
-        /* Back to top button */
+        /* ===== BACK TO TOP BUTTON ===== */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -671,7 +790,7 @@
             box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
         }
 
-        /* Live indicator */
+        /* ===== LIVE INDICATOR ===== */
         .live-indicator {
             position: absolute;
             top: 15px;
@@ -702,7 +821,7 @@
             }
         }
 
-        /* Theme toggle */
+        /* ===== THEME TOGGLE ===== */
         .theme-toggle {
             background: none;
             border: none;
@@ -726,7 +845,7 @@
             color: white;
         }
 
-        /* Additional styles */
+        /* ===== ADDITIONAL STYLES ===== */
         .marketplace-hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
@@ -826,7 +945,7 @@
             color: white;
         }
 
-        /* ===== ENHANCED RESPONSIVE FIXES ===== */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             .hero-title {
                 font-size: 3rem;
@@ -854,10 +973,25 @@
                 text-align: center;
             }
             
-            /* Fix for navbar dropdown on mobile */
-            .navbar-collapse {
-                max-height: 80vh;
-                overflow-y: auto;
+            /* Enhanced mobile dropdown */
+            .dropdown-menu {
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: none;
+                box-shadow: none;
+                border: none;
+                text-align: center;
+                animation: none;
+            }
+            
+            [data-bs-theme="dark"] .dropdown-menu {
+                background: rgba(15, 23, 42, 0.95);
+            }
+            
+            /* Mobile-specific dropdown improvements */
+            .navbar-collapse.show .dropdown-menu {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
 
@@ -912,6 +1046,18 @@
             .shape {
                 display: none;
             }
+            
+            /* Prevent dropdown from being cut off on mobile */
+            .navbar-collapse {
+                max-height: calc(100vh - 200px);
+                overflow-y: auto;
+                padding: 1rem;
+            }
+            
+            .dropdown-menu {
+                max-height: 400px;
+                overflow-y: auto;
+            }
         }
 
         @media (max-width: 576px) {
@@ -950,16 +1096,8 @@
             .ministry-card {
                 padding: 2rem 1rem;
             }
-            
-            /* Fix for dropdown on very small screens */
-            .dropdown-menu {
-                position: static !important;
-                transform: none !important;
-                width: 100%;
-            }
         }
 
-        /* Extra small devices */
         @media (max-width: 400px) {
             .hero-title {
                 font-size: 1.6rem;
@@ -976,39 +1114,6 @@
             .testimony-card {
                 padding: 1.5rem 0.75rem;
             }
-            
-            /* Fix for navbar on very small screens */
-            .navbar-nav .nav-item {
-                margin-bottom: 0.5rem;
-            }
-        }
-
-        /* ===== ADDITIONAL OVERFLOW PREVENTION ===== */
-        /* Prevent horizontal scroll caused by animations */
-        [data-aos] {
-            overflow: hidden;
-        }
-
-        /* Ensure all images don't cause overflow */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Fix for any potential overflow in text elements */
-        p, span, a, li {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        /* Fix for carousel causing overflow */
-        .carousel {
-            overflow: hidden;
-        }
-
-        /* Fix for dropdown menus */
-        .dropdown-menu {
-            max-width: 100%;
         }
     </style>
 </head>
@@ -1019,10 +1124,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <img src="img/Rccg_logo.png" alt="" style="width: 70px;">
+            <img src="img/Rccg_logo.png" alt="RCCG Logo" style="width: 70px;">
             <a class="navbar-brand ms-2" href="index.html">City Of Joy</a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
@@ -1034,20 +1139,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ministries.html">Ministries</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
+                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
+                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
+                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
+                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
+                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="sermons.html">Sermons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="events.html">Events</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="giving.html">Giving</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="marketplace.html">Marketplace</a>
                     </li>
                 </ul>
                 
@@ -1055,18 +1168,6 @@
                     <button class="theme-toggle" id="themeToggle">
                         <i class="bi bi-sun-fill"></i>
                     </button>
-                    
-                    <div class="dropdown ms-3">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle me-2"></i> Account
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="login.html">Login</a></li>
-                            <li><a class="dropdown-item" href="register.html">Register</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="admin.html">Admin Panel</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1083,8 +1184,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-duration="1000">
-                    <h1 class="hero-title">City Of Joy (Rivers Province 10)</h1>
-                    <p class="lead mb-4">A vibrant community of faith, hope, and love. Join us as we grow together in Christ and serve our community with purpose and passion.</p>
+                    <h1 class="text-white p-3" style="font-size: 180px;">RCCG</h1>
+                    <h1 class="hero-title mt-3 text-white" style="font-size: 50px;">City Of Joy (Rivers Province 10)</h1>
+                    <p class="lead mb-4 p-4">A vibrant community of faith, hope, and love. Join us as we grow together in Christ and serve our community with purpose and passion.</p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="giving.html" class="btn btn-primary">
                             <i class="bi bi-play-circle me-2"></i> Join Service Live
@@ -1129,7 +1231,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Sunday Service Live</h5>
-                            <p class="card-text">Join our live Sunday service streaming now with Pastor Michael</p>
+                            <p class="card-text">Join our live Sunday service streaming now with Pastor Solomon Marega</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">Started 25 min ago</small>
                                 <a href="live.html" class="btn btn-sm btn-danger">Watch Now</a>
@@ -1142,7 +1244,7 @@
     </section>
 
     <!-- Testimonies Section -->
-    <section class="section-compact bg-light">
+    <!-- <section class="section-compact bg-light">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Testimonies</h2>
             
@@ -1185,76 +1287,141 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <!-- Activities Section -->
-    <section class="section-compact">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Weekly & Monthly Activities</h2>
-            
-            <div class="row">
-                <div class="col-lg-6 mb-4" data-aos="fade-right">
-                    <h4 class="mb-4">This Week's Schedule</h4>
+ <!-- Activities Section -->
+<section class="section-compact">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Weekly & Monthly Activities</h2>
+        <p class="section-subtitle text-center mb-5">Join us for our regular gatherings and special monthly events</p>
+        
+        <div class="row">
+            <!-- Column 1: Regular Weekly Activities -->
+            <div class="col-lg-6 mb-5" data-aos="fade-right">
+                <div class="activity-column">
+                    <div class="column-header">
+                        <h4 class="mb-3"><i class="bi bi-calendar-week me-2 text-primary"></i>Regular Weekly Schedule</h4>
+                        <p class="text-muted column-caption mb-4">Join us throughout the week for worship, teaching, and fellowship</p>
+                    </div>
                     <div class="activity-timeline">
                         <div class="activity-item">
-                            <h5>Sunday Service</h5>
-                            <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 8:00 AM & 10:30 AM</p>
-                            <p class="mb-0">Join us for worship, prayer, and an inspiring message from our pastor.</p>
+                            <div class="activity-icon">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>Sunday Workers Meeting</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 7:00 AM - 8:00 AM</p>
+                                <p class="mb-0">Leadership preparation and prayer for all church workers and volunteers before services begin.</p>
+                            </div>
                         </div>
                         <div class="activity-item">
-                            <h5>Youth Bible Study</h5>
-                            <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> Wednesday, 6:00 PM</p>
-                            <p class="mb-0">Young adults gathering for fellowship and Bible study.</p>
+                            <div class="activity-icon">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>Sunday School</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 8:00 AM - 9:00 AM</p>
+                                <p class="mb-0">Age-appropriate Bible study classes for everyone from children to adults.</p>
+                            </div>
                         </div>
                         <div class="activity-item">
-                            <h5>Prayer Meeting</h5>
-                            <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> Friday, 7:00 PM</p>
-                            <p class="mb-0">Corporate prayer session for all church members.</p>
+                            <div class="activity-icon">
+                                <i class="bi bi-music-note-beamed"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>Sunday Main Service</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 9:00 AM - 11:00 AM</p>
+                                <p class="mb-0">Worship service with prayer and an inspiring message from Pastor Solomon Marega.</p>
+                            </div>
                         </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>Tuesday Digging Deep</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 6:00 PM - 7:15 PM</p>
+                                <p class="mb-0">In-depth Bible study session exploring Scripture in greater detail.</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>Thursday Faith Clinic</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 6:00 PM - 7:00 PM</p>
+                                <p class="mb-0">Teaching and prayer session focused on building and strengthening faith.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-footer mt-4 pt-3 border-top">
+                        <p class="small text-muted mb-0"><i class="bi bi-info-circle me-2"></i>All weekly activities are held at the main church sanctuary unless otherwise announced.</p>
                     </div>
                 </div>
-                
-                <div class="col-lg-6" data-aos="fade-left">
-                    <h4 class="mb-4">Upcoming Events</h4>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h5 class="card-title mb-0">Community Outreach</h5>
-                                <span class="badge bg-primary">New</span>
-                            </div>
-                            <p class="card-text text-muted mb-2">June 15, 2023 | 9:00 AM</p>
-                            <p class="card-text mb-3">Join us as we serve our local community through various outreach programs.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
-                        </div>
+            </div>
+            
+            <!-- Column 2: Monthly Activities & Special Events -->
+            <div class="col-lg-6 mb-5" data-aos="fade-left">
+                <div class="activity-column">
+                    <div class="column-header">
+                        <h4 class="mb-3"><i class="bi bi-calendar-month me-2 text-primary"></i>Monthly & Special Events</h4>
+                        <p class="text-muted column-caption mb-4">Powerful gatherings and special programs throughout the month</p>
                     </div>
-                    
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h5 class="card-title mb-0">Marriage Conference</h5>
-                                <span class="badge bg-warning">Limited Seats</span>
+                    <div class="activity-timeline">
+                        <div class="activity-item featured">
+                            <div class="activity-icon">
+                                <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="card-text text-muted mb-2">July 22-23, 2023</p>
-                            <p class="card-text mb-3">A special conference for couples to strengthen their relationships.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Register</a>
+                            <div class="activity-content">
+                                <h5>Divine Visitation</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> Third Saturday of Every Month</p>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 6:00 AM - 9:00 AM</p>
+                                <p class="mb-0">Early morning prayer and worship service expecting God's special presence and miracles.</p>
+                            </div>
                         </div>
+                        <!-- <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="bi bi-chat-dots"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>Monthly Prayer Focus</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> First Friday of Every Month</p>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 7:00 PM - 9:00 PM</p>
+                                <p class="mb-0">Extended prayer session focusing on specific themes and needs for the month.</p>
+                            </div>
+                        </div> -->
+                        <!-- <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="bi bi-cup-hot"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>New Members Fellowship</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> Last Sunday of Every Month</p>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 12:00 PM - 1:30 PM</p>
+                                <p class="mb-0">Welcome luncheon for new members to connect with church leadership and community.</p>
+                            </div>
+                        </div> -->
+                        <!-- <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="bi bi-mic"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h5>Youth Power Night</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> Second Friday of Every Month</p>
+                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 7:00 PM - 10:00 PM</p>
+                                <p class="mb-0">Youth-focused worship, teaching, and fellowship with contemporary music and relevant messages.</p>
+                            </div>
+                        </div> -->
                     </div>
-                    
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h5 class="card-title mb-0">Children's Camp</h5>
-                                <span class="badge bg-success">Early Bird</span>
-                            </div>
-                            <p class="card-text text-muted mb-2">August 5-7, 2023</p>
-                            <p class="card-text mb-3">Summer camp for children ages 6-12 with fun activities and Bible lessons.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Register</a>
-                        </div>
+                    <div class="column-footer mt-4 pt-3 border-top">
+                        <p class="small text-muted mb-0"><i class="bi bi-info-circle me-2"></i>Monthly events may have special guest speakers or theme variations. Check weekly announcements.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Ministries Section -->
     <section class="section-compact bg-light">
@@ -1267,9 +1434,9 @@
                         <div class="ministry-icon">
                             <i class="bi bi-people-fill"></i>
                         </div>
-                        <h4>Youth Ministry</h4>
-                        <p class="mb-3">Engaging programs for teenagers and young adults to grow in faith and fellowship.</p>
-                        <a href="youth.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <h4>YAYA Ministry</h4>
+                        <p class="mb-3">Youth & Young Adults Affairs - Empowering the next generation through faith, fellowship, and purpose.</p>
+                        <a href="yaya.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                     </div>
                 </div>
                 
@@ -1280,7 +1447,7 @@
                         </div>
                         <h4>Worship & Arts</h4>
                         <p class="mb-3">Expressing praise to God through music, dance, and creative arts.</p>
-                        <a href="worship.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <a href="worship-arts.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                     </div>
                 </div>
                 
@@ -1289,7 +1456,7 @@
                         <div class="ministry-icon">
                             <i class="bi bi-heart-fill"></i>
                         </div>
-                        <h4>Outreach</h4>
+                        <h4>Outreach Ministry</h4>
                         <p class="mb-3">Serving our community through various outreach and mission programs.</p>
                         <a href="outreach.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                     </div>
@@ -1315,7 +1482,7 @@
                         </div>
                         <h4>Media Ministry</h4>
                         <p class="mb-3">Spreading the gospel through technology and creative media production.</p>
-                        <a href="media.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <a href="media-ministry.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                     </div>
                 </div>
                 
@@ -1344,7 +1511,7 @@
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
                         <div class="card-body">
                             <h5 class="card-title">The Power of Faith</h5>
-                            <p class="card-text text-muted mb-2">Pastor John Smith | June 4, 2023</p>
+                            <p class="card-text text-muted mb-2">Pastor Solomon Marega (PIC Rivers Province 10) | June 4, 2023</p>
                             <p class="card-text mb-3">Exploring how faith can move mountains in our daily lives and challenges.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
@@ -1362,7 +1529,7 @@
                         <img src="https://images.unsplash.com/photo-1542403810-8910637cc2b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
                         <div class="card-body">
                             <h5 class="card-title">Finding Hope in Hard Times</h5>
-                            <p class="card-text text-muted mb-2">Pastor Sarah Johnson | May 28, 2023</p>
+                            <p class="card-text text-muted mb-2">Pastor Solomon Marega (PIC Rivers Province 10) | May 28, 2023</p>
                             <p class="card-text mb-3">Biblical principles for maintaining hope and peace during difficult seasons.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
@@ -1380,7 +1547,7 @@
                         <img src="https://images.unsplash.com/photo-1548705083-06842646fc1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
                         <div class="card-body">
                             <h5 class="card-title">The Joy of Giving</h5>
-                            <p class="card-text text-muted mb-2">Pastor Michael Brown | May 21, 2023</p>
+                            <p class="card-text text-muted mb-2">Pastor Solomon Marega (PIC Rivers Province 10) | May 21, 2023</p>
                             <p class="card-text mb-3">Understanding God's principles of generosity and its impact on our lives.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
@@ -1396,52 +1563,6 @@
             
             <div class="text-center mt-4" data-aos="fade-up">
                 <a href="sermons.html" class="btn btn-outline-primary">View All Sermons</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Marketplace Preview -->
-    <section class="section-compact bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4" data-aos="fade-right">
-                    <h2 class="section-title text-start">Church Marketplace</h2>
-                    <p class="lead mb-4">Support our community members by shopping from their businesses. From handmade crafts to professional services, discover quality products from fellow believers.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="marketplace.html" class="btn btn-primary">Explore Marketplace</a>
-                        <a href="marketplace-seller.html" class="btn btn-outline-primary">Become a Seller</a>
-                    </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="card product-card">
-                                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product">
-                                <div class="card-body">
-                                    <span class="store-badge">Faith Crafts</span>
-                                    <h6 class="card-title">Handmade Wooden Cross</h6>
-                                    <p class="product-price">NGN50000.00</p>
-                                    <button class="btn whatsapp-btn">
-                                        <i class="bi bi-whatsapp"></i> Buy on WhatsApp
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card product-card">
-                                <img src="https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product">
-                                <div class="card-body">
-                                    <span class="store-badge">Kingdom Bakes</span>
-                                    <h6 class="card-title">Custom Celebration Cake</h6>
-                                    <p class="product-price">NGN45000.00</p>
-                                    <button class="btn whatsapp-btn">
-                                        <i class="bi bi-whatsapp"></i> Buy on WhatsApp
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1479,9 +1600,6 @@
                         <h5>Resources</h5>
                         <ul>
                             <li><a href="giving.html">Online Giving</a></li>
-                            <li><a href="prayer.html">Prayer Requests</a></li>
-                            <li><a href="marketplace.html">Marketplace</a></li>
-                            <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
                         </ul>
                     </div>
@@ -1491,11 +1609,11 @@
                     <div class="footer-links">
                         <h5>Contact Info</h5>
                         <ul class="list-unstyled">
-                        <li><i class="bi bi-geo-alt me-2"></i> 5 Holiness Close, Rumuagholu, Port Harcourt</li>
-                        <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
-                        <li><i class="bi bi-envelope me-2"></i> info@rv1o.com</li>
-                        <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
-                    </ul>
+                            <li><i class="bi bi-geo-alt me-2"></i>RCCG. Rivers Province 10 Hqtrs. - <span class="fw-bold">City Of Joy Parish</span></li>
+                            <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
+                            <li><i class="bi bi-envelope me-2"></i> info@rv1o.com</li>
+                            <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1586,29 +1704,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Enhanced WhatsApp Buy Now functionality
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('whatsapp-btn') || e.target.closest('.whatsapp-btn')) {
-                const productCard = e.target.closest('.card');
-                const productName = productCard.querySelector('.card-title').textContent;
-                const storeName = productCard.querySelector('.store-badge').textContent;
-                
-                // Add click animation
-                const button = e.target.classList.contains('whatsapp-btn') ? e.target : e.target.closest('.whatsapp-btn');
-                button.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    button.style.transform = '';
-                }, 150);
-                
-                // In a real implementation, you would fetch store WhatsApp number from backend
-                const whatsappNumber = "1234567890";
-                const message = `Hi, I'm interested in ${productName} from ${storeName} on GraceChurch marketplace.`;
-                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-                
-                window.open(whatsappUrl, '_blank');
-            }
-        });
-
         // Fix for navbar overlapping content on mobile
         function adjustNavbarHeight() {
             const navbar = document.querySelector('.navbar');
@@ -1622,6 +1717,150 @@
         // Adjust on load and resize
         window.addEventListener('load', adjustNavbarHeight);
         window.addEventListener('resize', adjustNavbarHeight);
+
+        // ===== ENHANCED DROPDOWN FUNCTIONALITY FOR MINISTRIES =====
+        function enhanceDropdowns() {
+            const ministriesDropdown = document.getElementById('ministriesDropdown');
+            const dropdownMenu = ministriesDropdown?.nextElementSibling;
+            
+            if (ministriesDropdown && dropdownMenu) {
+                // Ensure dropdown displays correctly
+                ministriesDropdown.addEventListener('show.bs.dropdown', function() {
+                    const menu = this.nextElementSibling;
+                    if (menu) {
+                        // Force display and animation
+                        menu.style.display = 'block';
+                        menu.style.opacity = '0';
+                        menu.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            menu.style.opacity = '1';
+                            menu.style.transform = 'translateY(0)';
+                            menu.style.transition = 'all 0.3s ease';
+                        }, 10);
+                    }
+                });
+                
+                ministriesDropdown.addEventListener('hide.bs.dropdown', function() {
+                    const menu = this.nextElementSibling;
+                    if (menu) {
+                        menu.style.opacity = '0';
+                        menu.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            menu.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Mobile dropdown handling
+                if (window.innerWidth < 992) {
+                    ministriesDropdown.addEventListener('click', function(e) {
+                        if (window.innerWidth < 992) {
+                            e.preventDefault();
+                            const menu = this.nextElementSibling;
+                            if (menu.style.display === 'block') {
+                                menu.style.opacity = '0';
+                                setTimeout(() => {
+                                    menu.style.display = 'none';
+                                }, 300);
+                            } else {
+                                menu.style.display = 'block';
+                                menu.style.opacity = '0';
+                                menu.style.transform = 'translateY(-10px)';
+                                
+                                setTimeout(() => {
+                                    menu.style.opacity = '1';
+                                    menu.style.transform = 'translateY(0)';
+                                }, 10);
+                            }
+                        }
+                    });
+                }
+            }
+            
+            // Handle all dropdowns for consistency
+            document.querySelectorAll('.dropdown-toggle').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        const menu = this.nextElementSibling;
+                        const isVisible = menu.style.display === 'block';
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-menu').forEach(otherMenu => {
+                            if (otherMenu !== menu) {
+                                otherMenu.style.opacity = '0';
+                                setTimeout(() => {
+                                    otherMenu.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                        
+                        if (isVisible) {
+                            menu.style.opacity = '0';
+                            setTimeout(() => {
+                                menu.style.display = 'none';
+                            }, 300);
+                        } else {
+                            menu.style.display = 'block';
+                            menu.style.opacity = '0';
+                            setTimeout(() => {
+                                menu.style.opacity = '1';
+                            }, 10);
+                        }
+                    }
+                });
+            });
+        }
+
+        // ===== FIX FOR BOOTSTRAP DROPDOWN INITIALIZATION =====
+        function initializeDropdowns() {
+            const dropdownElements = document.querySelectorAll('.dropdown-toggle');
+            dropdownElements.forEach(function(dropdownToggleEl) {
+                const dropdown = new bootstrap.Dropdown(dropdownToggleEl);
+                
+                // Additional event listeners for better mobile handling
+                dropdownToggleEl.addEventListener('click', function(e) {
+                    if (window.innerWidth < 992) {
+                        // On mobile, prevent default and handle manually for better control
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const dropdownMenu = this.nextElementSibling;
+                        const isShown = dropdownMenu.classList.contains('show');
+                        
+                        if (!isShown) {
+                            dropdown.show();
+                        } else {
+                            dropdown.hide();
+                        }
+                    }
+                });
+            });
+        }
+
+        // Initialize enhanced dropdowns
+        document.addEventListener('DOMContentLoaded', function() {
+            enhanceDropdowns();
+            initializeDropdowns();
+            
+            // Re-initialize on resize
+            window.addEventListener('resize', function() {
+                enhanceDropdowns();
+            });
+            
+            // Ensure dropdown menu is properly styled
+            const dropdownMenu = document.querySelector('#ministriesDropdown + .dropdown-menu');
+            if (dropdownMenu) {
+                // Add specific styles for the ministries dropdown
+                dropdownMenu.style.minWidth = '250px';
+                dropdownMenu.style.maxWidth = 'calc(100vw - 30px)'; // Prevent overflow on mobile
+                
+                // Ensure proper z-index and positioning
+                dropdownMenu.style.zIndex = '1050';
+                dropdownMenu.style.position = 'absolute';
+            }
+        });
 
         // Additional overflow prevention
         function checkForOverflow() {
@@ -1639,19 +1878,6 @@
 
         window.addEventListener('load', checkForOverflow);
         window.addEventListener('resize', checkForOverflow);
-        
-        // Fix for dropdown menus on mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.dropdown');
-            dropdowns.forEach(dropdown => {
-                dropdown.addEventListener('show.bs.dropdown', function() {
-                    // Ensure dropdown doesn't cause overflow
-                    this.querySelector('.dropdown-menu').style.maxWidth = '100%';
-                });
-            });
-        });
-        
     </script>
-    
 </body>
 </html>
