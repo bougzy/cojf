@@ -3,12 +3,13 @@
 // Get these from Firebase Console > Project Settings > General > Your apps > Firebase SDK snippet
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCdKkb-pWgM9ClT3jvSsxzFzTdxn-3k9-Y",
+  authDomain: "cojriv10.firebaseapp.com",
+  projectId: "cojriv10",
+  storageBucket: "cojriv10.firebasestorage.app",
+  messagingSenderId: "2737797909",
+  appId: "1:2737797909:web:b0a9dbdc0e4cea917c071c",
+  measurementId: "G-V8W3XHXZ01"
 };
 
 // Initialize Firebase
