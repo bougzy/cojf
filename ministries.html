@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministries - GraceChurch</title>
-    
+    <title>Ministries - RCCG City Of Joy | Rivers Province 10</title>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary: #1e3a8a;
@@ -24,14 +24,22 @@
             --primary-dark: #1e40af;
             --secondary: #1e293b;
             --accent: #059669;
+            --accent-light: #10b981;
+            --yaya-primary: #7c3aed;
+            --yaya-secondary: #a78bfa;
             --light: #ffffff;
             --dark: #0f172a;
             --gray-light: #f8fafc;
             --gray: #64748b;
             --gray-dark: #334155;
-            --whatsapp: #059669;
             --text-light: #1e293b;
             --text-dark: #f1f5f9;
+
+            /* Glassmorphism Variables */
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-blur: blur(10px);
         }
 
         [data-bs-theme="dark"] {
@@ -42,6 +50,9 @@
             --gray-dark: #cbd5e1;
             --text-light: #f1f5f9;
             --text-dark: #1e293b;
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -56,6 +67,7 @@
             color: var(--text-light);
             line-height: 1.7;
             transition: all 0.3s ease;
+            overflow-x: hidden;
         }
 
         section {
@@ -69,55 +81,37 @@
             margin-bottom: 1.5rem;
         }
 
-        [data-bs-theme="dark"] h1,
-        [data-bs-theme="dark"] h2,
-        [data-bs-theme="dark"] h3,
-        [data-bs-theme="dark"] h4,
-        [data-bs-theme="dark"] h5,
-        [data-bs-theme="dark"] h6 {
-            color: var(--text-light);
-        }
-
-        p, .lead, .text-muted {
-            color: var(--text-light) !important;
-        }
-
-        [data-bs-theme="dark"] p,
-        [data-bs-theme="dark"] .lead,
-        [data-bs-theme="dark"] .text-muted {
-            color: var(--text-light) !important;
-        }
-
+        /* Glassmorphism Navbar */
         .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            padding: 1rem 0;
+            background: var(--glass-bg) !important;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            padding: 0.8rem 0;
             transition: all 0.3s ease;
-        }
-
-        [data-bs-theme="dark"] .navbar {
-            background: rgba(15, 23, 42, 0.95) !important;
         }
 
         .navbar-brand {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-link {
             color: var(--text-light) !important;
             font-weight: 500;
+            padding: 0.5rem 1rem !important;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        [data-bs-theme="dark"] .nav-link {
-            color: var(--text-light) !important;
+        .nav-link:hover {
+            color: var(--primary) !important;
         }
 
         .nav-link.active {
@@ -125,67 +119,41 @@
             font-weight: 600;
         }
 
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 2px;
-        }
-
-        /* Dropdown Styles */
+        /* Glassmorphism Dropdown */
         .dropdown-menu {
-            background: var(--light);
-            border: 1px solid var(--gray-light);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 0;
-            animation: dropdownFadeIn 0.3s ease;
-        }
-
-        [data-bs-theme="dark"] .dropdown-menu {
-            background: var(--secondary);
-            border-color: var(--gray-dark);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+            padding: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .dropdown-item {
             color: var(--text-light);
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         .dropdown-item:hover {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            padding-left: 2rem;
+            transform: translateX(5px);
         }
 
         .dropdown-divider {
-            border-color: var(--gray-light);
+            border-color: var(--glass-border);
+            margin: 0.5rem 0;
         }
 
-        [data-bs-theme="dark"] .dropdown-divider {
-            border-color: var(--gray-dark);
-        }
-
-        @keyframes dropdownFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Page Hero */
         .page-hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 140px 0 80px;
+            padding: 160px 0 100px;
             position: relative;
             overflow: hidden;
             margin-top: 76px;
@@ -198,7 +166,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><circle cx="100" cy="100" r="80" fill="white"/><circle cx="900" cy="200" r="120" fill="white"/><circle cx="500" cy="800" r="100" fill="white"/></svg>');
             background-size: cover;
         }
 
@@ -212,23 +180,32 @@
         .breadcrumb {
             background: transparent;
             padding: 0;
-            margin-bottom: 0;
+            margin-bottom: 1rem;
         }
 
         .breadcrumb-item a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: white;
         }
 
         .breadcrumb-item.active {
             color: white;
         }
 
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Section Titles */
         .section-title {
             position: relative;
             margin-bottom: 3rem;
             text-align: center;
-            color: var(--text-light);
         }
 
         .section-title::after {
@@ -243,31 +220,20 @@
             border-radius: 2px;
         }
 
-        .bg-light {
-            background-color: var(--gray-light) !important;
-        }
-
-        [data-bs-theme="dark"] .bg-light {
-            background-color: var(--secondary) !important;
-        }
-
         /* Ministry Cards */
         .ministry-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            padding: 2.5rem 2rem;
             text-align: center;
-            padding: 3rem 2rem;
-            border-radius: 16px;
             transition: all 0.4s ease;
-            background: var(--light);
-            border: 1px solid var(--gray-light);
+            height: 100%;
             position: relative;
             overflow: hidden;
-            margin-bottom: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
         }
 
         .ministry-card::before {
@@ -281,21 +247,12 @@
         }
 
         .ministry-card:hover {
-            background: var(--primary);
-            color: white;
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.2);
+            box-shadow: 0 20px 40px rgba(31, 38, 135, 0.25);
         }
 
         .ministry-card:hover .ministry-icon {
-            background: white;
-            color: var(--primary);
             transform: scale(1.1) rotate(5deg);
-        }
-
-        .ministry-card:hover h4,
-        .ministry-card:hover p {
-            color: white;
         }
 
         .ministry-icon {
@@ -310,12 +267,23 @@
             font-size: 2rem;
             margin: 0 auto 1.5rem;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
         }
 
-        /* Special YAYA Card */
+        .ministry-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .ministry-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* YAYA Special Card */
         .ministry-card.yaya-card {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
             color: white;
         }
 
@@ -325,88 +293,94 @@
 
         .ministry-card.yaya-card .ministry-icon {
             background: white;
-            color: #7c3aed;
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+            color: var(--yaya-primary);
+        }
+
+        .ministry-card.yaya-card h4,
+        .ministry-card.yaya-card p {
+            color: white;
         }
 
         .ministry-card.yaya-card:hover {
-            background: linear-gradient(135deg, #3730a3 0%, #5b21b6 100%);
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 25px 50px rgba(124, 58, 237, 0.35);
         }
 
-        .ministry-card.yaya-card:hover .ministry-icon {
-            background: #fef3c7;
-            color: #3730a3;
-            transform: scale(1.1) rotate(-5deg);
-        }
-
-        /* Animation for YAYA Section */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .yaya-highlight {
-            animation: pulse 2s infinite;
-        }
-
-        .ministry-detail-card {
-            border: none;
-            border-radius: 16px;
+        /* Featured Ministry Section */
+        .featured-ministry {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
             overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .featured-ministry-img {
             height: 100%;
-            background: var(--light);
-            margin-bottom: 2rem;
-            color: var(--text-light);
-        }
-
-        .ministry-detail-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .ministry-img {
-            height: 250px;
+            min-height: 350px;
             object-fit: cover;
-            width: 100%;
         }
 
+        .featured-ministry-content {
+            padding: 3rem;
+        }
+
+        /* Schedule Items */
         .schedule-item {
-            padding: 1rem;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
             border-left: 4px solid var(--primary);
-            background: var(--gray-light);
-            border-radius: 8px;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
             margin-bottom: 1rem;
-            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--primary-light);
         }
 
         .schedule-item strong {
-            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
-        /* Navigation Pills */
-        .nav-pills .nav-link {
-            color: var(--text-light);
-            padding: 1rem 1.5rem;
-            margin: 0.5rem;
+        /* Filter Tabs */
+        .filter-tabs {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
             border-radius: 50px;
+            padding: 0.5rem;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-tab {
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            color: var(--text-light);
             transition: all 0.3s ease;
-            background: var(--gray-light);
-            border: 1px solid var(--gray-light);
+            cursor: pointer;
         }
 
-        .nav-pills .nav-link.active {
+        .filter-tab:hover {
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .filter-tab.active {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .nav-pills .nav-link:hover {
-            background: var(--primary-light);
             color: white;
         }
 
@@ -422,13 +396,29 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
             color: white;
         }
 
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            padding: 10px 28px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
         .btn-yaya {
-            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
             border: none;
             padding: 12px 30px;
             font-weight: 600;
@@ -438,33 +428,34 @@
         }
 
         .btn-yaya:hover {
-            background: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
             color: white;
         }
 
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
+        .btn-outline-yaya {
+            border: 2px solid var(--yaya-primary);
+            color: var(--yaya-primary);
             background: transparent;
-            padding: 10px 25px;
+            padding: 10px 28px;
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
         }
 
-        .btn-outline-primary:hover {
-            background: var(--primary);
+        .btn-outline-yaya:hover {
+            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            border-color: transparent;
         }
 
         /* Theme Toggle */
         .theme-toggle {
-            background: var(--gray-light);
-            border: none;
-            font-size: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            font-size: 1.3rem;
             color: var(--text-light);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -480,26 +471,140 @@
             background: var(--primary);
             color: white;
             transform: rotate(30deg);
+            border-color: var(--primary);
         }
 
-        footer {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
-            color: var(--text-light);
-            padding: 4rem 0 2rem;
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 24px;
+            padding: 4rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        footer h3,
-        footer h5 {
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .cta-section h2,
+        .cta-section p {
             color: white;
         }
 
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: #cbd5e1;
+            padding: 4rem 0 2rem;
+        }
+
+        footer h5 {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
         footer a {
-            color: var(--gray) !important;
+            color: #94a3b8 !important;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
         footer a:hover {
             color: var(--primary-light) !important;
+            padding-left: 5px;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .social-links a i {
+            font-size: 1.1rem;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .page-hero {
+                padding: 140px 0 80px;
+            }
+
+            .page-title {
+                font-size: 2.8rem;
+            }
+
+            .featured-ministry-content {
+                padding: 2rem;
+            }
+
+            .cta-section {
+                padding: 3rem 2rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -507,61 +612,55 @@
                 padding: 120px 0 60px;
                 margin-top: 70px;
             }
-            
+
             .page-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            
+
             section {
                 padding: 3rem 0;
             }
-            
-            .nav-pills .nav-link {
-                padding: 0.75rem 1rem;
+
+            .filter-tabs {
+                justify-content: center;
+            }
+
+            .filter-tab {
+                padding: 0.5rem 1rem;
                 font-size: 0.9rem;
             }
         }
 
-        /* Ensure text visibility in all sections */
-        .container h1,
-        .container h2,
-        .container h3,
-        .container h4,
-        .container h5,
-        .container h6,
-        .container p,
-        .container .lead,
-        .container .text-muted {
-            color: var(--text-light) !important;
-        }
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
 
-        /* Fix for dark mode text in light sections */
-        [data-bs-theme="dark"] .bg-light h1,
-        [data-bs-theme="dark"] .bg-light h2,
-        [data-bs-theme="dark"] .bg-light h3,
-        [data-bs-theme="dark"] .bg-light h4,
-        [data-bs-theme="dark"] .bg-light h5,
-        [data-bs-theme="dark"] .bg-light h6,
-        [data-bs-theme="dark"] .bg-light p,
-        [data-bs-theme="dark"] .bg-light .lead,
-        [data-bs-theme="dark"] .bg-light .text-muted {
-            color: var(--text-light) !important;
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+
+            .ministry-card {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <img src="img/Rccg_logo.png" alt="" style="width: 70px;">
-            <a class="navbar-brand ms-2" href="index.html">City Of Joy</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                <img src="img/Rccg_logo.png" alt="RCCG Logo" style="width: 55px;">
+                <span class="navbar-brand ms-2">City Of Joy</span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
@@ -569,425 +668,282 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown">
                             Ministries
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
-                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
-                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
-                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
-                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
-                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                            <li><a class="dropdown-item" href="#children">Children's Ministry</a></li>
+                            <li><a class="dropdown-item" href="#men">Men's Fellowship</a></li>
+                            <li><a class="dropdown-item" href="#women">Women's Ministry</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="sermons.html">Sermons</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="giving.html">Giving</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="marketplace.html">Marketplace</a>
-                    </li> -->
                 </ul>
-                
-                <div class="d-flex align-items-center">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="bi bi-sun-fill"></i>
-                    </button>
-                </div>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Page Hero -->
     <section class="page-hero">
-        <div class="container">
-            <nav aria-label="breadcrumb">
+        <div class="container position-relative">
+            <nav aria-label="breadcrumb" data-aos="fade-down">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item active">Ministries</li>
                 </ol>
             </nav>
             <h1 class="page-title" data-aos="fade-up">Our Ministries</h1>
-            <p class="lead" data-aos="fade-up" data-aos-delay="200" style="color: white !important;">Discover how you can get involved and grow through our diverse ministry opportunities for all ages and stages of life.</p>
+            <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100" style="color: rgba(255,255,255,0.9); max-width: 600px;">
+                Discover how you can get involved and grow through our diverse ministry opportunities for all ages and stages of life.
+            </p>
         </div>
     </section>
 
-    <!-- Ministry Categories Navigation -->
-    <section class="bg-light">
-        <div class="container">
-            <ul class="nav nav-pills justify-content-center" id="ministryTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">
-                        All Ministries
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="yaya-tab" data-bs-toggle="tab" data-bs-target="#yaya" type="button" role="tab">
-                        YAYA
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="children-tab" data-bs-toggle="tab" data-bs-target="#children" type="button" role="tab">
-                        Children & Youth
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="adults-tab" data-bs-toggle="tab" data-bs-target="#adults" type="button" role="tab">
-                        Adults
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="outreach-tab" data-bs-toggle="tab" data-bs-target="#outreach" type="button" role="tab">
-                        Outreach
-                    </button>
-                </li>
-            </ul>
+    <!-- Ministry Filter -->
+    <section class="bg-light py-4">
+        <div class="container text-center">
+            <div class="filter-tabs" data-aos="fade-up">
+                <button class="filter-tab active" data-filter="all">All Ministries</button>
+                <button class="filter-tab" data-filter="youth">Youth & Young Adults</button>
+                <button class="filter-tab" data-filter="adults">Adults</button>
+                <button class="filter-tab" data-filter="children">Children</button>
+                <button class="filter-tab" data-filter="outreach">Outreach</button>
+            </div>
         </div>
     </section>
 
-    <!-- All Ministries Tab -->
+    <!-- Featured Ministry - YAYA -->
     <section>
         <div class="container">
-            <div class="tab-content" id="ministryTabsContent">
-                <div class="tab-pane fade show active" id="all" role="tabpanel">
-                    <h2 class="section-title" data-aos="fade-up">Explore All Ministries</h2>
-                    <div class="row g-4">
-                        <!-- YAYA Ministry Card -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
-                            <div class="ministry-card yaya-card yaya-highlight">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-people-fill"></i>
-                                </div>
-                                <h4>YAYA</h4>
-                                <p class="mb-3">Youth & Young Adults Affairs - Empowering the next generation through faith, fellowship, and purpose.</p>
-                                <a href="yaya.html" class="btn btn-yaya btn-sm">Explore YAYA</a>
-                            </div>
-                        </div>
+            <div class="featured-ministry" data-aos="fade-up">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                             alt="YAYA Ministry"
+                             class="img-fluid featured-ministry-img w-100">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="featured-ministry-content">
+                            <span class="badge bg-primary mb-3 px-3 py-2" style="background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%) !important;">Featured Ministry</span>
+                            <h2>Youth & Young Adults Affairs (YAYA)</h2>
+                            <p class="lead">Empowering the next generation to live out their faith with passion and purpose.</p>
+                            <p>YAYA is dedicated to creating a vibrant community where youth and young adults can grow in their relationship with God, build meaningful connections, and discover their unique calling.</p>
 
-                        <!-- Children's Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-people-fill"></i>
+                            <h5 class="mt-4 mb-3">What We Offer</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Weekly Bible Studies</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Monthly Worship Nights</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Leadership Training</li>
+                                    </ul>
                                 </div>
-                                <h4>Children's Ministry</h4>
-                                <p class="mb-3">Nurturing young hearts through engaging Bible lessons, fun activities, and age-appropriate discipleship.</p>
-                                <a href="children-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mentorship Programs</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mission Trips</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Career Guidance</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Youth Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-emoji-smile"></i>
-                                </div>
-                                <h4>Youth Ministry</h4>
-                                <p class="mb-3">Empowering teenagers to grow in faith through dynamic worship, relevant teaching, and authentic community.</p>
-                                <a href="youth-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-
-                        <!-- Young Adults -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-person-badge"></i>
-                                </div>
-                                <h4>Young Adults</h4>
-                                <p class="mb-3">Building community for college students and young professionals navigating life and faith transitions.</p>
-                                <a href="young-adults.html" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-
-                        <!-- Men's Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-person-standing"></i>
-                                </div>
-                                <h4>Men's Ministry</h4>
-                                <p class="mb-3">Equipping men to live out their God-given purpose through fellowship, accountability, and service.</p>
-                                <a href="mens-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-
-                        <!-- Women's Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-person-hearts"></i>
-                                </div>
-                                <h4>Women's Ministry</h4>
-                                <p class="mb-3">Creating spaces for women to connect, grow spiritually, and support one another through life's journey.</p>
-                                <a href="womens-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-
-                        <!-- Worship & Arts -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-music-note-beamed"></i>
-                                </div>
-                                <h4>Worship & Arts</h4>
-                                <p class="mb-3">Leading the church in passionate worship through music, creative arts, and technical production.</p>
-                                <a href="worship-arts.html" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-
-                        <!-- Outreach -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-heart-fill"></i>
-                                </div>
-                                <h4>Outreach</h4>
-                                <p class="mb-3">Serving our local community through practical help, evangelism, and partnership with local organizations.</p>
-                                <a href="outreach.html" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-
-                        <!-- Prayer Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-chat-heart"></i>
-                                </div>
-                                <h4>Prayer Ministry</h4>
-                                <p class="mb-3">Covering our church and community in prayer through intercession groups and prayer chains.</p>
-                                <a href="prayer-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-
-                        <!-- Media Ministry -->
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                            <div class="ministry-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-camera-video"></i>
-                                </div>
-                                <h4>Media Ministry</h4>
-                                <p class="mb-3">Spreading the Gospel through technology, video production, and digital content creation.</p>
-                                <a href="media-ministry.html" class="btn btn-outline-primary btn-sm">Learn More</a>
+                            <div class="mt-4">
+                                <a href="yaya.html" class="btn btn-yaya me-2">Explore YAYA</a>
+                                <a href="events.html" class="btn btn-outline-yaya">View Events</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- YAYA Tab -->
-                <div class="tab-pane fade" id="yaya" role="tabpanel">
-                    <h2 class="section-title" data-aos="fade-up">Youth & Young Adults Affairs (YAYA)</h2>
-                    <div class="row mb-5">
-                        <div class="col-lg-8 mx-auto text-center">
-                            <p class="lead" data-aos="fade-up" data-aos-delay="100">YAYA is dedicated to empowering the next generation of believers to live out their faith passionately and purposefully in today's world.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="row g-4 mb-5">
-                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
-                            <div class="ministry-card yaya-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-heartbreak"></i>
-                                </div>
-                                <h4>Spiritual Growth</h4>
-                                <p>Deepening faith through Bible study, prayer, and mentorship programs designed for young believers.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="ministry-card yaya-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <h4>Community Building</h4>
-                                <p>Creating authentic connections through small groups, fellowship events, and social activities.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="250">
-                            <div class="ministry-card yaya-card">
-                                <div class="ministry-icon">
-                                    <i class="bi bi-bullseye"></i>
-                                </div>
-                                <h4>Leadership Development</h4>
-                                <p>Equipping young leaders with skills and opportunities to serve in church and community.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                        <a href="yaya.html" class="btn btn-yaya btn-lg">Visit YAYA Page</a>
-                    </div>
-                </div>
-
-                <!-- Other tabs would go here with similar structure -->
             </div>
         </div>
     </section>
 
-    <!-- YAYA Ministry Detail Section -->
-    <section class="bg-light">
+    <!-- All Ministries Grid -->
+    <section class="bg-light" id="all-ministries">
         <div class="container">
-            <div class="row align-items-center mb-5" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="YAYA Ministry" 
-                         class="img-fluid rounded-3 shadow ministry-img">
+            <h2 class="section-title" data-aos="fade-up">Explore All Ministries</h2>
+            <div class="row g-4">
+                <!-- YAYA Ministry -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50" data-category="youth">
+                    <div class="ministry-card yaya-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h4>YAYA Ministry</h4>
+                        <p>Youth & Young Adults Affairs - Empowering the next generation through faith, fellowship, and purpose.</p>
+                        <a href="yaya.html" class="btn btn-light btn-sm">Explore YAYA</a>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <h2 class="mb-3">Youth & Young Adults Affairs (YAYA)</h2>
-                    <p class="lead">Empowering the next generation to live out their faith with passion and purpose.</p>
-                    <p>The YAYA ministry is dedicated to creating a vibrant community where youth and young adults can grow in their relationship with God, build meaningful connections, and discover their unique calling. We believe that this generation has a crucial role to play in advancing God's kingdom.</p>
-                    
-                    <h5 class="mt-4">What We Offer</h5>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Weekly Bible Studies</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Monthly Fellowship Events</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Leadership Training</li>
-                            </ul>
+
+                <!-- Children's Ministry -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-category="children" id="children">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-emoji-smile-fill"></i>
                         </div>
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mentorship Programs</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mission Trips</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Career & Life Guidance</li>
-                            </ul>
+                        <h4>Children's Ministry</h4>
+                        <p>Nurturing young hearts through engaging Bible lessons, fun activities, and age-appropriate discipleship.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Youth Ministry -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150" data-category="youth">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-lightning-fill"></i>
                         </div>
+                        <h4>Youth Ministry</h4>
+                        <p>Empowering teenagers to grow in faith through dynamic worship, relevant teaching, and authentic community.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
                     </div>
-                    
-                    <h5 class="mt-4">Weekly Schedule</h5>
-                    <div class="schedule-item">
-                        <strong>YAYA Bible Study</strong><br>
-                        Tuesdays, 6:30 PM - 8:00 PM<br>
-                        Ages 18-35
+                </div>
+
+                <!-- Men's Fellowship -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" data-category="adults" id="men">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-person-standing"></i>
+                        </div>
+                        <h4>Men's Fellowship</h4>
+                        <p>Equipping men to live out their God-given purpose through fellowship, accountability, and service.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
                     </div>
-                    <div class="schedule-item">
-                        <strong>Youth Worship Night</strong><br>
-                        Fridays, 7:00 PM - 9:00 PM<br>
-                        Ages 13-18
+                </div>
+
+                <!-- Women's Ministry -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250" data-category="adults" id="women">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-person-hearts"></i>
+                        </div>
+                        <h4>Women's Ministry</h4>
+                        <p>Creating spaces for women to connect, grow spiritually, and support one another through life's journey.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
                     </div>
-                    
-                    <div class="mt-4">
-                        <a href="yaya.html" class="btn btn-yaya me-3">Learn More</a>
-                        <a href="events.html" class="btn btn-outline-primary">View Events</a>
+                </div>
+
+                <!-- Worship & Arts -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300" data-category="adults">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-music-note-beamed"></i>
+                        </div>
+                        <h4>Worship & Arts</h4>
+                        <p>Leading the church in passionate worship through music, creative arts, and technical production.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Outreach Ministry -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350" data-category="outreach">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h4>Outreach Ministry</h4>
+                        <p>Serving our local community through practical help, evangelism, and partnership with local organizations.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Prayer Ministry -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400" data-category="adults">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-chat-heart-fill"></i>
+                        </div>
+                        <h4>Prayer Ministry</h4>
+                        <p>Covering our church and community in prayer through intercession groups and prayer chains.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Media Ministry -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450" data-category="outreach">
+                    <div class="ministry-card">
+                        <div class="ministry-icon">
+                            <i class="bi bi-camera-video-fill"></i>
+                        </div>
+                        <h4>Media Ministry</h4>
+                        <p>Spreading the Gospel through technology, video production, and digital content creation.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Ministries -->
+    <!-- Ministry Schedules -->
     <section>
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Featured Ministries</h2>
-            
-            <!-- Children's Ministry Detail -->
-            <div class="row align-items-center mb-5" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Children's Ministry" 
-                         class="img-fluid rounded-3 shadow ministry-img">
+            <h2 class="section-title" data-aos="fade-up">Weekly Schedules</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h4 class="mb-4"><i class="bi bi-calendar-week me-2 text-primary"></i>Youth & Young Adults</h4>
+                    <div class="schedule-item">
+                        <strong>YAYA Bible Study</strong>
+                        <div class="text-muted">Tuesdays, 6:30 PM - 8:00 PM</div>
+                        <small>Ages 18-35</small>
+                    </div>
+                    <div class="schedule-item">
+                        <strong>Youth Worship Night</strong>
+                        <div class="text-muted">Fridays, 7:00 PM - 9:00 PM</div>
+                        <small>Ages 13-18</small>
+                    </div>
+                    <div class="schedule-item">
+                        <strong>Sunday Youth Service</strong>
+                        <div class="text-muted">Sundays, 10:30 AM</div>
+                        <small>All Youth & Young Adults</small>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <h3>Children's Ministry</h3>
-                    <p class="lead">Building strong foundations of faith for the next generation.</p>
-                    <p>Our Children's Ministry provides a safe, engaging environment where kids can learn about Jesus in age-appropriate ways. Through interactive Bible lessons, worship, and fun activities, we help children develop a personal relationship with Christ.</p>
-                    
-                    <h5 class="mt-4">Weekly Schedule</h5>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h4 class="mb-4"><i class="bi bi-calendar-week me-2 text-primary"></i>General Ministries</h4>
                     <div class="schedule-item">
-                        <strong>Sunday School</strong><br>
-                        Sundays, 9:00 AM - 10:15 AM<br>
-                        Ages 3-12
+                        <strong>Children's Sunday School</strong>
+                        <div class="text-muted">Sundays, 9:00 AM - 10:15 AM</div>
+                        <small>Ages 3-12</small>
                     </div>
                     <div class="schedule-item">
-                        <strong>Kids Worship</strong><br>
-                        Sundays, 10:30 AM Service<br>
-                        Children's Church Program
-                    </div>
-                    
-                    <a href="children-ministry.html" class="btn btn-primary mt-3">Get Involved</a>
-                </div>
-            </div>
-
-            <!-- Youth Ministry Detail -->
-            <div class="row align-items-center mb-5" data-aos="fade-up">
-                <div class="col-lg-6 order-lg-2">
-                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Youth Ministry" 
-                         class="img-fluid rounded-3 shadow ministry-img">
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <h3>Youth Ministry</h3>
-                    <p class="lead">Empowering teenagers to live out their faith boldly.</p>
-                    <p>Our Youth Ministry creates a space where teenagers can explore their faith, build authentic relationships, and discover their purpose in Christ. Through relevant teaching, small groups, and fun events, we equip young people to navigate life's challenges with biblical wisdom.</p>
-                    
-                    <h5 class="mt-4">Weekly Activities</h5>
-                    <div class="schedule-item">
-                        <strong>Youth Group</strong><br>
-                        Wednesdays, 6:30 PM - 8:00 PM<br>
-                        Grades 6-12
+                        <strong>Men's Fellowship</strong>
+                        <div class="text-muted">First Saturday of Each Month, 8:00 AM</div>
+                        <small>All Men Welcome</small>
                     </div>
                     <div class="schedule-item">
-                        <strong>Sunday Bible Study</strong><br>
-                        Sundays, 9:00 AM - 10:15 AM<br>
-                        Age-specific small groups
+                        <strong>Women's Ministry</strong>
+                        <div class="text-muted">Wednesdays, 10:00 AM & 6:00 PM</div>
+                        <small>All Women Welcome</small>
                     </div>
-                    
-                    <a href="youth-ministry.html" class="btn btn-primary mt-3">Join Youth Group</a>
-                </div>
-            </div>
-
-            <!-- Outreach Ministry Detail -->
-            <div class="row align-items-center" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Outreach Ministry" 
-                         class="img-fluid rounded-3 shadow ministry-img">
-                </div>
-                <div class="col-lg-6">
-                    <h3>Outreach Ministry</h3>
-                    <p class="lead">Serving our community with the love of Christ.</p>
-                    <p>Our Outreach Ministry extends God's love beyond our church walls through practical service, evangelism, and partnership with local organizations. We believe in being the hands and feet of Jesus in our community, meeting both physical and spiritual needs.</p>
-                    
-                    <h5 class="mt-4">Current Projects</h5>
-                    <div class="schedule-item">
-                        <strong>Food Pantry</strong><br>
-                        Every Saturday, 9:00 AM - 12:00 PM<br>
-                        Serving 200+ families weekly
-                    </div>
-                    <div class="schedule-item">
-                        <strong>Community Cleanup</strong><br>
-                        First Saturday of each month<br>
-                        Neighborhood beautification
-                    </div>
-                    
-                    <a href="outreach.html" class="btn btn-primary mt-3">Volunteer Today</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Get Involved CTA -->
-    <section>
+    <section class="bg-light">
         <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-8" data-aos="fade-up">
-                    <h2>Ready to Get Involved?</h2>
-                    <p class="lead mb-4">Whether you're looking to serve or be served, there's a place for you in our ministries.</p>
-                    <div class="d-flex flex-wrap gap-3 justify-content-center">
-                        <a href="contact.html" class="btn btn-primary btn-lg">Contact Ministry Leader</a>
-                        <a href="events.html" class="btn btn-outline-primary btn-lg">View Upcoming Events</a>
-                        <a href="yaya.html" class="btn btn-yaya btn-lg">Join YAYA</a>
-                    </div>
+            <div class="cta-section" data-aos="fade-up">
+                <h2 class="mb-3">Ready to Get Involved?</h2>
+                <p class="lead mb-4">Whether you're looking to serve or be served, there's a place for you in our ministries.</p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <a href="#" class="btn btn-light btn-lg">Contact Ministry Leader</a>
+                    <a href="events.html" class="btn btn-outline-light btn-lg">View Upcoming Events</a>
+                    <a href="yaya.html" class="btn btn-yaya btn-lg">Join YAYA</a>
                 </div>
             </div>
         </div>
@@ -998,121 +954,175 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h3 class="mb-3">City Of Joy</h3>
-                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                    <div class="footer-brand">City Of Joy</div>
+                    <p class="mb-4">RCCG Rivers Province 10 Headquarters. A vibrant community of faith, hope, and love. Growing together in Christ.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
-                        <li><a href="about.html" class="text-light text-decoration-none">About</a></li>
-                        <li><a href="ministries.html" class="text-light text-decoration-none">Ministries</a></li>
-                        <li><a href="sermons.html" class="text-light text-decoration-none">Sermons</a></li>
-                        <li><a href="yaya.html" class="text-light text-decoration-none">YAYA Ministry</a></li>
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        <li class="mb-2"><a href="ministries.html">Ministries</a></li>
+                        <li class="mb-2"><a href="sermons.html">Sermons</a></li>
+                        <li class="mb-2"><a href="events.html">Events</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Ministries</h5>
                     <ul class="list-unstyled">
-                        <li><a href="yaya.html" class="text-light text-decoration-none">YAYA Ministry</a></li>
-                        <li><a href="children-ministry.html" class="text-light text-decoration-none">Children's Ministry</a></li>
-                        <li><a href="youth-ministry.html" class="text-light text-decoration-none">Youth Ministry</a></li>
-                        <li><a href="events.html" class="text-light text-decoration-none">Events</a></li>
-                        <li><a href="outreach.html" class="text-light text-decoration-none">Outreach</a></li>
+                        <li class="mb-2"><a href="yaya.html">YAYA Ministry</a></li>
+                        <li class="mb-2"><a href="#children">Children's Ministry</a></li>
+                        <li class="mb-2"><a href="#men">Men's Fellowship</a></li>
+                        <li class="mb-2"><a href="#women">Women's Ministry</a></li>
+                        <li class="mb-2"><a href="giving.html">Online Giving</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-3 mb-4">
                     <h5>Contact Info</h5>
                     <ul class="list-unstyled">
-                        <li><i class="bi bi-geo-alt me-2"></i>RCCG. Rivers Province 10 Hqtrs. - <span class="fw-bold">City Of Joy Parish</span></li>
-                        <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
-                        <li><i class="bi bi-envelope me-2"></i> info@cityofjoy.com</li>
-                        <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM </li>
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>5 Holiness Close, Rumuagholu, Port Harcourt</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i>+234 XXX XXX XXXX</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i>info@rccgcoj-rp10.org</li>
+                        <li class="mb-2"><i class="bi bi-clock me-2"></i>Sunday: 8:00 AM</li>
                     </ul>
                 </div>
             </div>
-            
-            <hr class="my-4">
-            
+
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2023 City Of Joy. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2025 RCCG City Of Joy - Rivers Province 10. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
-                    <a href="terms.html" class="text-light">Terms of Service</a>
+                    <a href="#" class="me-3">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
         });
 
-        // Theme Toggle
+        // Theme Toggle with localStorage
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            document.documentElement.setAttribute('data-bs-theme', newTheme);
-            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
-            
-            localStorage.setItem('theme', newTheme);
-        });
 
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme') || 
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme') ||
             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
+
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
         themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
 
-        // Ministry tabs functionality
-        const ministryTabs = document.querySelectorAll('#ministryTabs button');
-        ministryTabs.forEach(tab => {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Filter Tabs Functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const ministryCards = document.querySelectorAll('[data-category]');
+
+        filterTabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                ministryTabs.forEach(t => t.classList.remove('active'));
+                // Remove active class from all tabs
+                filterTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
                 tab.classList.add('active');
+
+                const filter = tab.getAttribute('data-filter');
+
+                ministryCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
-        
 
-        // Smooth dropdown animation
-        document.querySelectorAll('.dropdown-toggle').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (this.nextElementSibling.style.display === 'block') {
-                    this.nextElementSibling.style.opacity = '0';
-                    setTimeout(() => {
-                        this.nextElementSibling.style.display = 'none';
-                    }, 300);
-                } else {
-                    this.nextElementSibling.style.display = 'block';
-                    setTimeout(() => {
-                        this.nextElementSibling.style.opacity = '1';
-                    }, 10);
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+            } else {
+                navbar.style.padding = '0.8rem 0';
+            }
+        });
+
+        // Smooth scroll to sections
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });

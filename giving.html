@@ -3,124 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giving - GraceChurch</title>
-    
+    <title>Giving - RCCG City Of Joy</title>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary: #1e3a8a;
             --primary-light: #3b82f6;
             --primary-dark: #1e40af;
-            --secondary: #1e293b;
-            --accent: #059669;
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --success: #059669;
             --light: #ffffff;
             --dark: #0f172a;
-            --gray-light: #f8fafc;
-            --gray: #64748b;
-            --gray-dark: #334155;
-            --success: #059669;
-            --warning: #d97706;
-            --danger: #dc2626;
-            --whatsapp: #059669;
-            --text-primary: #1e293b;
-            --text-secondary: #374151;
-            --text-muted: #6b7280;
+            --gray-100: #f8fafc;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+
+            /* Glassmorphism variables */
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-blur: blur(10px);
         }
 
         [data-bs-theme="dark"] {
             --light: #0f172a;
-            --gray-light: #1e293b;
             --dark: #f1f5f9;
-            --gray: #94a3b8;
-            --gray-dark: #cbd5e1;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-        }
+            --gray-100: #1e293b;
+            --gray-200: #334155;
+            --gray-300: #475569;
+            --gray-400: #64748b;
+            --gray-500: #94a3b8;
+            --gray-600: #cbd5e1;
+            --gray-700: #e2e8f0;
+            --gray-800: #f1f5f9;
+            --gray-900: #f8fafc;
 
-        /* ===== CRITICAL OVERFLOW PREVENTION ===== */
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-            position: relative;
-            width: 100%;
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            max-width: 100%;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--light);
-            color: var(--text-primary);
+            color: var(--gray-800);
             line-height: 1.7;
-            transition: all 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         [data-bs-theme="dark"] body {
-            color: var(--text-primary);
-            background-color: var(--light);
+            color: var(--gray-200);
         }
 
-        /* Container fixes */
-        .container, .container-fluid {
-            max-width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            overflow: hidden;
-        }
-
-        section {
-            padding: 5rem 0;
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .section-compact {
-            padding: 3rem 0;
-        }
-
-        /* Row and column fixes */
-        .row {
-            margin-right: 0;
-            margin-left: 0;
-            max-width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .row > * {
-            padding-right: 0.75rem;
-            padding-left: 0.75rem;
-            max-width: 100%;
-            flex-shrink: 0;
-        }
-
-        /* Typography fixes */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
+            color: var(--gray-900);
+            line-height: 1.3;
         }
 
         [data-bs-theme="dark"] h1,
@@ -129,229 +100,293 @@
         [data-bs-theme="dark"] h4,
         [data-bs-theme="dark"] h5,
         [data-bs-theme="dark"] h6 {
-            color: var(--text-primary);
+            color: var(--gray-100);
         }
 
-        p, .lead, .card-text {
-            color: var(--text-secondary);
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
-        }
-
-        [data-bs-theme="dark"] p,
-        [data-bs-theme="dark"] .lead,
-        [data-bs-theme="dark"] .card-text {
-            color: var(--text-secondary);
-        }
-
-        .text-muted {
-            color: var(--text-muted) !important;
-        }
-
-        [data-bs-theme="dark"] .text-muted {
-            color: var(--text-muted) !important;
-        }
-
-        /* Navbar fixes */
+        /* ===== GLASSMORPHISM NAVBAR ===== */
         .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            padding: 0.8rem 0;
             transition: all 0.4s ease;
-            padding: 1rem 0;
-            z-index: 1030;
-            max-width: 100%;
+            z-index: 1050;
         }
 
-        [data-bs-theme="dark"] .navbar {
-            background: rgba(15, 23, 42, 0.95) !important;
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        [data-bs-theme="dark"] .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.95);
         }
 
         .navbar-brand {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 0;
-            white-space: nowrap;
-            max-width: 100%;
+            background-clip: text;
+        }
+
+        .navbar-brand img {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
         }
 
         .nav-link {
             font-weight: 500;
-            position: relative;
-            margin: 0 5px;
-            transition: all 0.3s ease;
+            color: var(--gray-700) !important;
             padding: 0.5rem 1rem !important;
-            white-space: nowrap;
-            color: var(--text-primary) !important;
+            margin: 0 0.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         [data-bs-theme="dark"] .nav-link {
-            color: var(--text-primary) !important;
+            color: var(--gray-300) !important;
         }
 
-        .nav-link::after {
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .nav-link.active::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--primary);
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-menu {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+            padding: 0.75rem;
+            min-width: 250px;
+            animation: dropdownFade 0.3s ease;
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-item {
+            color: var(--gray-700);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 80%;
+        [data-bs-theme="dark"] .dropdown-item {
+            color: var(--gray-300);
         }
 
-        /* Page Hero fixes */
-        .page-hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            padding: 140px 0 80px;
+            transform: translateX(5px);
+        }
+
+        .dropdown-divider {
+            border-color: var(--glass-border);
+            margin: 0.5rem 0;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            color: var(--gray-700);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-bs-theme="dark"] .theme-toggle {
+            color: var(--accent);
+        }
+
+        .theme-toggle:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            margin-top: 76px;
             position: relative;
             overflow: hidden;
-            margin-top: 76px;
-            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 6rem 0;
         }
 
         .page-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
-        .page-title {
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
             font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
             color: white;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 600px;
         }
 
         .breadcrumb {
             background: transparent;
             padding: 0;
-            margin-bottom: 0;
+            margin-bottom: 1rem;
         }
 
         .breadcrumb-item a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: white;
         }
 
         .breadcrumb-item.active {
             color: white;
         }
 
-        /* Hero section text remains white in dark mode */
-        [data-bs-theme="dark"] .page-hero,
-        [data-bs-theme="dark"] .page-hero .page-title,
-        [data-bs-theme="dark"] .page-hero .lead,
-        [data-bs-theme="dark"] .page-hero .breadcrumb-item.active {
-            color: white !important;
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        [data-bs-theme="dark"] .page-hero .breadcrumb-item a {
-            color: rgba(255, 255, 255, 0.8) !important;
-        }
-
-        .section-title {
-            position: relative;
-            margin-bottom: 3.5rem;
-            text-align: center;
-            padding-top: 1rem;
-            max-width: 100%;
-            color: var(--text-primary);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 2px;
-        }
-
-        .bg-light {
-            background-color: var(--gray-light) !important;
-        }
-
-        [data-bs-theme="dark"] .bg-light {
-            background-color: var(--gray-light) !important;
-        }
-
-        /* Giving Cards */
-        .giving-card {
-            border: none;
-            border-radius: 16px;
-            overflow: hidden;
+        /* ===== GLASSMORPHISM CARDS ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+            padding: 2rem;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             height: 100%;
-            background: var(--light);
-            margin-bottom: 2rem;
-            max-width: 100%;
         }
 
-        [data-bs-theme="dark"] .giving-card {
-            background-color: var(--gray-light);
-            border: 1px solid #374151;
-        }
-
-        .giving-card:hover {
+        .glass-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 20px 40px rgba(31, 38, 135, 0.2);
         }
 
-        .giving-img {
-            height: 200px;
-            object-fit: cover;
-            width: 100%;
+        [data-bs-theme="dark"] .glass-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Stats Cards */
+        .stats-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--gray-200);
             transition: all 0.4s ease;
-            max-width: 100%;
+            height: 100%;
         }
 
-        .giving-card:hover .giving-img {
-            transform: scale(1.05);
+        [data-bs-theme="dark"] .stats-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
         }
 
-        .progress {
-            height: 8px;
-            border-radius: 4px;
-            background-color: var(--gray-light);
-            overflow: hidden;
+        .stats-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        [data-bs-theme="dark"] .progress {
-            background-color: #374151;
-        }
-
-        .progress-bar {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            transition: width 0.6s ease;
+        .stats-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin: 0 auto 1.5rem;
         }
 
         .stats-number {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
@@ -361,151 +396,403 @@
             color: var(--primary-light);
         }
 
-        .stats-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 16px;
-            background: var(--light);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            height: 100%;
-            margin-bottom: 2rem;
-            max-width: 100%;
+        .stats-label {
+            color: var(--gray-500);
+            font-size: 1rem;
         }
 
-        [data-bs-theme="dark"] .stats-card {
-            background-color: var(--gray-light);
-            border: 1px solid #374151;
-        }
-
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        /* Button fixes */
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        /* ===== BUTTONS ===== */
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
             padding: 14px 32px;
             font-weight: 600;
             border-radius: 50px;
+            color: white;
             transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
             position: relative;
             overflow: hidden;
-            margin: 0.5rem;
-            white-space: nowrap;
-            display: inline-block;
-            max-width: 100%;
-            color: white;
         }
 
-        .btn-primary::before {
+        .btn-primary-gradient::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
 
-        .btn-primary:hover::before {
+        .btn-primary-gradient:hover::before {
             left: 100%;
         }
 
-        .btn-primary:hover {
+        .btn-primary-gradient:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+            box-shadow: 0 8px 30px rgba(30, 58, 138, 0.4);
             color: white;
         }
 
-        .btn-success {
-            background: linear-gradient(135deg, var(--success) 0%, #10b981 100%);
+        .btn-glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .btn-glass:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
             border: none;
             padding: 14px 32px;
             font-weight: 600;
             border-radius: 50px;
+            color: var(--gray-900);
             transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
-            color: white;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
         }
 
-        .btn-success:hover {
+        .btn-accent:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
-            color: white;
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+            color: var(--gray-900);
         }
 
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-            padding: 10px 25px;
+        .btn-success-gradient {
+            background: linear-gradient(135deg, var(--success), #10b981);
+            border: none;
+            padding: 14px 32px;
             font-weight: 600;
             border-radius: 50px;
-            transition: all 0.3s ease;
-            max-width: 100%;
-            white-space: nowrap;
-        }
-
-        [data-bs-theme="dark"] .btn-outline-primary {
-            color: var(--primary-light);
-            border-color: var(--primary-light);
-        }
-
-        .btn-outline-primary:hover {
-            background: var(--primary);
             color: white;
-            transform: translateY(-2px);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.3);
         }
 
-        [data-bs-theme="dark"] .btn-outline-primary:hover {
-            background: var(--primary-light);
+        .btn-success-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(5, 150, 105, 0.4);
             color: white;
         }
 
-        /* Donation Modal */
-        .donation-modal .modal-content {
-            border-radius: 16px;
-            border: none;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-compact {
+            padding: 4rem 0;
+        }
+
+        .bg-gradient-light {
+            background: linear-gradient(180deg, var(--gray-100) 0%, var(--light) 100%);
+        }
+
+        [data-bs-theme="dark"] .bg-gradient-light {
+            background: linear-gradient(180deg, var(--gray-800) 0%, var(--gray-900) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* ===== GIVING PROGRAMS CARDS ===== */
+        .giving-card {
+            background: var(--light);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        [data-bs-theme="dark"] .giving-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+        }
+
+        .giving-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .giving-card .card-body {
+            padding: 2rem;
+        }
+
+        .giving-card .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .giving-card .card-text {
+            color: var(--gray-500);
+            margin-bottom: 1.5rem;
+        }
+
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--gray-200);
+            overflow: hidden;
+        }
+
+        [data-bs-theme="dark"] .progress {
+            background-color: var(--gray-700);
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            transition: width 0.6s ease;
+            border-radius: 5px;
+        }
+
+        /* ===== WHY GIVE SECTION ===== */
+        .why-give-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        [data-bs-theme="dark"] .why-give-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+        }
+
+        .why-give-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        }
+
+        .why-give-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-give-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+        }
+
+        .why-give-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .why-give-card p {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+        }
+
+        [data-bs-theme="dark"] .testimonial-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+        }
+
+        .testimonial-text {
+            color: var(--gray-600);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        [data-bs-theme="dark"] .testimonial-text {
+            color: var(--gray-400);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        [data-bs-theme="dark"] .testimonial-name {
+            color: var(--gray-100);
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== MODAL GLASSMORPHISM ===== */
+        .modal-content {
+            background: var(--light);
+            border-radius: 24px;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
 
         [data-bs-theme="dark"] .modal-content {
-            background-color: var(--gray-light);
-            border: 1px solid #4b5563;
+            background: var(--gray-800);
+            border-color: var(--gray-700);
         }
 
-        [data-bs-theme="dark"] .modal-header,
+        .modal-header {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1.5rem 2rem;
+        }
+
+        [data-bs-theme="dark"] .modal-header {
+            border-color: var(--gray-700);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--gray-200);
+            padding: 1.5rem 2rem;
+        }
+
         [data-bs-theme="dark"] .modal-footer {
-            border-color: #4b5563;
+            border-color: var(--gray-700);
         }
 
         .donation-amounts {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin: 1.5rem 0;
         }
 
         .amount-option {
             padding: 1rem;
-            border: 2px solid var(--gray-light);
-            border-radius: 12px;
+            border: 2px solid var(--gray-200);
+            border-radius: 16px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             background: var(--light);
-            color: var(--text-primary);
+            color: var(--gray-700);
+            font-weight: 600;
         }
 
         [data-bs-theme="dark"] .amount-option {
-            background-color: var(--light);
-            border-color: #4b5563;
-            color: var(--text-primary);
+            background: var(--gray-700);
+            border-color: var(--gray-600);
+            color: var(--gray-200);
         }
 
         .amount-option:hover {
@@ -513,80 +800,74 @@
             transform: translateY(-2px);
         }
 
-        [data-bs-theme="dark"] .amount-option:hover {
-            border-color: var(--primary);
-            background-color: var(--light);
-        }
-
         .amount-option.selected {
             border-color: var(--primary);
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
         }
 
-        .custom-amount {
-            margin-top: 1rem;
-        }
-
         .bank-details {
-            background: var(--gray-light);
-            border-radius: 12px;
+            background: var(--gray-100);
+            border-radius: 16px;
             padding: 1.5rem;
             margin-top: 1.5rem;
         }
 
         [data-bs-theme="dark"] .bank-details {
-            background-color: var(--light);
-            border: 1px solid #4b5563;
+            background: var(--gray-700);
         }
 
         .bank-detail-item {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             margin-bottom: 0.75rem;
             padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--gray-200);
         }
 
         [data-bs-theme="dark"] .bank-detail-item {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-color: var(--gray-600);
+        }
+
+        .bank-detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .bank-detail-label {
             font-weight: 600;
-            color: var(--text-primary);
-            min-width: 120px;
+            color: var(--gray-700);
         }
 
         [data-bs-theme="dark"] .bank-detail-label {
-            color: var(--text-primary);
+            color: var(--gray-300);
         }
 
         .bank-detail-value {
-            color: var(--text-secondary);
+            color: var(--gray-600);
             word-break: break-all;
         }
 
         [data-bs-theme="dark"] .bank-detail-value {
-            color: var(--text-secondary);
+            color: var(--gray-400);
         }
 
-        /* Form elements */
+        /* Form Elements */
         .form-control, .form-select {
-            border: 1px solid var(--gray-light);
+            border: 1px solid var(--gray-200);
             border-radius: 12px;
             padding: 12px 16px;
             background: var(--light);
-            color: var(--text-primary);
+            color: var(--gray-700);
             transition: all 0.3s ease;
-            max-width: 100%;
         }
 
         [data-bs-theme="dark"] .form-control,
         [data-bs-theme="dark"] .form-select {
-            background-color: var(--gray-light);
-            border-color: #4b5563;
-            color: var(--text-primary);
+            background: var(--gray-700);
+            border-color: var(--gray-600);
+            color: var(--gray-200);
         }
 
         .form-control:focus, .form-select:focus {
@@ -594,89 +875,109 @@
             box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
         }
 
-        [data-bs-theme="dark"] .form-control:focus,
-        [data-bs-theme="dark"] .form-select:focus {
-            background-color: var(--gray-light);
+        .form-check-input:checked {
+            background-color: var(--primary);
             border-color: var(--primary);
-            color: var(--text-primary);
-            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
-        }
-
-        [data-bs-theme="dark"] .form-control::placeholder {
-            color: var(--text-muted);
-        }
-
-        .input-group-text {
-            background-color: var(--gray-light);
-            border-color: var(--gray-light);
-            color: var(--text-primary);
-        }
-
-        [data-bs-theme="dark"] .input-group-text {
-            background-color: #374151;
-            border-color: #4b5563;
-            color: var(--text-primary);
         }
 
         .form-check-label {
-            color: var(--text-primary);
+            color: var(--gray-700);
         }
 
         [data-bs-theme="dark"] .form-check-label {
-            color: var(--text-primary);
+            color: var(--gray-300);
         }
 
-        /* Theme toggle */
-        .theme-toggle {
-            background: var(--gray-light);
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-            transition: all 0.4s ease;
+        .input-group-text {
+            background: var(--gray-100);
+            border-color: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        [data-bs-theme="dark"] .input-group-text {
+            background: var(--gray-600);
+            border-color: var(--gray-600);
+            color: var(--gray-300);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--gray-900) 0%, #000 100%);
+            color: var(--gray-400);
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--accent));
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
             width: 45px;
             height: 45px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(30deg);
-            background: var(--primary);
             color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
 
-        /* Footer fixes */
-        footer {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
-            color: var(--light);
-            padding: 4rem 0 2rem;
-            position: relative;
-            margin-top: 2rem;
-            max-width: 100%;
-            overflow: hidden;
+        .footer-social a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            transform: translateY(-5px);
         }
 
-        .footer-links h5 {
+        .footer-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
             margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 0.5rem;
-            color: white;
+            padding-bottom: 0.75rem;
         }
 
-        .footer-links h5::after {
+        .footer-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 40px;
             height: 3px;
-            background: var(--primary-light);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
         }
 
-        .footer-links ul {
+        .footer-links {
             list-style: none;
             padding: 0;
             margin: 0;
@@ -687,124 +988,92 @@
         }
 
         .footer-links a {
-            color: var(--gray);
+            color: var(--gray-400);
             text-decoration: none;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-links a:hover {
             color: var(--primary-light);
-            padding-left: 5px;
+            padding-left: 8px;
         }
 
-        /* Cards */
-        .card {
-            background: var(--light);
-            border: none;
-            border-radius: 16px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
-        [data-bs-theme="dark"] .card {
-            background-color: var(--gray-light);
-            border: 1px solid #374151;
+        .footer-contact i {
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            margin-top: 4px;
         }
 
-        .card-title {
-            color: var(--text-primary);
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        [data-bs-theme="dark"] .card-title {
-            color: var(--text-primary);
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
         }
 
-        /* Badges */
-        .badge {
-            color: white;
+        .footer-bottom-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        [data-bs-theme="dark"] .badge {
-            color: white;
-        }
-
-        /* Alert boxes */
-        .alert {
-            background-color: var(--light);
-            border: 1px solid transparent;
-            color: var(--text-primary);
-        }
-
-        [data-bs-theme="dark"] .alert {
-            background-color: var(--light);
-            border-color: #4b5563;
-            color: var(--text-primary);
-        }
-
-        .alert-warning {
-            background-color: #fffbeb;
-            border-color: #fcd34d;
-            color: #92400e;
-        }
-
-        [data-bs-theme="dark"] .alert-warning {
-            background-color: #451a03;
-            border-color: #92400e;
-            color: #fed7aa;
-        }
-
-        .alert-info {
-            background-color: #eff6ff;
-            border-color: #93c5fd;
-            color: #1e40af;
-        }
-
-        [data-bs-theme="dark"] .alert-info {
-            background-color: #082f49;
-            border-color: #0c4a6e;
-            color: #bae6fd;
-        }
-
-        /* Dropdown menus */
-        .dropdown-menu {
-            background-color: var(--light);
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-bs-theme="dark"] .dropdown-menu {
-            background-color: var(--gray-light);
-            border-color: #4b5563;
-        }
-
-        .dropdown-item {
-            color: var(--text-primary);
-        }
-
-        [data-bs-theme="dark"] .dropdown-item {
-            color: var(--text-primary);
-        }
-
-        .dropdown-item:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        /* Loading states */
-        .loading {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        .spinner-border-sm {
-            width: 1rem;
-            height: 1rem;
-        }
-
-        [data-bs-theme="dark"] .spinner-border {
+        .footer-bottom-links a:hover {
             color: var(--primary-light);
         }
 
-        /* Toast notifications */
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+            color: white;
+        }
+
+        /* Toast Container */
         .toast-container {
             position: fixed;
             top: 100px;
@@ -812,178 +1081,350 @@
             z-index: 9999;
         }
 
-        /* Small text elements */
-        small {
-            color: var(--text-muted);
+        /* Loading Spinner */
+        .spinner-border {
+            color: var(--primary);
         }
 
-        [data-bs-theme="dark"] small {
-            color: var(--text-muted);
+        [data-bs-theme="dark"] .spinner-border {
+            color: var(--primary-light);
         }
 
-        /* Icons */
-        .bi {
-            color: inherit;
+        /* Badges */
+        .badge {
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
         }
 
-        /* ===== ENHANCED RESPONSIVE FIXES ===== */
+        /* ===== DONATION MODAL STYLES ===== */
+        .modal-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+        }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        [data-bs-theme="dark"] .section-label {
+            color: var(--gray-400);
+        }
+
+        .bank-accounts-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .bank-account-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--gray-100);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        [data-bs-theme="dark"] .bank-account-card {
+            background: var(--gray-700);
+        }
+
+        .bank-account-card:hover {
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .bank-account-card.selected {
+            border-color: var(--primary);
+            background: rgba(30, 58, 138, 0.08);
+        }
+
+        [data-bs-theme="dark"] .bank-account-card.selected {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .bank-logo-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .bank-logo-wrapper.gtbank {
+            background: linear-gradient(135deg, #E35205, #FF6B35);
+        }
+
+        .bank-logo-wrapper.firstbank {
+            background: linear-gradient(135deg, #002D62, #004B9C);
+        }
+
+        .bank-logo-wrapper.access {
+            background: linear-gradient(135deg, #F58220, #FF9933);
+        }
+
+        .bank-logo-wrapper.uba {
+            background: linear-gradient(135deg, #C8102E, #E31B23);
+        }
+
+        .bank-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .bank-info .bank-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+            color: var(--gray-800);
+        }
+
+        [data-bs-theme="dark"] .bank-info .bank-name {
+            color: var(--gray-100);
+        }
+
+        .bank-info .account-name {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-bottom: 0.35rem;
+        }
+
+        .account-number-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .account-number {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        [data-bs-theme="dark"] .account-number {
+            color: var(--primary-light);
+        }
+
+        .copy-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-light);
+            transform: scale(1.1);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+        }
+
+        .copy-btn.copied i::before {
+            content: "\F272";
+        }
+
+        .bank-select-indicator {
+            color: var(--primary);
+            font-size: 1.3rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .bank-account-card.selected .bank-select-indicator {
+            opacity: 1;
+        }
+
+        /* Transfer Instructions */
+        .transfer-instructions {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(59, 130, 246, 0.08));
+            border-radius: 16px;
+            padding: 1.25rem;
+            border: 1px solid rgba(30, 58, 138, 0.1);
+        }
+
+        [data-bs-theme="dark"] .transfer-instructions {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.15), rgba(59, 130, 246, 0.1));
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .instruction-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        [data-bs-theme="dark"] .step-text {
+            color: var(--gray-400);
+        }
+
+        .giving-note {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(16, 185, 129, 0.08));
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        [data-bs-theme="dark"] .giving-note {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(16, 185, 129, 0.1));
+        }
+
+        .giving-note i {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Copied Toast Animation */
+        @keyframes copiedPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .copy-btn.copied {
+            animation: copiedPulse 0.3s ease;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
-            .page-title {
-                font-size: 3rem;
-            }
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
         }
 
         @media (max-width: 992px) {
-            .page-title {
-                font-size: 2.5rem;
-            }
-            
-            .navbar-nav {
-                text-align: center;
-            }
-            
-            .donation-amounts {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            /* Fix for navbar dropdown on mobile */
-            .navbar-collapse {
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-        }
+            .page-hero { padding: 5rem 0; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.1rem; }
 
-        @media (max-width: 768px) {
-            section {
-                padding: 3rem 0;
-            }
-            
-            .page-hero {
-                padding: 120px 0 60px;
-                margin-top: 70px;
-            }
-            
-            .page-title {
-                font-size: 2.2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2.5rem;
-            }
-            
-            .stats-card {
-                margin-bottom: 1.5rem;
-            }
-            
-            .giving-card {
-                margin-bottom: 1.5rem;
-            }
-            
-            .btn-primary, .btn-success {
-                width: 100%;
-                margin: 0.5rem 0;
-                white-space: normal;
-                word-wrap: break-word;
-            }
-            
-            .donation-amounts {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .bank-detail-item {
-                flex-direction: column;
-            }
-            
-            .bank-detail-label {
-                min-width: auto;
-                margin-bottom: 0.25rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding-right: 10px;
-                padding-left: 10px;
-            }
-            
-            .page-title {
-                font-size: 1.8rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .stats-number {
-                font-size: 1.5rem;
-            }
-            
-            .btn-primary,
-            .btn-success {
-                padding: 12px 24px;
-                font-size: 0.9rem;
-                white-space: normal;
-                word-wrap: break-word;
-            }
-            
-            .donation-amounts {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
-            }
-            
-            .amount-option {
-                padding: 0.75rem;
-            }
-            
-            /* Fix for dropdown on very small screens */
             .dropdown-menu {
                 position: static !important;
                 transform: none !important;
                 width: 100%;
+                margin-top: 0.5rem;
+                background: var(--gray-100);
+            }
+
+            [data-bs-theme="dark"] .dropdown-menu {
+                background: var(--gray-800);
+            }
+
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Extra small devices */
-        @media (max-width: 400px) {
-            .page-title {
-                font-size: 1.6rem;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-            }
-            
-            .card-body {
-                padding: 1rem;
-            }
-            
-            .stats-card {
-                padding: 1.5rem;
-            }
-            
-            /* Fix for navbar on very small screens */
-            .navbar-nav .nav-item {
-                margin-bottom: 0.5rem;
-            }
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            .section-compact { padding: 3rem 0; }
+            .page-hero { margin-top: 70px; padding: 4rem 0; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
         }
 
-        /* ===== ADDITIONAL OVERFLOW PREVENTION ===== */
-        /* Prevent horizontal scroll caused by animations */
-        [data-aos] {
-            overflow: hidden;
-        }
+        @media (max-width: 576px) {
+            .page-hero { padding: 3rem 0; }
+            .hero-title { font-size: 1.8rem; }
+            .section-title { font-size: 1.75rem; }
+            .navbar-brand { font-size: 1.3rem; }
+            .navbar-brand img { width: 45px; }
+            .glass-card { padding: 1.5rem; }
+            .stats-card { padding: 1.5rem; }
+            .why-give-card { padding: 2rem 1.5rem; }
+            .donation-amounts { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+            .amount-option { padding: 0.75rem; }
+            .btn-primary-gradient, .btn-glass, .btn-accent {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
 
-        /* Ensure all images don't cause overflow */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+            /* Modal responsive */
+            .instruction-steps {
+                grid-template-columns: 1fr;
+            }
 
-        /* Fix for any potential overflow in text elements */
-        p, span, a, li {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            .bank-account-card {
+                padding: 0.875rem 1rem;
+            }
+
+            .bank-logo-wrapper {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+
+            .account-number {
+                font-size: 1rem;
+            }
+
+            .bank-info .bank-name {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -992,17 +1433,19 @@
     <div class="toast-container"></div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-           <img src="img/Rccg_logo.png" alt="" style="width: 70px;">
-            <a class="navbar-brand ms-2" href="index.html">City Of Joy</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/Rccg_logo.png" alt="RCCG Logo">
+                <span>City Of Joy</span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
@@ -1010,53 +1453,27 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="ministriesDropdown" role="button" data-bs-toggle="dropdown">
                             Ministries
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
-                            <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ministries.html"><i class="bi bi-grid me-2"></i>All Ministries</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item active" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
-                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
-                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
-                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
-                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
-                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                            <li><a class="dropdown-item" href="yaya.html"><i class="bi bi-people me-2"></i>YAYA (Youth & Young Adults)</a></li>
+                            <li><a class="dropdown-item" href="events.html"><i class="bi bi-calendar-event me-2"></i>Events</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="sermons.html">Sermons</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="events.html">Events</a>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link active" href="giving.html">Giving</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="marketplace.html">Marketplace</a>
-                    </li> -->
                 </ul>
-                
-                <div class="d-flex align-items-center">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="bi bi-sun-fill"></i>
-                    </button>
-                    
-                    <!-- <div class="dropdown ms-3">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle me-2"></i> Account
-                        </button> -->
-                        <!-- <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="login.html">Login</a></li>
-                            <li><a class="dropdown-item" href="register.html">Register</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="admin.html">Admin Panel</a></li>
-                        </ul> -->
-                    </div>
-                </div>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -1064,44 +1481,72 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Giving</li>
-                </ol>
-            </nav>
-            <h1 class="page-title" data-aos="fade-up">Support Our Mission</h1>
-            <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">Your generous giving enables us to spread the Gospel, support our community, and fulfill God's purpose for our church.</p>
+            <div class="hero-content" data-aos="fade-up">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Giving</li>
+                    </ol>
+                </nav>
+                <span class="hero-badge"><i class="bi bi-heart-fill me-2"></i>Support Our Mission</span>
+                <h1 class="hero-title">Partner With Us Through Giving</h1>
+                <p class="hero-subtitle">Your generous giving enables us to spread the Gospel, support our community, and fulfill God's purpose for our church. Every gift makes a difference.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="#programs" class="btn btn-accent">
+                        <i class="bi bi-gift me-2"></i>Give Now
+                    </a>
+                    <a href="#why-give" class="btn btn-glass">
+                        <i class="bi bi-info-circle me-2"></i>Learn More
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Giving Stats -->
-    <section class="section-compact bg-light">
+    <section class="section-compact bg-gradient-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Impact of Your Giving</h2>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Impact</span>
+                <h2 class="section-title">Your Giving at Work</h2>
+                <p class="section-subtitle">See how your generous contributions are transforming lives and communities.</p>
+            </div>
+
             <div class="row g-4">
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="stats-card">
-                        <div class="stats-number">₦2.5M</div>
-                        <p class="mb-0">Total Given This Month</p>
+                        <div class="stats-icon">
+                            <i class="bi bi-currency-exchange"></i>
+                        </div>
+                        <div class="stats-number">N2.5M</div>
+                        <p class="stats-label">Total Given This Month</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
                         <div class="stats-number">1,247</div>
-                        <p class="mb-0">Families Supported</p>
+                        <p class="stats-label">Families Supported</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
                         <div class="stats-number">15</div>
-                        <p class="mb-0">Community Projects</p>
+                        <p class="stats-label">Community Projects</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250">
                     <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="bi bi-percent"></i>
+                        </div>
                         <div class="stats-number">89%</div>
-                        <p class="mb-0">Direct to Ministry</p>
+                        <p class="stats-label">Direct to Ministry</p>
                     </div>
                 </div>
             </div>
@@ -1109,14 +1554,120 @@
     </section>
 
     <!-- Giving Programs -->
-    <section class="section-compact">
+    <section id="programs" class="section-compact">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Giving Programs</h2>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Give</span>
+                <h2 class="section-title">Giving Programs</h2>
+                <p class="section-subtitle">Choose a program that resonates with your heart and support the work of ministry.</p>
+            </div>
+
             <div class="row g-4" id="programsContainer">
-                <!-- Programs will be loaded dynamically from API -->
-                <div class="col-12 text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading programs...</span>
+                <!-- Tithes -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="giving-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-percent me-2 text-primary"></i>Tithes
+                                </h5>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <p class="card-text">Honor the Lord with your wealth and with the firstfruits of all your produce. Your tithes support the ongoing work of the ministry.</p>
+                            <button class="btn btn-primary-gradient w-100" data-bs-toggle="modal" data-bs-target="#donationModal" onclick="setModalTitle('Tithes')">
+                                <i class="bi bi-heart-fill me-2"></i>Give Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offerings -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="giving-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-gift me-2 text-primary"></i>Offerings
+                                </h5>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <p class="card-text">Give cheerfully as an act of worship. Your offerings help fund church programs, outreach, and community support initiatives.</p>
+                            <button class="btn btn-primary-gradient w-100" data-bs-toggle="modal" data-bs-target="#donationModal" onclick="setModalTitle('Offerings')">
+                                <i class="bi bi-heart-fill me-2"></i>Give Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Building Fund -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="giving-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-building me-2 text-primary"></i>Building Fund
+                                </h5>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <p class="card-text">Help us expand and improve our facilities. Your contributions to the building fund help create a welcoming space for worship and fellowship.</p>
+                            <button class="btn btn-primary-gradient w-100" data-bs-toggle="modal" data-bs-target="#donationModal" onclick="setModalTitle('Building Fund')">
+                                <i class="bi bi-heart-fill me-2"></i>Give Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Missions & Evangelism -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="giving-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-globe-americas me-2 text-primary"></i>Missions & Evangelism
+                                </h5>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <p class="card-text">Support the spreading of the Gospel locally and globally. Your gifts help fund mission trips, evangelism outreaches, and church planting.</p>
+                            <button class="btn btn-primary-gradient w-100" data-bs-toggle="modal" data-bs-target="#donationModal" onclick="setModalTitle('Missions & Evangelism')">
+                                <i class="bi bi-heart-fill me-2"></i>Give Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Welfare & Benevolence -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="giving-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-hand-thumbs-up me-2 text-primary"></i>Welfare & Benevolence
+                                </h5>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <p class="card-text">Help those in need within our community. Your donations provide assistance to families facing financial hardships and emergencies.</p>
+                            <button class="btn btn-primary-gradient w-100" data-bs-toggle="modal" data-bs-target="#donationModal" onclick="setModalTitle('Welfare & Benevolence')">
+                                <i class="bi bi-heart-fill me-2"></i>Give Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Seeds -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="350">
+                    <div class="giving-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-stars me-2 text-primary"></i>Special Seeds
+                                </h5>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                            <p class="card-text">Sow special seeds for specific purposes or thanksgiving. Plant your seed of faith and trust God for the harvest in your life.</p>
+                            <button class="btn btn-primary-gradient w-100" data-bs-toggle="modal" data-bs-target="#donationModal" onclick="setModalTitle('Special Seeds')">
+                                <i class="bi bi-heart-fill me-2"></i>Give Now
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1124,35 +1675,40 @@
     </section>
 
     <!-- Why Give Section -->
-    <section class="section-compact bg-light">
+    <section id="why-give" class="section-compact bg-gradient-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Why We Give</h2>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Purpose</span>
+                <h2 class="section-title">Why We Give</h2>
+                <p class="section-subtitle">Giving is an act of worship and obedience that reflects our trust in God's provision.</p>
+            </div>
+
             <div class="row g-4">
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-heart-fill text-primary" style="font-size: 3rem;"></i>
+                    <div class="why-give-card">
+                        <div class="why-give-icon">
+                            <i class="bi bi-book-half"></i>
                         </div>
                         <h4>Biblical Principle</h4>
                         <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7</p>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-people-fill text-primary" style="font-size: 3rem;"></i>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="why-give-card">
+                        <div class="why-give-icon">
+                            <i class="bi bi-people-fill"></i>
                         </div>
                         <h4>Community Impact</h4>
-                        <p>Your contributions directly support outreach programs, community assistance, and spiritual growth initiatives that transform lives.</p>
+                        <p>Your contributions directly support outreach programs, community assistance, and spiritual growth initiatives that transform lives in our neighborhood and beyond.</p>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-center">
-                        <div class="mb-3">
-                            <i class="bi bi-building text-primary" style="font-size: 3rem;"></i>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-give-card">
+                        <div class="why-give-icon">
+                            <i class="bi bi-building"></i>
                         </div>
                         <h4>Sustainable Ministry</h4>
-                        <p>Regular giving ensures the continuity of our ministries, church operations, and ability to respond to community needs.</p>
+                        <p>Regular giving ensures the continuity of our ministries, church operations, and ability to respond to community needs both locally and globally.</p>
                     </div>
                 </div>
             </div>
@@ -1162,35 +1718,49 @@
     <!-- Testimonials -->
     <section class="section-compact">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Stories of Impact</h2>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Stories</span>
+                <h2 class="section-title">Stories of Impact</h2>
+                <p class="section-subtitle">Hear from those whose lives have been touched by your generous giving.</p>
+            </div>
+
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="bi bi-quote text-primary mb-3" style="font-size: 2rem;"></i>
-                            <p class="card-text">"Through the church's food bank program, my family received support during a difficult time. Now I'm blessed to give back and help others."</p>
-                            <h6 class="card-title mb-1">Sarah Johnson</h6>
-                            <p class="text-muted">Regular Giver</p>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote testimonial-quote"></i>
+                        <p class="testimonial-text">"Through the church's food bank program, my family received support during a difficult time. Now I'm blessed to give back and help others in similar situations."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SJ</div>
+                            <div>
+                                <h6 class="testimonial-name">Sarah Johnson</h6>
+                                <span class="testimonial-role">Regular Giver</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="bi bi-quote text-primary mb-3" style="font-size: 2rem;"></i>
-                            <p class="card-text">"Seeing the youth ministry grow through our giving has been incredible. Our donations are making a real difference in young lives."</p>
-                            <h6 class="card-title mb-1">Michael Brown</h6>
-                            <p class="text-muted">Youth Ministry Supporter</p>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote testimonial-quote"></i>
+                        <p class="testimonial-text">"Seeing the youth ministry grow through our giving has been incredible. Our donations are making a real difference in the lives of young people in our community."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MB</div>
+                            <div>
+                                <h6 class="testimonial-name">Michael Brown</h6>
+                                <span class="testimonial-role">Youth Ministry Supporter</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="bi bi-quote text-primary mb-3" style="font-size: 2rem;"></i>
-                            <p class="card-text">"Giving is an act of worship for our family. We've seen God's faithfulness as we've been faithful in our tithes and offerings."</p>
-                            <h6 class="card-title mb-1">The Williams Family</h6>
-                            <p class="text-muted">Tithers for 15+ Years</p>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <i class="bi bi-quote testimonial-quote"></i>
+                        <p class="testimonial-text">"Giving is an act of worship for our family. We've seen God's faithfulness as we've been faithful in our tithes and offerings over the years."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">WF</div>
+                            <div>
+                                <h6 class="testimonial-name">The Williams Family</h6>
+                                <span class="testimonial-role">Tithers for 15+ Years</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1201,136 +1771,213 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h3 class="mb-3">GraceChurch</h3>
-                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="footer-brand">City Of Joy</h3>
+                    <p class="footer-text">RCCG Rivers Province 10 Headquarters. A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
                     </div>
                 </div>
-                
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Quick Links</h5>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="ministries.html">Ministries</a></li>
-                            <li><a href="sermons.html">Sermons</a></li>
-                            <li><a href="events.html">Events</a></li>
-                        </ul>
-                    </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="ministries.html">Ministries</a></li>
+                        <li><a href="sermons.html">Sermons</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
                 </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Resources</h5>
-                        <ul>
-                            <li><a href="giving.html">Online Giving</a></li>
-                            <!-- <li><a href="prayer.html">Prayer Requests</a></li>
-                            <li><a href="marketplace.html">Marketplace</a></li>
-                            <li><a href="blog.html">Blog</a></li> -->
-                            <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                    </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="giving.html">Online Giving</a></li>
+                        <li><a href="sermons.html">Watch Sermons</a></li>
+                        <li><a href="events.html">Events Calendar</a></li>
+                        <li><a href="about.html">Contact Us</a></li>
+                    </ul>
                 </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <div class="footer-links">
-                        <h5>Contact Info</h5>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-geo-alt me-2"></i> 123 Church Street, City, State 12345</li>
-                            <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
-                            <li><i class="bi bi-envelope me-2"></i> info@gracechurch.com</li>
-                            <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
-                        </ul>
-                    </div>
+
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Contact Info</h5>
+                    <ul class="footer-links footer-contact">
+                        <li>
+                            <i class="bi bi-geo-alt"></i>
+                            <span>RCCG Rivers Province 10 Hqtrs. - City Of Joy Parish</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone"></i>
+                            <span>+234 XXX XXX XXXX</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope"></i>
+                            <span>info@rccgcoj.org</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-clock"></i>
+                            <span>Sunday Services: 8:00 AM - 11:00 AM</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
-            <hr class="my-4">
-            
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2023 GraceChurch. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
-                    <a href="terms.html" class="text-light">Terms of Service</a>
+
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2024 RCCG City Of Joy - Rivers Province 10. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
     <!-- Donation Modal -->
-    <div class="modal fade donation-modal" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="donationModalLabel">Make a Donation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header border-0 pb-0">
+                    <div class="w-100 text-center">
+                        <div class="modal-icon-wrapper mb-3">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h4 class="modal-title fw-bold" id="donationModalLabel">Give to City Of Joy</h4>
+                        <p class="text-muted mb-0 mt-2" id="programDescription">Your generosity transforms lives</p>
+                    </div>
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="donationForm">
-                        <input type="hidden" id="selectedProgramId">
-                        <div class="mb-4">
-                            <h6>Select Amount (NGN)</h6>
-                            <div class="donation-amounts">
-                                <div class="amount-option" data-amount="1000">₦1,000</div>
-                                <div class="amount-option" data-amount="2500">₦2,500</div>
-                                <div class="amount-option" data-amount="5000">₦5,000</div>
-                                <div class="amount-option" data-amount="10000">₦10,000</div>
-                                <div class="amount-option" data-amount="25000">₦25,000</div>
-                                <div class="amount-option" data-amount="50000">₦50,000</div>
+                <div class="modal-body pt-3">
+                    <!-- Bank Accounts Section -->
+                    <div class="bank-accounts-section">
+                        <h6 class="section-label mb-3">
+                            <i class="bi bi-bank2 me-2"></i>Select a Bank Account
+                        </h6>
+
+                        <!-- Bank Account 1 - GTBank -->
+                        <div class="bank-account-card" data-bank="gtbank">
+                            <div class="bank-logo-wrapper gtbank">
+                                <i class="bi bi-bank"></i>
                             </div>
-                            <div class="custom-amount">
-                                <label for="customAmount" class="form-label">Or enter custom amount:</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">₦</span>
-                                    <input type="number" class="form-control" id="customAmount" placeholder="Enter amount" min="100">
+                            <div class="bank-info">
+                                <h6 class="bank-name">Guaranty Trust Bank (GTB)</h6>
+                                <p class="account-name">RCCG City Of Joy Parish</p>
+                                <div class="account-number-wrapper">
+                                    <span class="account-number" data-account="0123456789">0123456789</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('0123456789', this)" title="Copy account number">
+                                        <i class="bi bi-clipboard"></i>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="bank-details" id="bankDetailsSection">
-                            <h6>Bank Transfer Details</h6>
-                            <div class="bank-detail-item">
-                                <span class="bank-detail-label">Bank Name:</span>
-                                <span class="bank-detail-value" id="bankName">-</span>
-                            </div>
-                            <div class="bank-detail-item">
-                                <span class="bank-detail-label">Account Name:</span>
-                                <span class="bank-detail-value" id="accountName">-</span>
-                            </div>
-                            <div class="bank-detail-item">
-                                <span class="bank-detail-label">Account Number:</span>
-                                <span class="bank-detail-value" id="accountNumber">-</span>
-                            </div>
-                            <div class="bank-detail-item">
-                                <span class="bank-detail-label">Purpose:</span>
-                                <span class="bank-detail-value" id="purpose">-</span>
+                            <div class="bank-select-indicator">
+                                <i class="bi bi-check-circle-fill"></i>
                             </div>
                         </div>
-                        
-                        <div class="mt-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="confirmTransfer" required>
-                                <label class="form-check-label" for="confirmTransfer">
-                                    I confirm that I have made the transfer using the bank details above
-                                </label>
+
+                        <!-- Bank Account 2 - First Bank -->
+                        <div class="bank-account-card" data-bank="firstbank">
+                            <div class="bank-logo-wrapper firstbank">
+                                <i class="bi bi-bank"></i>
+                            </div>
+                            <div class="bank-info">
+                                <h6 class="bank-name">First Bank of Nigeria</h6>
+                                <p class="account-name">RCCG City Of Joy Parish</p>
+                                <div class="account-number-wrapper">
+                                    <span class="account-number" data-account="2034567890">2034567890</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('2034567890', this)" title="Copy account number">
+                                        <i class="bi bi-clipboard"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-select-indicator">
+                                <i class="bi bi-check-circle-fill"></i>
                             </div>
                         </div>
-                    </form>
+
+                        <!-- Bank Account 3 - Access Bank -->
+                        <div class="bank-account-card" data-bank="access">
+                            <div class="bank-logo-wrapper access">
+                                <i class="bi bi-bank"></i>
+                            </div>
+                            <div class="bank-info">
+                                <h6 class="bank-name">Access Bank</h6>
+                                <p class="account-name">RCCG City Of Joy Parish</p>
+                                <div class="account-number-wrapper">
+                                    <span class="account-number" data-account="0987654321">0987654321</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('0987654321', this)" title="Copy account number">
+                                        <i class="bi bi-clipboard"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-select-indicator">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                        </div>
+
+                        <!-- Bank Account 4 - UBA -->
+                        <div class="bank-account-card" data-bank="uba">
+                            <div class="bank-logo-wrapper uba">
+                                <i class="bi bi-bank"></i>
+                            </div>
+                            <div class="bank-info">
+                                <h6 class="bank-name">United Bank for Africa (UBA)</h6>
+                                <p class="account-name">RCCG City Of Joy Parish</p>
+                                <div class="account-number-wrapper">
+                                    <span class="account-number" data-account="1122334455">1122334455</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('1122334455', this)" title="Copy account number">
+                                        <i class="bi bi-clipboard"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-select-indicator">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transfer Instructions -->
+                    <div class="transfer-instructions mt-4">
+                        <h6 class="section-label mb-3">
+                            <i class="bi bi-info-circle me-2"></i>How to Give
+                        </h6>
+                        <div class="instruction-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Copy the account number above</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Open your banking app</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Transfer your desired amount</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <span class="step-text">Use your name as reference</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Note -->
+                    <div class="giving-note mt-4">
+                        <i class="bi bi-lightbulb me-2"></i>
+                        <span>All donations are tax-deductible. God bless you for your generosity!</span>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success" id="confirmDonationBtn" disabled>
-                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                        Confirm Donation
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-2"></i>Close
                     </button>
                 </div>
             </div>
@@ -1339,50 +1986,70 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- AOS Animation Library -->
+
+    <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Custom JavaScript -->
+
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
+            duration: 800,
+            easing: 'ease-out-cubic',
             once: true,
-            mirror: false,
-            offset: 100
+            offset: 50
         });
 
-        // API Configuration
-        // const API_BASE_URL = 'https://coj-agf0.onrender.com/api'; // Update with your actual API URL
-
-        // Theme Toggle
+        // Theme Toggle with persistence across pages
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
-        
+
+        // Check for saved theme or system preference
+        const savedTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
+
             document.documentElement.setAttribute('data-bs-theme', newTheme);
             themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
-            
             localStorage.setItem('theme', newTheme);
         });
 
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme') || 
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
-        document.documentElement.setAttribute('data-bs-theme', savedTheme);
-        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         // Toast Notification System
         function showToast(message, type = 'success') {
             const toastContainer = document.querySelector('.toast-container');
             const toastId = 'toast-' + Date.now();
-            
+
             const toastHtml = `
                 <div id="${toastId}" class="toast align-items-center text-bg-${type} border-0" role="alert">
                     <div class="d-flex">
@@ -1393,274 +2060,70 @@
                     </div>
                 </div>
             `;
-            
+
             toastContainer.insertAdjacentHTML('beforeend', toastHtml);
             const toastElement = document.getElementById(toastId);
             const toast = new bootstrap.Toast(toastElement);
             toast.show();
-            
-            // Remove toast from DOM after it's hidden
+
             toastElement.addEventListener('hidden.bs.toast', () => {
                 toastElement.remove();
             });
         }
 
-        // Load Giving Programs from API
-        async function loadPrograms() {
-            try {
-                const response = await fetch(`${API_BASE_URL}/programs`);
-                const result = await response.json();
-                
-                if (result.success) {
-                    displayPrograms(result.programs);
-                } else {
-                    throw new Error(result.message || 'Failed to load programs');
-                }
-            } catch (error) {
-                console.error('Error loading programs:', error);
-                showToast('Failed to load giving programs. Please try again.', 'danger');
-                document.getElementById('programsContainer').innerHTML = `
-                    <div class="col-12 text-center">
-                        <div class="alert alert-warning">
-                            <i class="bi bi-exclamation-triangle me-2"></i>
-                            Unable to load giving programs at this time.
-                        </div>
-                    </div>
-                `;
-            }
-        }
+        // Set Modal Title Function
+        function setModalTitle(programName) {
+            document.getElementById('donationModalLabel').textContent = `Give to ${programName}`;
+            document.getElementById('programDescription').textContent = `Support the ${programName} program`;
 
-        // Display Programs
-        function displayPrograms(programs) {
-            const container = document.getElementById('programsContainer');
-            
-            if (!programs || programs.length === 0) {
-                container.innerHTML = `
-                    <div class="col-12 text-center">
-                        <div class="alert alert-info">
-                            <i class="bi bi-info-circle me-2"></i>
-                            No giving programs available at this time.
-                        </div>
-                    </div>
-                `;
-                return;
-            }
-
-            const programsHtml = programs.map(program => `
-                <div class="col-lg-6" data-aos="fade-up">
-                    <div class="giving-card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <h5 class="card-title">${program.name}</h5>
-                                <span class="badge ${program.isActive ? 'bg-success' : 'bg-secondary'}">
-                                    ${program.isActive ? 'Active' : 'Inactive'}
-                                </span>
-                            </div>
-                            <p class="card-text text-muted mb-3">${program.description || 'Support this important ministry initiative.'}</p>
-                            
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <small>Monthly Progress</small>
-                                    <small>₦${program.stats?.monthlyDonations?.toLocaleString() || '0'}</small>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: ${Math.min((program.stats?.monthlyDonations || 0) / 100000 * 100, 100)}%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Total Impact: ₦${program.stats?.totalDonations?.toLocaleString() || '0'}</small>
-                                </div>
-                                <button class="btn btn-primary btn-sm donate-btn" data-program-id="${program._id}" data-program-name="${program.name}">
-                                    <i class="bi bi-heart-fill me-1"></i> Give Now
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
-            container.innerHTML = programsHtml;
-            
-            // Add event listeners to donate buttons
-            document.querySelectorAll('.donate-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const programId = e.target.getAttribute('data-program-id');
-                    const programName = e.target.getAttribute('data-program-name');
-                    openDonationModal(programId, programName);
-                });
+            // Reset bank card selections
+            document.querySelectorAll('.bank-account-card').forEach(card => {
+                card.classList.remove('selected');
             });
         }
 
-        // Donation Modal Functions
-        let selectedAmount = 0;
-        let selectedProgram = null;
+        // Copy to Clipboard Function
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Visual feedback
+                const icon = button.querySelector('i');
+                const originalClass = icon.className;
 
-        function openDonationModal(programId, programName) {
-            selectedProgram = { id: programId, name: programName };
-            document.getElementById('selectedProgramId').value = programId;
-            document.getElementById('donationModalLabel').textContent = `Donate to ${programName}`;
-            
-            // Reset form
-            document.getElementById('donationForm').reset();
-            document.querySelectorAll('.amount-option').forEach(option => {
-                option.classList.remove('selected');
+                button.classList.add('copied');
+                icon.className = 'bi bi-check';
+
+                showToast(`Account number ${text} copied to clipboard!`, 'success');
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    icon.className = originalClass;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                showToast('Failed to copy. Please copy manually.', 'danger');
             });
-            selectedAmount = 0;
-            updateConfirmButton();
-            
-            // Load program details for bank information
-            loadProgramDetails(programId);
-            
-            const modal = new bootstrap.Modal(document.getElementById('donationModal'));
-            modal.show();
         }
 
-        async function loadProgramDetails(programId) {
-            try {
-                // Since we don't have a specific endpoint for single program,
-                // we'll use the programs list and find the matching program
-                const response = await fetch(`${API_BASE_URL}/programs`);
-                const result = await response.json();
-                
-                if (result.success) {
-                    const program = result.programs.find(p => p._id === programId);
-                    if (program && program.bankDetails) {
-                        document.getElementById('bankName').textContent = program.bankDetails.bankName;
-                        document.getElementById('accountName').textContent = program.bankDetails.accountName;
-                        document.getElementById('accountNumber').textContent = program.bankDetails.accountNumber;
-                        document.getElementById('purpose').textContent = program.bankDetails.purpose;
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading program details:', error);
-                showToast('Failed to load bank details. Please try again.', 'danger');
-            }
-        }
+        // Bank Account Card Selection
+        document.querySelectorAll('.bank-account-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't select if clicking the copy button
+                if (e.target.closest('.copy-btn')) return;
 
-        // Amount Selection
-        document.querySelectorAll('.amount-option').forEach(option => {
-            option.addEventListener('click', () => {
-                document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                selectedAmount = parseInt(option.getAttribute('data-amount'));
-                document.getElementById('customAmount').value = '';
-                updateConfirmButton();
-            });
-        });
-
-        // Custom Amount Input
-        document.getElementById('customAmount').addEventListener('input', (e) => {
-            document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
-            selectedAmount = parseInt(e.target.value) || 0;
-            updateConfirmButton();
-        });
-
-        // Confirm Transfer Checkbox
-        document.getElementById('confirmTransfer').addEventListener('change', updateConfirmButton);
-
-        function updateConfirmButton() {
-            const confirmBtn = document.getElementById('confirmDonationBtn');
-            const hasAmount = selectedAmount >= 100;
-            const hasConfirmation = document.getElementById('confirmTransfer').checked;
-            confirmBtn.disabled = !(hasAmount && hasConfirmation);
-        }
-
-        // Confirm Donation
-        document.getElementById('confirmDonationBtn').addEventListener('click', async () => {
-            const confirmBtn = document.getElementById('confirmDonationBtn');
-            const spinner = confirmBtn.querySelector('.spinner-border');
-            const buttonText = confirmBtn.querySelector('.button-text') || document.createElement('span');
-            
-            if (!buttonText.classList.contains('button-text')) {
-                buttonText.className = 'button-text';
-                buttonText.textContent = confirmBtn.textContent.trim();
-                confirmBtn.innerHTML = '';
-                confirmBtn.appendChild(buttonText);
-            }
-            
-            // Show loading state
-            confirmBtn.disabled = true;
-            spinner.classList.remove('d-none');
-            buttonText.textContent = ' Processing...';
-            
-            try {
-                const token = localStorage.getItem('token'); // Get JWT token if user is logged in
-                
-                const response = await fetch(`${API_BASE_URL}/programs/${selectedProgram.id}/donate`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        ...(token && { 'Authorization': `Bearer ${token}` })
-                    },
-                    body: JSON.stringify({
-                        amount: selectedAmount,
-                        currency: 'NGN',
-                        reference: `DONATION-${Date.now()}`
-                    })
+                // Remove selection from all cards
+                document.querySelectorAll('.bank-account-card').forEach(c => {
+                    c.classList.remove('selected');
                 });
 
-                const result = await response.json();
+                // Select clicked card
+                card.classList.add('selected');
 
-                if (result.success) {
-                    showToast('Thank you for your generous donation! Your support makes a difference.', 'success');
-                    
-                    // Close modal
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('donationModal'));
-                    modal.hide();
-                    
-                    // Refresh programs to update stats
-                    loadPrograms();
-                } else {
-                    throw new Error(result.message || 'Donation failed');
-                }
-            } catch (error) {
-                console.error('Donation error:', error);
-                showToast(error.message || 'Failed to process donation. Please try again.', 'danger');
-            } finally {
-                // Reset button state
-                confirmBtn.disabled = false;
-                spinner.classList.add('d-none');
-                buttonText.textContent = 'Confirm Donation';
-            }
-        });
-
-        // Fix for navbar overlapping content on mobile
-        function adjustNavbarHeight() {
-            const navbar = document.querySelector('.navbar');
-            const pageHero = document.querySelector('.page-hero');
-            if (navbar && pageHero) {
-                const navbarHeight = navbar.offsetHeight;
-                pageHero.style.marginTop = navbarHeight + 'px';
-            }
-        }
-
-        // Adjust on load and resize
-        window.addEventListener('load', adjustNavbarHeight);
-        window.addEventListener('resize', adjustNavbarHeight);
-
-        // Additional overflow prevention
-        function checkForOverflow() {
-            const bodyWidth = document.body.clientWidth;
-            const windowWidth = window.innerWidth;
-            
-            if (bodyWidth > windowWidth) {
-                console.warn('Horizontal overflow detected. Body width:', bodyWidth, 'Window width:', windowWidth);
-                
-                // Force recalculation and containment
-                document.body.style.overflowX = 'hidden';
-                document.documentElement.style.overflowX = 'hidden';
-            }
-        }
-
-        window.addEventListener('load', checkForOverflow);
-        window.addEventListener('resize', checkForOverflow);
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadPrograms();
-            adjustNavbarHeight();
+                // Get account number and copy it
+                const accountNumber = card.querySelector('.account-number').dataset.account;
+                const copyBtn = card.querySelector('.copy-btn');
+                copyToClipboard(accountNumber, copyBtn);
+            });
         });
     </script>
 </body>

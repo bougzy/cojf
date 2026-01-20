@@ -3,115 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Redeemed Christian Church Of God - City Of Joy</title>
-    
+    <title>RCCG City Of Joy - Rivers Province 10</title>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary: #1e3a8a;
             --primary-light: #3b82f6;
             --primary-dark: #1e40af;
-            --secondary: #1e293b;
-            --accent: #059669;
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --success: #059669;
             --light: #ffffff;
             --dark: #0f172a;
-            --gray-light: #f8fafc;
-            --gray: #64748b;
-            --gray-dark: #334155;
-            --success: #059669;
-            --warning: #d97706;
-            --danger: #dc2626;
-            --whatsapp: #059669;
-            --whatsapp-dark: #047857;
+            --gray-100: #f8fafc;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+
+            /* Glassmorphism variables */
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-blur: blur(10px);
         }
 
         [data-bs-theme="dark"] {
             --light: #0f172a;
-            --gray-light: #1e293b;
             --dark: #f1f5f9;
-            --gray: #94a3b8;
-            --gray-dark: #cbd5e1;
-        }
+            --gray-100: #1e293b;
+            --gray-200: #334155;
+            --gray-300: #475569;
+            --gray-400: #64748b;
+            --gray-500: #94a3b8;
+            --gray-600: #cbd5e1;
+            --gray-700: #e2e8f0;
+            --gray-800: #f1f5f9;
+            --gray-900: #f8fafc;
 
-        /* ===== CRITICAL HORIZONTAL OVERFLOW FIXES ===== */
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-            position: relative;
-            width: 100%;
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            max-width: 100%;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--light);
-            color: var(--dark);
+            color: var(--gray-800);
             line-height: 1.7;
-            transition: all 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Container fixes */
-        .container, .container-fluid {
-            max-width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            overflow: hidden;
+        [data-bs-theme="dark"] body {
+            color: var(--gray-200);
         }
 
-        /* Section fixes */
-        section {
-            padding: 5rem 0;
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .section-compact {
-            padding: 3rem 0;
-        }
-
-        /* Row and column fixes */
-        .row {
-            margin-right: 0;
-            margin-left: 0;
-            max-width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .row > * {
-            padding-right: 0.75rem;
-            padding-left: 0.75rem;
-            max-width: 100%;
-            flex-shrink: 0;
-        }
-
-        /* Typography fixes */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
+            color: var(--gray-900);
+            line-height: 1.3;
         }
 
         [data-bs-theme="dark"] h1,
@@ -120,123 +100,225 @@
         [data-bs-theme="dark"] h4,
         [data-bs-theme="dark"] h5,
         [data-bs-theme="dark"] h6 {
-            color: var(--dark);
+            color: var(--gray-100);
         }
 
-        /* ===== NAVBAR ENHANCEMENTS ===== */
+        /* ===== GLASSMORPHISM NAVBAR ===== */
         .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            padding: 0.8rem 0;
             transition: all 0.4s ease;
-            padding: 1rem 0;
-            z-index: 1030;
-            max-width: 100%;
+            z-index: 1050;
         }
 
-        [data-bs-theme="dark"] .navbar {
-            background: rgba(15, 23, 42, 0.95) !important;
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        [data-bs-theme="dark"] .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.95);
         }
 
         .navbar-brand {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 0;
-            white-space: nowrap;
-            max-width: 100%;
+            background-clip: text;
+        }
+
+        .navbar-brand img {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
         }
 
         .nav-link {
             font-weight: 500;
-            position: relative;
-            margin: 0 5px;
-            transition: all 0.3s ease;
+            color: var(--gray-700) !important;
             padding: 0.5rem 1rem !important;
-            white-space: nowrap;
+            margin: 0 0.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .nav-link::after {
+        [data-bs-theme="dark"] .nav-link {
+            color: var(--gray-300) !important;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+            background: rgba(30, 58, 138, 0.1);
+        }
+
+        .nav-link.active::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: all 0.3s ease;
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 80%;
-        }
-
-        /* ===== DROPDOWN MENU ENHANCEMENTS ===== */
+        /* Dropdown Styles */
         .dropdown-menu {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 0;
-            animation: dropdownFadeIn 0.3s ease;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+            padding: 0.75rem;
             min-width: 250px;
-            z-index: 1050;
+            animation: dropdownFade 0.3s ease;
         }
 
-        [data-bs-theme="dark"] .dropdown-menu {
-            background: rgba(15, 23, 42, 0.98);
-            border-color: rgba(255, 255, 255, 0.1);
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dropdown-item {
-            color: var(--dark);
-            padding: 0.75rem 1.5rem;
+            color: var(--gray-700);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
             transition: all 0.3s ease;
             font-weight: 500;
         }
 
         [data-bs-theme="dark"] .dropdown-item {
-            color: var(--light);
+            color: var(--gray-300);
         }
 
         .dropdown-item:hover {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            padding-left: 2rem;
-        }
-
-        .dropdown-item.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
+            transform: translateX(5px);
         }
 
         .dropdown-divider {
-            border-color: rgba(0, 0, 0, 0.1);
+            border-color: var(--glass-border);
             margin: 0.5rem 0;
         }
 
-        [data-bs-theme="dark"] .dropdown-divider {
-            border-color: rgba(255, 255, 255, 0.1);
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            color: var(--gray-700);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .dropdown-toggle::after {
-            transition: transform 0.3s ease;
+        [data-bs-theme="dark"] .theme-toggle {
+            color: var(--accent);
         }
 
-        .dropdown-toggle.show::after {
+        .theme-toggle:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
             transform: rotate(180deg);
         }
 
-        @keyframes dropdownFadeIn {
+        /* ===== HERO CAROUSEL ===== */
+        .hero-carousel {
+            margin-top: 76px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-carousel .carousel-item {
+            height: 85vh;
+            min-height: 600px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-carousel .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 58, 138, 0.7) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -244,363 +326,401 @@
             }
         }
 
-        /* ===== IMPROVED DROPDOWN POSITIONING ===== */
-        .dropdown {
-            position: relative;
+        /* Carousel Controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+            transition: all 0.3s ease;
         }
 
-        .dropdown-menu {
-            display: none; /* Start hidden */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 0.125rem;
+        .carousel-control-prev { left: 30px; }
+        .carousel-control-next { right: 30px; }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background: var(--primary);
+            border-color: var(--primary);
         }
 
-        .dropdown-menu.show {
-            display: block;
+        .carousel-indicators {
+            bottom: 30px;
         }
 
-        /* Ensure dropdown doesn't cause horizontal overflow on mobile */
-        @media (max-width: 991.98px) {
-            .dropdown-menu {
-                position: static;
-                float: none;
-                width: 100%;
-                margin: 0.125rem 0 0;
-                border: none;
-                box-shadow: none;
-                background-color: rgba(255, 255, 255, 0.95);
-                max-width: 100%;
-            }
-            
-            [data-bs-theme="dark"] .dropdown-menu {
-                background-color: rgba(15, 23, 42, 0.95);
-            }
-            
-            .dropdown-item {
-                text-align: center;
-                padding: 0.75rem 1rem;
-                border-radius: 8px;
-                margin: 0.25rem 0;
-            }
-            
-            .dropdown-divider {
-                margin: 0.5rem auto;
-                width: 80%;
-            }
-            
-            /* Fix for navbar dropdown on mobile */
-            .navbar-collapse {
-                max-height: 80vh;
-                overflow-y: auto;
-            }
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid transparent;
+            margin: 0 6px;
+            transition: all 0.3s ease;
         }
 
-        /* ===== HERO SECTION ===== */
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 50px 0 100px;
-            position: relative;
-            overflow: hidden;
-            margin-top: 76px;
-            width: 100%;
+        .carousel-indicators button.active {
+            background: white;
+            transform: scale(1.3);
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        /* ===== GLASSMORPHISM CARDS ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+            padding: 2rem;
+            transition: all 0.4s ease;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 100%;
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(31, 38, 135, 0.2);
         }
 
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            max-width: 100%;
-            padding: 20px;
+        [data-bs-theme="dark"] .glass-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* ===== BUTTON STYLES ===== */
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        /* ===== BUTTONS ===== */
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
-            padding: 14px 30px;
+            padding: 14px 32px;
             font-weight: 600;
             border-radius: 50px;
+            color: white;
             transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
             position: relative;
             overflow: hidden;
-            margin: 0.5rem;
-            white-space: nowrap;
-            display: inline-block;
-            max-width: 100%;
         }
 
-        .btn-primary::before {
+        .btn-primary-gradient::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
 
-        .btn-primary:hover::before {
+        .btn-primary-gradient:hover::before {
             left: 100%;
         }
 
-        .btn-primary:hover {
+        .btn-primary-gradient:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+            box-shadow: 0 8px 30px rgba(30, 58, 138, 0.4);
+            color: white;
         }
 
-        .btn-outline-light {
-            border: 2px solid white;
-            color: white;
-            padding: 12px 30px;
+        .btn-glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            padding: 14px 32px;
             font-weight: 600;
             border-radius: 50px;
+            color: white;
             transition: all 0.4s ease;
-            background: transparent;
-            margin: 0.5rem;
-            white-space: nowrap;
-            display: inline-block;
-            max-width: 100%;
         }
 
-        .btn-outline-light:hover {
+        .btn-glass:hover {
             background: white;
             color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
-        /* ===== SECTION TITLE ===== */
-        .section-title {
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            color: var(--gray-900);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+            color: var(--gray-900);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 6rem 0;
             position: relative;
-            margin-bottom: 3.5rem;
+            overflow: hidden;
+        }
+
+        .section-compact {
+            padding: 4rem 0;
+        }
+
+        .bg-gradient-light {
+            background: linear-gradient(180deg, var(--gray-100) 0%, var(--light) 100%);
+        }
+
+        [data-bs-theme="dark"] .bg-gradient-light {
+            background: linear-gradient(180deg, var(--gray-800) 0%, var(--gray-900) 100%);
+        }
+
+        .section-header {
             text-align: center;
-            padding-top: 1rem;
-            max-width: 100%;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 4px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 2px;
         }
 
-        /* ===== CARD STYLES ===== */
-        .card {
-            border: none;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            height: 100%;
-            background: var(--light);
-            margin-bottom: 2rem;
-            max-width: 100%;
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-            transition: all 0.4s ease;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .card:hover .card-img-top {
-            transform: scale(1.05);
-        }
-
-        .sermon-card .card-img-top {
-            height: 180px;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-            max-width: 100%;
-        }
-
-        /* ===== IMAGE FIXES ===== */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ===== RADIO PLAYER ===== */
-        .radio-player {
-            background: var(--gray-light);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            max-width: 100%;
-        }
-
-        [data-bs-theme="dark"] .radio-player {
-            background: var(--secondary);
-        }
-
-        /* ===== TESTIMONY CAROUSEL ===== */
-        .testimony-carousel {
-            padding: 2rem 0;
-            max-width: 100%;
+        /* ===== WELCOME SECTION ===== */
+        .welcome-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            position: relative;
             overflow: hidden;
         }
 
-        .testimony-carousel .carousel-item {
-            padding: 1rem 0;
-        }
-
-        .testimony-card {
-            background: var(--light);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            border-left: 5px solid var(--primary);
-            position: relative;
-            transition: all 0.4s ease;
-            margin: 1rem 0;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 100%;
-        }
-
-        .testimony-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .testimony-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.2;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .testimony-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 3px solid var(--primary);
-            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
-        }
-
-        /* ===== ACTIVITY TIMELINE ===== */
-        .activity-timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin: 2rem 0;
-            max-width: 100%;
-        }
-
-        .activity-timeline::before {
+        .welcome-section::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
-            border-radius: 2px;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
-        .activity-item {
-            position: relative;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--light);
-            border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--primary);
-            max-width: 100%;
-        }
-
-        .activity-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .activity-item::before {
+        .welcome-section::after {
             content: '';
             position: absolute;
-            left: -2.25rem;
-            top: 2rem;
-            width: 12px;
-            height: 12px;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
             border-radius: 50%;
-            background: var(--primary);
-            border: 3px solid var(--light);
-            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .welcome-content {
+            position: relative;
             z-index: 2;
         }
 
-        [data-bs-theme="dark"] .activity-item::before {
-            border: 3px solid var(--light);
+        .welcome-title {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .welcome-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+        }
+
+        .welcome-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        /* Live Service Card */
+        .live-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ef4444;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .live-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .live-card-body {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        /* ===== ACTIVITIES SECTION ===== */
+        .activity-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        [data-bs-theme="dark"] .activity-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .activity-card:hover .activity-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .activity-day {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+
+        [data-bs-theme="dark"] .activity-title {
+            color: var(--gray-100);
+        }
+
+        .activity-time {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         /* ===== MINISTRY CARDS ===== */
         .ministry-card {
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
-            transition: all 0.4s ease;
             background: var(--light);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            margin-bottom: 2rem;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            max-width: 100%;
+        }
+
+        [data-bs-theme="dark"] .ministry-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
         }
 
         .ministry-card::before {
@@ -610,135 +730,241 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
         }
 
         .ministry-card:hover {
-            background: var(--primary);
-            color: white;
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .ministry-card:hover::before {
+            height: 100%;
+            transition: height 0.4s ease;
+        }
+
+        .ministry-card:hover .ministry-icon,
+        .ministry-card:hover .ministry-title,
+        .ministry-card:hover .ministry-text,
+        .ministry-card:hover .btn {
+            position: relative;
+            z-index: 2;
         }
 
         .ministry-card:hover .ministry-icon {
             background: white;
             color: var(--primary);
-            transform: scale(1.1);
         }
 
-        .ministry-card:hover h4,
-        .ministry-card:hover p {
+        .ministry-card:hover .ministry-title,
+        .ministry-card:hover .ministry-text {
             color: white;
+        }
+
+        .ministry-card:hover .btn {
+            background: white;
+            color: var(--primary);
         }
 
         .ministry-icon {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            color: white;
             margin: 0 auto 1.5rem;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
         }
 
-        /* ===== FLOATING SHAPES ===== */
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+        .ministry-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: color 0.4s ease;
+        }
+
+        .ministry-text {
+            color: var(--gray-500);
+            margin-bottom: 1.5rem;
+            transition: color 0.4s ease;
+        }
+
+        /* ===== SERMON CARDS ===== */
+        .sermon-card {
+            background: var(--light);
+            border-radius: 20px;
             overflow: hidden;
-            z-index: 1;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s ease;
+            height: 100%;
         }
 
-        .shape {
+        [data-bs-theme="dark"] .sermon-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .sermon-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sermon-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .sermon-card:hover .sermon-img {
+            transform: scale(1.1);
+        }
+
+        .sermon-play {
             position: absolute;
-            opacity: 0.1;
-            border-radius: 50%;
-            background: white;
-            animation: float 15s infinite linear;
-            max-width: 100%;
-        }
-
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-        }
-
-        .shape:nth-child(3) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 60px;
             height: 60px;
-            top: 80%;
-            left: 20%;
-            animation-delay: 4s;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.4s ease;
         }
 
-        .shape:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            left: 70%;
-            animation-delay: 6s;
+        .sermon-card:hover .sermon-play {
+            opacity: 1;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
+        .sermon-body {
+            padding: 1.5rem;
+        }
+
+        .sermon-meta {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .sermon-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--gray-900);
+        }
+
+        [data-bs-theme="dark"] .sermon-title {
+            color: var(--gray-100);
+        }
+
+        .sermon-desc {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .sermon-stats {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--gray-400);
+            font-size: 0.9rem;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
-            color: var(--light);
-            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, var(--gray-900) 0%, #000 100%);
+            color: var(--gray-400);
+            padding: 5rem 0 2rem;
             position: relative;
-            margin-top: 2rem;
-            max-width: 100%;
-            overflow: hidden;
         }
 
-        .footer-links h5 {
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--accent));
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            transform: translateY(-5px);
+        }
+
+        .footer-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
             margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 0.5rem;
-            color: white;
+            padding-bottom: 0.75rem;
         }
 
-        .footer-links h5::after {
+        .footer-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 40px;
             height: 3px;
-            background: var(--primary-light);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
         }
 
-        .footer-links ul {
+        .footer-links {
             list-style: none;
             padding: 0;
             margin: 0;
@@ -749,35 +975,78 @@
         }
 
         .footer-links a {
-            color: var(--gray);
+            color: var(--gray-400);
             text-decoration: none;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-links a:hover {
             color: var(--primary-light);
-            padding-left: 5px;
+            padding-left: 8px;
         }
 
-        /* ===== BACK TO TOP BUTTON ===== */
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* ===== BACK TO TOP ===== */
         .back-to-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 30px;
+            right: 30px;
             width: 50px;
             height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 1.2rem;
             text-decoration: none;
-            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.3);
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
             z-index: 999;
+            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.3);
         }
 
         .back-to-top.show {
@@ -787,352 +1056,88 @@
 
         .back-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
-        }
-
-        /* ===== LIVE INDICATOR ===== */
-        .live-indicator {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--danger);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            animation: pulse 2s infinite;
-            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
-            z-index: 2;
-        }
-
-        @keyframes pulse {
-            0% { 
-                transform: scale(1);
-                box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
-            }
-            50% { 
-                transform: scale(1.05);
-                box-shadow: 0 6px 15px rgba(220, 38, 38, 0.5);
-            }
-            100% { 
-                transform: scale(1);
-                box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
-            }
-        }
-
-        /* ===== THEME TOGGLE ===== */
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-light);
-            margin-left: 1rem;
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(30deg);
-            background: var(--primary);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
             color: white;
         }
 
-        /* ===== ADDITIONAL STYLES ===== */
-        .marketplace-hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 100px 0 60px;
-        }
-
-        .product-price {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0.5rem 0;
-        }
-
-        .store-badge {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            box-shadow: 0 3px 10px rgba(30, 58, 138, 0.2);
-        }
-
-        .whatsapp-btn {
-            background: linear-gradient(135deg, var(--whatsapp) 0%, var(--whatsapp-dark) 100%);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
-            position: relative;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-
-        .whatsapp-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
-        }
-
-        .whatsapp-btn:hover::before {
-            left: 100%;
-        }
-
-        .whatsapp-btn:hover {
-            background: linear-gradient(135deg, var(--whatsapp-dark) 0%, var(--whatsapp) 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
-            color: white;
-        }
-
-        .bg-light {
-            background-color: var(--gray-light) !important;
-        }
-
-        [data-bs-theme="dark"] .bg-light {
-            background-color: var(--secondary) !important;
-        }
-
-        /* Loading animation */
-        .loading-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            width: 0%;
-            z-index: 9999;
-            transition: width 0.3s ease;
-        }
-
-        /* Enhanced focus states for accessibility */
-        .btn:focus,
-        .form-control:focus,
-        .nav-link:focus {
-            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.3);
-        }
-
-        /* Improved text selection */
-        ::selection {
-            background: var(--primary-light);
-            color: white;
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 3rem;
-            }
+            .hero-title { font-size: 3.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .welcome-title { font-size: 2.5rem; }
         }
 
         @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .ministry-card {
-                margin-bottom: 1.5rem;
-            }
-            
-            .activity-timeline {
-                padding-left: 1.5rem;
-            }
-            
-            .activity-item::before {
-                left: -1.75rem;
-            }
-            
-            .navbar-nav {
-                text-align: center;
-            }
-            
-            /* Enhanced mobile dropdown */
+            .hero-carousel .carousel-item { height: 70vh; min-height: 500px; }
+            .hero-title { font-size: 3rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .carousel-control-prev, .carousel-control-next { display: none; }
+
+            .welcome-features { grid-template-columns: 1fr; }
+
             .dropdown-menu {
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: none;
-                box-shadow: none;
-                border: none;
-                text-align: center;
-                animation: none;
-            }
-            
-            [data-bs-theme="dark"] .dropdown-menu {
-                background: rgba(15, 23, 42, 0.95);
-            }
-            
-            /* Mobile-specific dropdown improvements */
-            .navbar-collapse.show .dropdown-menu {
-                animation: none !important;
-                opacity: 1 !important;
+                position: static !important;
                 transform: none !important;
+                width: 100%;
+                margin-top: 0.5rem;
+                background: var(--gray-100);
+            }
+
+            [data-bs-theme="dark"] .dropdown-menu {
+                background: var(--gray-800);
             }
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 3rem 0;
-            }
-            
-            .hero-section {
-                padding: 100px 0 60px;
-            }
-            
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2.5rem;
-            }
-            
-            .card {
-                margin-bottom: 1.5rem;
-            }
-            
-            .testimony-card {
-                padding: 2rem 1.5rem;
-                min-height: 300px;
-            }
-            
-            .radio-player {
-                margin-bottom: 1.5rem;
-            }
-            
-            .btn-primary, .btn-outline-light {
-                width: 100%;
-                margin: 0.5rem 0;
-                white-space: normal;
-                word-wrap: break-word;
-            }
-            
-            .d-flex.flex-wrap {
-                flex-direction: column;
-            }
-            
-            /* Fix for carousel on mobile */
-            .carousel-inner {
-                overflow: visible;
-            }
-            
-            /* Fix for floating shapes on mobile */
-            .shape {
-                display: none;
-            }
-            
-            /* Prevent dropdown from being cut off on mobile */
-            .navbar-collapse {
-                max-height: calc(100vh - 200px);
-                overflow-y: auto;
-                padding: 1rem;
-            }
-            
-            .dropdown-menu {
-                max-height: 400px;
-                overflow-y: auto;
-            }
+            section { padding: 4rem 0; }
+            .section-compact { padding: 3rem 0; }
+
+            .hero-carousel .carousel-item { height: 80vh; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; }
+
+            .section-title { font-size: 2rem; }
+            .welcome-title { font-size: 2rem; }
+
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
         }
 
         @media (max-width: 576px) {
-            .container {
-                padding-right: 10px;
-                padding-left: 10px;
-            }
-            
-            .hero-title {
-                font-size: 1.8rem;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-            
-            .btn-primary,
-            .btn-outline-light {
-                padding: 12px 24px;
-                font-size: 0.9rem;
-                white-space: normal;
-                word-wrap: break-word;
-            }
-            
-            .testimony-card {
-                min-height: 280px;
-                padding: 1.5rem 1rem;
-            }
-            
-            .navbar-brand {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .ministry-card {
-                padding: 2rem 1rem;
-            }
-        }
+            .hero-carousel .carousel-item { min-height: 550px; }
+            .hero-title { font-size: 2rem; }
+            .section-title { font-size: 1.75rem; }
 
-        @media (max-width: 400px) {
-            .hero-title {
-                font-size: 1.6rem;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-            }
-            
-            .card-body {
-                padding: 1rem;
-            }
-            
-            .testimony-card {
-                padding: 1.5rem 0.75rem;
+            .navbar-brand { font-size: 1.3rem; }
+            .navbar-brand img { width: 45px; }
+
+            .glass-card { padding: 1.5rem; }
+            .ministry-card { padding: 2rem 1.5rem; }
+
+            .btn-primary-gradient, .btn-glass, .btn-accent {
+                padding: 12px 24px;
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Bar -->
-    <div class="loading-bar" id="loadingBar"></div>
-
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <img src="img/Rccg_logo.png" alt="RCCG Logo" style="width: 70px;">
-            <a class="navbar-brand ms-2" href="index.html">City Of Joy</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/Rccg_logo.png" alt="RCCG Logo">
+                <span>City Of Joy</span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item">
                         <a class="nav-link active" href="index.html">Home</a>
                     </li>
@@ -1140,20 +1145,14 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="ministriesDropdown" role="button" data-bs-toggle="dropdown">
                             Ministries
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
-                            <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="ministries.html"><i class="bi bi-grid me-2"></i>All Ministries</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
-                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
-                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
-                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
-                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
-                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                            <li><a class="dropdown-item" href="yaya.html"><i class="bi bi-people me-2"></i>YAYA (Youth & Young Adults)</a></li>
+                            <li><a class="dropdown-item" href="events.html"><i class="bi bi-calendar-event me-2"></i>Events</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -1163,78 +1162,150 @@
                         <a class="nav-link" href="giving.html">Giving</a>
                     </li>
                 </ul>
-                
-                <div class="d-flex align-items-center">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="bi bi-sun-fill"></i>
-                    </button>
-                </div>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-duration="1000">
-                    <h1 class="text-white p-3" style="font-size: 180px;">RCCG</h1>
-                    <h1 class="hero-title mt-3 text-white" style="font-size: 50px;">City Of Joy (Rivers Province 10)</h1>
-                    <p class="lead mb-4 p-4">A vibrant community of faith, hope, and love. Join us as we grow together in Christ and serve our community with purpose and passion.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="giving.html" class="btn btn-primary">
-                            <i class="bi bi-play-circle me-2"></i> Join Service Live
-                        </a>
-                        <a href="about.html" class="btn btn-outline-light">
-                            <i class="bi bi-info-circle me-2"></i> Learn More
-                        </a>
+    <!-- Hero Carousel -->
+    <section class="hero-carousel">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+                    <div class="container hero-content">
+                        <div class="hero-text">
+                            <span class="hero-badge"><i class="bi bi-stars me-2"></i>Welcome to Our Church</span>
+                            <h1 class="hero-title">RCCG City Of Joy</h1>
+                            <p class="hero-subtitle">Rivers Province 10 Headquarters - A vibrant community of faith, hope, and love. Join us as we grow together in Christ.</p>
+                            <div class="hero-buttons">
+                                <a href="about.html" class="btn btn-primary-gradient">
+                                    <i class="bi bi-play-circle me-2"></i>Join Us Sunday
+                                </a>
+                                <a href="sermons.html" class="btn btn-glass">
+                                    <i class="bi bi-collection-play me-2"></i>Watch Sermons
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="radio-player">
-                        <h4 class="mb-3"><i class="bi bi-broadcast me-2"></i> Online Radio</h4>
-                        <div class="d-flex align-items-center mb-3">
-                            <button class="btn btn-light me-3 rounded-circle" style="width: 50px; height: 50px;">
-                                <i class="bi bi-play-fill"></i>
-                            </button>
-                            <div class="flex-grow-1">
-                                <div class="d-flex justify-content-between">
-                                    <span>Now Playing:</span>
-                                    <span id="currentSong">Worship & Praise Mix</span>
-                                </div>
-                                <div class="progress mt-2" style="height: 6px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 65%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between text-small">
-                            <span>Volume</span>
-                            <div>
-                                <i class="bi bi-volume-down me-2"></i>
-                                <i class="bi bi-volume-up"></i>
+
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+                    <div class="container hero-content">
+                        <div class="hero-text">
+                            <span class="hero-badge"><i class="bi bi-heart me-2"></i>Experience God's Love</span>
+                            <h1 class="hero-title">Transforming Lives Through Faith</h1>
+                            <p class="hero-subtitle">Discover purpose, build meaningful connections, and grow spiritually in our welcoming community of believers.</p>
+                            <div class="hero-buttons">
+                                <a href="ministries.html" class="btn btn-primary-gradient">
+                                    <i class="bi bi-people me-2"></i>Our Ministries
+                                </a>
+                                <a href="events.html" class="btn btn-glass">
+                                    <i class="bi bi-calendar-event me-2"></i>Upcoming Events
+                                </a>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Live Service">
-                            <div class="live-indicator">
-                                <i class="bi bi-circle-fill me-1"></i> LIVE
+                </div>
+
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1470019693664-1d202d2c0907?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+                    <div class="container hero-content">
+                        <div class="hero-text">
+                            <span class="hero-badge"><i class="bi bi-gift me-2"></i>Make a Difference</span>
+                            <h1 class="hero-title">Partner With Us in Ministry</h1>
+                            <p class="hero-subtitle">Your generous giving helps us spread the gospel, support our community, and transform lives around the world.</p>
+                            <div class="hero-buttons">
+                                <a href="giving.html" class="btn btn-accent">
+                                    <i class="bi bi-heart-fill me-2"></i>Give Now
+                                </a>
+                                <a href="about.html" class="btn btn-glass">
+                                    <i class="bi bi-info-circle me-2"></i>Learn More
+                                </a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Sunday Service Live</h5>
-                            <p class="card-text">Join our live Sunday service streaming now with Pastor Solomon Marega</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 welcome-content" data-aos="fade-right">
+                    <span class="section-badge">About Our Church</span>
+                    <h2 class="welcome-title">Welcome to City Of Joy Parish</h2>
+                    <p class="welcome-text">
+                        We are the Redeemed Christian Church of God, Rivers Province 10 Headquarters. Our mission is to spread the gospel of Jesus Christ, raise godly leaders, and transform communities through the power of God's love.
+                    </p>
+                    <p class="welcome-text">
+                        Under the leadership of Pastor Solomon Marega (PIC Rivers Province 10), we are committed to nurturing spiritual growth, fostering genuine fellowship, and making disciples of all nations.
+                    </p>
+
+                    <div class="welcome-features">
+                        <div class="welcome-feature">
+                            <div class="welcome-feature-icon">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <div>
+                                <strong>Bible-Based Teaching</strong>
+                            </div>
+                        </div>
+                        <div class="welcome-feature">
+                            <div class="welcome-feature-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div>
+                                <strong>Vibrant Community</strong>
+                            </div>
+                        </div>
+                        <div class="welcome-feature">
+                            <div class="welcome-feature-icon">
+                                <i class="bi bi-music-note-beamed"></i>
+                            </div>
+                            <div>
+                                <strong>Spirit-Filled Worship</strong>
+                            </div>
+                        </div>
+                        <div class="welcome-feature">
+                            <div class="welcome-feature-icon">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                            <div>
+                                <strong>Community Outreach</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="live-card">
+                        <div class="live-badge">
+                            <i class="bi bi-broadcast"></i> LIVE
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Live Service">
+                        <div class="live-card-body">
+                            <h4>Sunday Service Live</h4>
+                            <p class="mb-3" style="opacity: 0.9;">Join our live Sunday service with Pastor Solomon Marega</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">Started 25 min ago</small>
-                                <a href="live.html" class="btn btn-sm btn-danger">Watch Now</a>
+                                <span style="opacity: 0.7;"><i class="bi bi-clock me-2"></i>Started 25 min ago</span>
+                                <a href="#" class="btn btn-accent btn-sm">Watch Now</a>
                             </div>
                         </div>
                     </div>
@@ -1243,257 +1314,170 @@
         </div>
     </section>
 
-    <!-- Testimonies Section -->
-    <!-- <section class="section-compact bg-light">
+    <!-- Weekly Activities -->
+    <section class="bg-gradient-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Testimonies</h2>
-            
-            <div class="testimony-carousel">
-                <div id="testimonyCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="testimony-card" data-aos="zoom-in">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimony-avatar" alt="Testifier">
-                                <h5>Sarah Johnson</h5>
-                                <p class="text-muted mb-3">Member since 2019</p>
-                                <p class="mb-0">"This church has transformed my life. The community support and inspiring sermons have helped me through difficult times. I'm forever grateful for this spiritual home."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="testimony-card" data-aos="zoom-in">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimony-avatar" alt="Testifier">
-                                <h5>Michael Brown</h5>
-                                <p class="text-muted mb-3">Member since 2020</p>
-                                <p class="mb-0">"The youth ministry helped me find my purpose. Now I'm serving in the media team and using my talents for God's glory. This church truly empowers young people."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="testimony-card" data-aos="zoom-in">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="testimony-avatar" alt="Testifier">
-                                <h5>Jennifer Williams</h5>
-                                <p class="text-muted mb-3">Member since 2018</p>
-                                <p class="mb-0">"After joining the prayer group, I've experienced miraculous healing in my family. The power of prayer in this community is truly amazing."</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonyCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testimonyCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Join Us</span>
+                <h2 class="section-title">Weekly Activities</h2>
+                <p class="section-subtitle">Be part of our regular gatherings for worship, teaching, and fellowship throughout the week.</p>
             </div>
-        </div>
-    </section> -->
 
- <!-- Activities Section -->
-<section class="section-compact">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Weekly & Monthly Activities</h2>
-        <p class="section-subtitle text-center mb-5">Join us for our regular gatherings and special monthly events</p>
-        
-        <div class="row">
-            <!-- Column 1: Regular Weekly Activities -->
-            <div class="col-lg-6 mb-5" data-aos="fade-right">
-                <div class="activity-column">
-                    <div class="column-header">
-                        <h4 class="mb-3"><i class="bi bi-calendar-week me-2 text-primary"></i>Regular Weekly Schedule</h4>
-                        <p class="text-muted column-caption mb-4">Join us throughout the week for worship, teaching, and fellowship</p>
-                    </div>
-                    <div class="activity-timeline">
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-people-fill"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Sunday Workers Meeting</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 7:00 AM - 8:00 AM</p>
-                                <p class="mb-0">Leadership preparation and prayer for all church workers and volunteers before services begin.</p>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-book"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Sunday School</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 8:00 AM - 9:00 AM</p>
-                                <p class="mb-0">Age-appropriate Bible study classes for everyone from children to adults.</p>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-music-note-beamed"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Sunday Main Service</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 9:00 AM - 11:00 AM</p>
-                                <p class="mb-0">Worship service with prayer and an inspiring message from Pastor Solomon Marega.</p>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-search"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Tuesday Digging Deep</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 6:00 PM - 7:15 PM</p>
-                                <p class="mb-0">In-depth Bible study session exploring Scripture in greater detail.</p>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-heart-pulse"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Thursday Faith Clinic</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 6:00 PM - 7:00 PM</p>
-                                <p class="mb-0">Teaching and prayer session focused on building and strengthening faith.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column-footer mt-4 pt-3 border-top">
-                        <p class="small text-muted mb-0"><i class="bi bi-info-circle me-2"></i>All weekly activities are held at the main church sanctuary unless otherwise announced.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Column 2: Monthly Activities & Special Events -->
-            <div class="col-lg-6 mb-5" data-aos="fade-left">
-                <div class="activity-column">
-                    <div class="column-header">
-                        <h4 class="mb-3"><i class="bi bi-calendar-month me-2 text-primary"></i>Monthly & Special Events</h4>
-                        <p class="text-muted column-caption mb-4">Powerful gatherings and special programs throughout the month</p>
-                    </div>
-                    <div class="activity-timeline">
-                        <div class="activity-item featured">
-                            <div class="activity-icon">
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Divine Visitation</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> Third Saturday of Every Month</p>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 6:00 AM - 9:00 AM</p>
-                                <p class="mb-0">Early morning prayer and worship service expecting God's special presence and miracles.</p>
-                            </div>
-                        </div>
-                        <!-- <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-chat-dots"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Monthly Prayer Focus</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> First Friday of Every Month</p>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 7:00 PM - 9:00 PM</p>
-                                <p class="mb-0">Extended prayer session focusing on specific themes and needs for the month.</p>
-                            </div>
-                        </div> -->
-                        <!-- <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-cup-hot"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>New Members Fellowship</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> Last Sunday of Every Month</p>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 12:00 PM - 1:30 PM</p>
-                                <p class="mb-0">Welcome luncheon for new members to connect with church leadership and community.</p>
-                            </div>
-                        </div> -->
-                        <!-- <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="bi bi-mic"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h5>Youth Power Night</h5>
-                                <p class="text-muted mb-2"><i class="bi bi-calendar me-2"></i> Second Friday of Every Month</p>
-                                <p class="text-muted mb-2"><i class="bi bi-clock me-2"></i> 7:00 PM - 10:00 PM</p>
-                                <p class="mb-0">Youth-focused worship, teaching, and fellowship with contemporary music and relevant messages.</p>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="column-footer mt-4 pt-3 border-top">
-                        <p class="small text-muted mb-0"><i class="bi bi-info-circle me-2"></i>Monthly events may have special guest speakers or theme variations. Check weekly announcements.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Ministries Section -->
-    <section class="section-compact bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Our Ministries</h2>
-            
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <div class="activity-day">Sunday</div>
+                        <h4 class="activity-title">Workers Meeting</h4>
+                        <div class="activity-time">
+                            <i class="bi bi-clock"></i> 7:00 AM - 8:00 AM
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <div class="activity-day">Sunday</div>
+                        <h4 class="activity-title">Sunday School</h4>
+                        <div class="activity-time">
+                            <i class="bi bi-clock"></i> 8:00 AM - 9:00 AM
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="bi bi-music-note-beamed"></i>
+                        </div>
+                        <div class="activity-day">Sunday</div>
+                        <h4 class="activity-title">Main Service</h4>
+                        <div class="activity-time">
+                            <i class="bi bi-clock"></i> 9:00 AM - 11:00 AM
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <div class="activity-day">Tuesday</div>
+                        <h4 class="activity-title">Digging Deep</h4>
+                        <div class="activity-time">
+                            <i class="bi bi-clock"></i> 6:00 PM - 7:15 PM
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <div class="activity-day">Thursday</div>
+                        <h4 class="activity-title">Faith Clinic</h4>
+                        <div class="activity-time">
+                            <i class="bi bi-clock"></i> 6:00 PM - 7:00 PM
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="activity-day">3rd Saturday Monthly</div>
+                        <h4 class="activity-title">Divine Visitation</h4>
+                        <div class="activity-time">
+                            <i class="bi bi-clock"></i> 6:00 AM - 9:00 AM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministries -->
+    <section>
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Get Involved</span>
+                <h2 class="section-title">Our Ministries</h2>
+                <p class="section-subtitle">Find your place to serve and grow in our various ministry departments.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="ministry-card">
                         <div class="ministry-icon">
                             <i class="bi bi-people-fill"></i>
                         </div>
-                        <h4>YAYA Ministry</h4>
-                        <p class="mb-3">Youth & Young Adults Affairs - Empowering the next generation through faith, fellowship, and purpose.</p>
-                        <a href="yaya.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <h4 class="ministry-title">YAYA Ministry</h4>
+                        <p class="ministry-text">Youth & Young Adults - Empowering the next generation through faith and fellowship.</p>
+                        <a href="yaya.html" class="btn btn-primary-gradient btn-sm">Learn More</a>
                     </div>
                 </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="ministry-card">
                         <div class="ministry-icon">
                             <i class="bi bi-music-note-beamed"></i>
                         </div>
-                        <h4>Worship & Arts</h4>
-                        <p class="mb-3">Expressing praise to God through music, dance, and creative arts.</p>
-                        <a href="worship-arts.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <h4 class="ministry-title">Worship & Arts</h4>
+                        <p class="ministry-text">Expressing praise through music, dance, and creative arts ministry.</p>
+                        <a href="ministries.html" class="btn btn-primary-gradient btn-sm">Learn More</a>
                     </div>
                 </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="ministry-card">
                         <div class="ministry-icon">
                             <i class="bi bi-heart-fill"></i>
                         </div>
-                        <h4>Outreach Ministry</h4>
-                        <p class="mb-3">Serving our community through various outreach and mission programs.</p>
-                        <a href="outreach.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <h4 class="ministry-title">Outreach Ministry</h4>
+                        <p class="ministry-text">Serving our community through evangelism and mission programs.</p>
+                        <a href="ministries.html" class="btn btn-primary-gradient btn-sm">Learn More</a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="row g-4 mt-2">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
                     <div class="ministry-card">
                         <div class="ministry-icon">
                             <i class="bi bi-book-half"></i>
                         </div>
-                        <h4>Bible Studies</h4>
-                        <p class="mb-3">Deep dive into God's word through various study groups and classes.</p>
-                        <a href="bible-studies.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <h4 class="ministry-title">Bible Studies</h4>
+                        <p class="ministry-text">Deep dive into God's word through study groups and classes.</p>
+                        <a href="ministries.html" class="btn btn-primary-gradient btn-sm">Learn More</a>
                     </div>
                 </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="ministry-card">
                         <div class="ministry-icon">
                             <i class="bi bi-camera-video-fill"></i>
                         </div>
-                        <h4>Media Ministry</h4>
-                        <p class="mb-3">Spreading the gospel through technology and creative media production.</p>
-                        <a href="media-ministry.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <h4 class="ministry-title">Media Ministry</h4>
+                        <p class="ministry-text">Spreading the gospel through technology and creative media.</p>
+                        <a href="ministries.html" class="btn btn-primary-gradient btn-sm">Learn More</a>
                     </div>
                 </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
                     <div class="ministry-card">
                         <div class="ministry-icon">
                             <i class="bi bi-house-heart-fill"></i>
                         </div>
-                        <h4>Family Ministry</h4>
-                        <p class="mb-3">Strengthening families through counseling, workshops, and support groups.</p>
-                        <a href="family.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        <h4 class="ministry-title">Family Ministry</h4>
+                        <p class="ministry-text">Strengthening families through counseling and workshops.</p>
+                        <a href="ministries.html" class="btn btn-primary-gradient btn-sm">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -1501,68 +1485,86 @@
     </section>
 
     <!-- Recent Sermons -->
-    <section class="section-compact">
+    <section class="bg-gradient-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Recent Sermons</h2>
-            
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Listen & Learn</span>
+                <h2 class="section-title">Recent Sermons</h2>
+                <p class="section-subtitle">Catch up on our latest messages and be blessed by the Word of God.</p>
+            </div>
+
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card sermon-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
-                        <div class="card-body">
-                            <h5 class="card-title">The Power of Faith</h5>
-                            <p class="card-text text-muted mb-2">Pastor Solomon Marega (PIC Rivers Province 10) | June 4, 2023</p>
-                            <p class="card-text mb-3">Exploring how faith can move mountains in our daily lives and challenges.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
-                                <div class="text-muted">
-                                    <i class="bi bi-eye me-1"></i> 245
-                                    <i class="bi bi-download ms-3 me-1"></i> 89
-                                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="sermon-card">
+                        <div class="sermon-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="sermon-img" alt="Sermon">
+                            <div class="sermon-play">
+                                <i class="bi bi-play-fill"></i>
+                            </div>
+                        </div>
+                        <div class="sermon-body">
+                            <div class="sermon-meta">
+                                <i class="bi bi-calendar me-1"></i> June 4, 2024 • Pastor Solomon Marega
+                            </div>
+                            <h5 class="sermon-title">The Power of Faith</h5>
+                            <p class="sermon-desc">Exploring how faith can move mountains in our daily lives and challenges.</p>
+                            <div class="sermon-stats">
+                                <span><i class="bi bi-eye me-1"></i> 245</span>
+                                <span><i class="bi bi-download me-1"></i> 89</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card sermon-card">
-                        <img src="https://images.unsplash.com/photo-1542403810-8910637cc2b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
-                        <div class="card-body">
-                            <h5 class="card-title">Finding Hope in Hard Times</h5>
-                            <p class="card-text text-muted mb-2">Pastor Solomon Marega (PIC Rivers Province 10) | May 28, 2023</p>
-                            <p class="card-text mb-3">Biblical principles for maintaining hope and peace during difficult seasons.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
-                                <div class="text-muted">
-                                    <i class="bi bi-eye me-1"></i> 189
-                                    <i class="bi bi-download ms-3 me-1"></i> 67
-                                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="sermon-card">
+                        <div class="sermon-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1542403810-8910637cc2b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="sermon-img" alt="Sermon">
+                            <div class="sermon-play">
+                                <i class="bi bi-play-fill"></i>
+                            </div>
+                        </div>
+                        <div class="sermon-body">
+                            <div class="sermon-meta">
+                                <i class="bi bi-calendar me-1"></i> May 28, 2024 • Pastor Solomon Marega
+                            </div>
+                            <h5 class="sermon-title">Finding Hope in Hard Times</h5>
+                            <p class="sermon-desc">Biblical principles for maintaining hope during difficult seasons.</p>
+                            <div class="sermon-stats">
+                                <span><i class="bi bi-eye me-1"></i> 189</span>
+                                <span><i class="bi bi-download me-1"></i> 67</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card sermon-card">
-                        <img src="https://images.unsplash.com/photo-1548705083-06842646fc1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Sermon">
-                        <div class="card-body">
-                            <h5 class="card-title">The Joy of Giving</h5>
-                            <p class="card-text text-muted mb-2">Pastor Solomon Marega (PIC Rivers Province 10) | May 21, 2023</p>
-                            <p class="card-text mb-3">Understanding God's principles of generosity and its impact on our lives.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="sermon-detail.html" class="btn btn-sm btn-primary">Watch Now</a>
-                                <div class="text-muted">
-                                    <i class="bi bi-eye me-1"></i> 312
-                                    <i class="bi bi-download ms-3 me-1"></i> 124
-                                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="sermon-card">
+                        <div class="sermon-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1548705083-06842646fc1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="sermon-img" alt="Sermon">
+                            <div class="sermon-play">
+                                <i class="bi bi-play-fill"></i>
+                            </div>
+                        </div>
+                        <div class="sermon-body">
+                            <div class="sermon-meta">
+                                <i class="bi bi-calendar me-1"></i> May 21, 2024 • Pastor Solomon Marega
+                            </div>
+                            <h5 class="sermon-title">The Joy of Giving</h5>
+                            <p class="sermon-desc">Understanding God's principles of generosity and its impact.</p>
+                            <div class="sermon-stats">
+                                <span><i class="bi bi-eye me-1"></i> 312</span>
+                                <span><i class="bi bi-download me-1"></i> 124</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-4" data-aos="fade-up">
-                <a href="sermons.html" class="btn btn-outline-primary">View All Sermons</a>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="sermons.html" class="btn btn-primary-gradient">
+                    <i class="bi bi-collection-play me-2"></i>View All Sermons
+                </a>
             </div>
         </div>
     </section>
@@ -1570,314 +1572,146 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h3 class="mb-3">City Of Joy</h3>
-                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="footer-brand">City Of Joy</h3>
+                    <p class="footer-text">RCCG Rivers Province 10 Headquarters. A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
                     </div>
                 </div>
-                
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Quick Links</h5>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="ministries.html">Ministries</a></li>
-                            <li><a href="sermons.html">Sermons</a></li>
-                            <li><a href="events.html">Events</a></li>
-                        </ul>
-                    </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="ministries.html">Ministries</a></li>
+                        <li><a href="sermons.html">Sermons</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
                 </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-links">
-                        <h5>Resources</h5>
-                        <ul>
-                            <li><a href="giving.html">Online Giving</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                    </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="giving.html">Online Giving</a></li>
+                        <li><a href="sermons.html">Watch Sermons</a></li>
+                        <li><a href="events.html">Events Calendar</a></li>
+                        <li><a href="about.html">Contact Us</a></li>
+                    </ul>
                 </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <div class="footer-links">
-                        <h5>Contact Info</h5>
-                        <ul class="list-unstyled">
-                            <li><i class="bi bi-geo-alt me-2"></i>RCCG. Rivers Province 10 Hqtrs. - <span class="fw-bold">City Of Joy Parish</span></li>
-                            <li><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
-                            <li><i class="bi bi-envelope me-2"></i> info@rv1o.com</li>
-                            <li><i class="bi bi-clock me-2"></i> Sunday Services: 8:00 AM & 10:30 AM</li>
-                        </ul>
-                    </div>
+
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Contact Info</h5>
+                    <ul class="footer-links footer-contact">
+                        <li>
+                            <i class="bi bi-geo-alt"></i>
+                            <span>RCCG Rivers Province 10 Hqtrs. - City Of Joy Parish</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone"></i>
+                            <span>+234 XXX XXX XXXX</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope"></i>
+                            <span>info@rccgcoj.org</span>
+                        </li>
+                        <li>
+                            <i class="bi bi-clock"></i>
+                            <span>Sunday Services: 8:00 AM - 11:00 AM</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
-            <hr class="my-4">
-            
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2023 Rivers Province 10. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
-                    <a href="terms.html" class="text-light">Terms of Service</a>
+
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2024 RCCG City Of Joy - Rivers Province 10. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- Back to Top -->
     <a href="#" class="back-to-top" id="backToTop">
         <i class="bi bi-arrow-up"></i>
     </a>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- AOS Animation Library -->
+
+    <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Custom JavaScript -->
+
     <script>
-        // Initialize AOS with enhanced settings
+        // Initialize AOS
         AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
+            duration: 800,
+            easing: 'ease-out-cubic',
             once: true,
-            mirror: false,
-            offset: 100
+            offset: 50
         });
 
-        // Loading bar animation
-        window.addEventListener('load', function() {
-            const loadingBar = document.getElementById('loadingBar');
-            loadingBar.style.width = '100%';
-            setTimeout(() => {
-                loadingBar.style.opacity = '0';
-                setTimeout(() => {
-                    loadingBar.style.display = 'none';
-                }, 300);
-            }, 500);
-        });
-
-        // Enhanced Theme Toggle
+        // Theme Toggle with persistence across pages
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            document.documentElement.setAttribute('data-bs-theme', newTheme);
-            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
-            
-            // Save preference to localStorage
-            localStorage.setItem('theme', newTheme);
-        });
 
-        // Check for saved theme preference or respect OS preference
-        const savedTheme = localStorage.getItem('theme') || 
+        // Check for saved theme or system preference
+        const savedTheme = localStorage.getItem('theme') ||
             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
+
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
         themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
 
-        // Enhanced Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
                 backToTop.classList.add('show');
             } else {
                 backToTop.classList.remove('show');
             }
         });
-        
+
         backToTop.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Fix for navbar overlapping content on mobile
-        function adjustNavbarHeight() {
-            const navbar = document.querySelector('.navbar');
-            const heroSection = document.querySelector('.hero-section');
-            if (navbar && heroSection) {
-                const navbarHeight = navbar.offsetHeight;
-                heroSection.style.marginTop = navbarHeight + 'px';
-            }
-        }
-
-        // Adjust on load and resize
-        window.addEventListener('load', adjustNavbarHeight);
-        window.addEventListener('resize', adjustNavbarHeight);
-
-        // ===== ENHANCED DROPDOWN FUNCTIONALITY FOR MINISTRIES =====
-        function enhanceDropdowns() {
-            const ministriesDropdown = document.getElementById('ministriesDropdown');
-            const dropdownMenu = ministriesDropdown?.nextElementSibling;
-            
-            if (ministriesDropdown && dropdownMenu) {
-                // Ensure dropdown displays correctly
-                ministriesDropdown.addEventListener('show.bs.dropdown', function() {
-                    const menu = this.nextElementSibling;
-                    if (menu) {
-                        // Force display and animation
-                        menu.style.display = 'block';
-                        menu.style.opacity = '0';
-                        menu.style.transform = 'translateY(-10px)';
-                        
-                        setTimeout(() => {
-                            menu.style.opacity = '1';
-                            menu.style.transform = 'translateY(0)';
-                            menu.style.transition = 'all 0.3s ease';
-                        }, 10);
-                    }
-                });
-                
-                ministriesDropdown.addEventListener('hide.bs.dropdown', function() {
-                    const menu = this.nextElementSibling;
-                    if (menu) {
-                        menu.style.opacity = '0';
-                        menu.style.transform = 'translateY(-10px)';
-                        setTimeout(() => {
-                            menu.style.display = 'none';
-                        }, 300);
-                    }
-                });
-                
-                // Mobile dropdown handling
-                if (window.innerWidth < 992) {
-                    ministriesDropdown.addEventListener('click', function(e) {
-                        if (window.innerWidth < 992) {
-                            e.preventDefault();
-                            const menu = this.nextElementSibling;
-                            if (menu.style.display === 'block') {
-                                menu.style.opacity = '0';
-                                setTimeout(() => {
-                                    menu.style.display = 'none';
-                                }, 300);
-                            } else {
-                                menu.style.display = 'block';
-                                menu.style.opacity = '0';
-                                menu.style.transform = 'translateY(-10px)';
-                                
-                                setTimeout(() => {
-                                    menu.style.opacity = '1';
-                                    menu.style.transform = 'translateY(0)';
-                                }, 10);
-                            }
-                        }
-                    });
-                }
-            }
-            
-            // Handle all dropdowns for consistency
-            document.querySelectorAll('.dropdown-toggle').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    if (window.innerWidth < 992) {
-                        e.preventDefault();
-                        const menu = this.nextElementSibling;
-                        const isVisible = menu.style.display === 'block';
-                        
-                        // Close all other dropdowns
-                        document.querySelectorAll('.dropdown-menu').forEach(otherMenu => {
-                            if (otherMenu !== menu) {
-                                otherMenu.style.opacity = '0';
-                                setTimeout(() => {
-                                    otherMenu.style.display = 'none';
-                                }, 300);
-                            }
-                        });
-                        
-                        if (isVisible) {
-                            menu.style.opacity = '0';
-                            setTimeout(() => {
-                                menu.style.display = 'none';
-                            }, 300);
-                        } else {
-                            menu.style.display = 'block';
-                            menu.style.opacity = '0';
-                            setTimeout(() => {
-                                menu.style.opacity = '1';
-                            }, 10);
-                        }
-                    }
-                });
-            });
-        }
-
-        // ===== FIX FOR BOOTSTRAP DROPDOWN INITIALIZATION =====
-        function initializeDropdowns() {
-            const dropdownElements = document.querySelectorAll('.dropdown-toggle');
-            dropdownElements.forEach(function(dropdownToggleEl) {
-                const dropdown = new bootstrap.Dropdown(dropdownToggleEl);
-                
-                // Additional event listeners for better mobile handling
-                dropdownToggleEl.addEventListener('click', function(e) {
-                    if (window.innerWidth < 992) {
-                        // On mobile, prevent default and handle manually for better control
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        const dropdownMenu = this.nextElementSibling;
-                        const isShown = dropdownMenu.classList.contains('show');
-                        
-                        if (!isShown) {
-                            dropdown.show();
-                        } else {
-                            dropdown.hide();
-                        }
-                    }
-                });
-            });
-        }
-
-        // Initialize enhanced dropdowns
-        document.addEventListener('DOMContentLoaded', function() {
-            enhanceDropdowns();
-            initializeDropdowns();
-            
-            // Re-initialize on resize
-            window.addEventListener('resize', function() {
-                enhanceDropdowns();
-            });
-            
-            // Ensure dropdown menu is properly styled
-            const dropdownMenu = document.querySelector('#ministriesDropdown + .dropdown-menu');
-            if (dropdownMenu) {
-                // Add specific styles for the ministries dropdown
-                dropdownMenu.style.minWidth = '250px';
-                dropdownMenu.style.maxWidth = 'calc(100vw - 30px)'; // Prevent overflow on mobile
-                
-                // Ensure proper z-index and positioning
-                dropdownMenu.style.zIndex = '1050';
-                dropdownMenu.style.position = 'absolute';
-            }
+        // Carousel pause on hover
+        const heroCarousel = document.getElementById('heroCarousel');
+        heroCarousel.addEventListener('mouseenter', () => {
+            bootstrap.Carousel.getInstance(heroCarousel).pause();
         });
-
-        // Additional overflow prevention
-        function checkForOverflow() {
-            const bodyWidth = document.body.clientWidth;
-            const windowWidth = window.innerWidth;
-            
-            if (bodyWidth > windowWidth) {
-                console.warn('Horizontal overflow detected. Body width:', bodyWidth, 'Window width:', windowWidth);
-                
-                // Force recalculation and containment
-                document.body.style.overflowX = 'hidden';
-                document.documentElement.style.overflowX = 'hidden';
-            }
-        }
-
-        window.addEventListener('load', checkForOverflow);
-        window.addEventListener('resize', checkForOverflow);
+        heroCarousel.addEventListener('mouseleave', () => {
+            bootstrap.Carousel.getInstance(heroCarousel).cycle();
+        });
     </script>
 </body>
 </html>

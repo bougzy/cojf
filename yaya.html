@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YAYA - Youth & Young Adults Affairs | GraceChurch</title>
-    
+    <title>YAYA - Youth & Young Adults Affairs | RCCG City Of Joy</title>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary: #1e3a8a;
             --primary-light: #3b82f6;
             --primary-dark: #1e40af;
             --secondary: #1e293b;
-            --accent: #059669;
             --yaya-primary: #7c3aed;
             --yaya-secondary: #a78bfa;
+            --yaya-dark: #5b21b6;
             --yaya-light: #f3f0ff;
             --light: #ffffff;
             --dark: #0f172a;
@@ -34,6 +34,12 @@
             --gray-dark: #334155;
             --text-light: #1e293b;
             --text-dark: #f1f5f9;
+
+            /* Glassmorphism Variables */
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-blur: blur(10px);
         }
 
         [data-bs-theme="dark"] {
@@ -45,6 +51,9 @@
             --text-light: #f1f5f9;
             --text-dark: #1e293b;
             --yaya-light: #2e1065;
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -59,6 +68,7 @@
             color: var(--text-light);
             line-height: 1.7;
             transition: all 0.3s ease;
+            overflow-x: hidden;
         }
 
         section {
@@ -72,55 +82,37 @@
             margin-bottom: 1.5rem;
         }
 
-        [data-bs-theme="dark"] h1,
-        [data-bs-theme="dark"] h2,
-        [data-bs-theme="dark"] h3,
-        [data-bs-theme="dark"] h4,
-        [data-bs-theme="dark"] h5,
-        [data-bs-theme="dark"] h6 {
-            color: var(--text-light);
-        }
-
-        p, .lead, .text-muted {
-            color: var(--text-light) !important;
-        }
-
-        [data-bs-theme="dark"] p,
-        [data-bs-theme="dark"] .lead,
-        [data-bs-theme="dark"] .text-muted {
-            color: var(--text-light) !important;
-        }
-
+        /* Glassmorphism Navbar */
         .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            padding: 1rem 0;
+            background: var(--glass-bg) !important;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            padding: 0.8rem 0;
             transition: all 0.3s ease;
-        }
-
-        [data-bs-theme="dark"] .navbar {
-            background: rgba(15, 23, 42, 0.95) !important;
         }
 
         .navbar-brand {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-link {
             color: var(--text-light) !important;
             font-weight: 500;
+            padding: 0.5rem 1rem !important;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        [data-bs-theme="dark"] .nav-link {
-            color: var(--text-light) !important;
+        .nav-link:hover {
+            color: var(--yaya-primary) !important;
         }
 
         .nav-link.active {
@@ -128,67 +120,42 @@
             font-weight: 600;
         }
 
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
-            border-radius: 2px;
-        }
-
-        /* Dropdown Styles */
+        /* Glassmorphism Dropdown */
         .dropdown-menu {
-            background: var(--light);
-            border: 1px solid var(--gray-light);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 0;
-            animation: dropdownFadeIn 0.3s ease;
-        }
-
-        [data-bs-theme="dark"] .dropdown-menu {
-            background: var(--secondary);
-            border-color: var(--gray-dark);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+            padding: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .dropdown-item {
             color: var(--text-light);
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
-        .dropdown-item:hover {
+        .dropdown-item:hover,
+        .dropdown-item.active {
             background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
             color: white;
-            padding-left: 2rem;
+            transform: translateX(5px);
         }
 
         .dropdown-divider {
-            border-color: var(--gray-light);
+            border-color: var(--glass-border);
+            margin: 0.5rem 0;
         }
 
-        [data-bs-theme="dark"] .dropdown-divider {
-            border-color: var(--gray-dark);
-        }
-
-        @keyframes dropdownFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Page Hero - YAYA Special */
         .page-hero {
-            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
+            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-dark) 100%);
             color: white;
-            padding: 140px 0 80px;
+            padding: 160px 0 100px;
             position: relative;
             overflow: hidden;
             margin-top: 76px;
@@ -201,18 +168,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><circle cx="100" cy="100" r="80" fill="white"/><circle cx="900" cy="200" r="120" fill="white"/><circle cx="500" cy="800" r="100" fill="white"/><circle cx="200" cy="600" r="60" fill="white"/></svg>');
             background-size: cover;
         }
 
         .page-hero .pattern-dots {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            opacity: 0.1;
-            background-image: radial-gradient(currentColor 1px, transparent 1px);
+            top: 50px;
+            right: 50px;
+            width: 200px;
+            height: 200px;
+            opacity: 0.15;
+            background-image: radial-gradient(currentColor 2px, transparent 2px);
             background-size: 20px 20px;
         }
 
@@ -223,32 +190,35 @@
             color: white;
         }
 
-        .page-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
         .breadcrumb {
             background: transparent;
             padding: 0;
-            margin-bottom: 0;
+            margin-bottom: 1rem;
         }
 
         .breadcrumb-item a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: white;
         }
 
         .breadcrumb-item.active {
             color: white;
         }
 
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Section Titles */
         .section-title {
             position: relative;
             margin-bottom: 3rem;
             text-align: center;
-            color: var(--text-light);
         }
 
         .section-title::after {
@@ -263,35 +233,20 @@
             border-radius: 2px;
         }
 
-        .bg-light {
-            background-color: var(--gray-light) !important;
-        }
-
-        .bg-yaya {
-            background-color: var(--yaya-light) !important;
-        }
-
-        [data-bs-theme="dark"] .bg-light {
-            background-color: var(--secondary) !important;
-        }
-
         /* YAYA Cards */
         .yaya-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            padding: 2.5rem 2rem;
             text-align: center;
-            padding: 3rem 2rem;
-            border-radius: 16px;
             transition: all 0.4s ease;
-            background: var(--light);
-            border: 1px solid var(--gray-light);
+            height: 100%;
             position: relative;
             overflow: hidden;
-            margin-bottom: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
         }
 
         .yaya-card::before {
@@ -305,21 +260,12 @@
         }
 
         .yaya-card:hover {
-            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
-            color: white;
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.2);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.25);
         }
 
         .yaya-card:hover .yaya-icon {
-            background: white;
-            color: var(--yaya-primary);
             transform: scale(1.1) rotate(5deg);
-        }
-
-        .yaya-card:hover h4,
-        .yaya-card:hover p {
-            color: white;
         }
 
         .yaya-icon {
@@ -334,80 +280,128 @@
             font-size: 2rem;
             margin: 0 auto 1.5rem;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
         }
 
-        /* Animation for YAYA Elements */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+        .yaya-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
-            }
+        .yaya-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
+        /* Stats Section */
+        .stats-section {
+            background: var(--yaya-light);
+            padding: 4rem 0;
         }
 
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-
-        /* Feature Boxes */
-        .feature-box {
+        .stat-item {
+            text-align: center;
             padding: 2rem;
-            border-radius: 16px;
-            background: var(--light);
-            border: 1px solid var(--gray-light);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Schedule Items */
+        .schedule-item {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--yaya-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--yaya-secondary);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+        }
+
+        .schedule-item strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Leadership Cards */
+        .leader-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
             transition: all 0.3s ease;
             height: 100%;
         }
 
-        .feature-box:hover {
+        .leader-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
-            border-color: var(--yaya-secondary);
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.2);
         }
 
-        .feature-box i {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .leader-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--yaya-secondary);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.2);
+        }
+
+        .leader-card h5 {
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-card .position {
+            color: var(--yaya-primary);
+            font-weight: 600;
             margin-bottom: 1rem;
         }
 
-        /* Timeline */
-        .timeline {
+        /* Timeline Events */
+        .event-timeline {
             position: relative;
             padding: 2rem 0;
         }
 
-        .timeline::before {
+        .event-timeline::before {
             content: '';
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 2px;
+            width: 3px;
             height: 100%;
             background: linear-gradient(to bottom, var(--yaya-primary), var(--yaya-secondary));
+            border-radius: 2px;
         }
 
         .timeline-item {
@@ -426,13 +420,13 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 10px;
             right: -10px;
             width: 20px;
             height: 20px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
-            border: 3px solid var(--light);
+            border: 4px solid var(--light);
             box-shadow: 0 0 0 4px var(--yaya-primary);
         }
 
@@ -442,59 +436,62 @@
         }
 
         .timeline-content {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             padding: 1.5rem;
-            background: var(--light);
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
         }
 
-        /* Leadership Team */
-        .leader-card {
-            text-align: center;
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.15);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
             padding: 2rem;
-            border-radius: 16px;
-            background: var(--light);
-            border: 1px solid var(--gray-light);
-            transition: all 0.3s ease;
+            position: relative;
             height: 100%;
         }
 
-        .leader-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
-            border-color: var(--yaya-secondary);
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--yaya-secondary);
+            opacity: 0.3;
+            line-height: 1;
         }
 
-        .leader-img {
-            width: 120px;
-            height: 120px;
+        .testimonial-text {
+            padding-top: 2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 1.5rem;
-            border: 4px solid var(--yaya-light);
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.2);
-        }
-
-        /* Schedule Items */
-        .schedule-item {
-            padding: 1.5rem;
-            border-left: 4px solid var(--yaya-primary);
-            background: var(--gray-light);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .schedule-item:hover {
-            background: var(--yaya-light);
-            transform: translateX(5px);
-        }
-
-        .schedule-item strong {
-            color: var(--text-light);
-            display: block;
-            margin-bottom: 0.5rem;
+            border: 3px solid var(--yaya-secondary);
         }
 
         /* Buttons */
@@ -509,9 +506,8 @@
         }
 
         .btn-yaya:hover {
-            background: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
             color: white;
         }
 
@@ -519,7 +515,7 @@
             border: 2px solid var(--yaya-primary);
             color: var(--yaya-primary);
             background: transparent;
-            padding: 10px 25px;
+            padding: 10px 28px;
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
@@ -528,14 +524,48 @@
         .btn-outline-yaya:hover {
             background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--yaya-primary);
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            color: var(--yaya-primary);
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+            padding: 10px 28px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--yaya-primary);
+            transform: translateY(-3px);
         }
 
         /* Theme Toggle */
         .theme-toggle {
-            background: var(--gray-light);
-            border: none;
-            font-size: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            font-size: 1.3rem;
             color: var(--text-light);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -551,62 +581,178 @@
             background: var(--yaya-primary);
             color: white;
             transform: rotate(30deg);
+            border-color: var(--yaya-primary);
         }
 
-        /* Testimonials */
-        .testimonial-card {
-            padding: 2rem;
-            border-radius: 16px;
-            background: var(--light);
-            border: 1px solid var(--gray-light);
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-dark) 100%);
+            border-radius: 24px;
+            padding: 4rem;
+            color: white;
+            text-align: center;
             position: relative;
-            margin-bottom: 2rem;
+            overflow: hidden;
         }
 
-        .testimonial-card::before {
-            content: '"';
+        .cta-section::before {
+            content: '';
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 4rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--yaya-secondary);
-            opacity: 0.2;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            margin-top: 1.5rem;
-        }
-
-        .testimonial-author-img {
-            width: 50px;
-            height: 50px;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            object-fit: cover;
-            margin-right: 1rem;
-            border: 2px solid var(--yaya-secondary);
+            transform: translate(50%, -50%);
         }
 
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: translate(-50%, 50%);
+        }
+
+        .cta-section h2,
+        .cta-section p {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
         footer {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
-            color: var(--text-light);
+            color: #cbd5e1;
             padding: 4rem 0 2rem;
         }
 
-        footer h3,
         footer h5 {
             color: white;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
         }
 
         footer a {
-            color: var(--gray) !important;
+            color: #94a3b8 !important;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
         footer a:hover {
             color: var(--yaya-secondary) !important;
+            padding-left: 5px;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--yaya-primary);
+            transform: translateY(-3px);
+        }
+
+        .social-links a i {
+            font-size: 1.1rem;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .page-hero {
+                padding: 140px 0 80px;
+            }
+
+            .page-title {
+                font-size: 2.8rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .cta-section {
+                padding: 3rem 2rem;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                padding-left: 60px;
+            }
+
+            .event-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item::before {
+                left: 20px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even)::before {
+                left: 20px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -614,87 +760,50 @@
                 padding: 120px 0 60px;
                 margin-top: 70px;
             }
-            
+
             .page-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            
+
             section {
                 padding: 3rem 0;
             }
-            
-            .timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 60px;
-                padding-right: 0;
-            }
-            
-            .timeline-item:nth-child(even) {
-                margin-left: 0;
-                padding-left: 60px;
-            }
-            
-            .timeline-item::before {
-                right: auto;
-                left: 20px;
-            }
-            
-            .timeline-item:nth-child(even)::before {
-                left: 20px;
-            }
         }
 
-        /* Ensure text visibility in all sections */
-        .container h1,
-        .container h2,
-        .container h3,
-        .container h4,
-        .container h5,
-        .container h6,
-        .container p,
-        .container .lead,
-        .container .text-muted {
-            color: var(--text-light) !important;
-        }
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
 
-        /* Stats Counter */
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-        }
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
+            .yaya-card {
+                padding: 2rem 1.5rem;
+            }
 
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--gray);
+            .stat-number {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <img src="img/Rccg_logo.png" alt="" style="width: 70px;">
-            <a class="navbar-brand ms-2" href="index.html">City Of Joy</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                <img src="img/Rccg_logo.png" alt="RCCG Logo" style="width: 55px;">
+                <span class="navbar-brand ms-2">City Of Joy</span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
@@ -702,35 +811,32 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="ministries.html" id="ministriesDropdown" role="button" data-bs-toggle="dropdown">
                             Ministries
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="ministries.html">All Ministries</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item active" href="yaya.html">YAYA (Youth & Young Adults)</a></li>
-                            <li><a class="dropdown-item" href="children-ministry.html">Children's Ministry</a></li>
-                            <li><a class="dropdown-item" href="youth-ministry.html">Youth Ministry</a></li>
-                            <li><a class="dropdown-item" href="young-adults.html">Young Adults</a></li>
-                            <li><a class="dropdown-item" href="mens-ministry.html">Men's Ministry</a></li>
-                            <li><a class="dropdown-item" href="womens-ministry.html">Women's Ministry</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#children">Children's Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#men">Men's Fellowship</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#women">Women's Ministry</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="sermons.html">Sermons</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="giving.html">Giving</a>
                     </li>
                 </ul>
-                
-                <div class="d-flex align-items-center">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="bi bi-sun-fill"></i>
-                    </button>
-                </div>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -738,8 +844,8 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="pattern-dots"></div>
-        <div class="container">
-            <nav aria-label="breadcrumb">
+        <div class="container position-relative">
+            <nav aria-label="breadcrumb" data-aos="fade-down">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="ministries.html">Ministries</a></li>
@@ -747,10 +853,12 @@
                 </ol>
             </nav>
             <h1 class="page-title" data-aos="fade-up">Youth & Young Adults Affairs</h1>
-            <p class="page-subtitle lead" data-aos="fade-up" data-aos-delay="200">Empowering the next generation to live out their faith with passion and purpose.</p>
-            <div class="mt-4" data-aos="fade-up" data-aos-delay="400">
-                <a href="#get-involved" class="btn btn-yaya btn-lg me-3">Get Involved</a>
-                <a href="#events" class="btn btn-outline-yaya btn-lg">View Events</a>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100" style="color: rgba(255,255,255,0.9); max-width: 600px;">
+                Empowering the next generation to live out their faith with passion and purpose.
+            </p>
+            <div class="d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="200">
+                <a href="#get-involved" class="btn btn-light btn-lg">Get Involved</a>
+                <a href="#events" class="btn btn-outline-light btn-lg">View Events</a>
             </div>
         </div>
     </section>
@@ -758,27 +866,30 @@
     <!-- Vision & Mission -->
     <section>
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-aos="fade-right">
                     <h2 class="section-title text-start">Our Vision</h2>
                     <p class="lead">To raise a generation of young believers who are deeply rooted in Christ, actively engaged in community, and boldly impacting the world around them.</p>
                     <p>We envision a community where every young person discovers their God-given purpose, grows in authentic relationships, and becomes a transformative influence in their spheres of influence.</p>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="feature-box float-animation">
-                        <i class="bi bi-bullseye"></i>
-                        <h4>Our Mission</h4>
+
+                    <div class="mt-4">
+                        <h5 class="mb-3"><i class="bi bi-bullseye me-2" style="color: var(--yaya-primary);"></i>Our Mission</h5>
                         <p>To provide a safe, engaging environment where youth and young adults can explore their faith, develop meaningful connections, and grow in spiritual maturity through biblical teaching, mentorship, and community engagement.</p>
                     </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                         alt="YAYA Vision"
+                         class="img-fluid rounded-4 shadow-lg">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="bg-yaya">
+    <section class="stats-section">
         <div class="container">
-            <div class="row text-center">
+            <div class="row">
                 <div class="col-md-3 col-6" data-aos="fade-up">
                     <div class="stat-item">
                         <div class="stat-number" data-count="150">0</div>
@@ -811,8 +922,8 @@
     <section class="bg-light">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">What We Offer</h2>
-            <p class="text-center mb-5 lead" data-aos="fade-up" data-aos-delay="100">A holistic approach to youth and young adult ministry</p>
-            
+            <p class="text-center lead mb-5" data-aos="fade-up" data-aos-delay="100">A holistic approach to youth and young adult ministry</p>
+
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="yaya-card">
@@ -821,10 +932,10 @@
                         </div>
                         <h4>Bible Studies</h4>
                         <p>Interactive Bible studies designed specifically for young people, addressing real-life issues through Scripture.</p>
-                        <a href="#weekly-schedule" class="btn btn-outline-yaya btn-sm">View Schedule</a>
+                        <a href="#schedule" class="btn btn-outline-yaya btn-sm">View Schedule</a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="yaya-card">
                         <div class="yaya-icon">
@@ -832,10 +943,10 @@
                         </div>
                         <h4>Small Groups</h4>
                         <p>Age-specific small groups for deeper connections, accountability, and spiritual growth in a safe environment.</p>
-                        <a href="#small-groups" class="btn btn-outline-yaya btn-sm">Join a Group</a>
+                        <a href="#" class="btn btn-outline-yaya btn-sm">Join a Group</a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="yaya-card">
                         <div class="yaya-icon">
@@ -846,7 +957,7 @@
                         <a href="#events" class="btn btn-outline-yaya btn-sm">Upcoming Events</a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="yaya-card">
                         <div class="yaya-icon">
@@ -854,29 +965,29 @@
                         </div>
                         <h4>Career Development</h4>
                         <p>Workshops and mentorship programs to help young adults navigate career choices and professional growth.</p>
-                        <a href="#programs" class="btn btn-outline-yaya btn-sm">Learn More</a>
+                        <a href="#" class="btn btn-outline-yaya btn-sm">Learn More</a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="yaya-card">
                         <div class="yaya-icon">
-                            <i class="bi bi-airplane"></i>
+                            <i class="bi bi-airplane-fill"></i>
                         </div>
                         <h4>Mission Trips</h4>
-                        <p>Local and international mission opportunities to serve communities and share the Gospel.</p>
-                        <a href="#missions" class="btn btn-outline-yaya btn-sm">Mission Info</a>
+                        <p>Local and international mission opportunities to serve communities and share the Gospel around the world.</p>
+                        <a href="#" class="btn btn-outline-yaya btn-sm">Mission Info</a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                     <div class="yaya-card">
                         <div class="yaya-icon">
                             <i class="bi bi-heart-fill"></i>
                         </div>
                         <h4>Mentorship Program</h4>
-                        <p>One-on-one mentorship connecting younger members with mature Christian leaders for guidance.</p>
-                        <a href="#mentorship" class="btn btn-outline-yaya btn-sm">Get Mentored</a>
+                        <p>One-on-one mentorship connecting younger members with mature Christian leaders for guidance and support.</p>
+                        <a href="#" class="btn btn-outline-yaya btn-sm">Get Mentored</a>
                     </div>
                 </div>
             </div>
@@ -884,55 +995,55 @@
     </section>
 
     <!-- Weekly Schedule -->
-    <section id="weekly-schedule">
+    <section id="schedule">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Weekly Schedule</h2>
-            <p class="text-center mb-5 lead" data-aos="fade-up" data-aos-delay="100">Regular activities to help you grow and connect</p>
-            
+            <p class="text-center lead mb-5" data-aos="fade-up" data-aos-delay="100">Regular activities to help you grow and connect</p>
+
             <div class="row">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="schedule-item">
-                        <strong>Sunday Youth Service</strong>
+                        <strong><i class="bi bi-sun me-2" style="color: var(--yaya-primary);"></i>Sunday Youth Service</strong>
                         <div class="text-muted">Sundays, 10:30 AM - 12:00 PM</div>
-                        <p>Age-appropriate worship and teaching for teens and young adults during the main service.</p>
-                        <span class="badge bg-yaya text-dark">Ages 13-25</span>
+                        <p class="mb-0 mt-2 small">Age-appropriate worship and teaching for teens and young adults during the main service.</p>
+                        <span class="badge mt-2" style="background: var(--yaya-light); color: var(--yaya-primary);">Ages 13-35</span>
                     </div>
-                    
+
                     <div class="schedule-item">
-                        <strong>Tuesday Bible Study</strong>
+                        <strong><i class="bi bi-book me-2" style="color: var(--yaya-primary);"></i>Tuesday Bible Study</strong>
                         <div class="text-muted">Tuesdays, 7:00 PM - 8:30 PM</div>
-                        <p>Deep dive into Scripture with relevant applications for today's young generation.</p>
-                        <span class="badge bg-yaya text-dark">All Youth & Young Adults</span>
+                        <p class="mb-0 mt-2 small">Deep dive into Scripture with relevant applications for today's young generation.</p>
+                        <span class="badge mt-2" style="background: var(--yaya-light); color: var(--yaya-primary);">All Youth & Young Adults</span>
                     </div>
-                    
+
                     <div class="schedule-item">
-                        <strong>Thursday Small Groups</strong>
+                        <strong><i class="bi bi-people me-2" style="color: var(--yaya-primary);"></i>Thursday Small Groups</strong>
                         <div class="text-muted">Thursdays, 6:30 PM - 8:00 PM</div>
-                        <p>Gender and age-specific small groups for deeper connections and accountability.</p>
-                        <span class="badge bg-yaya text-dark">Small Groups</span>
+                        <p class="mb-0 mt-2 small">Gender and age-specific small groups for deeper connections and accountability.</p>
+                        <span class="badge mt-2" style="background: var(--yaya-light); color: var(--yaya-primary);">Small Groups</span>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="schedule-item">
-                        <strong>Friday Worship Night</strong>
+                        <strong><i class="bi bi-music-note me-2" style="color: var(--yaya-primary);"></i>Friday Worship Night</strong>
                         <div class="text-muted">First Friday of each month, 7:00 PM - 9:00 PM</div>
-                        <p>Powerful nights of worship, prayer, and testimonies specifically for young people.</p>
-                        <span class="badge bg-yaya text-dark">Worship</span>
+                        <p class="mb-0 mt-2 small">Powerful nights of worship, prayer, and testimonies specifically for young people.</p>
+                        <span class="badge mt-2" style="background: var(--yaya-light); color: var(--yaya-primary);">Worship</span>
                     </div>
-                    
+
                     <div class="schedule-item">
-                        <strong>Saturday Outreach</strong>
-                        <div class="text-muted">Saturdays, 10:00 AM - 12:00 PM (Bi-weekly)</div>
-                        <p>Serving our local community through various outreach projects and evangelism.</p>
-                        <span class="badge bg-yaya text-dark">Outreach</span>
+                        <strong><i class="bi bi-heart me-2" style="color: var(--yaya-primary);"></i>Saturday Outreach</strong>
+                        <div class="text-muted">Bi-weekly Saturdays, 10:00 AM - 12:00 PM</div>
+                        <p class="mb-0 mt-2 small">Serving our local community through various outreach projects and evangelism.</p>
+                        <span class="badge mt-2" style="background: var(--yaya-light); color: var(--yaya-primary);">Outreach</span>
                     </div>
-                    
+
                     <div class="schedule-item">
-                        <strong>Sunday School</strong>
+                        <strong><i class="bi bi-mortarboard me-2" style="color: var(--yaya-primary);"></i>Sunday School</strong>
                         <div class="text-muted">Sundays, 9:00 AM - 10:15 AM</div>
-                        <p>Interactive teaching for different age groups: Teens (13-17) and Young Adults (18-25).</p>
-                        <span class="badge bg-yaya text-dark">All Ages</span>
+                        <p class="mb-0 mt-2 small">Interactive teaching for different age groups: Teens (13-17) and Young Adults (18-35).</p>
+                        <span class="badge mt-2" style="background: var(--yaya-light); color: var(--yaya-primary);">All Ages</span>
                     </div>
                 </div>
             </div>
@@ -943,50 +1054,50 @@
     <section class="bg-light" id="leadership">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Meet Our Leaders</h2>
-            <p class="text-center mb-5 lead" data-aos="fade-up" data-aos-delay="100">Passionate leaders dedicated to serving the next generation</p>
-            
+            <p class="text-center lead mb-5" data-aos="fade-up" data-aos-delay="100">Passionate leaders dedicated to serving the next generation</p>
+
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="leader-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             alt="Pastor John" 
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                             alt="Pastor John"
                              class="leader-img">
                         <h5>Pastor John M.</h5>
-                        <p class="text-muted">YAYA Director</p>
-                        <p>With over 10 years of youth ministry experience, Pastor John is passionate about discipling young believers.</p>
+                        <p class="position">YAYA Director</p>
+                        <p class="small text-muted">With over 10 years of youth ministry experience, Pastor John is passionate about discipling young believers.</p>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="leader-card">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             alt="Sarah J." 
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                             alt="Sarah J."
                              class="leader-img">
                         <h5>Sarah J.</h5>
-                        <p class="text-muted">Youth Coordinator</p>
-                        <p>Sarah leads our teen ministry with creativity and energy, creating engaging programs for high school students.</p>
+                        <p class="position">Youth Coordinator</p>
+                        <p class="small text-muted">Sarah leads our teen ministry with creativity and energy, creating engaging programs for high school students.</p>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="leader-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             alt="Michael T." 
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                             alt="Michael T."
                              class="leader-img">
                         <h5>Michael T.</h5>
-                        <p class="text-muted">Young Adults Pastor</p>
-                        <p>Michael focuses on helping young adults navigate life transitions while deepening their faith journey.</p>
+                        <p class="position">Young Adults Pastor</p>
+                        <p class="small text-muted">Michael focuses on helping young adults navigate life transitions while deepening their faith journey.</p>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="leader-card">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                             alt="Rachel K." 
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                             alt="Rachel K."
                              class="leader-img">
                         <h5>Rachel K.</h5>
-                        <p class="text-muted">Outreach Director</p>
-                        <p>Rachel organizes community service projects and mission trips to help youth live out their faith practically.</p>
+                        <p class="position">Outreach Director</p>
+                        <p class="small text-muted">Rachel organizes community service projects and mission trips to help youth live out their faith practically.</p>
                     </div>
                 </div>
             </div>
@@ -997,41 +1108,43 @@
     <section id="events">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Upcoming Events</h2>
-            <p class="text-center mb-5 lead" data-aos="fade-up" data-aos-delay="100">Join us for these exciting upcoming gatherings</p>
-            
-            <div class="timeline">
+            <p class="text-center lead mb-5" data-aos="fade-up" data-aos-delay="100">Join us for these exciting upcoming gatherings</p>
+
+            <div class="event-timeline">
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
+                        <span class="badge mb-2" style="background: linear-gradient(135deg, var(--yaya-primary) 0%, var(--yaya-secondary) 100%);">Upcoming</span>
                         <h5>Youth Worship Night</h5>
-                        <div class="text-muted mb-2">Friday, March 15 | 7:00 PM - 9:00 PM</div>
+                        <div class="text-muted mb-2"><i class="bi bi-calendar3 me-2"></i>Friday, Feb 7 | 7:00 PM - 9:00 PM</div>
                         <p>An evening of powerful worship, prayer, and testimonies. Special guest worship leaders from local Christian bands.</p>
                         <a href="#" class="btn btn-yaya btn-sm">Register Now</a>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <h5>Career Workshop</h5>
-                        <div class="text-muted mb-2">Saturday, March 23 | 10:00 AM - 2:00 PM</div>
+                        <div class="text-muted mb-2"><i class="bi bi-calendar3 me-2"></i>Saturday, Feb 15 | 10:00 AM - 2:00 PM</div>
                         <p>Practical workshop on resume building, interview skills, and finding your career path with a Christian perspective.</p>
                         <a href="#" class="btn btn-yaya btn-sm">Learn More</a>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
-                        <h5>Spring Retreat</h5>
-                        <div class="text-muted mb-2">April 5-7 | Mountain View Camp</div>
+                        <span class="badge mb-2" style="background: var(--yaya-light); color: var(--yaya-primary);">Featured</span>
+                        <h5>Spring Retreat 2025</h5>
+                        <div class="text-muted mb-2"><i class="bi bi-calendar3 me-2"></i>March 14-16 | Mountain View Camp</div>
                         <p>A weekend retreat focused on spiritual growth, fellowship, and outdoor activities. Early bird discount available!</p>
                         <a href="#" class="btn btn-yaya btn-sm">Sign Up</a>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <h5>Mission Trip Info Session</h5>
-                        <div class="text-muted mb-2">Wednesday, April 10 | 6:30 PM - 8:00 PM</div>
-                        <p>Learn about our summer mission trips to Guatemala and local outreach opportunities. All are welcome!</p>
+                        <div class="text-muted mb-2"><i class="bi bi-calendar3 me-2"></i>Wednesday, March 26 | 6:30 PM - 8:00 PM</div>
+                        <p>Learn about our summer mission trips and local outreach opportunities. All are welcome to attend!</p>
                         <a href="#" class="btn btn-yaya btn-sm">Get Info</a>
                     </div>
                 </div>
@@ -1040,18 +1153,17 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="bg-yaya">
+    <section class="bg-light">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">What Our Members Say</h2>
-            
-            <div class="row">
+
+            <div class="row g-4">
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="testimonial-card">
-                        <p>"YAYA has completely transformed my walk with God. The community here is genuine, and I've found mentors who truly care about my spiritual growth."</p>
+                        <p class="testimonial-text">"YAYA has completely transformed my walk with God. The community here is genuine, and I've found mentors who truly care about my spiritual growth."</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                                 alt="Alex" 
-                                 class="testimonial-author-img">
+                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                 alt="Alex">
                             <div>
                                 <h6 class="mb-0">Alex M.</h6>
                                 <small class="text-muted">College Student, 2 years in YAYA</small>
@@ -1059,14 +1171,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="testimonial-card">
-                        <p>"As a young professional, it was hard to find a community that understood my challenges. YAYA provided both spiritual guidance and practical support for my career journey."</p>
+                        <p class="testimonial-text">"As a young professional, it was hard to find a community that understood my challenges. YAYA provided both spiritual guidance and practical support for my career."</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                                 alt="Jessica" 
-                                 class="testimonial-author-img">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                 alt="Jessica">
                             <div>
                                 <h6 class="mb-0">Jessica L.</h6>
                                 <small class="text-muted">Graphic Designer, 3 years in YAYA</small>
@@ -1074,14 +1185,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="testimonial-card">
-                        <p>"The mission trip to Guatemala through YAYA was life-changing. I not only served others but grew tremendously in my own faith. This ministry truly lives out the Great Commission."</p>
+                        <p class="testimonial-text">"The mission trip through YAYA was life-changing. I not only served others but grew tremendously in my own faith. This ministry truly lives out the Great Commission."</p>
                         <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005-128?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                                 alt="David" 
-                                 class="testimonial-author-img">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                 alt="David">
                             <div>
                                 <h6 class="mb-0">David K.</h6>
                                 <small class="text-muted">Mission Trip Participant</small>
@@ -1096,15 +1206,13 @@
     <!-- Get Involved CTA -->
     <section id="get-involved">
         <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-8" data-aos="fade-up">
-                    <h2>Ready to Join YAYA?</h2>
-                    <p class="lead mb-4">Whether you're a teen exploring faith or a young adult looking for community, there's a place for you in YAYA.</p>
-                    <div class="d-flex flex-wrap gap-3 justify-content-center">
-                        <a href="contact.html" class="btn btn-yaya btn-lg">Contact Our Team</a>
-                        <a href="#events" class="btn btn-outline-yaya btn-lg">View Events</a>
-                        <a href="ministries.html" class="btn btn-outline-yaya btn-lg">Other Ministries</a>
-                    </div>
+            <div class="cta-section" data-aos="fade-up">
+                <h2 class="mb-3">Ready to Join YAYA?</h2>
+                <p class="lead mb-4">Whether you're a teen exploring faith or a young adult looking for community, there's a place for you in YAYA.</p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center position-relative" style="z-index: 1;">
+                    <a href="#" class="btn btn-light btn-lg">Contact Our Team</a>
+                    <a href="#events" class="btn btn-outline-light btn-lg">View Events</a>
+                    <a href="ministries.html" class="btn btn-outline-light btn-lg">Other Ministries</a>
                 </div>
             </div>
         </div>
@@ -1115,109 +1223,129 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h3 class="mb-3">City Of Joy</h3>
-                    <p class="mb-4">A vibrant community of faith, hope, and love. Growing together in Christ and serving our community.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                    <div class="footer-brand">City Of Joy</div>
+                    <p class="mb-4">RCCG Rivers Province 10 Headquarters. A vibrant community of faith, hope, and love. Growing together in Christ.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
-                        <li><a href="about.html" class="text-light text-decoration-none">About</a></li>
-                        <li><a href="ministries.html" class="text-light text-decoration-none">Ministries</a></li>
-                        <li><a href="sermons.html" class="text-light text-decoration-none">Sermons</a></li>
-                        <li><a href="yaya.html" class="text-light text-decoration-none">YAYA Ministry</a></li>
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        <li class="mb-2"><a href="ministries.html">Ministries</a></li>
+                        <li class="mb-2"><a href="sermons.html">Sermons</a></li>
+                        <li class="mb-2"><a href="events.html">Events</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>YAYA Resources</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#weekly-schedule" class="text-light text-decoration-none">Weekly Schedule</a></li>
-                        <li><a href="#events" class="text-light text-decoration-none">Upcoming Events</a></li>
-                        <li><a href="#leadership" class="text-light text-decoration-none">Meet Our Leaders</a></li>
-                        <li><a href="#get-involved" class="text-light text-decoration-none">Get Involved</a></li>
-                        <li><a href="events.html" class="text-light text-decoration-none">All Church Events</a></li>
+                        <li class="mb-2"><a href="#schedule">Weekly Schedule</a></li>
+                        <li class="mb-2"><a href="#events">Upcoming Events</a></li>
+                        <li class="mb-2"><a href="#leadership">Meet Our Leaders</a></li>
+                        <li class="mb-2"><a href="#get-involved">Get Involved</a></li>
+                        <li class="mb-2"><a href="giving.html">Online Giving</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-3 mb-4">
                     <h5>Contact YAYA</h5>
                     <ul class="list-unstyled">
-                        <li><i class="bi bi-person me-2"></i> Pastor John M. - YAYA Director</li>
-                        <li><i class="bi bi-envelope me-2"></i> yaya@cityofjoy.com</li>
-                        <li><i class="bi bi-telephone me-2"></i> (555) 123-4567 ext. 123</li>
-                        <li><i class="bi bi-clock me-2"></i> Office Hours: Mon-Thu 9AM-5PM</li>
+                        <li class="mb-2"><i class="bi bi-person me-2"></i>Pastor John M. - YAYA Director</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i>yaya@rccgcoj-rp10.org</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i>+234 XXX XXX XXXX</li>
+                        <li class="mb-2"><i class="bi bi-clock me-2"></i>Office: Mon-Thu 9AM-5PM</li>
                     </ul>
                 </div>
             </div>
-            
-            <hr class="my-4">
-            
+
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2023 City Of Joy. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2025 RCCG City Of Joy - Rivers Province 10. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="privacy.html" class="text-light me-3">Privacy Policy</a>
-                    <a href="terms.html" class="text-light">Terms of Service</a>
+                    <a href="#" class="me-3">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
         });
 
-        // Theme Toggle
+        // Theme Toggle with localStorage
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
-        
+
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
+
             document.documentElement.setAttribute('data-bs-theme', newTheme);
             themeIcon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
-            
             localStorage.setItem('theme', newTheme);
         });
 
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme') || 
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
-        document.documentElement.setAttribute('data-bs-theme', savedTheme);
-        themeIcon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         // Animated counter for stats
         function animateCounter(element) {
             const target = parseInt(element.getAttribute('data-count'));
-            const duration = 2000; // 2 seconds
-            const increment = target / (duration / 16); // 60fps
+            const duration = 2000;
+            const increment = target / (duration / 16);
             let current = 0;
-            
+
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    element.textContent = target;
+                    element.textContent = target + '+';
                     clearInterval(timer);
                 } else {
                     element.textContent = Math.floor(current);
@@ -1243,39 +1371,36 @@
             });
         }, observerOptions);
 
-        // Observe stats section
-        const statsSection = document.querySelector('.bg-yaya');
+        const statsSection = document.querySelector('.stats-section');
         if (statsSection) {
             observer.observe(statsSection);
         }
 
-        // Smooth scrolling for anchor links
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
 
-        // Add hover effect to cards
-        document.querySelectorAll('.yaya-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+            } else {
+                navbar.style.padding = '0.8rem 0';
+            }
         });
     </script>
 </body>
