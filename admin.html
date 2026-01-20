@@ -458,6 +458,45 @@
         .login-section.hide {
             display: none;
         }
+
+        /* Destination Buttons */
+        .destination-btn {
+            padding: 1rem 0.5rem;
+            font-size: 0.85rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .destination-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-check:checked + .destination-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .btn-check:checked + .destination-btn i {
+            color: white;
+        }
+
+        /* Destination badge in media list */
+        .destination-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+            border-radius: 20px;
+            background: var(--gray-200);
+            color: var(--gray-600);
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .destination-badge.active {
+            background: var(--primary);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -621,6 +660,57 @@
                                 <div class="mb-3">
                                     <label class="form-label">Description / Caption</label>
                                     <textarea class="form-control" id="mediaDescription" placeholder="Enter description or caption"></textarea>
+                                </div>
+
+                                <!-- Target Destination Selection -->
+                                <div class="mb-4">
+                                    <label class="form-label"><i class="bi bi-geo-alt me-1"></i>Destination *</label>
+                                    <p class="text-muted small mb-2">Choose where this content will appear on the website</p>
+                                    <div class="row g-2" id="destinationOptions">
+                                        <div class="col-md-4 col-6">
+                                            <input type="checkbox" class="btn-check" id="destSermons" value="sermons" checked>
+                                            <label class="btn btn-outline-primary w-100 destination-btn" for="destSermons">
+                                                <i class="bi bi-mic d-block mb-1" style="font-size: 1.5rem;"></i>
+                                                Sermons Page
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 col-6">
+                                            <input type="checkbox" class="btn-check" id="destHomepage" value="homepage">
+                                            <label class="btn btn-outline-primary w-100 destination-btn" for="destHomepage">
+                                                <i class="bi bi-house d-block mb-1" style="font-size: 1.5rem;"></i>
+                                                Homepage
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 col-6">
+                                            <input type="checkbox" class="btn-check" id="destGallery" value="gallery">
+                                            <label class="btn btn-outline-primary w-100 destination-btn" for="destGallery">
+                                                <i class="bi bi-images d-block mb-1" style="font-size: 1.5rem;"></i>
+                                                Gallery
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 col-6">
+                                            <input type="checkbox" class="btn-check" id="destEvents" value="events">
+                                            <label class="btn btn-outline-primary w-100 destination-btn" for="destEvents">
+                                                <i class="bi bi-calendar-event d-block mb-1" style="font-size: 1.5rem;"></i>
+                                                Events Page
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 col-6">
+                                            <input type="checkbox" class="btn-check" id="destYaya" value="yaya">
+                                            <label class="btn btn-outline-primary w-100 destination-btn" for="destYaya">
+                                                <i class="bi bi-people d-block mb-1" style="font-size: 1.5rem;"></i>
+                                                YAYA Page
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4 col-6">
+                                            <input type="checkbox" class="btn-check" id="destAbout" value="about">
+                                            <label class="btn btn-outline-primary w-100 destination-btn" for="destAbout">
+                                                <i class="bi bi-info-circle d-block mb-1" style="font-size: 1.5rem;"></i>
+                                                About Page
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-text mt-2"><i class="bi bi-info-circle me-1"></i>You can select multiple destinations</div>
                                 </div>
 
                                 <!-- Additional Fields for Sermons -->
@@ -882,8 +972,26 @@
                 } else {
                     mediaFileInput.accept = 'image/*';
                 }
+
+                // Update default destinations based on media type
+                updateDefaultDestinations(type);
             });
         });
+
+        // Update default destinations based on content type
+        function updateDefaultDestinations(type) {
+            // Uncheck all destinations first
+            document.querySelectorAll('#destinationOptions input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+            });
+
+            // Set defaults based on type
+            if (type === 'image') {
+                document.getElementById('destGallery').checked = true;
+            } else {
+                document.getElementById('destSermons').checked = true;
+            }
+        }
 
         // Upload Zone
         uploadZone.addEventListener('click', () => mediaFileInput.click());
@@ -987,16 +1095,37 @@
                     thumbnailUrl = thumbResult.url;
                 }
 
+                // Get selected destinations
+                const destinations = [];
+                document.querySelectorAll('#destinationOptions input[type="checkbox"]:checked').forEach(cb => {
+                    destinations.push(cb.value);
+                });
+
+                if (destinations.length === 0) {
+                    showToast('Please select at least one destination', 'warning');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="bi bi-cloud-upload me-2"></i>Upload Content';
+                    uploadProgress.classList.remove('show');
+                    return;
+                }
+
                 // Prepare data
                 const data = {
                     title,
                     description,
-                    type,
-                    fileUrl: fileResult.url,
+                    mediaType: type,
+                    mediaUrl: fileResult.url,
                     filePath: fileResult.path,
                     fileName: fileResult.fileName,
                     thumbnailUrl,
-                    featured: document.getElementById('isFeatured').checked
+                    featured: document.getElementById('isFeatured').checked,
+                    destinations: destinations,
+                    showOnSermons: destinations.includes('sermons'),
+                    showOnHomepage: destinations.includes('homepage'),
+                    showOnGallery: destinations.includes('gallery'),
+                    showOnEvents: destinations.includes('events'),
+                    showOnYaya: destinations.includes('yaya'),
+                    showOnAbout: destinations.includes('about')
                 };
 
                 // Add sermon-specific fields
@@ -1004,7 +1133,7 @@
                     data.preacher = document.getElementById('preacher').value;
                     data.date = document.getElementById('sermonDate').value;
                     data.category = document.getElementById('category').value;
-                    data.bibleRef = document.getElementById('bibleRef').value;
+                    data.bibleReference = document.getElementById('bibleRef').value;
                 }
 
                 // Save to Firestore
@@ -1054,9 +1183,12 @@
 
                 container.innerHTML = sermons.map(sermon => `
                     <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded">
-                        <i class="bi bi-${sermon.type === 'video' ? 'play-circle' : sermon.type === 'audio' ? 'music-note' : 'image'} text-primary"></i>
+                        <i class="bi bi-${sermon.mediaType === 'video' ? 'play-circle' : sermon.mediaType === 'audio' ? 'music-note' : 'image'} text-primary"></i>
                         <div class="flex-grow-1 text-truncate">
                             <small class="fw-medium">${sermon.title}</small>
+                            <div class="text-muted" style="font-size: 0.7rem;">
+                                ${sermon.destinations ? sermon.destinations.join(', ') : 'sermons'}
+                            </div>
                         </div>
                     </div>
                 `).join('');
@@ -1080,7 +1212,7 @@
                     <div class="media-item" data-id="${sermon.id}">
                         ${sermon.thumbnailUrl
                             ? `<img src="${sermon.thumbnailUrl}" class="media-item-thumb" alt="${sermon.title}">`
-                            : `<div class="media-item-thumb"><i class="bi bi-${sermon.type === 'video' ? 'play-circle' : 'music-note'}"></i></div>`
+                            : `<div class="media-item-thumb"><i class="bi bi-${sermon.mediaType === 'video' ? 'play-circle' : sermon.mediaType === 'audio' ? 'music-note' : 'image'}"></i></div>`
                         }
                         <div class="media-item-info">
                             <div class="media-item-title">${sermon.title}</div>
@@ -1089,9 +1221,18 @@
                                 ${sermon.category || ''} |
                                 <i class="bi bi-eye"></i> ${sermon.views || 0} views
                             </div>
+                            <div class="mt-1">
+                                ${sermon.showOnSermons ? '<span class="destination-badge active"><i class="bi bi-mic"></i> Sermons</span>' : ''}
+                                ${sermon.showOnHomepage ? '<span class="destination-badge active"><i class="bi bi-house"></i> Homepage</span>' : ''}
+                                ${sermon.showOnGallery ? '<span class="destination-badge active"><i class="bi bi-images"></i> Gallery</span>' : ''}
+                                ${sermon.showOnEvents ? '<span class="destination-badge active"><i class="bi bi-calendar"></i> Events</span>' : ''}
+                                ${sermon.showOnYaya ? '<span class="destination-badge active"><i class="bi bi-people"></i> YAYA</span>' : ''}
+                                ${sermon.showOnAbout ? '<span class="destination-badge active"><i class="bi bi-info"></i> About</span>' : ''}
+                                ${!sermon.destinations && !sermon.showOnSermons ? '<span class="destination-badge"><i class="bi bi-mic"></i> Sermons</span>' : ''}
+                            </div>
                         </div>
                         <div class="media-item-actions">
-                            <a href="${sermon.fileUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                            <a href="${sermon.mediaUrl || sermon.fileUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
                                 <i class="bi bi-eye"></i>
                             </a>
                             <button class="btn btn-sm btn-outline-danger" onclick="deleteSermon('${sermon.id}', '${sermon.filePath}')">
