@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/ministries", "destination": "/ministries.html" },
+    { "source": "/yaya", "destination": "/yaya.html" },
+    { "source": "/events", "destination": "/events.html" },
+    { "source": "/sermons", "destination": "/sermons.html" },
+    { "source": "/giving", "destination": "/giving.html" }
+  ],
+  "cleanUrls": true
+}
