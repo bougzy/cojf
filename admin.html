@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Media Upload | RCCG City Of Joy</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --success: #059669;
+            --danger: #dc2626;
+            --light: #ffffff;
+            --dark: #0f172a;
+            --gray-100: #f8fafc;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-blur: blur(10px);
+        }
+
+        [data-bs-theme="dark"] {
+            --light: #0f172a;
+            --dark: #f1f5f9;
+            --gray-100: #1e293b;
+            --gray-200: #334155;
+            --gray-300: #475569;
+            --gray-400: #64748b;
+            --gray-500: #94a3b8;
+            --gray-600: #cbd5e1;
+            --gray-700: #e2e8f0;
+            --gray-800: #f1f5f9;
+            --gray-900: #f8fafc;
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-brand img {
+            width: 45px;
+            height: auto;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .sidebar-nav a i {
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            margin: 0;
+            color: var(--gray-900);
+        }
+
+        /* Cards */
+        .admin-card {
+            background: var(--light);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Upload Zone */
+        .upload-zone {
+            border: 2px dashed var(--gray-300);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--gray-100);
+        }
+
+        .upload-zone:hover,
+        .upload-zone.dragover {
+            border-color: var(--primary);
+            background: rgba(30, 58, 138, 0.05);
+        }
+
+        .upload-zone i {
+            font-size: 3rem;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+        }
+
+        .upload-zone h5 {
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        .upload-zone p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Form Styles */
+        .form-label {
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-outline-danger {
+            border: 2px solid var(--danger);
+            color: var(--danger);
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .btn-outline-danger:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Progress Bar */
+        .upload-progress {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .upload-progress.show {
+            display: block;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+            background: var(--gray-200);
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Media Preview */
+        .media-preview {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--gray-100);
+            border-radius: 10px;
+        }
+
+        .media-preview.show {
+            display: block;
+        }
+
+        .media-preview img,
+        .media-preview video,
+        .media-preview audio {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Media List */
+        .media-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-100);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .media-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .media-item-thumb {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-500);
+        }
+
+        .media-item-info {
+            flex: 1;
+        }
+
+        .media-item-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .media-item-meta {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .media-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Login Form */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo img {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 9999;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hidden by default - shown after login */
+        .admin-dashboard {
+            display: none;
+        }
+
+        .admin-dashboard.show {
+            display: block;
+        }
+
+        .login-section {
+            display: flex;
+        }
+
+        .login-section.hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Section -->
+    <div class="login-section" id="loginSection">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-logo">
+                    <img src="img/Rccg_logo.png" alt="RCCG Logo">
+                    <h3>Admin Login</h3>
+                    <p class="text-muted">RCCG City Of Joy - Media Management</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="loginEmail" required placeholder="admin@rccgcoj.org">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required placeholder="Enter password">
+                    </div>
+                    <div id="loginError" class="alert alert-danger d-none"></div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                    </button>
+                </form>
+
+                <div class="text-center mt-4">
+                    <a href="./" class="text-muted"><i class="bi bi-arrow-left me-1"></i>Back to Website</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <!-- Mobile Toggle -->
+        <button class="mobile-toggle" id="mobileToggle">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <a href="./" class="sidebar-brand">
+                <img src="img/Rccg_logo.png" alt="Logo">
+                <span>City Of Joy</span>
+            </a>
+
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#" class="active" data-section="upload">
+                        <i class="bi bi-cloud-upload"></i>
+                        <span>Upload Media</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="sermons">
+                        <i class="bi bi-mic"></i>
+                        <span>Manage Sermons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="gallery">
+                        <i class="bi bi-images"></i>
+                        <span>Image Gallery</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="settings">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="mt-auto pt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                <button class="theme-toggle mb-3 w-100" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+                <button class="btn btn-outline-light w-100" id="logoutBtn">
+                    <i class="bi bi-box-arrow-left me-2"></i>Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section id="uploadSection" class="admin-section">
+                <div class="page-header">
+                    <h1 class="page-title">Upload Media</h1>
+                    <span class="text-muted" id="userEmail"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-cloud-upload text-primary"></i>Upload New Content</h5>
+
+                            <form id="uploadForm">
+                                <!-- Media Type Selection -->
+                                <div class="mb-4">
+                                    <label class="form-label">Content Type</label>
+                                    <div class="d-flex gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="mediaType" id="typeVideo" value="video" checked>
+                                            <label class="form-check-label" for="typeVideo">
+                                                <i class="bi bi-play-circle me-1"></i>Video Sermon
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="mediaType" id="typeAudio" value="audio">
+                                            <label class="form-check-label" for="typeAudio">
+                                                <i class="bi bi-music-note me-1"></i>Audio Sermon
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="mediaType" id="typeImage" value="image">
+                                            <label class="form-check-label" for="typeImage">
+                                                <i class="bi bi-image me-1"></i>Image
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- File Upload -->
+                                <div class="mb-4">
+                                    <label class="form-label">Media File</label>
+                                    <div class="upload-zone" id="uploadZone">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <h5>Drag & drop your file here</h5>
+                                        <p>or click to browse (Max: 500MB)</p>
+                                        <input type="file" id="mediaFile" accept="video/*,audio/*,image/*" hidden>
+                                    </div>
+                                    <div class="media-preview" id="mediaPreview"></div>
+                                    <div class="upload-progress" id="uploadProgress">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <small>Uploading...</small>
+                                            <small id="progressPercent">0%</small>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Thumbnail Upload (for video/audio) -->
+                                <div class="mb-4" id="thumbnailSection">
+                                    <label class="form-label">Thumbnail Image (Optional)</label>
+                                    <input type="file" class="form-control" id="thumbnailFile" accept="image/*">
+                                </div>
+
+                                <!-- Title -->
+                                <div class="mb-3">
+                                    <label class="form-label">Title *</label>
+                                    <input type="text" class="form-control" id="mediaTitle" required placeholder="Enter title">
+                                </div>
+
+                                <!-- Description/Caption -->
+                                <div class="mb-3">
+                                    <label class="form-label">Description / Caption</label>
+                                    <textarea class="form-control" id="mediaDescription" placeholder="Enter description or caption"></textarea>
+                                </div>
+
+                                <!-- Additional Fields for Sermons -->
+                                <div id="sermonFields">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Preacher</label>
+                                            <input type="text" class="form-control" id="preacher" placeholder="Pastor's name">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Date</label>
+                                            <input type="date" class="form-control" id="sermonDate">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Category</label>
+                                            <select class="form-select" id="category">
+                                                <option value="sunday-service">Sunday Service</option>
+                                                <option value="bible-study">Bible Study</option>
+                                                <option value="special-program">Special Program</option>
+                                                <option value="yaya">YAYA</option>
+                                                <option value="conference">Conference</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Bible Reference</label>
+                                            <input type="text" class="form-control" id="bibleRef" placeholder="e.g., John 3:16">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Featured Checkbox -->
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="isFeatured">
+                                        <label class="form-check-label" for="isFeatured">
+                                            Feature this content on the homepage
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <i class="bi bi-cloud-upload me-2"></i>Upload Content
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-info-circle text-primary"></i>Upload Guidelines</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Videos: MP4, WebM (max 500MB)</li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Audio: MP3, WAV, M4A (max 100MB)</li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i>Images: JPG, PNG, WebP (max 10MB)</li>
+                                <li class="mb-2"><i class="bi bi-lightbulb text-warning me-2"></i>Use descriptive titles</li>
+                                <li><i class="bi bi-lightbulb text-warning me-2"></i>Add thumbnails for better display</li>
+                            </ul>
+                        </div>
+
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-clock-history text-primary"></i>Recent Uploads</h5>
+                            <div id="recentUploads">
+                                <p class="text-muted">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sermons Management Section -->
+            <section id="sermonsSection" class="admin-section d-none">
+                <div class="page-header">
+                    <h1 class="page-title">Manage Sermons</h1>
+                    <input type="search" class="form-control" placeholder="Search sermons..." style="max-width: 300px;">
+                </div>
+
+                <div class="admin-card">
+                    <div id="sermonsList">
+                        <p class="text-muted">Loading sermons...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallerySection" class="admin-section d-none">
+                <div class="page-header">
+                    <h1 class="page-title">Image Gallery</h1>
+                </div>
+
+                <div class="admin-card">
+                    <div id="galleryGrid" class="row g-3">
+                        <p class="text-muted">Loading images...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settingsSection" class="admin-section d-none">
+                <div class="page-header">
+                    <h1 class="page-title">Settings</h1>
+                </div>
+
+                <div class="admin-card">
+                    <h5 class="card-title"><i class="bi bi-key text-primary"></i>Firebase Configuration</h5>
+                    <p class="text-muted">To enable uploads, configure your Firebase credentials in <code>js/firebase-config.js</code></p>
+
+                    <div class="alert alert-info">
+                        <h6><i class="bi bi-info-circle me-2"></i>Setup Instructions:</h6>
+                        <ol class="mb-0">
+                            <li>Go to <a href="https://console.firebase.google.com" target="_blank">Firebase Console</a></li>
+                            <li>Create a new project or select existing one</li>
+                            <li>Enable Authentication (Email/Password)</li>
+                            <li>Create a Firestore Database</li>
+                            <li>Enable Storage</li>
+                            <li>Copy your config to <code>js/firebase-config.js</code></li>
+                            <li>Add admin email(s) to the allowed list</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <script>
+        // DOM Elements
+        const loginSection = document.getElementById('loginSection');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const uploadForm = document.getElementById('uploadForm');
+        const uploadZone = document.getElementById('uploadZone');
+        const mediaFileInput = document.getElementById('mediaFile');
+        const mediaPreview = document.getElementById('mediaPreview');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const progressBar = document.getElementById('progressBar');
+        const progressPercent = document.getElementById('progressPercent');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const sidebar = document.getElementById('sidebar');
+        const themeToggle = document.getElementById('themeToggle');
+
+        let selectedFile = null;
+        let selectedThumbnail = null;
+
+        // Theme Toggle
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        updateThemeIcon();
+
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon();
+        });
+
+        function updateThemeIcon() {
+            const theme = document.documentElement.getAttribute('data-bs-theme');
+            themeToggle.innerHTML = theme === 'light' ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-fill"></i>';
+        }
+
+        // Mobile Toggle
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Navigation
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = e.currentTarget.dataset.section;
+
+                // Update active state
+                document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+
+                // Show corresponding section
+                document.querySelectorAll('.admin-section').forEach(s => s.classList.add('d-none'));
+                document.getElementById(`${section}Section`).classList.remove('d-none');
+
+                // Close mobile sidebar
+                sidebar.classList.remove('show');
+            });
+        });
+
+        // Auth State Observer
+        auth.onAuthStateChanged(user => {
+            if (user && authHelper.isAdmin(user)) {
+                loginSection.classList.add('hide');
+                adminDashboard.classList.add('show');
+                document.getElementById('userEmail').textContent = user.email;
+                loadRecentUploads();
+                loadSermons();
+            } else {
+                loginSection.classList.remove('hide');
+                adminDashboard.classList.remove('show');
+            }
+        });
+
+        // Login Form
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                loginError.classList.add('d-none');
+                await authHelper.signIn(email, password);
+            } catch (error) {
+                loginError.textContent = error.message;
+                loginError.classList.remove('d-none');
+            }
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', async () => {
+            await authHelper.signOut();
+        });
+
+        // Media Type Change
+        document.querySelectorAll('input[name="mediaType"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const type = e.target.value;
+                const sermonFields = document.getElementById('sermonFields');
+                const thumbnailSection = document.getElementById('thumbnailSection');
+
+                if (type === 'image') {
+                    sermonFields.style.display = 'none';
+                    thumbnailSection.style.display = 'none';
+                } else {
+                    sermonFields.style.display = 'block';
+                    thumbnailSection.style.display = 'block';
+                }
+
+                // Update accepted file types
+                if (type === 'video') {
+                    mediaFileInput.accept = 'video/*';
+                } else if (type === 'audio') {
+                    mediaFileInput.accept = 'audio/*';
+                } else {
+                    mediaFileInput.accept = 'image/*';
+                }
+            });
+        });
+
+        // Upload Zone
+        uploadZone.addEventListener('click', () => mediaFileInput.click());
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            handleFileSelect(file);
+        });
+
+        mediaFileInput.addEventListener('change', (e) => {
+            if (e.target.files[0]) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        function handleFileSelect(file) {
+            selectedFile = file;
+            const type = document.querySelector('input[name="mediaType"]:checked').value;
+
+            // Show preview
+            mediaPreview.classList.add('show');
+            mediaPreview.innerHTML = '';
+
+            if (type === 'video' || file.type.startsWith('video/')) {
+                const video = document.createElement('video');
+                video.src = URL.createObjectURL(file);
+                video.controls = true;
+                video.style.maxHeight = '200px';
+                mediaPreview.appendChild(video);
+            } else if (type === 'audio' || file.type.startsWith('audio/')) {
+                const audio = document.createElement('audio');
+                audio.src = URL.createObjectURL(file);
+                audio.controls = true;
+                audio.style.width = '100%';
+                mediaPreview.appendChild(audio);
+            } else if (type === 'image' || file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxHeight = '200px';
+                mediaPreview.appendChild(img);
+            }
+
+            // Show file info
+            const info = document.createElement('p');
+            info.className = 'mt-2 mb-0 text-muted small';
+            info.textContent = `${file.name} (${formatFileSize(file.size)})`;
+            mediaPreview.appendChild(info);
+
+            // Update upload zone text
+            uploadZone.querySelector('h5').textContent = 'File selected!';
+            uploadZone.querySelector('p').textContent = file.name;
+        }
+
+        // Thumbnail
+        document.getElementById('thumbnailFile').addEventListener('change', (e) => {
+            selectedThumbnail = e.target.files[0];
+        });
+
+        // Upload Form Submit
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!selectedFile) {
+                showToast('Please select a file to upload', 'danger');
+                return;
+            }
+
+            const type = document.querySelector('input[name="mediaType"]:checked').value;
+            const title = document.getElementById('mediaTitle').value;
+            const description = document.getElementById('mediaDescription').value;
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Uploading...';
+
+            uploadProgress.classList.add('show');
+
+            try {
+                // Upload main file
+                const folder = type === 'image' ? 'images' : 'sermons';
+                const fileResult = await uploadMedia.uploadFile(selectedFile, folder, (progress) => {
+                    progressBar.style.width = `${progress}%`;
+                    progressPercent.textContent = `${Math.round(progress)}%`;
+                });
+
+                // Upload thumbnail if provided
+                let thumbnailUrl = null;
+                if (selectedThumbnail) {
+                    const thumbResult = await uploadMedia.uploadFile(selectedThumbnail, 'thumbnails');
+                    thumbnailUrl = thumbResult.url;
+                }
+
+                // Prepare data
+                const data = {
+                    title,
+                    description,
+                    type,
+                    fileUrl: fileResult.url,
+                    filePath: fileResult.path,
+                    fileName: fileResult.fileName,
+                    thumbnailUrl,
+                    featured: document.getElementById('isFeatured').checked
+                };
+
+                // Add sermon-specific fields
+                if (type !== 'image') {
+                    data.preacher = document.getElementById('preacher').value;
+                    data.date = document.getElementById('sermonDate').value;
+                    data.category = document.getElementById('category').value;
+                    data.bibleRef = document.getElementById('bibleRef').value;
+                }
+
+                // Save to Firestore
+                if (type === 'image') {
+                    await uploadMedia.saveMedia(data);
+                } else {
+                    await uploadMedia.saveSermon(data);
+                }
+
+                showToast('Content uploaded successfully!', 'success');
+                resetForm();
+                loadRecentUploads();
+                loadSermons();
+
+            } catch (error) {
+                console.error('Upload error:', error);
+                showToast('Upload failed: ' + error.message, 'danger');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="bi bi-cloud-upload me-2"></i>Upload Content';
+                uploadProgress.classList.remove('show');
+            }
+        });
+
+        function resetForm() {
+            uploadForm.reset();
+            selectedFile = null;
+            selectedThumbnail = null;
+            mediaPreview.classList.remove('show');
+            mediaPreview.innerHTML = '';
+            uploadZone.querySelector('h5').textContent = 'Drag & drop your file here';
+            uploadZone.querySelector('p').textContent = 'or click to browse (Max: 500MB)';
+            progressBar.style.width = '0%';
+            progressPercent.textContent = '0%';
+        }
+
+        // Load Recent Uploads
+        async function loadRecentUploads() {
+            const container = document.getElementById('recentUploads');
+            try {
+                const sermons = await uploadMedia.getSermons(5);
+
+                if (sermons.length === 0) {
+                    container.innerHTML = '<p class="text-muted mb-0">No uploads yet</p>';
+                    return;
+                }
+
+                container.innerHTML = sermons.map(sermon => `
+                    <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded">
+                        <i class="bi bi-${sermon.type === 'video' ? 'play-circle' : sermon.type === 'audio' ? 'music-note' : 'image'} text-primary"></i>
+                        <div class="flex-grow-1 text-truncate">
+                            <small class="fw-medium">${sermon.title}</small>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                container.innerHTML = '<p class="text-danger small">Failed to load uploads</p>';
+            }
+        }
+
+        // Load Sermons List
+        async function loadSermons() {
+            const container = document.getElementById('sermonsList');
+            try {
+                const sermons = await uploadMedia.getSermons(50);
+
+                if (sermons.length === 0) {
+                    container.innerHTML = '<p class="text-muted">No sermons uploaded yet</p>';
+                    return;
+                }
+
+                container.innerHTML = sermons.map(sermon => `
+                    <div class="media-item" data-id="${sermon.id}">
+                        ${sermon.thumbnailUrl
+                            ? `<img src="${sermon.thumbnailUrl}" class="media-item-thumb" alt="${sermon.title}">`
+                            : `<div class="media-item-thumb"><i class="bi bi-${sermon.type === 'video' ? 'play-circle' : 'music-note'}"></i></div>`
+                        }
+                        <div class="media-item-info">
+                            <div class="media-item-title">${sermon.title}</div>
+                            <div class="media-item-meta">
+                                ${sermon.preacher ? sermon.preacher + ' | ' : ''}
+                                ${sermon.category || ''} |
+                                <i class="bi bi-eye"></i> ${sermon.views || 0} views
+                            </div>
+                        </div>
+                        <div class="media-item-actions">
+                            <a href="${sermon.fileUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteSermon('${sermon.id}', '${sermon.filePath}')">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                container.innerHTML = '<p class="text-danger">Failed to load sermons</p>';
+            }
+        }
+
+        // Delete Sermon
+        async function deleteSermon(id, filePath) {
+            if (!confirm('Are you sure you want to delete this sermon?')) return;
+
+            try {
+                await uploadMedia.deleteSermon(id, filePath);
+                showToast('Sermon deleted successfully', 'success');
+                loadSermons();
+                loadRecentUploads();
+            } catch (error) {
+                showToast('Failed to delete: ' + error.message, 'danger');
+            }
+        }
+
+        // Utility Functions
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `alert alert-${type} alert-dismissible fade show`;
+            toast.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.getElementById('toastContainer').appendChild(toast);
+
+            setTimeout(() => toast.remove(), 5000);
+        }
+    </script>
+</body>
+</html>
