@@ -554,6 +554,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="#" data-section="livestream">
+                        <i class="bi bi-broadcast"></i>
+                        <span>Live Stream</span>
+                    </a>
+                </li>
+                <li>
                     <a href="#" data-section="sermons">
                         <i class="bi bi-mic"></i>
                         <span>Manage Sermons</span>
@@ -810,6 +816,205 @@
                 </div>
             </section>
 
+            <!-- Live Stream Section -->
+            <section id="livestreamSection" class="admin-section d-none">
+                <div class="page-header">
+                    <h1 class="page-title"><i class="bi bi-broadcast me-2"></i>Live Stream Manager</h1>
+                    <div id="liveStatus" class="badge bg-secondary">Offline</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Current Stream Card -->
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-play-circle text-danger"></i>Current Live Stream</h5>
+
+                            <!-- Stream Preview -->
+                            <div id="streamPreview" class="mb-4" style="background: #000; border-radius: 12px; min-height: 350px; display: flex; align-items: center; justify-content: center;">
+                                <div class="text-center text-white p-4">
+                                    <i class="bi bi-broadcast" style="font-size: 4rem; opacity: 0.3;"></i>
+                                    <p class="mt-3 mb-0" style="opacity: 0.6;">No active stream. Enter a YouTube or Facebook Live URL to start.</p>
+                                </div>
+                            </div>
+
+                            <!-- Stream URL Input -->
+                            <div class="mb-4">
+                                <label class="form-label"><i class="bi bi-link-45deg me-1"></i>Stream URL</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-broadcast"></i></span>
+                                    <input type="url" class="form-control" id="streamUrl" placeholder="Paste YouTube or Facebook Live URL here...">
+                                    <button class="btn btn-primary" type="button" id="loadStreamBtn">
+                                        <i class="bi bi-play-fill me-1"></i>Load Stream
+                                    </button>
+                                </div>
+                                <div class="form-text">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    Supported: YouTube Live, Facebook Live, or any embed URL
+                                </div>
+                            </div>
+
+                            <!-- Platform Quick Select -->
+                            <div class="mb-4">
+                                <label class="form-label">Quick Platform Select</label>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <button class="btn btn-outline-danger platform-btn" data-platform="youtube">
+                                        <i class="bi bi-youtube me-1"></i>YouTube Live
+                                    </button>
+                                    <button class="btn btn-outline-primary platform-btn" data-platform="facebook">
+                                        <i class="bi bi-facebook me-1"></i>Facebook Live
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Stream Controls -->
+                            <div class="d-flex gap-2 flex-wrap mb-4">
+                                <button class="btn btn-success" id="goLiveBtn" disabled>
+                                    <i class="bi bi-broadcast me-1"></i>Go Live on Website
+                                </button>
+                                <button class="btn btn-danger" id="stopStreamBtn" style="display: none;">
+                                    <i class="bi bi-stop-circle me-1"></i>Stop Stream
+                                </button>
+                                <button class="btn btn-outline-secondary" id="previewStreamBtn" disabled>
+                                    <i class="bi bi-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Auto-Save Recording Card -->
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-record-circle text-danger"></i>Auto-Save Recording</h5>
+                            <p class="text-muted small">Automatically save the stream as a sermon after it ends</p>
+
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="autoSaveEnabled" checked>
+                                <label class="form-check-label" for="autoSaveEnabled">
+                                    Enable auto-save when stream ends
+                                </label>
+                            </div>
+
+                            <div id="recordingSettings">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Sermon Title</label>
+                                        <input type="text" class="form-control" id="streamTitle" placeholder="Sunday Service - January 2025">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Preacher</label>
+                                        <input type="text" class="form-control" id="streamPreacher" placeholder="Pastor's name">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Category</label>
+                                        <select class="form-select" id="streamCategory">
+                                            <option value="sunday-service">Sunday Service</option>
+                                            <option value="bible-study">Bible Study</option>
+                                            <option value="special-program">Special Program</option>
+                                            <option value="yaya">YAYA</option>
+                                            <option value="conference">Conference</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Quality (Compression)</label>
+                                        <select class="form-select" id="streamQuality">
+                                            <option value="720p">720p HD (Recommended - Balanced)</option>
+                                            <option value="480p">480p SD (Smaller file size)</option>
+                                            <option value="360p">360p (Smallest - Mobile friendly)</option>
+                                            <option value="1080p">1080p Full HD (Largest)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" id="streamDescription" rows="2" placeholder="Brief description of the sermon..."></textarea>
+                                </div>
+
+                                <!-- Destination Selection for Recordings -->
+                                <div class="mb-3">
+                                    <label class="form-label"><i class="bi bi-geo-alt me-1"></i>Save Recording To</label>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="saveToSermons" checked>
+                                            <label class="form-check-label" for="saveToSermons">Sermons</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="saveToHomepage">
+                                            <label class="form-check-label" for="saveToHomepage">Homepage</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="saveToYaya">
+                                            <label class="form-check-label" for="saveToYaya">YAYA</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning mb-0">
+                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                <strong>Note:</strong> For YouTube streams, the video will be automatically available after the stream ends.
+                                The system will fetch the recording URL and save it with compressed quality settings.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <!-- Stream Info Card -->
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-info-circle text-primary"></i>Stream Info</h5>
+                            <div id="streamInfo">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-muted">Status:</span>
+                                    <span id="streamStatusText">Offline</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-muted">Platform:</span>
+                                    <span id="streamPlatform">-</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-muted">Duration:</span>
+                                    <span id="streamDuration">-</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Viewers:</span>
+                                    <span id="streamViewers">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Past Streams Card -->
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-clock-history text-primary"></i>Past Streams</h5>
+                            <div id="pastStreams">
+                                <p class="text-muted small">Loading past streams...</p>
+                            </div>
+                        </div>
+
+                        <!-- Quick Tips Card -->
+                        <div class="admin-card">
+                            <h5 class="card-title"><i class="bi bi-lightbulb text-warning"></i>Quick Tips</h5>
+                            <ul class="list-unstyled mb-0 small">
+                                <li class="mb-2">
+                                    <i class="bi bi-youtube text-danger me-2"></i>
+                                    <strong>YouTube:</strong> Copy the live stream URL or video ID
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-facebook text-primary me-2"></i>
+                                    <strong>Facebook:</strong> Use the embed URL from your live video
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-arrow-down-circle text-success me-2"></i>
+                                    <strong>Auto-save:</strong> Videos are automatically compressed
+                                </li>
+                                <li>
+                                    <i class="bi bi-display text-info me-2"></i>
+                                    <strong>Display:</strong> Stream shows on homepage when live
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Settings Section -->
             <section id="settingsSection" class="admin-section d-none">
                 <div class="page-header">
@@ -832,6 +1037,36 @@
                             <li>Add admin email(s) to the allowed list</li>
                         </ol>
                     </div>
+                </div>
+
+                <!-- Live Stream Settings -->
+                <div class="admin-card">
+                    <h5 class="card-title"><i class="bi bi-broadcast text-danger"></i>Live Stream Settings</h5>
+
+                    <div class="mb-3">
+                        <label class="form-label">Default YouTube Channel ID</label>
+                        <input type="text" class="form-control" id="youtubeChannelId" placeholder="Enter your YouTube channel ID">
+                        <div class="form-text">Used to automatically detect when you go live</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Default Facebook Page ID</label>
+                        <input type="text" class="form-control" id="facebookPageId" placeholder="Enter your Facebook page ID">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Default Video Quality</label>
+                        <select class="form-select" id="defaultQuality">
+                            <option value="720p">720p HD (Recommended)</option>
+                            <option value="480p">480p SD</option>
+                            <option value="360p">360p</option>
+                            <option value="1080p">1080p Full HD</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary" id="saveStreamSettings">
+                        <i class="bi bi-check-lg me-2"></i>Save Settings
+                    </button>
                 </div>
             </section>
         </main>
