@@ -1515,6 +1515,392 @@
 
             setTimeout(() => toast.remove(), 5000);
         }
+
+        // ==========================================
+        // LIVE STREAM FUNCTIONALITY
+        // ==========================================
+
+        // Live Stream DOM Elements
+        const streamUrl = document.getElementById('streamUrl');
+        const loadStreamBtn = document.getElementById('loadStreamBtn');
+        const goLiveBtn = document.getElementById('goLiveBtn');
+        const stopStreamBtn = document.getElementById('stopStreamBtn');
+        const previewStreamBtn = document.getElementById('previewStreamBtn');
+        const streamPreview = document.getElementById('streamPreview');
+        const liveStatus = document.getElementById('liveStatus');
+        const autoSaveEnabled = document.getElementById('autoSaveEnabled');
+
+        let currentStreamData = null;
+        let streamDurationInterval = null;
+        let streamStartTime = null;
+
+        // Parse YouTube URL to get video/live ID
+        function parseYouTubeUrl(url) {
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/live\/)([^&\s?]+)/,
+                /youtube\.com\/embed\/([^?&]+)/,
+                /youtube\.com\/v\/([^?&]+)/
+            ];
+
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) return { platform: 'youtube', videoId: match[1] };
+            }
+            return null;
+        }
+
+        // Parse Facebook URL to get video ID
+        function parseFacebookUrl(url) {
+            // Facebook video URL patterns
+            const patterns = [
+                /facebook\.com\/.*\/videos\/(\d+)/,
+                /facebook\.com\/watch\/?\?v=(\d+)/,
+                /fb\.watch\/([^\/\s]+)/
+            ];
+
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) return { platform: 'facebook', videoId: match[1] };
+            }
+
+            // If it contains facebook.com, assume it might be a valid embed
+            if (url.includes('facebook.com')) {
+                return { platform: 'facebook', videoId: null, embedUrl: url };
+            }
+            return null;
+        }
+
+        // Parse any stream URL
+        function parseStreamUrl(url) {
+            if (!url) return null;
+
+            const youtube = parseYouTubeUrl(url);
+            if (youtube) return youtube;
+
+            const facebook = parseFacebookUrl(url);
+            if (facebook) return facebook;
+
+            // Check if it's already an embed URL
+            if (url.includes('iframe') || url.includes('embed')) {
+                return { platform: 'custom', embedUrl: url };
+            }
+
+            return null;
+        }
+
+        // Generate embed HTML
+        function generateEmbed(streamData) {
+            if (streamData.platform === 'youtube') {
+                return `
+                    <iframe
+                        width="100%"
+                        height="350"
+                        src="https://www.youtube.com/embed/${streamData.videoId}?autoplay=1&rel=0"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="border-radius: 12px;">
+                    </iframe>
+                `;
+            } else if (streamData.platform === 'facebook') {
+                const fbUrl = streamData.embedUrl || `https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/facebook/videos/${streamData.videoId}`;
+                return `
+                    <iframe
+                        src="${fbUrl}&show_text=false&width=560"
+                        width="100%"
+                        height="350"
+                        style="border:none;overflow:hidden;border-radius: 12px;"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                `;
+            }
+            return null;
+        }
+
+        // Load Stream Button Click
+        loadStreamBtn.addEventListener('click', () => {
+            const url = streamUrl.value.trim();
+            if (!url) {
+                showToast('Please enter a stream URL', 'warning');
+                return;
+            }
+
+            const streamData = parseStreamUrl(url);
+            if (!streamData) {
+                showToast('Invalid URL. Please enter a valid YouTube or Facebook Live URL.', 'danger');
+                return;
+            }
+
+            currentStreamData = streamData;
+            currentStreamData.url = url;
+
+            const embedHtml = generateEmbed(streamData);
+            if (embedHtml) {
+                streamPreview.innerHTML = embedHtml;
+                goLiveBtn.disabled = false;
+                previewStreamBtn.disabled = false;
+
+                // Update platform display
+                document.getElementById('streamPlatform').textContent =
+                    streamData.platform === 'youtube' ? 'YouTube' :
+                    streamData.platform === 'facebook' ? 'Facebook' : 'Custom';
+
+                showToast('Stream loaded successfully! Click "Go Live on Website" to broadcast.', 'success');
+            } else {
+                showToast('Could not generate embed for this URL.', 'danger');
+            }
+        });
+
+        // Platform Quick Select
+        document.querySelectorAll('.platform-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const platform = btn.dataset.platform;
+                if (platform === 'youtube') {
+                    streamUrl.placeholder = 'Paste YouTube Live URL (e.g., https://youtube.com/watch?v=...)';
+                    streamUrl.focus();
+                } else if (platform === 'facebook') {
+                    streamUrl.placeholder = 'Paste Facebook Live URL (e.g., https://facebook.com/.../videos/...)';
+                    streamUrl.focus();
+                }
+
+                // Highlight selected platform
+                document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Go Live Button
+        goLiveBtn.addEventListener('click', async () => {
+            if (!currentStreamData) {
+                showToast('Please load a stream first', 'warning');
+                return;
+            }
+
+            try {
+                goLiveBtn.disabled = true;
+                goLiveBtn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i>Going Live...';
+
+                // Get recording settings
+                const recordingData = {
+                    title: document.getElementById('streamTitle').value || 'Live Stream - ' + new Date().toLocaleDateString(),
+                    preacher: document.getElementById('streamPreacher').value || '',
+                    category: document.getElementById('streamCategory').value,
+                    quality: document.getElementById('streamQuality').value,
+                    description: document.getElementById('streamDescription').value || '',
+                    autoSave: autoSaveEnabled.checked,
+                    destinations: {
+                        sermons: document.getElementById('saveToSermons').checked,
+                        homepage: document.getElementById('saveToHomepage').checked,
+                        yaya: document.getElementById('saveToYaya').checked
+                    }
+                };
+
+                // Save to Firebase - makes stream live on website
+                await livestreamHelper.goLive({
+                    ...currentStreamData,
+                    ...recordingData,
+                    streamUrl: streamUrl.value
+                });
+
+                // Update UI
+                liveStatus.className = 'badge bg-danger';
+                liveStatus.innerHTML = '<i class="bi bi-broadcast me-1"></i>LIVE';
+                document.getElementById('streamStatusText').innerHTML = '<span class="text-danger fw-bold">LIVE</span>';
+
+                goLiveBtn.style.display = 'none';
+                stopStreamBtn.style.display = 'inline-block';
+
+                // Start duration timer
+                streamStartTime = new Date();
+                streamDurationInterval = setInterval(updateStreamDuration, 1000);
+
+                showToast('You are now LIVE on the website!', 'success');
+            } catch (error) {
+                console.error('Go live error:', error);
+                showToast('Failed to go live: ' + error.message, 'danger');
+                goLiveBtn.disabled = false;
+                goLiveBtn.innerHTML = '<i class="bi bi-broadcast me-1"></i>Go Live on Website';
+            }
+        });
+
+        // Stop Stream Button
+        stopStreamBtn.addEventListener('click', async () => {
+            if (!confirm('Are you sure you want to stop the live stream?')) return;
+
+            try {
+                stopStreamBtn.disabled = true;
+                stopStreamBtn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i>Stopping...';
+
+                // Stop the stream in Firebase
+                await livestreamHelper.stopStream();
+
+                // If auto-save is enabled, save the recording
+                if (autoSaveEnabled.checked && currentStreamData) {
+                    const recordingData = {
+                        title: document.getElementById('streamTitle').value || 'Live Stream Recording - ' + new Date().toLocaleDateString(),
+                        preacher: document.getElementById('streamPreacher').value || '',
+                        category: document.getElementById('streamCategory').value,
+                        quality: document.getElementById('streamQuality').value,
+                        description: document.getElementById('streamDescription').value || '',
+                        platform: currentStreamData.platform,
+                        videoId: currentStreamData.videoId,
+                        streamUrl: streamUrl.value,
+                        duration: document.getElementById('streamDuration').textContent,
+                        destinations: {
+                            sermons: document.getElementById('saveToSermons').checked,
+                            homepage: document.getElementById('saveToHomepage').checked,
+                            yaya: document.getElementById('saveToYaya').checked
+                        }
+                    };
+
+                    await livestreamHelper.saveRecording(recordingData);
+                    showToast('Stream stopped and recording saved!', 'success');
+                } else {
+                    showToast('Stream stopped successfully!', 'success');
+                }
+
+                // Reset UI
+                liveStatus.className = 'badge bg-secondary';
+                liveStatus.textContent = 'Offline';
+                document.getElementById('streamStatusText').textContent = 'Offline';
+
+                stopStreamBtn.style.display = 'none';
+                goLiveBtn.style.display = 'inline-block';
+                goLiveBtn.disabled = false;
+                goLiveBtn.innerHTML = '<i class="bi bi-broadcast me-1"></i>Go Live on Website';
+                stopStreamBtn.disabled = false;
+                stopStreamBtn.innerHTML = '<i class="bi bi-stop-circle me-1"></i>Stop Stream';
+
+                // Clear duration timer
+                if (streamDurationInterval) {
+                    clearInterval(streamDurationInterval);
+                    streamDurationInterval = null;
+                }
+
+                // Load past streams
+                loadPastStreams();
+
+            } catch (error) {
+                console.error('Stop stream error:', error);
+                showToast('Failed to stop stream: ' + error.message, 'danger');
+                stopStreamBtn.disabled = false;
+                stopStreamBtn.innerHTML = '<i class="bi bi-stop-circle me-1"></i>Stop Stream';
+            }
+        });
+
+        // Update stream duration display
+        function updateStreamDuration() {
+            if (!streamStartTime) return;
+
+            const now = new Date();
+            const diff = Math.floor((now - streamStartTime) / 1000);
+            const hours = Math.floor(diff / 3600);
+            const minutes = Math.floor((diff % 3600) / 60);
+            const seconds = diff % 60;
+
+            const formatted = hours > 0
+                ? `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+                : `${minutes}:${String(seconds).padStart(2, '0')}`;
+
+            document.getElementById('streamDuration').textContent = formatted;
+        }
+
+        // Load past streams
+        async function loadPastStreams() {
+            const container = document.getElementById('pastStreams');
+            try {
+                const streams = await livestreamHelper.getPastStreams(5);
+
+                if (streams.length === 0) {
+                    container.innerHTML = '<p class="text-muted small mb-0">No past streams yet</p>';
+                    return;
+                }
+
+                container.innerHTML = streams.map(stream => `
+                    <div class="d-flex align-items-center gap-2 mb-2 p-2 bg-light rounded">
+                        <i class="bi bi-${stream.platform === 'youtube' ? 'youtube text-danger' : 'facebook text-primary'}"></i>
+                        <div class="flex-grow-1">
+                            <small class="fw-medium d-block">${stream.title}</small>
+                            <small class="text-muted">${stream.duration || '-'} | ${stream.quality || '720p'}</small>
+                        </div>
+                        ${stream.savedAsSermon ? '<span class="badge bg-success">Saved</span>' : ''}
+                    </div>
+                `).join('');
+            } catch (error) {
+                container.innerHTML = '<p class="text-danger small">Failed to load past streams</p>';
+            }
+        }
+
+        // Check current stream status on page load
+        async function checkStreamStatus() {
+            try {
+                const status = await livestreamHelper.getCurrentStream();
+                if (status && status.isLive) {
+                    currentStreamData = status;
+                    streamUrl.value = status.streamUrl || '';
+
+                    const embedHtml = generateEmbed(status);
+                    if (embedHtml) {
+                        streamPreview.innerHTML = embedHtml;
+                    }
+
+                    liveStatus.className = 'badge bg-danger';
+                    liveStatus.innerHTML = '<i class="bi bi-broadcast me-1"></i>LIVE';
+                    document.getElementById('streamStatusText').innerHTML = '<span class="text-danger fw-bold">LIVE</span>';
+                    document.getElementById('streamPlatform').textContent =
+                        status.platform === 'youtube' ? 'YouTube' :
+                        status.platform === 'facebook' ? 'Facebook' : 'Custom';
+
+                    goLiveBtn.style.display = 'none';
+                    stopStreamBtn.style.display = 'inline-block';
+                    goLiveBtn.disabled = true;
+                    previewStreamBtn.disabled = false;
+
+                    // Calculate duration from start time
+                    if (status.startedAt) {
+                        streamStartTime = status.startedAt.toDate ? status.startedAt.toDate() : new Date(status.startedAt);
+                        streamDurationInterval = setInterval(updateStreamDuration, 1000);
+                        updateStreamDuration();
+                    }
+                }
+            } catch (error) {
+                console.log('No active stream');
+            }
+        }
+
+        // Toggle auto-save settings visibility
+        autoSaveEnabled.addEventListener('change', () => {
+            const settings = document.getElementById('recordingSettings');
+            settings.style.opacity = autoSaveEnabled.checked ? '1' : '0.5';
+            settings.querySelectorAll('input, select, textarea').forEach(el => {
+                el.disabled = !autoSaveEnabled.checked;
+            });
+        });
+
+        // Save stream settings
+        document.getElementById('saveStreamSettings')?.addEventListener('click', async () => {
+            const settings = {
+                youtubeChannelId: document.getElementById('youtubeChannelId').value,
+                facebookPageId: document.getElementById('facebookPageId').value,
+                defaultQuality: document.getElementById('defaultQuality').value
+            };
+
+            try {
+                await livestreamHelper.saveSettings(settings);
+                showToast('Stream settings saved!', 'success');
+            } catch (error) {
+                showToast('Failed to save settings: ' + error.message, 'danger');
+            }
+        });
+
+        // Initialize live stream section when navigating to it
+        document.querySelector('[data-section="livestream"]').addEventListener('click', () => {
+            checkStreamStatus();
+            loadPastStreams();
+        });
     </script>
 </body>
 </html>

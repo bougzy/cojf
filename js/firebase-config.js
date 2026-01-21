@@ -149,4 +149,188 @@ const authHelper = {
     }
 };
 
+// Collection references for livestream
+const livestreamCollection = db.collection('livestream');
+const streamHistoryCollection = db.collection('streamHistory');
+const settingsCollection = db.collection('settings');
+
+// Livestream helper functions
+const livestreamHelper = {
+    // Go live - save current stream to Firebase
+    async goLive(streamData) {
+        // First, stop any existing stream
+        await this.stopStream();
+
+        // Create new live stream document
+        const docRef = await livestreamCollection.doc('current').set({
+            isLive: true,
+            platform: streamData.platform,
+            videoId: streamData.videoId,
+            streamUrl: streamData.streamUrl,
+            embedUrl: streamData.embedUrl || null,
+            title: streamData.title,
+            preacher: streamData.preacher,
+            category: streamData.category,
+            quality: streamData.quality,
+            description: streamData.description,
+            autoSave: streamData.autoSave,
+            destinations: streamData.destinations,
+            startedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        return docRef;
+    },
+
+    // Stop stream
+    async stopStream() {
+        try {
+            const currentStream = await this.getCurrentStream();
+            if (currentStream && currentStream.isLive) {
+                // Save to history before stopping
+                await streamHistoryCollection.add({
+                    ...currentStream,
+                    isLive: false,
+                    endedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            }
+
+            // Update current stream status
+            await livestreamCollection.doc('current').update({
+                isLive: false,
+                endedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } catch (error) {
+            console.log('No active stream to stop');
+        }
+    },
+
+    // Get current stream status
+    async getCurrentStream() {
+        try {
+            const doc = await livestreamCollection.doc('current').get();
+            if (doc.exists) {
+                return { id: doc.id, ...doc.data() };
+            }
+            return null;
+        } catch (error) {
+            console.error('Error getting current stream:', error);
+            return null;
+        }
+    },
+
+    // Save recording as sermon (auto-save feature)
+    async saveRecording(recordingData) {
+        // Generate embed URL based on platform
+        let mediaUrl = recordingData.streamUrl;
+        if (recordingData.platform === 'youtube' && recordingData.videoId) {
+            mediaUrl = `https://www.youtube.com/embed/${recordingData.videoId}`;
+        }
+
+        const sermonData = {
+            title: recordingData.title,
+            preacher: recordingData.preacher || '',
+            category: recordingData.category || 'sunday-service',
+            description: recordingData.description || '',
+            mediaType: 'video',
+            mediaUrl: mediaUrl,
+            streamUrl: recordingData.streamUrl,
+            platform: recordingData.platform,
+            videoId: recordingData.videoId,
+            quality: recordingData.quality,
+            duration: recordingData.duration || '',
+            isStreamRecording: true,
+            showOnSermons: recordingData.destinations?.sermons || true,
+            showOnHomepage: recordingData.destinations?.homepage || false,
+            showOnYaya: recordingData.destinations?.yaya || false,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            views: 0,
+            downloads: 0
+        };
+
+        // Save to sermons collection
+        const docRef = await sermonsCollection.add(sermonData);
+
+        // Update stream history to mark as saved
+        const historySnapshot = await streamHistoryCollection
+            .orderBy('endedAt', 'desc')
+            .limit(1)
+            .get();
+
+        if (!historySnapshot.empty) {
+            await historySnapshot.docs[0].ref.update({
+                savedAsSermon: true,
+                sermonId: docRef.id
+            });
+        }
+
+        return docRef.id;
+    },
+
+    // Get past streams from history
+    async getPastStreams(limit = 10) {
+        try {
+            const snapshot = await streamHistoryCollection
+                .orderBy('endedAt', 'desc')
+                .limit(limit)
+                .get();
+
+            return snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+        } catch (error) {
+            console.error('Error getting past streams:', error);
+            return [];
+        }
+    },
+
+    // Save stream settings
+    async saveSettings(settings) {
+        await settingsCollection.doc('livestream').set({
+            ...settings,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+    },
+
+    // Get stream settings
+    async getSettings() {
+        try {
+            const doc = await settingsCollection.doc('livestream').get();
+            if (doc.exists) {
+                return doc.data();
+            }
+            return null;
+        } catch (error) {
+            console.error('Error getting settings:', error);
+            return null;
+        }
+    },
+
+    // Listen to stream status changes (real-time)
+    onStreamStatusChange(callback) {
+        return livestreamCollection.doc('current').onSnapshot((doc) => {
+            if (doc.exists) {
+                callback({ id: doc.id, ...doc.data() });
+            } else {
+                callback(null);
+            }
+        });
+    }
+};
+
+// Helper function to get the current live stream for front-end pages (homepage)
+async function getCurrentLiveStream() {
+    try {
+        const stream = await livestreamHelper.getCurrentStream();
+        if (stream && stream.isLive) {
+            return stream;
+        }
+        return null;
+    } catch (error) {
+        console.error('Error checking live stream:', error);
+        return null;
+    }
+}
+
 console.log('Firebase initialized successfully');
