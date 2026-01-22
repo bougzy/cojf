@@ -42,19 +42,217 @@
         }
 
         [data-bs-theme="dark"] {
-            --light: #0f172a;
-            --dark: #f1f5f9;
-            --gray-100: #1e293b;
-            --gray-200: #334155;
-            --gray-300: #475569;
+            --light: #1e293b;
+            --dark: #f8fafc;
+            --gray-100: #0f172a;
+            --gray-200: #1e293b;
+            --gray-300: #334155;
             --gray-400: #64748b;
             --gray-500: #94a3b8;
             --gray-600: #cbd5e1;
             --gray-700: #e2e8f0;
             --gray-800: #f1f5f9;
-            --gray-900: #f8fafc;
-            --glass-bg: rgba(15, 23, 42, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --gray-900: #ffffff;
+            --glass-bg: rgba(15, 23, 42, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+            --input-bg: #0f172a;
+            --input-border: #334155;
+        }
+
+        /* Dark mode specific overrides */
+        [data-bs-theme="dark"] body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+
+        [data-bs-theme="dark"] .admin-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+
+        [data-bs-theme="dark"] .card-title {
+            color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .page-title {
+            color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .form-label {
+            color: #e2e8f0;
+        }
+
+        [data-bs-theme="dark"] .form-control,
+        [data-bs-theme="dark"] .form-select {
+            background-color: #0f172a;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+
+        [data-bs-theme="dark"] .form-control::placeholder {
+            color: #64748b;
+        }
+
+        [data-bs-theme="dark"] .form-control:focus,
+        [data-bs-theme="dark"] .form-select:focus {
+            background-color: #0f172a;
+            border-color: var(--primary-light);
+            color: #f1f5f9;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        [data-bs-theme="dark"] .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        [data-bs-theme="dark"] .upload-zone {
+            background: #0f172a;
+            border-color: #475569;
+        }
+
+        [data-bs-theme="dark"] .upload-zone:hover {
+            border-color: var(--primary-light);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        [data-bs-theme="dark"] .upload-zone h5 {
+            color: #e2e8f0;
+        }
+
+        [data-bs-theme="dark"] .upload-zone p {
+            color: #94a3b8;
+        }
+
+        [data-bs-theme="dark"] .upload-zone i {
+            color: #64748b;
+        }
+
+        [data-bs-theme="dark"] .media-item {
+            background: #0f172a;
+            border: 1px solid #334155;
+        }
+
+        [data-bs-theme="dark"] .media-item-title {
+            color: #f1f5f9;
+        }
+
+        [data-bs-theme="dark"] .media-item-meta {
+            color: #94a3b8;
+        }
+
+        [data-bs-theme="dark"] .media-preview {
+            background: #0f172a;
+            border: 1px solid #334155;
+        }
+
+        [data-bs-theme="dark"] .bg-light {
+            background-color: #0f172a !important;
+        }
+
+        [data-bs-theme="dark"] .destination-btn {
+            border-color: #475569;
+            color: #e2e8f0;
+        }
+
+        [data-bs-theme="dark"] .destination-btn:hover {
+            border-color: var(--primary-light);
+            color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .btn-check:checked + .destination-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-color: var(--primary-light);
+            color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .destination-badge {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        [data-bs-theme="dark"] .destination-badge.active {
+            background: var(--primary-light);
+            color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .alert-info {
+            background-color: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+        }
+
+        [data-bs-theme="dark"] .alert-warning {
+            background-color: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.3);
+            color: #fcd34d;
+        }
+
+        [data-bs-theme="dark"] .form-text {
+            color: #94a3b8;
+        }
+
+        [data-bs-theme="dark"] .page-header {
+            border-bottom-color: #334155;
+        }
+
+        [data-bs-theme="dark"] .btn-outline-primary {
+            border-color: #3b82f6;
+            color: #93c5fd;
+        }
+
+        [data-bs-theme="dark"] .btn-outline-primary:hover {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .btn-outline-danger {
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+
+        [data-bs-theme="dark"] .btn-outline-danger:hover {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .btn-outline-secondary {
+            border-color: #64748b;
+            color: #cbd5e1;
+        }
+
+        [data-bs-theme="dark"] .form-check-label {
+            color: #e2e8f0;
+        }
+
+        [data-bs-theme="dark"] code {
+            background-color: #334155;
+            color: #f472b6;
+        }
+
+        [data-bs-theme="dark"] a:not(.btn):not(.sidebar-nav a):not(.sidebar-brand) {
+            color: #93c5fd;
+        }
+
+        [data-bs-theme="dark"] .input-group-text {
+            background-color: #334155;
+            border-color: #334155;
+            color: #94a3b8;
+        }
+
+        [data-bs-theme="dark"] #streamPreview {
+            background-color: #000000 !important;
+        }
+
+        [data-bs-theme="dark"] .platform-btn {
+            color: #e2e8f0;
+        }
+
+        [data-bs-theme="dark"] .platform-btn.active {
+            color: #ffffff;
         }
 
         * {
